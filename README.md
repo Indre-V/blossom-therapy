@@ -1,5 +1,4 @@
 [Contents](#contents)
-  * [User Goals](#user-goals)
   * [User Stories](#user-stories)
   * [Website Goals and Objectives](#website-goals-and-objectives)
   * [Wireframes](#wireframes)
@@ -32,15 +31,117 @@
 - [Credits](#credits)
 
 
-## User Goals
-
 
 ## User Stories
 
+With an emphasis on delivering a seamless user experience, the goal of this project is to provide a comprehensive platform that serves both visitors and registered users. The platform will allow for the development and maintenance of content, present developer profiles, and provide opportunities for interaction.  The following user stories outline the essential functionalities and the rationale behind them.
+
+*************************************
+### Developer Stories
+
+As a **developer**, I want to **create wireframes** so that I can **visually represent the layout and structure of the application.**
+
+As a **developer**, I want to **design a database schema**  so that I can **efficiently store and manage platform content, ensuring optimal performance, scalability, and flexibility.**
+
+As a **developer**, I want to **create visually engaging and responsive designs** so that **users can easily navigate the website and access relevant information**.
+
+As a **developer**, I want to **adopt Agile methodology** so that **I can deliver high quality product that meets the needs of the user.**
+
+As a **developer**, I want to **install and add basic configurations to Django** so that **I can create a working app**.
+
+As a **developer**, I want to **deploy to Heroku** so that **I can verify initial set up**.
+
+As a **developer**, I want to **the platform to load quickly and respond swiftly to user interactions** so that **users can have a seamless experience**.
+
+As a **developer**, I want to **ensure that all syntax errors are identified and resolved during the code validation process** so that **the code is free from syntax-related issues**.
+
+As a **developer**, I want to **maintain thorough documentation** so that **code is maintained seamlessly in future**.
+
+As a **developer**, I want to **ensure that user stories are thoroughly tested** so that **they meet acceptance criteria and deliver the expected functionality**.
+
+As a **developer**, I want to **deploy the application to Heroku** so that **it is accessible to users online**.
+
+As a **developer**, I want to **ensure that application meets performance and accessibility standards** so that **provides a seamless experience for all users and performs optimally**.
+
+As a **developer**, I want to **update my profile information** so that **I can keep my information current and accurate**.
+
+*************************************************************
+### Visitor Stories
+
+As a **visitor**, I want to **visit the developer's GitHub portfolio** so that **I can view their projects and contributions**.
+
+As a **visitor**, I want to **download the developer's resume** so that I can **review their qualifications and consider them for a position.**
+
+As a **visitor**, I want to **view the developer's profile** so that I can **learn more about the developer, contact them, and access their portfolio.**
+
+As a **visitor**, I want the **accessibility features to be improved** so that **to maintain equal access and usability for all users, including those with disabilities.**
+
+As a **visitor**, I want to **visual elements across the platform to be consistent** so that **I can have a cohesive and pleasant user interface experience**.
+
+As a **visitor**, I want to **navigate through the platform effortlessly,** so that **I can find relevant sections and features intuitively.**
+
+As a **visitor**, I want to **utilize advanced display filtering options** so that **content displayed on the platform according to my preferences and requirements.**
+
+As a **visitor**, I want to **able to register an account** so **I can create an account**.
+
+****************************************************
+
+### Registered User Stories
+
+As a **registered user**, I want to **be able to log in and out of my account** so that **I can use the platform**.
+
+As a **registered user**, I want to **to be able to reset my password** so that **I do not loose access to my account**.
+
+As a **registered user**, I want to **manage my profile** so that **I have control of the information held on the platform**.
+
+As a **registered user**, I want to **create posts** so that **I can upload them on the platform**.
+
+As a **registered user**, I want to **edit and delete posts** so that **I can maintain the content up-to-date**.
+
+As a **registered user**, I want to **to be able to comment on posts** so that **provide feedback to authors**.
+
+As a **registered user**, I want to **to be able to delete and edit comments** so that I can **control my engagement on the platform**.
+
+As a **registered user**, I want **the ability to interact with posts and comments by liking, un-liking, and favoriting them,** so that I can **engage with content that resonates with me**.
+
+As a **registered user**, I want to **provide feedback, report issues, and suggest improvements through a contact form,** so that I can **actively participate in improving the platform and receive support when needed**.
 
 ## Website Goals and Objectives
 
+* Enhance User Experience:
+    - Develop a user-friendly interface that is easy to navigate and visually appealing.
+    - Ensure the platform is responsive and accessible on all devices.
+
+* Facilitate Developer Showcase:
+  - Allow registered users to create, edit, and manage posts and comments.
+  -  Implement features that encourage user interaction, such as liking and favoriting content.
+
+* Maintain High Performance and Accessibility Standards:
+  - Optimize the platform for fast loading times and swift responses to user interactions.
+  - Ensure the platform meets accessibility standards to accommodate all users.
+
+* Support Continuous Improvement and Scalability:
+  - Adopt Agile development practices to continuously deliver high-quality features.
+  - Design the database and infrastructure to handle growth and increased user activity.
+
+* Ensure Security and Reliability:
+  - Implement robust authentication and authorization mechanisms.
+  - Regularly validate and test the code to maintain a stable and secure application.
+
+* Encourage Community and Feedback:
+  - Provide mechanisms for users to give feedback, report issues, and suggest improvements.
+  - Actively engage with user feedback to improve the platform continuously.
+
+
+
 ## Target Audience
+
+- Developers
+- Potential Employers and Recruiters
+- General Visitors
+- Families and Educators
+- Enthusiasts
+
 [Back to top](#contents)
 
 
@@ -87,7 +188,7 @@ Combination of images sourced from [Unsplash](https://unsplash.com/), [Gencraft]
 
 My website is responsive to different layouts depending on the size of the viewport have been included in the CSS media queries. This allows visitors to experience the website as I intended on device types and screen sizes. The breakpoints I am using are from Bootstrap.
 
-![Breakpoints](docs/media-queries.png)
+![Breakpoints](/readme/docs/media-queries.png)
 
 [Back to top](#contents)
 
