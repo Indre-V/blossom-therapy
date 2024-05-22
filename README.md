@@ -25,19 +25,6 @@
   * [Libraries & Framework](#libraries---framework)
   * [Python Modules](#python-modules-imported)
   * [Tools](#tools)
-- [Testing](#testing)
-  * [Bugs Fixed](#bugs-fixed)
-  * [Responsiveness Tests](#responsiveness-tests)
-  * [Code Validation](#code-validation)
-    + [HTML](#html)
-    + [CSS](#css)
-    + [JavaScript](#javascript)
-    + [Python](#python)
-  * [User Story Testing](#user-story-testing)
-  * [Feature Testing](#feature-testing)
-  * [Accessibility Testing](#accessibility-testing)
-  * [Lighthouse Testing](#lighthouse-testing)
-  * [Browser Testing](#browser-testing)
 - [Deployment](#deployment)
   * [To deploy the project](#to-deploy-the-project)
   * [To fork the project](#to-fork-the-project)
@@ -73,7 +60,7 @@
 
 This color scheme aims to create a harmonious balance between the vibrant, nature-inspired elements of the gardening insights and the professional, reliable tone needed for the developer section. By combining these carefully chosen colors, I aim to deliver a visually appealing and user-friendly experience that resonates with both gardeners and potential customers. 
 
-![Coolors Scheme](docs/color-scheme.png)
+![Coolors Scheme](/readme/docs/color-scheme.png)
 
 | Color | Description |
 |-------|-------------|
