@@ -1,56 +1,56 @@
 - [Agile Methodology](#agile-methodology)
-      + [Overview](#overview)
-      + [MoSCoW Prioritization](#moscow-prioritization)
-      + [GitHub Projects](#github-projects)
-      + [EPICS](#epics)
-   * [User Stories](#user-stories)
-      + [Developer Stories](#developer-stories)
-      + [Visitor Stories](#visitor-stories)
-      + [Registered User Stories](#registered-user-stories)
-   * [Website Goals and Objectives](#website-goals-and-objectives)
-   * [Target Audience](#target-audience)
-   * [Wireframes](#wireframes)
-   * [Database Schema](#database-schema)
-   * [Design Choices](#design-choices)
-      + [Typography](#typography)
-      + [Colour Scheme](#colour-scheme)
-      + [Images](#images)
-      + [Responsiveness](#responsiveness)
+  * [Overview](#overview)
+  * [MoSCoW Prioritization](#moscow-prioritization)
+  * [GitHub Projects](#github-projects)
+  * [EPICS](#epics)
+  * [User Stories](#user-stories)
+    + [Developer Stories](#developer-stories)
+    + [Visitor Stories](#visitor-stories)
+    + [Registered User Stories](#registered-user-stories)
+  * [Website Goals and Objectives](#website-goals-and-objectives)
+  * [Target Audience](#target-audience)
+  * [Wireframes](#wireframes)
+  * [Database Schema](#database-schema)
+  * [Design Choices](#design-choices)
+    + [Typography](#typography)
+    + [Colour Scheme](#colour-scheme)
+    + [Images](#images)
+    + [Responsiveness](#responsiveness)
 - [Features](#features)
 - [Deployment](#deployment)
-   * [To deploy the project to Heroku](#to-deploy-the-project-to-heroku)
-   * [To fork the project](#to-fork-the-project)
-   * [To clone the project](#to-clone-the-project)
+  * [To deploy the project to Heroku](#to-deploy-the-project-to-heroku)
+  * [To fork the project](#to-fork-the-project)
+  * [To clone the project](#to-clone-the-project)
 - [Technology](#technology)
-   * [Languages used](#languages-used)
-   * [Python Libraries](#python-libraries)
-   * [Frameworks - Libraries - Programs Used](#frameworks-libraries-programs-used)
-      + [Frameworks](#frameworks)
-      + [Libraries](#libraries)
-      + [Programs](#programs)
-      + [Frameworks](#frameworks-1)
+  * [Languages used](#languages-used)
+  * [Python Libraries](#python-libraries)
+  * [Frameworks](#frameworks)
+  * [Libraries](#libraries)
+  * [Programs](#programs)
+  * [Frameworks](#frameworks-1)
 - [Credits](#credits)
-   * [Disclaimer](#disclaimer)
+  * [Disclaimer](#disclaimer)
+
 
 
 # Agile Methodology
 
-### Overview
+## Overview
 
 Agile methodology is a project management approach that emphasizes flexibility, collaboration, and iterative progress towards a well-defined goal. It is particularly effective in software development where requirements and solutions evolve through the collaborative effort of self-organizing cross-functional teams. Agile methodologies aim to deliver small, incremental changes in a product to improve quality and adaptability to changing needs.
 
 
-### MoSCoW Prioritization
+## MoSCoW Prioritization
 
 The MoSCoW prioritization technique is used to determine the importance of various features and tasks in a project. This method categorizes features into four groups: Must Have, Should Have, Could Have, and Won't Have. This helps in effective time management and ensures that the most critical functionalities are delivered first.
 
-### GitHub Projects
+## GitHub Projects
 
 Using GitHub Projects, tasks are managed and prgress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Future Features/Uresolved). Issue labels include the user, prioritization and sprints.
 
 ![Kanban Board](/readme/docs/kanban-board.png)
 
-### EPICS
+## EPICS
 
 Epic is a large body of work that is broken down into user stories. Each Epic in this project represents a key aspect of the platform's development and ensures comprehensive coverage of the required functionalities.
 
@@ -320,6 +320,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 [Back to top](#contents)
 
 # Technology
+
 ##  Languages used
 
 -   [Python](https://www.python.org/) - high-level, general-purpose programming language.
@@ -334,16 +335,14 @@ _Any changes required to the website, they can be made, committed and pushed to 
 - [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Authentication library used to create user accounts, providing features such as registration, login, and social authentication.
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Used to manage Django forms, making form rendering in templates simpler and more elegant.
 
-## Frameworks - Libraries - Programs Used
-
-### Frameworks
+## Frameworks
 - [Django](https://www.djangoproject.com/): Django is the main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
 
-### Libraries
+## Libraries
 - [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Django-allauth is an authentication library used to create user accounts, providing features such as registration, login, and social authentication.
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Crispy Forms is used to manage Django forms, making form rendering in templates simpler and more elegant.
 
-### Programs
+## Programs
 
 - [Balsamiq](https://balsamiq.com/): Wireframing tool used to generate wireframe images, allowing for quick and easy visualization of the application's layout and design.
 - [Bootstrap 5](https://getbootstrap.com/docs/45/getting-started/introduction/): CSS framework used for developing responsiveness and styling, offering a wide range of pre-designed components and utilities.
@@ -366,7 +365,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 - [WAVE](https://webaim.org/resources/contrastchecker/): Used for accessibility testing, providing tools to check for accessibility issues such as color contrast and semantic structure.
  
 
-### Frameworks
+## Frameworks
 
 - [Django](https://www.djangoproject.com/): The main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
 
