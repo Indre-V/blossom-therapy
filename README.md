@@ -1,3 +1,9 @@
+# Blossom Therapy Insights
+
+This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. In addition to the rich content provided in the Insights section, the blog also features a Developer Profile tab. This tab showcases the profile of the developer behind Blossom Therapy Insights, allowing visitors to learn more about expertise, view portfolio, and connect with the developer. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden.
+
+
+
 - [Agile Methodology](#agile-methodology)
   * [Overview](#overview)
   * [MoSCoW Prioritization](#moscow-prioritization)
@@ -33,24 +39,24 @@
 
 
 
-# Agile Methodology
+## Agile Methodology
 
-## Overview
+### Overview
 
 Agile methodology is a project management approach that emphasizes flexibility, collaboration, and iterative progress towards a well-defined goal. It is particularly effective in software development where requirements and solutions evolve through the collaborative effort of self-organizing cross-functional teams. Agile methodologies aim to deliver small, incremental changes in a product to improve quality and adaptability to changing needs.
 
 
-## MoSCoW Prioritization
+### MoSCoW Prioritization
 
 The MoSCoW prioritization technique is used to determine the importance of various features and tasks in a project. This method categorizes features into four groups: Must Have, Should Have, Could Have, and Won't Have. This helps in effective time management and ensures that the most critical functionalities are delivered first.
 
-## GitHub Projects
+### GitHub Projects
 
 Using GitHub Projects, tasks are managed and prgress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Future Features/Uresolved). Issue labels include the user, prioritization and sprints.
 
 ![Kanban Board](/readme/docs/kanban-board.png)
 
-## EPICS
+### EPICS
 
 Epic is a large body of work that is broken down into user stories. Each Epic in this project represents a key aspect of the platform's development and ensures comprehensive coverage of the required functionalities.
 
@@ -63,7 +69,7 @@ Epic is a large body of work that is broken down into user stories. Each Epic in
 - EPIC 7: Developer Profile
 - EPIC 8: Quality Assurance and Documentation
 
-## User Stories
+### User Stories
 
 With an emphasis on delivering a seamless user experience, the goal of this project is to provide a comprehensive platform that serves both visitors and registered users. The platform will allow for the development and maintenance of content, present developer profiles, and provide opportunities for interaction.  The following user stories outline the essential functionalities and the rationale behind them.
 
@@ -239,16 +245,54 @@ My website is responsive to different layouts depending on the size of the viewp
 
 [Back to top](#contents)
 
-# Features
+## Security Measures and Protective Design
+
+### User Authentication
+- Django's `LoginRequiredMixin` is used to ensure that any requests to access secure pages by non-authenticated users are redirected to the login page.
+- Django's `UserPassesTestMixin` is used to limit access based on certain permissions, ensuring users can only edit/delete content they authored. If the user doesn't pass the test, they are shown an HTTP 403 Forbidden error.
+
+### Password Management
+
+- Use Django's built-in password management tools to ensure passwords are hashed and stored securely.
+- Enforce strong password policies to enhance user account security.
+
+### Form Validation
+If incorrect or empty data is added to a form, the form won't submit, and a warning will appear to the user informing them which field raised the error.
+
+### Custom Error Pages
+
+- **400 Bad Request** - The Platform is unable to process this request.
+- **403 Page Forbidden** - It seems user trying to access restricted content. Please log out and sign in to the appropriate account.
+- **404 Page Not Found** - The page user is looking for doesn't exist.
+- **500 Server Error** - The Plantform is currently experiencing technical difficulties and cannot process this request.
+
+### Database Security
+
+- The database URL and secret key are stored in the `env.py` file to prevent unwanted connections to the database. This setup was implemented before the first push to GitHub.
+- Cross-Site Request Forgery (CSRF) tokens are used on all forms throughout the site to enhance security.
+
+## Features
+
+### Header
+
+### Footer
+
+### Landing Page
+
+### User Account
 
 
+
+
+
+
+### Error Pages
 
 
 [Back to top](#contents)
+## Deployment
 
-# Deployment
-
-## To deploy the project to Heroku
+### To deploy the project to Heroku
 
 Follow these steps to deploy your Django project to Heroku from VS Code:
 | ||
@@ -280,9 +324,8 @@ Follow these steps to deploy your Django project to Heroku from VS Code:
 
 [Back to top](#contents)
 
-## To fork the project
+### To fork the project
 
-  
 Forking the **GitHub** repository allows you to create a duplicate of a local repository. This is done so that modifications to the copy can be performed without compromising the original repository.
 
 
@@ -297,9 +340,8 @@ Forking the **GitHub** repository allows you to create a duplicate of a local re
 - To copy the repository to your **GitHub** account, click the button.
 
   
-## To clone the project
+### To clone the project
 
-  
 - Log in to **GitHub**.
 
 - Navigate to the main page of the repository and click **Code**.
@@ -319,9 +361,15 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 [Back to top](#contents)
 
-# Technology
+## Testing
 
-##  Languages used
+Testing summary and results can be found [here](/blossom-therapy/TESTING.md).
+
+## Future Features
+
+## Technology
+
+###  Languages
 
 -   [Python](https://www.python.org/) - high-level, general-purpose programming language.
 -   [Markdown](https://en.wikipedia.org/wiki/Markdown) - markdown language used to write README and TESTING documents.
@@ -330,19 +378,19 @@ _Any changes required to the website, they can be made, committed and pushed to 
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript "JS") - programming language that allows developer to implement complex features on web pages.
 
 
-## Python Libraries
+### Python Libraries
 
 - [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Authentication library used to create user accounts, providing features such as registration, login, and social authentication.
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Used to manage Django forms, making form rendering in templates simpler and more elegant.
 
-## Frameworks
+### Frameworks
 - [Django](https://www.djangoproject.com/): Django is the main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
 
-## Libraries
+### Libraries
 - [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Django-allauth is an authentication library used to create user accounts, providing features such as registration, login, and social authentication.
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Crispy Forms is used to manage Django forms, making form rendering in templates simpler and more elegant.
 
-## Programs
+### Programs
 
 - [Balsamiq](https://balsamiq.com/): Wireframing tool used to generate wireframe images, allowing for quick and easy visualization of the application's layout and design.
 - [Bootstrap 5](https://getbootstrap.com/docs/45/getting-started/introduction/): CSS framework used for developing responsiveness and styling, offering a wide range of pre-designed components and utilities.
@@ -365,7 +413,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 - [WAVE](https://webaim.org/resources/contrastchecker/): Used for accessibility testing, providing tools to check for accessibility issues such as color contrast and semantic structure.
  
 
-## Frameworks
+### Frameworks
 
 - [Django](https://www.djangoproject.com/): The main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
 
@@ -373,7 +421,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 [Back to top](#contents)
 
 
-# Credits
+## Credits
 
 - Feedback, advice and support:
 
