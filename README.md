@@ -1,34 +1,36 @@
-[Contents](#contents)
-  * [User Stories](#user-stories)
-  * [Website Goals and Objectives](#website-goals-and-objectives)
-  * [Wireframes](#wireframes)
-  * [Database Schema](#database-schema)
-  * [Design Choices](#design-choices)
-    + [Typography](#typography)
-    + [Colour Scheme](#colour-scheme)
-    + [Images](#images)
-    + [Responsiveness](#responsiveness)
 - [Agile Methodology](#agile-methodology)
-    + [Overview](#overview)
-    + [EPICS](#epics)
-    + [User Stories](#user-stories)
-    + [MoSCoW prioritization](#moscow-prioritization)
-    + [GitHub Projects](#github-projectskanban)
+      + [Overview](#overview)
+      + [MoSCoW Prioritization](#moscow-prioritization)
+      + [GitHub Projects](#github-projects)
+      + [EPICS](#epics)
+   * [User Stories](#user-stories)
+      + [Developer Stories](#developer-stories)
+      + [Visitor Stories](#visitor-stories)
+      + [Registered User Stories](#registered-user-stories)
+   * [Website Goals and Objectives](#website-goals-and-objectives)
+   * [Target Audience](#target-audience)
+   * [Wireframes](#wireframes)
+   * [Database Schema](#database-schema)
+   * [Design Choices](#design-choices)
+      + [Typography](#typography)
+      + [Colour Scheme](#colour-scheme)
+      + [Images](#images)
+      + [Responsiveness](#responsiveness)
 - [Features](#features)
-  * [Existing Features](#existing-features)
-    + [Header](#header)
-    + [Footer](#footer)
-  * [Future Enhancements](#future-enhancements)
-- [Technologies Used](#technologies-used)
-  * [Languages](#languages)
-  * [Libraries & Framework](#libraries---framework)
-  * [Python Modules](#python-modules-imported)
-  * [Tools](#tools)
 - [Deployment](#deployment)
-  * [To deploy the project](#to-deploy-the-project)
-  * [To fork the project](#to-fork-the-project)
-  * [To clone the project](#to-clone-the-project)
+   * [To deploy the project to Heroku](#to-deploy-the-project-to-heroku)
+   * [To fork the project](#to-fork-the-project)
+   * [To clone the project](#to-clone-the-project)
+- [Technology](#technology)
+   * [Languages used](#languages-used)
+   * [Python Libraries](#python-libraries)
+   * [Frameworks - Libraries - Programs Used](#frameworks-libraries-programs-used)
+      + [Frameworks](#frameworks)
+      + [Libraries](#libraries)
+      + [Programs](#programs)
+      + [Frameworks](#frameworks-1)
 - [Credits](#credits)
+   * [Disclaimer](#disclaimer)
 
 
 # Agile Methodology
@@ -274,11 +276,6 @@ Follow these steps to deploy your Django project to Heroku from VS Code:
 | **Step 5**  Verify Your Deployment |
 | - Open App: Once your app is deployed, you can open it by clicking on the Open App button in the Heroku dashboard. This will open your app in a web browser. |
 | - Verify App: Verify that your app is running correctly by checking for any errors or issues. |
-
-
-
-
-## Prerequisites
 
 
 [Back to top](#contents)
