@@ -1,0 +1,1 @@
+web: gunicorn blossom_app.wsgi
