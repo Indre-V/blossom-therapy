@@ -1,5 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def my_insights(request):
-    return HttpResponse("Hello, Insights!")
+def developer_view(request):
+    return HttpResponse("Developer Section")

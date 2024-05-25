@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class InsightsConfig(AppConfig):
+class BlossomMainConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'insights'
+    name = 'blossom_main'

@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from insights.views import my_insights
+from blossom_main.views import home_view
+from developer.views import developer_view
 
 urlpatterns = [
+    path('', home_view, name='blossom_main' ),
     path('admin/', admin.site.urls),
-    path('insights/', my_insights, name='insights' )
+    path('developer/', developer_view, name='developer' )
 ]
