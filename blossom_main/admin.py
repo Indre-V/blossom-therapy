@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from .models import Profile
+from django_summernote.admin import SummernoteModelAdmin
 
 class ProfileInline(admin.StackedInline):
     """
@@ -13,7 +14,7 @@ class UserAdmin(admin.ModelAdmin):
     Custom admin configuration for the User model.
     """
     model = User
-    fields = ("username", "first_name", "last_name", "email")
+    fields = ("username", "email")
     inlines = [ProfileInline]
 
 admin.site.unregister(User)
