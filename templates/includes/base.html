@@ -63,7 +63,7 @@
 
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'add-post' %}">Add
+                            <a class="nav-link" href="">Add
                                 Post</a>
                         </li>
                         {% endif %}
@@ -74,24 +74,24 @@
                         <li class="nav-item">
                             <a
                                 class="nav-link text-capitalize"
-                                href="{% url 'profile' user.username %}"><i
+                                href=""><i
                                     class="fa-solid fa-user"></i> {{
                                 user.username }}</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{% url 'account_logout' %}">Logout</a>
+                                href="{% url 'acc_logout' %}">Logout</a>
                         </li>
 
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{% url 'register_account' %}">Register</a>
+                                href="{% url 'acc_register' %}">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{% url 'account_login' %}">Login</a>
+                                href="{% url 'acc_login' %}">Login</a>
                         </li>
                         {% endif %}
 
