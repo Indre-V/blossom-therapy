@@ -20,8 +20,8 @@ from developer.views import developer_view
 
 
 urlpatterns = [
-    path('', include('blossom_main.urls'), name='insights.urls'),
-    path('accounts/', include("allauth.urls")),
+    path('', include('blossom_main.urls'), name='home'),
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('developer/', developer_view, name='developer')

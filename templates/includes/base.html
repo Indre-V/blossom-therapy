@@ -1,4 +1,9 @@
 {% load static %}
+{% load cloudinary %}
+
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,23 +80,22 @@
                             <a
                                 class="nav-link text-capitalize"
                                 href=""><i
-                                    class="fa-solid fa-user"></i> {{
-                                user.username }}</a>
+                                    class="fa-solid fa-user"></i> {{ user }}</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{% url 'acc_logout' %}">Logout</a>
+                                href="{% url 'account_logout' %}">Logout</a>
                         </li>
 
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{% url 'acc_register' %}">Register</a>
+                                href="{% url 'account_signup' %}">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{% url 'acc_login' %}">Login</a>
+                                href="{% url 'account_login' %}">Login</a>
                         </li>
                         {% endif %}
 
@@ -116,11 +120,7 @@
             </div>
 
             <main class="flex-shrink-0 main-bg">
-                {% if user.is_authenticated %}
-                <p class="text-end m-3">You are logged in as {{ user }}</p>
-                {% else %}
-                <p class="text-end m-3">You are not logged in</p>
-                {% endif %}
+                
 
                 {% block content %}
                 <!-- Content Goes here -->
