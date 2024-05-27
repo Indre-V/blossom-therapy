@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Profile(models.Model):
     """
@@ -20,3 +22,13 @@ class Profile(models.Model):
         Return the string representation of the associated user's first name if it exists
         """
         return f"{self.first_name} {self.last_name}"
+    
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

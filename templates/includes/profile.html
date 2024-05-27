@@ -1,0 +1,25 @@
+{% extends "includes/base.html" %}
+
+{% block title %}Blossom Therapy Insights | {{profile.username}}{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ profile.user.username }}'s Profile</title>
+    <!-- Add Bootstrap CSS here -->
+</head>
+<body>
+    <div class="container">
+        <h1>{{ profile.user.username }}'s Profile</h1>
+        <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+        <p>Name: {{ profile.first_name }} {{ profile.last_name }}</p>
+        <p>Bio: {{ profile.bio }}</p>
+        <p>Location: {{ profile.location }}</p>
+        <p>Total Likes: {{ profile.total_likes }}</p>
+        <p>Total Favourites: {{ profile.total_favourites }}</p>
+    </div>
+</body>
+</html>
+ {% endblock content %}
