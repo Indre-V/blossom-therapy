@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from developer.views import developer_view
-from blossom_main import views
+
 
 urlpatterns = [
-    path('', views.Home.as_view(), name='home'),
-    path("accounts/", include("allauth.urls")),
+    path('', include('blossom_main.urls'), name='insights.urls'),
+    path('accounts/', include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('developer/', developer_view, name='developer')
