@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import logout
+from django.shortcuts import get_object_or_404
 from .models import Profile
+from django.urls import reverse_lazy
 
 
 
@@ -34,3 +36,21 @@ class ProfilePageView(generic.DetailView):
         context['profile'] = profile
         context['user'] = profile.user
         return context
+
+class ProfileDeleteView(generic.DeleteView):
+    """
+    View for deleting an user profile
+    """
+    model = User
+    template_name = "includes/profile_delete.html"
+    success_url = reverse_lazy("home")
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Handles the deletion of an user profile and related objects
+        """
+        # Log out the user
+        logout(request)
+
+        # Delete the user profile and related objects
+        return super().delete(request, *args, **kwargs)

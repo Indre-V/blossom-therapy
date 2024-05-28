@@ -12,6 +12,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="card-footer text-center">
+            <a href="" class="btn btn-primary mb-3"><i
+                    class="fas fa-user-edit"></i>
+                Update Profile</a>
+            <a href=" class="btn btn-primary mb-3">
+                <i class="fas fa-user-lock"></i> Change Password</a>
+            <a href="{% url 'profile_delete' user.id %}" class="btn btn-danger mb-3"><i
+                    class="fas fa-user-slash"></i> Delete Account</a>
+        </div>
         <h1>{{ profile.user.username }}'s Profile</h1>
         <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
         <p>Name: {{ profile.first_name }} {{ profile.last_name }}</p>
@@ -19,7 +28,7 @@
         <p>Location: {{ profile.location }}</p>
         <p>Total Likes: {{ profile.total_likes }}</p>
         <p>Total Favourites: {{ profile.total_favourites }}</p>
-    </div>
+   </div>
 </body>
 </html>
  {% endblock content %}

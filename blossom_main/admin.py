@@ -13,7 +13,7 @@ class UserAdmin(admin.ModelAdmin):
     """
     Custom admin configuration for the User model.
     """
-    model = User
+    model = User, Profile
     fields = ("username", "email")
     inlines = [ProfileInline]
 

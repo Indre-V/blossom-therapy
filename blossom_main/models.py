@@ -22,7 +22,6 @@ class Profile(models.Model):
         Return the string representation of the associated user's first name if it exists
         """
         return f"{self.first_name} {self.last_name}"
-    
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
