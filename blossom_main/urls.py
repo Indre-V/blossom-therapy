@@ -11,4 +11,10 @@ urlpatterns = [
         views.ProfileDeleteView.as_view(),
         name="profile_delete",
     ),
+      path(
+        "profile_update/<int:pk>/",
+        views.ProfileUpdateView.as_view(),
+        name="profile_update",
+    ),
 ]
+
