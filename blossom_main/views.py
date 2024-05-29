@@ -18,7 +18,7 @@ from django.views.generic.edit import UpdateView
 
 class Home(generic.TemplateView):
     """This view is used to display the home page"""
-    template_name = "includes/base.html"
+    template_name = "index.html"
 
 
 class ProfilePageView(generic.DetailView):
