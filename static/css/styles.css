@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #FF6347; /* Tomato */
+  --secondary-color: #4682B4; /* Steel Blue */
+  --accent-color: #FFD700; /* Gold */
+  --peach-puff: #FFDAB9; /* Peach Puff */
+  --powder-blue: #B0E0E6; /* Powder Blue */
+  --background-color: #ffffff; /* White */
+  --text-color: #222020; /* Dark Gray */
+   --ivory: #FFFFF0; /* Ivory */
+   
+  /* Additional Colors */
+  --sea-green: #2E8B57; /* Sea Green */
+  --coral: #FF7F50; /* Coral */
+
+  --light-gray: #D3D3D3; /* Light Gray */
+ 
+
+}

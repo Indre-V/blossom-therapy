@@ -22,6 +22,7 @@ class Home(generic.TemplateView):
 
 
 class ProfilePageView(generic.DetailView):
+    """This view is used to display user profile page"""
     template_name = "includes/profile.html"
     context_object_name = "profile"
 
