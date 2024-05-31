@@ -77,10 +77,33 @@ class Post(models.Model):
         """
         Meta options for the Post model.
         """
-        ordering = ['-created_on']
+        ordering = ["-created_on"]
 
     def __str__(self):
         """
         String for representing the Model object
         """
         return f"{self.title}"
+
+class Comment(models.Model):
+    """
+    Model representing a comment on a post.
+    """
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    content = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        """
+        Meta options for the InsightComment model.
+        """
+        ordering = ["created_on"]
+
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return f'Comment by {self.author} on {self.post}'
