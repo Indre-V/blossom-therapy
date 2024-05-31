@@ -31,3 +31,56 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Category(models.Model):
+    """
+    Model representing a category for the posts.
+    """
+    name = models.CharField(max_length=30, unique=True)
+
+    class Meta:
+        """
+        Options for Category model
+        """
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        """
+        String for representing the Model object
+        """
+        return f"{self.name}"
+
+class Post(models.Model):
+    """
+    Model representing a blog post.
+    """
+    STATUS_CHOICES = (
+        (0, 'Draft'),
+        (1, 'Published')
+    )
+
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    featured_image = CloudinaryField('image', default='placeholder_insights')
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
+    excerpt = models.TextField(blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    likes_count = models.IntegerField(default=0)
+    favourites_count = models.IntegerField(default=0)
+
+    class Meta:
+        """
+        Meta options for the Post model.
+        """
+        ordering = ['-created_on']
+
+    def __str__(self):
+        """
+        String for representing the Model object
+        """
+        return f"{self.title}"
