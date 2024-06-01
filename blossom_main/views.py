@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views import generic
+from django.views import generic, View
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -8,17 +8,20 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Profile
-from .forms import UserForm, ProfileForm
+from .models import Profile, Category, Post
+from .forms import UserForm, ProfileForm, CommentForm
 from django.views.generic.edit import UpdateView
 
 
-
-
-
-class Home(generic.TemplateView):
-    """This view is used to display the home page"""
+class Home(generic.ListView):
+    """
+    A view class for displaying all posts on the home page.
+    """
+    model = Post
+    queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
+    context_object_name = "posts"
+    paginate_by = 10
 
 
 class ProfilePageView(generic.DetailView):
@@ -106,3 +109,29 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             return super().form_valid(form)
         else:
             return self.form_invalid(form)
+
+class CategoryPage(generic.ListView):
+    """
+    A view class for displaying a list of posts based on a specific category.
+    """
+    model = Post
+    template_name = "category.html"
+    context_object_name = "posts"
+    paginate_by = 6
+
+    def get_queryset(self):
+        """
+        Filters the posts based on the category obtained from the URL.
+        """
+        category_name = self.kwargs['category_name']
+        category = get_object_or_404(Category, name=category_name)
+        return Post.objects.filter(category=category, status=1).order_by('-created_on')
+
+    def get_context_data(self, **kwargs):
+        """
+        Adds additional context data to the template.
+        """
+        context = super().get_context_data(**kwargs)
+        context['category'] = get_object_or_404(Category, name=self.kwargs['category_name'])
+        return context
+

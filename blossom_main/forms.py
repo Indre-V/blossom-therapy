@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Comment
 
 
 
@@ -46,3 +46,8 @@ class UserForm(forms.ModelForm):
     first_name = forms.CharField(max_length=15)
     last_name = forms.CharField(max_length=15)
     email = forms.EmailField(max_length=40)
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)
