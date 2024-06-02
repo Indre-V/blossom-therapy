@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views import generic, View
+from django.views import generic
+from django.views.generic import CreateView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Profile, Category, Post
-from .forms import UserForm, ProfileForm, CommentForm
 from django.views.generic.edit import UpdateView
+from .models import Profile, Category, Post
+from .forms import UserForm, ProfileForm, CommentForm, PostForm
+
 
 
 class Home(generic.ListView):
@@ -135,3 +138,30 @@ class CategoryPage(generic.ListView):
         context['category'] = get_object_or_404(Category, name=self.kwargs['category_name'])
         return context
 
+
+class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    """
+    View for creating a new blog post
+    """
+    model = Post
+    template_name = "includes/add_insight.html"
+    form_class = PostForm
+    success_url = reverse_lazy("home")
+
+    def form_valid(self, form):
+        """
+        Custom logic to handle form validation when creating a new post
+        """
+        form.instance.author = self.request.user
+        form.instance.slug = slugify(form.instance.title)
+        response = super().form_valid(form)
+        messages.success(self.request, "Post created successfully! Waiting for Admin approval")
+        return response
+
+    def form_invalid(self, form):
+        """
+        Handles form validation when creating a new post
+        """
+        response = super().form_invalid(form)
+        messages.error(self.request, "Post creation failed. Please check your input.")
+        return response

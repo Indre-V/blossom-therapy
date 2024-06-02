@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile, Comment
+from .models import Profile, Comment, Post
 
 
 
@@ -47,7 +47,41 @@ class UserForm(forms.ModelForm):
     last_name = forms.CharField(max_length=15)
     email = forms.EmailField(max_length=40)
 
-class CommentForm(forms.ModelForm):
+
+class PostForm(forms.ModelForm):
+    """
+    Form for creating and updating a Post.
+    """
+
     class Meta:
+        """
+        Meta options for the PostForm.
+        Specifies the model to use and the fields to include in the form.
+        """
+        model = Post
+        fields = ['title', 'slug', 'featured_image', 'content', 'excerpt', 'category', 'status']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 5}),
+            'excerpt': forms.Textarea(attrs={'rows': 2}),
+        }
+        labels = {
+            'title': 'Post Title',
+            'slug': 'Slug',
+            'category': 'Category',
+            'featured_image': 'Featured Image',
+            'excerpt': 'Excerpt',
+            'content': 'Content',
+            'status': 'Status',
+        }
+
+class CommentForm(forms.ModelForm):
+    """
+    A form for creating and updating comments on a blog post.
+    """
+    class Meta:
+        """
+        Meta options for the CommentForm.
+        Specifies the model to use and the fields to include in the form.
+        """
         model = Comment
-        fields = ('body',)
+        fields = ['content', 'approved']

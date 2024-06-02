@@ -16,4 +16,7 @@ urlpatterns = [
         views.ProfileUpdateView.as_view(),
         name="profile_update",
     ),
+    path('category/<str:category_name>/', views.CategoryPage.as_view(), name='category_posts'),
+    path('post/add/', views.PostCreateView.as_view(), name='add_post'),
+    
 ]
