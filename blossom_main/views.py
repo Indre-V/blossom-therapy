@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -12,7 +12,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
 from .models import Profile, Category, Post
-from .forms import UserForm, ProfileForm, CommentForm, PostForm
+from .forms import UserForm, ProfileForm, CommentForm, InsightForm
 
 
 
@@ -139,13 +139,13 @@ class CategoryPage(generic.ListView):
         return context
 
 
-class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class InsightCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
     View for creating a new blog post
     """
     model = Post
     template_name = "includes/add_insight.html"
-    form_class = PostForm
+    form_class = InsightForm
     success_url = reverse_lazy("home")
 
     def form_valid(self, form):
@@ -165,3 +165,11 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         response = super().form_invalid(form)
         messages.error(self.request, "Post creation failed. Please check your input.")
         return response
+
+class InsightsList(TemplateView):
+    """
+    View for creating a new blog post
+    """
+    model = Post
+    template_name = "includes/insights_list.html"
+    success_url = reverse_lazy("home")

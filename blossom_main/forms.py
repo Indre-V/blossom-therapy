@@ -48,7 +48,7 @@ class UserForm(forms.ModelForm):
     email = forms.EmailField(max_length=40)
 
 
-class PostForm(forms.ModelForm):
+class InsightForm(forms.ModelForm):
     """
     Form for creating and updating a Post.
     """
