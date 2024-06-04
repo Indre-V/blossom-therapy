@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, ListView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -166,10 +166,12 @@ class InsightCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         messages.error(self.request, "Post creation failed. Please check your input.")
         return response
 
-class InsightsList(TemplateView):
+class InsightsList(ListView):
     """
     View for creating a new blog post
     """
     model = Post
+    queryset = Post.objects.filter(status=1)
     template_name = "includes/insights_list.html"
+    context_object_name = "insight_list"
     success_url = reverse_lazy("home")
