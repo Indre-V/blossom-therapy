@@ -82,4 +82,4 @@ class CommentForm(forms.ModelForm):
         Specifies the model to use and the fields to include in the form.
         """
         model = Comment
-        fields = ['content', 'approved']
+        fields = ['content']

@@ -176,11 +176,49 @@ class InsightsList(ListView):
     context_object_name = "insight_list"
     success_url = reverse_lazy("home")
 
-class InsightDetails (DetailView):
+class InsightDetails(generic.View):
     """
-    View for displaying the details of a specific post (insight).
+    View for displaying the details of a specific post (insight) and adding comments.
     """
-    
-    model = Post
     template_name = "includes/insight_detail.html"
-    context_object_name = "post"
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.filter(approved=True).order_by("-created_on")
+        context = {
+            "post": post,
+            "comments": comments,
+            "comment_form": CommentForm(),
+            "commented": False,
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.order_by("-created_on")
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            messages.success(
+                self.request,
+                "Comment created successfully!"
+            )
+        else:
+            messages.error(
+                self.request,
+                "There was an error. Action not registered!")
+
+        context = {
+            "post": post,
+            "comments": comments,
+            "comment_form": comment_form,
+            "commented": False,
+        }
+        return render(request, self.template_name, context)
+    
