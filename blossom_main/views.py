@@ -9,9 +9,9 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
-from .models import Profile, Category, Post
+from .models import Profile, Category, Post, Comment
 from .forms import UserForm, ProfileForm, CommentForm, InsightForm
 
 
@@ -185,7 +185,7 @@ class InsightDetails(generic.View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.filter(approved=True).order_by("-created_on")
+        comments = post.comments.order_by("-created_on")
         context = {
             "post": post,
             "comments": comments,
@@ -221,4 +221,35 @@ class InsightDetails(generic.View):
             "commented": False,
         }
         return render(request, self.template_name, context)
-    
+
+class DeleteCommentView(
+        LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+
+    """
+    This view is used to allow logged in users to delete their own comments
+    """
+    model = Comment
+    template_name = 'includes/delete_comment.html'
+    success_message = "Comment deleted successfully"
+
+    def test_func(self):
+        """
+        Ensure that only the comment author can delete the comment.
+        """
+        comment = self.get_object()
+        return comment.author == self.request.user
+
+    # def delete(self, request, *args, **kwargs):
+    #     """
+    #     Display a success message upon comment deletion.
+    #     """
+    #     response = super().delete(request, *args, **kwargs)
+    #     messages.success(self.request, self.success_message)
+    #     return response
+
+    def get_success_url(self):
+        """
+        Redirect to the post detail view after a successful comment deletion.
+        """
+        post = self.object.post
+        return reverse_lazy('insight_details', kwargs={'slug': post.slug})    

@@ -1,0 +1,25 @@
+<!-- delete_comment.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Blossom Therapy Insights | Delete Comment {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Delete Comment</h1>
+    <hr class="my-0">
+    <p class="text-center mt-3">Are you sure you want to delete this comment?</p>
+    <div class="row justify-content-center">
+        <div class="col-11 col-md-6 col-lg-4 mt-3">
+            <!-- Delete Comment Form -->
+            <div>
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                <button class="btn btn-danger" data-comment_id="{{ comment.id }}" type="submit" class="d-inline">Delete</button></form>
+                <button class="btn btn-outline-dark" class="d-inline href="{% url 'insights' %}">Cancel</button>
+                </div>
+           
+        </div>
+    </div>
+</div>
+{% endblock %}
