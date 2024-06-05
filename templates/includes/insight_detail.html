@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="blog-single bg-light py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 mb-4">
+                <article class="article bg-white p-4 shadow-sm rounded">
+                    <div class="article-img mb-4">
+                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid rounded" alt="{{ post.title }}">
+                    </div>
+                    <div class="article-title mb-3">
+                        <h6 class="text-secondary"><a href="#">{{ post.category.name }}</a></h6>
+                        <h2 class="card-title">{{ post.title }}</h2>
+                        <div class="d-flex align-items-center mt-3 mb-4">
+                            <div class="avatar me-3">
+                                <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" alt="{{ post.author.username }}">
+                           
+                            <div class="media-body">
+                                <p class="mb-0"><strong>{{ post.author.username }}</strong></p>
+                                <span class="text-muted">{{ post.created_on|date:"F j, Y" }}</span>
+                            </div> 
+                        </div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        {{ post.content|safe }}
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

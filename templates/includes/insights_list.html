@@ -28,7 +28,7 @@
                 <p class="card-text">
                     {{post.excerpt}}
                 </p>
-                <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+                <a href="{% url 'insight_details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
               </div>
             </div>
             {% endfor %}

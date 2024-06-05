@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -175,3 +175,12 @@ class InsightsList(ListView):
     template_name = "includes/insights_list.html"
     context_object_name = "insight_list"
     success_url = reverse_lazy("home")
+
+class InsightDetails (DetailView):
+    """
+    View for displaying the details of a specific post (insight).
+    """
+    
+    model = Post
+    template_name = "includes/insight_detail.html"
+    context_object_name = "post"
