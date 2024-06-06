@@ -21,6 +21,7 @@ urlpatterns = [
     path('category/<str:category_name>/', views.CategoryPage.as_view(), name='category_posts'),
     path('post/add/', views.InsightCreateView.as_view(), name='add_post'),
     path('insight/<slug:slug>/delete/', views.InsightDeleteView.as_view(), name='insight-delete'),
+    path('insight/<slug:slug>/update/', views.InsightUpdateView.as_view(), name='insight-update'),
     path(
         'comments/<int:pk>/deletecomment/',
         views.DeleteCommentView.as_view(), name='delete_comment'

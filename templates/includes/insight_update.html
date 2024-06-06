@@ -7,12 +7,13 @@
 
 <div class="row justify-content-center mt-3 mb-5">
     <div class="col-md-5 col-sm-12">
-        <form method="POST">
+        {% load cloudinary %}
+        <form method="POST" enctype="multipart/form-data">
+            {{ form | crispy }}
             {% csrf_token %}
-            <h5>Are you Sure?</h5>
-            <p>You are about to delete this post, this cannot be undone.</p>
+            
             <div class="d-grid gap-2">
-                <button class="btn btn-danger mt-3">Delete</button>
+                <button type="submit" class="btn btn-outline-dark">Update</button>
             </div>
         </form>
         <a class="btn" href="{% url 'insight_details' post.slug %}">Cancel</a>

@@ -27,6 +27,7 @@
                             </div>
                             {% if request.user == post.author or request.user.is_superuser %}
                             <a href="{% url 'insight-delete' post.slug %}" class="delete-icon"><i class="fa-solid fa-trash"></i></a>
+                            <a href="{% url 'insight-update' post.slug %}" class="update-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                             {% endif %}
                         </div>
                     </div>
