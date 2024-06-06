@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Blossom Therapy Insights | Edit Insight {% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-3 mb-5">
+    <div class="col-md-5 col-sm-12">
+        <form method="POST">
+            {% csrf_token %}
+            <h5>Are you Sure?</h5>
+            <p>You are about to delete this post, this cannot be undone.</p>
+            <div class="d-grid gap-2">
+                <button class="btn btn-danger mt-3">Delete</button>
+            </div>
+        </form>
+        <a class="btn" href="{% url 'insight_details' post.slug %}">Cancel</a>
+    </div>
+</div>
+
+        {% endblock %}

@@ -25,6 +25,9 @@
                                 <p class="mb-0"><strong>{{ post.author.username }}</strong></p>
                                 <span class="text-muted">{{ post.created_on|date:"F j, Y" }}</span>
                             </div>
+                            {% if request.user == post.author or request.user.is_superuser %}
+                            <a href="{% url 'insight-delete' post.slug %}" class="delete-icon"><i class="fa-solid fa-trash"></i></a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="article-content">

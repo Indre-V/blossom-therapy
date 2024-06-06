@@ -264,3 +264,20 @@ class EditCommentView(
     def test_func(self):
         comment = self.get_object()
         return comment.author == self.request.user
+
+class InsightDeleteView(
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.DeleteView):
+    """
+    Delete insights by author or superuser
+    """
+    model = Post
+    template_name = 'includes/insight_delete.html'
+    success_message = "Insight removed successfully"
+
+    def get_success_url(self):
+        return reverse_lazy('insights')
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author or self.request.user.is_superuser
+
