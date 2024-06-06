@@ -238,18 +238,29 @@ class DeleteCommentView(
         """
         comment = self.get_object()
         return comment.author == self.request.user
-
-    # def delete(self, request, *args, **kwargs):
-    #     """
-    #     Display a success message upon comment deletion.
-    #     """
-    #     response = super().delete(request, *args, **kwargs)
-    #     messages.success(self.request, self.success_message)
-    #     return response
-
+    
     def get_success_url(self):
         """
         Redirect to the post detail view after a successful comment deletion.
         """
         post = self.object.post
-        return reverse_lazy('insight_details', kwargs={'slug': post.slug})    
+        return reverse_lazy('insight_details', kwargs={'slug': post.slug}) 
+
+class EditCommentView(
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+
+    """
+    This view is used to allow logged in users to updatetheir own comments
+    """
+    model = Comment
+    fields = ['content']
+    template_name = 'includes/edit_comment.html'
+    success_message = "Comment updated successfully" 
+
+    def get_success_url(self):
+        post = self.object.post
+        return reverse_lazy('insight_details', kwargs={'slug': post.slug}) 
+
+    def test_func(self):
+        comment = self.get_object()
+        return comment.author == self.request.user

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Blossom Therapy Insights | Edit Comment {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Edit Comment</h1>
+    <hr class="my-0">
+    <p class="text-center mt-3">Are you sure you want to edit this comment?</p>
+    <div class="row justify-content-center">
+        <div class="col-11 col-md-6 col-lg-4 mt-3">
+            <!-- Edit Comment Form -->
+            <div>
+                <form method="post" class="d-inline">
+                    {{ form | crispy }}
+                    {% csrf_token %}
+                <button class="btn btn-danger" data-comment_id="{{ comment.id }}" type="submit">Submit</button></form>
+                 <a class="btn" href="{% url 'insight_details' comment.post.slug %}">Cancel</a>
+                </div>
+           
+        </div>
+    </div>
+</div>
+{% endblock %}
