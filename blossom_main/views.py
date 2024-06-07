@@ -1,11 +1,11 @@
+"""Views Imports """
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from django.views.generic import CreateView, TemplateView, ListView, DetailView
+from django.views.generic import CreateView, View, ListView, DetailView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
@@ -14,20 +14,21 @@ from django.views.generic.edit import UpdateView
 from .models import Profile, Category, Post, Comment
 from .forms import UserForm, ProfileForm, CommentForm, InsightForm
 
+# pylint: disable=locally-disabled, no-member
+# pylint: disable=unused-argument
+# pylint: disable=unused-variable
 
-
-class Home(generic.ListView):
+class HomeView(ListView):
     """
     A view class for displaying all posts on the home page.
     """
     model = Post
-    queryset = Post.objects.filter(status=1).order_by("-created_on")
+    queryset = Post.objects.all().filter(status=1).order_by("-created_on")
     template_name = "index.html"
-    context_object_name = "posts"
     paginate_by = 10
 
 
-class ProfilePageView(generic.DetailView):
+class ProfilePageView(DetailView):
     """This view is used to display user profile page"""
     template_name = "includes/profile.html"
     context_object_name = "profile"
@@ -50,7 +51,8 @@ class ProfilePageView(generic.DetailView):
         context['user'] = profile.user
         return context
 
-class ProfileDeleteView(generic.DeleteView):
+
+class ProfileDeleteView(DeleteView):
     """
     View for deleting an user profile
     """
@@ -67,6 +69,7 @@ class ProfileDeleteView(generic.DeleteView):
 
         # Delete the user profile and related objects
         return super().delete(request, *args, **kwargs)
+
 
 class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """
@@ -88,7 +91,7 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         """
         Returns the URL to redirect to after processing a valid form.
         """
-        return reverse_lazy('profile', kwargs={'username': self.request.user.username})
+        return reverse_lazy("profile", kwargs={"username": self.request.user.username})
 
     def get_context_data(self, **kwargs):
         """
@@ -96,9 +99,9 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         """
         context = super().get_context_data(**kwargs)
         if self.request.method == 'GET':
-            context['user_form'] = UserForm(instance=self.request.user)
+            context["user_form"] = UserForm(instance=self.request.user)
         else:
-            context['user_form'] = UserForm(self.request.POST, instance=self.request.user)
+            context["user_form"] = UserForm(self.request.POST, instance=self.request.user)
         return context
 
     def form_valid(self, form):
@@ -113,13 +116,13 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         else:
             return self.form_invalid(form)
 
-class CategoryPage(generic.ListView):
+
+class CategoryPageView(ListView):
     """
     A view class for displaying a list of posts based on a specific category.
     """
     model = Post
     template_name = "category.html"
-    context_object_name = "posts"
     paginate_by = 6
 
     def get_queryset(self):
@@ -139,7 +142,7 @@ class CategoryPage(generic.ListView):
         return context
 
 
-class InsightCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
     View for creating a new blog post
     """
@@ -166,23 +169,27 @@ class InsightCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         messages.error(self.request, "Post creation failed. Please check your input.")
         return response
 
-class InsightsList(ListView):
+
+class InsightsListView(ListView):
     """
     View for creating a new blog post
     """
     model = Post
     queryset = Post.objects.filter(status=1)
     template_name = "includes/insights_list.html"
-    context_object_name = "insight_list"
+    context_object_name = "insights"
     success_url = reverse_lazy("home")
 
-class InsightDetails(generic.View):
+class InsightDetailsView(View):
     """
     View for displaying the details of a specific post (insight) and adding comments.
     """
     template_name = "includes/insight_detail.html"
 
     def get(self, request, slug, *args, **kwargs):
+        """
+        Handle GET requests to display the details of a specific post and its comments.
+        """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by("-created_on")
@@ -195,6 +202,9 @@ class InsightDetails(generic.View):
         return render(request, self.template_name, context)
 
     def post(self, request, slug, *args, **kwargs):
+        """
+        Handle POST requests to add a comment to the specific post.
+        """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by("-created_on")
@@ -222,14 +232,15 @@ class InsightDetails(generic.View):
         }
         return render(request, self.template_name, context)
 
-class DeleteCommentView(
-        LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+
+class CommentDeleteView(
+        LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     """
     This view is used to allow logged in users to delete their own comments
     """
     model = Comment
-    template_name = 'includes/delete_comment.html'
+    template_name = "includes/delete_comment.html"
     success_message = "Comment deleted successfully"
 
     def test_func(self):
@@ -238,28 +249,29 @@ class DeleteCommentView(
         """
         comment = self.get_object()
         return self.request.user == comment.author or self.request.user.is_superuser
-      
+
     def get_success_url(self):
         """
         Redirect to the post detail view after a successful comment deletion.
         """
         post = self.object.post
-        return reverse_lazy('insight_details', kwargs={'slug': post.slug}) 
+        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
 
-class EditCommentView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+
+class CommentEditView(
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
 
     """
     This view is used to allow logged in users to updatetheir own comments
     """
     model = Comment
-    fields = ['content']
-    template_name = 'includes/edit_comment.html'
-    success_message = "Comment updated successfully" 
+    fields = ["content"]
+    template_name = "includes/edit_comment.html"
+    success_message = "Comment updated successfully"
 
     def get_success_url(self):
         post = self.object.post
-        return reverse_lazy('insight_details', kwargs={'slug': post.slug})
+        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
 
     def test_func(self):
         comment = self.get_object()
@@ -271,13 +283,14 @@ class InsightDeleteView(
     Delete insights by author or superuser
     """
     model = Post
-    template_name = 'includes/insight_delete.html'
+    template_name = "includes/insight_delete.html"
     success_message = "Insight removed successfully"
-    success_url = reverse_lazy('insights')
+    success_url = reverse_lazy("insights")
 
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
+
 
 class InsightUpdateView(
         LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
@@ -286,7 +299,7 @@ class InsightUpdateView(
     """
     model = Post
     form_class = InsightForm
-    template_name = 'includes/insight_update.html'
+    template_name = "includes/insight_update.html"
     success_message = "%(calculated_field)s was edited successfully"
 
     def form_valid(self, form):
@@ -296,9 +309,9 @@ class InsightUpdateView(
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
-  
+
     def get_success_url(self):
-        return reverse_lazy('insight_details', kwargs={'slug': self.object.slug})
+        return reverse_lazy("insight-details", kwargs={"slug": self.object.slug})
 
     def get_success_message(self, cleaned_data):
         """

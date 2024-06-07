@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %} Blossom Therapy Insights {% endblock %}
+{% block title %} Blossom Therapy Insights | Insights List {% endblock %}
 
 {% block content %}
 <main class="my-5">
@@ -12,7 +12,7 @@
         <h4 class="mb-5"><strong>Latest posts</strong></h4>
   
         <div class="row">
-          {% for post in insight_list  %}
+          {% for post in insights  %}
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
@@ -28,7 +28,7 @@
                 <p class="card-text">
                     {{post.excerpt}}
                 </p>
-                <a href="{% url 'insight_details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+                <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
               </div>
             </div>
             {% endfor %}

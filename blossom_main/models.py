@@ -5,6 +5,8 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+# pylint: disable=unused-argument
+
 
 class Profile(models.Model):
     """
@@ -27,7 +29,6 @@ class Profile(models.Model):
     objects = models.Manager()
 
 
-# pylint: disable=unused-argument
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     """

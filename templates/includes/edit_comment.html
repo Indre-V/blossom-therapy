@@ -16,7 +16,7 @@
                     {{ form | crispy }}
                     {% csrf_token %}
                 <button class="btn btn-danger" data-comment_id="{{ comment.id }}" type="submit">Submit</button></form>
-                 <a class="btn" href="{% url 'insight_details' comment.post.slug %}">Cancel</a>
+                 <a class="btn" href="{% url 'insight-details' comment.post.slug %}">Cancel</a>
                 </div>
            
         </div>

@@ -71,12 +71,12 @@
                                     </div>
                                     {% if request.user == comment.author or request.user.is_superuser %}
                                     <div>
-                                        <a class="text-secondary fw-bolder" href="{% url 'delete_comment' comment.pk %}">
+                                        <a class="text-secondary fw-bolder" href="{% url 'delete-comment' comment.pk %}">
                                             {% csrf_token %}
                                             <i class="fas fa-trash-alt"></i>Delete</a>
                                        
 
-                                            <a class="text-secondary fw-bolder" href="{% url 'edit_comment' comment.pk %}">
+                                            <a class="text-secondary fw-bolder" href="{% url 'edit-comment' comment.pk %}">
                                                 {% csrf_token %}
                                                 <i class="fas fa-pen"></i>Edit</a>
                                     </div>

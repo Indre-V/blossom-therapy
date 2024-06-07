@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
+# Prevent error when hidden env.py is not found
 if os.path.isfile('env.py'):
     import env
 
