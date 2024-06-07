@@ -8,7 +8,7 @@
   --powder-blue: #B0E0E6; /* Powder Blue */
   --background-color: #ffffff; /* White */
   --text-color: #222020; /* Dark Gray */
-   --ivory: #FFFFF0; /* Ivory */
+  --ivory: #FFFFF0; /* Ivory */
    
   /* Additional Colors */
   --sea-green: #2E8B57; /* Sea Green */
@@ -24,4 +24,35 @@
 
   background-color: #f8f5f580; /* Hex color code for the hover state */
   transition: background-color 0.3s ease;
+}
+
+.user-card-full {
+  overflow: hidden;
+  box-shadow: 0 1px 2rem 0 rgba(69, 90, 100, 0.08);
+  background-color: #f9f9fa41;
+  margin-bottom: 3rem;
+}
+
+.bg-c-lite-green {
+  background: linear-gradient(to right, var(--primary-color), var(--peach-puff));
+}
+
+.user-profile {
+  padding: 2rem 0;
+}
+
+.img-radius {
+  border-radius: 0.5rem;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+.fw-bold {
+  font-weight: 600;
 }

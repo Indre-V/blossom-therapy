@@ -1,34 +1,59 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Blossom Therapy Insights | {{profile.username}}{% endblock %}
+{% block title %}Blossom Therapy Insights | {{ profile.username }}{% endblock %}
 
 {% block content %}
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ profile.user.username }}'s Profile</title>
-    <!-- Add Bootstrap CSS here -->
-</head>
-<body>
-    <div class="container">
-        <div class="card-footer text-center">
-            <a href="{% url 'profile-update' user.id %}" class="btn btn-primary mb-3"><i
-                    class="fas fa-user-edit"></i>
-                Update Profile</a>
-            <a href="{% url 'account_change_password' %}" class="btn btn-primary mb-3">
-                <i class="fas fa-user-lock"></i> Change Password</a>
-            <a href="{% url 'profile-delete' user.id %}" class="btn btn-danger mb-3"><i
-                    class="fas fa-user-slash"></i> Delete Account</a>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-md-12">
+            <div class="card user-card-full">
+                <div class="row g-0">
+                    <div class="col-sm-4 bg-c-lite-green text-center text-white user-profile">
+                        <div class="p-3">
+                            <h6>{{ profile.user.username }}</h6>
+                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-50" alt="Profile Picture">
+                            <h6 class="mt-3">{{ user.first_name }}</h6>
+                            <a href="{% url 'profile-update' user.id %}" class="btn btn-primary my-2">
+                                <i class="fas fa-user-edit"></i> Update Profile
+                            </a>
+                            <a href="{% url 'account_change_password' %}" class="btn btn-primary my-2">
+                                <i class="fas fa-user-lock"></i> Change Password
+                            </a>
+                            <a href="{% url 'profile-delete' user.id %}" class="btn btn-danger my-2">
+                                <i class="fas fa-user-slash"></i> Delete Account
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-body">
+                            <h6 class="mb-4 pb-2 border-bottom">Profile Summary</h6>
+                            <div class="row">
+                                <div class="col-sm-6 mb-3">
+                                    <p class="mb-1 fw-bold">Full Name:</p>
+                                    <h6 class="text-muted">{{ user.first_name }} {{ user.last_name }}</h6>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <p class="mb-1 fw-bold">Location:</p>
+                                    <h6 class="text-muted">{{ profile.location }}</h6>
+                                </div>
+                                <div class="col-sm-12 mb-3">
+                                    <p class="mb-1 fw-bold">Bio:</p>
+                                    <h6 class="text-muted">{{ profile.bio }}</h6>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <p class="mb-1 fw-bold">Insights <i class="fa fa-thumbs-up"></i>:</p>
+                                    <h6 class="text-muted">{{ profile.total_likes }}</h6>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <p class="mb-1 fw-bold">Insights <i class="fa fa-heart"></i>:</p>
+                                    <h6 class="text-muted">{{ profile.favourites }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h1>{{ profile.user.username }}'s Profile</h1>
-        <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
-        <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-        <p>Bio: {{ profile.bio }}</p>
-        <p>Location: {{ profile.location }}</p>
-        <p>Total Likes: {{ profile.total_likes }}</p>
-        <p>Total Favourites: {{ profile.total_favourites }}</p>
-   </div>
-</body>
-</html>
- {% endblock content %}
+    </div>
+</div>
+{% endblock content %}
