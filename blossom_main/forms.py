@@ -1,7 +1,7 @@
+"""Imports for Forms page"""
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile, Comment, Post
-
 
 
 class ProfileForm(forms.ModelForm):
@@ -21,14 +21,14 @@ class ProfileForm(forms.ModelForm):
             "location",
         ]
         widgets = {
-            "profile_picture": forms.FileInput(),  
+            "profile_picture": forms.FileInput(),
         }
+
 
 class UserForm(forms.ModelForm):
     """
     Form for user registration and profile information
     """
-
     class Meta:
         """
         Form fields
@@ -71,6 +71,7 @@ class InsightForm(forms.ModelForm):
             'excerpt': 'Excerpt',
             'content': 'Content',
         }
+
 
 class CommentForm(forms.ModelForm):
     """

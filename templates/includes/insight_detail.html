@@ -69,7 +69,7 @@
                                         <img src="{{ comment.author.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle me-3" width="40" height="40">
                                     <span><strong>{{ comment.author.username }}</strong> | {{ comment.created_on|date:"F j, Y" }}</span>
                                     </div>
-                                    {% if user.is_authenticated and comment.author == user %}
+                                    {% if request.user == comment.author or request.user.is_superuser %}
                                     <div>
                                         <a class="text-secondary fw-bolder" href="{% url 'delete_comment' comment.pk %}">
                                             {% csrf_token %}

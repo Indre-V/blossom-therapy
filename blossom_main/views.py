@@ -234,11 +234,11 @@ class DeleteCommentView(
 
     def test_func(self):
         """
-        Ensure that only the comment author can delete the comment.
+        Ensure that only the comment author or admin can delete the comment.
         """
         comment = self.get_object()
-        return comment.author == self.request.user
-    
+        return self.request.user == comment.author or self.request.user.is_superuser
+      
     def get_success_url(self):
         """
         Redirect to the post detail view after a successful comment deletion.
@@ -263,7 +263,7 @@ class EditCommentView(
 
     def test_func(self):
         comment = self.get_object()
-        return comment.author == self.request.user
+        return self.request.user == comment.author or self.request.user.is_superuser
 
 class InsightDeleteView(
         LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.DeleteView):

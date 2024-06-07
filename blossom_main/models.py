@@ -1,8 +1,10 @@
+"""Imports for Models page"""
 from django.db import models
-from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
 
 class Profile(models.Model):
     """
@@ -22,14 +24,24 @@ class Profile(models.Model):
         Return the string representation of the associated user's first name if it exists
         """
         return f"{self.first_name} {self.last_name}"
+    objects = models.Manager()
 
+
+# pylint: disable=unused-argument
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """
+    Create a user profile when a new user is created.
+    """
     if created:
         Profile.objects.create(user=instance)
 
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
+    """
+    Save the user profile whenever the associated User object is saved.
+    """
     instance.profile.save()
 
 
@@ -107,4 +119,3 @@ class Comment(models.Model):
         String for representing the Model object.
         """
         return f'Comment by {self.author} on {self.post}'
-  
