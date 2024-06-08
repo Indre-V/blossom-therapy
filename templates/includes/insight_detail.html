@@ -34,6 +34,9 @@
                     <div class="article-content">
                         {{ post.content|safe }}
                     </div>
+                    {% if post.status == 0 %}
+                    <h4 class="text-center mb-4 pb-2">This Post is waiting for admin approval.</h4>
+                    {% else %}
                     <div class="d-flex justify-content-between left_div_btns mb-4">
                         <div>
                             <button class="btn btn-outline-primary" id="like_btn">
@@ -99,6 +102,7 @@
                                 </form>
                                 {% else %}
                                 <p>Log in to leave a comment</p>
+                                {% endif %}
                                 {% endif %}
                             </div>
                         </div>

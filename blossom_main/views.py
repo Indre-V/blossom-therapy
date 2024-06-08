@@ -49,6 +49,7 @@ class ProfilePageView(DetailView):
         profile = self.get_object()
         context['profile'] = profile
         context['user'] = profile.user
+        context['insights'] = profile.user.posts.all()
         return context
 
 
@@ -190,8 +191,8 @@ class InsightDetailsView(View):
         """
         Handle GET requests to display the details of a specific post and its comments.
         """
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        # queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
         context = {
             "post": post,

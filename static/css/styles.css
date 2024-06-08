@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap');
 
+/* Global Styling */
+
 :root {
   --primary-color: #FF6347; /* Tomato */
   --secondary-color: #4682B4; /* Steel Blue */
@@ -8,6 +10,7 @@
   --powder-blue: #B0E0E6; /* Powder Blue */
   --background-color: #ffffff; /* White */
   --text-color: #222020; /* Dark Gray */
+  --floral-white: #FCF7F2;
   --ivory: #FFFFF0; /* Ivory */
    
   /* Additional Colors */
@@ -17,6 +20,15 @@
   --light-gray: #D3D3D3; /* Light Gray */
  
 
+}
+
+body {
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 300;
+  background-color: #FCF7F2;
+}
+.padding{
+  padding: 5rem;
 }
 
 
