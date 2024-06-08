@@ -68,3 +68,17 @@ h6 {
 .fw-bold {
   font-weight: 600;
 }
+
+
+.insight-detail-img{
+  max-height: 20rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.list-img {
+  width: 100%;
+  height: 15vh;
+  object-fit: cover;
+  min-height: 20rem;
+}

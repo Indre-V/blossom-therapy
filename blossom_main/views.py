@@ -191,7 +191,6 @@ class InsightDetailsView(View):
         """
         Handle GET requests to display the details of a specific post and its comments.
         """
-        # queryset = Post.objects.filter(status=1)
         post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
         context = {

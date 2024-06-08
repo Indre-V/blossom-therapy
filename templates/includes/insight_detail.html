@@ -1,41 +1,52 @@
 {% extends 'index.html' %}
-
 {% load crispy_forms_tags %}
 {% load static %}
-
 {% block title %}{{ post.title }}{% endblock %}
-
 {% block content %}
 <div class="blog-single bg-light py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 mb-4">
                 <article class="article bg-white p-4 shadow-sm rounded">
-                    <div class="article-img mb-4">
-                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid rounded" alt="{{ post.title }}">
-                    </div>
+                    {% if "placeholder" in post.featured_image.url %}
+                    <a href="{% url 'insight-details' post.slug %}" class="card-link">
+                        <img class="insight-detail-img p-4" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
+                    </a>
+                    {% else %}
+                    <a href="{% url 'insight-details' post.slug %}" class="card-link">
+                        <img src="{{ post.featured_image.url }}" class="insight-detail-img"
+                            alt="Insight Photo {{ post.title }}" loading="lazy">
+                    </a>
+                    {% endif %}
                     <div class="article-title mb-3">
-                        <h6 class="text-secondary"><a href="#">{{ post.category.name }}</a></h6>
+                        <h6 class="text-secondary">
+                            <a href="#">{{ post.category.name }}</a>
+                        </h6>
                         <h2 class="card-title">{{ post.title }}</h2>
                         <div class="d-flex align-items-center mt-3 mb-4">
                             <div class="avatar me-3">
-                                <img src="{{ post.author.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" alt="{{ post.author.username }}" width="65" height="65">
+                                <img src="{{ post.author.profile.profile_picture.url }}" alt="Profile Picture"
+                                    class="rounded-circle" alt="{{ post.author.username }}" width="65" height="65" />
                             </div>
                             <div class="media-body">
                                 <p class="mb-0"><strong>{{ post.author.username }}</strong></p>
                                 <span class="text-muted">{{ post.created_on|date:"F j, Y" }}</span>
                             </div>
                             {% if request.user == post.author or request.user.is_superuser %}
-                            <a href="{% url 'insight-delete' post.slug %}" class="delete-icon"><i class="fa-solid fa-trash"></i></a>
-                            <a href="{% url 'insight-update' post.slug %}" class="update-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                            <a href="{% url 'insight-delete' post.slug %}" class="delete-icon">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a href="{% url 'insight-update' post.slug %}" class="update-icon">
+                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                            </a>
                             {% endif %}
                         </div>
                     </div>
-                    <div class="article-content">
-                        {{ post.content|safe }}
-                    </div>
+                    <div class="article-content">{{ post.content|safe }}</div>
                     {% if post.status == 0 %}
-                    <h4 class="text-center mb-4 pb-2">This Post is waiting for admin approval.</h4>
+                    <h4 class="text-center mb-4 pb-2">
+                        This Post is waiting for admin approval.
+                    </h4>
                     {% else %}
                     <div class="d-flex justify-content-between left_div_btns mb-4">
                         <div>
@@ -54,6 +65,7 @@
                             </button>
                         </div>
                     </div>
+                    {% endif %}
                 </article>
             </div>
         </div>
@@ -69,24 +81,25 @@
                             <div class="mb-4">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ comment.author.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle me-3" width="40" height="40">
-                                    <span><strong>{{ comment.author.username }}</strong> | {{ comment.created_on|date:"F j, Y" }}</span>
+                                        <img src="{{ comment.author.profile.profile_picture.url }}"
+                                            alt="Profile Picture" class="rounded-circle me-3" width="40" height="40" />
+                                        <span><strong>{{ comment.author.username }}</strong> | 
+                                            {{comment.created_on|date:"F j, Y" }}</span>
                                     </div>
                                     {% if request.user == comment.author or request.user.is_superuser %}
                                     <div>
-                                        <a class="text-secondary fw-bolder" href="{% url 'delete-comment' comment.pk %}">
+                                        <a class="text-secondary fw-bolder"
+                                            href="{% url 'delete-comment' comment.pk %}">
                                             {% csrf_token %}
                                             <i class="fas fa-trash-alt"></i>Delete</a>
-                                       
-
-                                            <a class="text-secondary fw-bolder" href="{% url 'edit-comment' comment.pk %}">
-                                                {% csrf_token %}
-                                                <i class="fas fa-pen"></i>Edit</a>
+                                        <a class="text-secondary fw-bolder" href="{% url 'edit-comment' comment.pk %}">
+                                            {% csrf_token %}
+                                            <i class="fas fa-pen"></i>Edit</a>
                                     </div>
                                     {% endif %}
                                 </div>
                                 <p class="mb-1">{{ comment.content|linebreaks }}</p>
-                                <hr class="my-0">
+                                <hr class="my-0" />
                             </div>
                             {% empty %}
                             <p>No comments yet.</p>
@@ -96,13 +109,13 @@
                                 {% if user.is_authenticated %}
                                 <p class="mb-1">Posting as: {{ user.username }}</p>
                                 <form id="commentForm" method="post">
-                                    {% csrf_token %}
-                                    {{ comment_form|crispy }}
-                                    <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+                                    {% csrf_token %} {{ comment_form|crispy }}
+                                    <button id="submitButton" type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
                                 </form>
                                 {% else %}
                                 <p>Log in to leave a comment</p>
-                                {% endif %}
                                 {% endif %}
                             </div>
                         </div>
@@ -111,10 +124,8 @@
             </div>
         </div>
     </section>
-    
 </div>
 {% endblock %}
-
 {% block extras %}
 <!-- <script src="{% static 'js/comments.js' %}"></script> -->
 {% endblock %}

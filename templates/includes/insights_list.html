@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% load crispy_forms_tags %}
 
@@ -6,33 +7,39 @@
 
 {% block content %}
 <main class="my-5">
-    <div class="container">
-      <!--Section: Content-->
-      <section class="text-center">
-        <h4 class="mb-5"><strong>Latest posts</strong></h4>
-  
-        <div class="row">
-          {% for post in insights  %}
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-              <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
-                <a href="#!">
-                  <div class="mask testhover"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">{{ post.title }}</h5>
-                <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
+  <div class="container">
+    <!--Section: Content-->
+    <section class="text-center">
+      <h4 class="mb-5"><strong>Latest posts</strong></h4>
+
+      <div class="row">
+        {% for post in insights %}
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+              {% if "placeholder" in post.featured_image.url %}
+              <a href="{% url 'insight-details' post.slug %}" class="card-link">
+                <img class="list-img p-4" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
+              </a>
+              {% else %}
+              <a href="{% url 'insight-details' post.slug %}" class="card-link">
+                <img src="{{ post.featured_image.url }}" class="list-img p-4" alt="Insight Photo {{ post.title }}"
+                  loading="lazy">
+              </a>
+              {% endif %}
             </div>
-                <p class="card-text">
-                    {{post.excerpt}}
-                </p>
-                <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
-              </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ post.title }}</h5>
+              <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
-            {% endfor %}
+            <p class="card-text">
+              {{post.excerpt}}
+            </p>
+            <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
           </div>
         </div>
-      </section>
-      {% endblock %}
+        {% endfor %}
+      </div>
+  </div>
+  </section>
+  {% endblock %}
