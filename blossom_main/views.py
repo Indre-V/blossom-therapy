@@ -26,6 +26,7 @@ class HomeView(ListView):
     queryset = Post.objects.all().filter(status=1).order_by("-created_on")
     template_name = "index.html"
     paginate_by = 10
+    context_object_name = 'insights'
 
 
 class ProfilePageView(DetailView):
