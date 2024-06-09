@@ -8,47 +8,11 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 mb-4">
                 <article class="article bg-white p-4 shadow-sm rounded">
-                    {% if "placeholder" in post.featured_image.url %}
-                    <a href="{% url 'insight-details' post.slug %}" class="card-link">
-                        <img class="insight-detail-img p-4" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
-                    </a>
-                    {% else %}
-                    <a href="{% url 'insight-details' post.slug %}" class="card-link">
-                        <img src="{{ post.featured_image.url }}" class="insight-detail-img"
-                            alt="Insight Photo {{ post.title }}" loading="lazy">
-                    </a>
-                    {% endif %}
-                    <div class="article-title mb-3">
-                        <h6 class="text-secondary">
-                            <a href="#">{{ post.category.name }}</a>
-                        </h6>
-                        <h2 class="card-title">{{ post.title }}</h2>
-                        <div class="d-flex align-items-center mt-3 mb-4">
-                            <div class="avatar me-3">
-                                <img src="{{ post.author.profile.profile_picture.url }}" alt="Profile Picture"
-                                    class="rounded-circle" alt="{{ post.author.username }}" width="65" height="65" />
-                            </div>
-                            <div class="media-body">
-                                <p class="mb-0"><strong>{{ post.author.username }}</strong></p>
-                                <span class="text-muted">{{ post.created_on|date:"F j, Y" }}</span>
-                            </div>
-                            {% if request.user == post.author or request.user.is_superuser %}
-                            <a href="{% url 'insight-delete' post.slug %}" class="delete-icon">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                            <a href="{% url 'insight-update' post.slug %}" class="update-icon">
-                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
+                    {% include 'listview_template/list_cards.html' %}
+                        
                     <div class="article-content">{{ post.content|safe }}</div>
-                    {% if post.status == 0 %}
-                    <h4 class="text-center mb-4 pb-2">
-                        This Post is waiting for admin approval.
-                    </h4>
-                    {% else %}
-                    <div class="d-flex justify-content-between left_div_btns mb-4">
+                    {% if post.status == 1 %}
+                    <div class="d-flex justify-content-between m-4">
                         <div>
                             <button class="btn btn-outline-primary" id="like_btn">
                                 <i class="fa fa-thumbs-up"></i> Like
@@ -59,23 +23,19 @@
                                 <i class="fa fa-heart-o"></i> Favourite
                             </button>
                         </div>
-                        <div>
-                            <button class="btn btn-outline-secondary" onclick="reply('reply1')">
-                                Replies <span class="badge bg-white text-dark p-2">1</span>
-                            </button>
-                        </div>
                     </div>
+                </div></div>
                     {% endif %}
                 </article>
             </div>
         </div>
-    </div>
     <section class="gradient-custom">
         <div class="container my-5 py-5">
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-10 col-xl-8">
                     <div class="card">
                         <div class="card-body p-4">
+                            {% if post.status == 1 %}
                             <h4 class="text-center mb-4 pb-2">Leave a Comment</h4>
                             {% for comment in comments %}
                             <div class="mb-4">
@@ -99,7 +59,7 @@
                                     {% endif %}
                                 </div>
                                 <p class="mb-1">{{ comment.content|linebreaks }}</p>
-                                <hr class="my-0" />
+                                <hr class="my-0">
                             </div>
                             {% empty %}
                             <p>No comments yet.</p>
@@ -116,6 +76,7 @@
                                 </form>
                                 {% else %}
                                 <p>Log in to leave a comment</p>
+                                {% endif %}
                                 {% endif %}
                             </div>
                         </div>

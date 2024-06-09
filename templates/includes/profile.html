@@ -10,7 +10,11 @@
                     <div class="col-sm-4 bg-c-lite-green text-center text-white user-profile">
                         <div class="p-3">
                             <h6>{{ profile.user.username }}</h6>
-                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-50" alt="Profile Picture">
+                            {% if "placeholder" in profile.profile_picture.url %}
+                            <img src="{% static 'images/profile.jpg' %}" class="img-radius w-50" alt="Profile Placeholder">
+                            {% else %}
+                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-50" alt="Profile Picture"loading="lazy">
+                            {% endif %}
                             <h6 class="mt-3">{{ user.first_name }}</h6>
                             <a href="{% url 'profile-update' user.id %}" class="btn btn-primary my-2">
                                 <i class="fas fa-user-edit"></i> Update Profile
@@ -64,55 +68,14 @@
                 {% for post in insights %}
                 <div class="col-lg-8 col-md-8 mb-6 mt-2">
                     <div class="card p-3">
-                        <div class="bg-image hover-overlay list-img">
-                            {% if "placeholder" in post.featured_image.url %}
-                            <img
-                                class="list-img"
-                                src="{% static 'images/default.jpg' %}"
-                                alt="placeholder image" />
-                            {% else %}
-                            <img
-                                src="{{ post.featured_image.url }}"
-                                class="list-img"
-                                alt="Insight Photo {{ post.title }}">
-                            <a href="{% url 'insight-details' post.slug %}"></a>
-                            {% endif %}
-                        </div>
-                        <div class="card-body text-center">
-                            {% if post.status == 0 %}
-                            <h5 class="card-title">
-                                {{ post.title }} <span
-                                    class="draft">(DRAFT)</span>
-                            </h5>
-                            {% else %}
-                            <p class="post-subtitle">
-                                {{ post.author }} | {{ post.created_on }}
-                            </p>
-                            {% endif %}
-                            <div class="d-flex justify-content-center mt-3">
-                                {% if request.user == post.author or request.user.is_superuser %}
-                                <a
-                                    href="{% url 'insight-delete' post.slug %}"
-                                    class="btn btn-danger btn-sm mx-1 delete-icon"
-                                    title="Delete">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
-                                <a
-                                    href="{% url 'insight-update' post.slug %}"
-                                    class="btn btn-primary btn-sm mx-1 update-icon"
-                                    title="Edit">
-                                    <i class="fas fa-edit"
-                                        aria-hidden="true"></i>
-                                </a>
-                                {% endif %}
-                                <a
-                                    href="{% url 'insight-details' post.slug %}"
-                                    class="btn btn-primary btn-sm mx-1">Read</a>
-                            </div>
-                        </div>
+                        {% include 'listview_template/list_cards.html' %}
+                        <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary btn-sm mx-1">Read</a> 
                     </div>
                 </div>
+                {% empty %}
+                <p>No Posts yet.</p>
                 {% endfor %}
+                
             </div>
         </div>
         <div class="col-md-6 bg-light border">

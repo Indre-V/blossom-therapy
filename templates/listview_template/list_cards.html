@@ -1,0 +1,52 @@
+{% load static %}
+<!-- Image -->
+<!-- <div class="col-lg-4 col-md-6 mb-4">
+  <div class="card"> -->
+<div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+    {% if "placeholder" in post.featured_image.url %}
+    <a href="{% url 'insight-details' post.slug %}" class="card-link">
+        <img class="insight-detail-img p-4" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
+    </a>
+    {% else %}
+    <a href="{% url 'insight-details' post.slug %}" class="card-link">
+        <img src="{{ post.featured_image.url }}" class="insight-detail-img" alt="Insight Photo {{ post.title }}"
+            loading="lazy">
+    </a>
+    {% endif %}
+    <div class="article-title mb-3">
+        <h6 class="text-secondary">
+            <a href="#">{{ post.category.name }}</a>
+        </h6>
+        <h2 class="card-title">{{ post.title }}</h2>
+        <div class="d-flex align-items-center m-3">
+            <div class="avatar me-3">
+                <img src="{{ post.author.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle"
+                    alt="{{ post.author.username }}" width="65" height="65" />
+            </div>
+            <div class="media-body p-2">
+                <p class="mb-0"><strong>{{ post.author.username }}</strong></p>
+                <span class="text-muted">{{ post.created_on|date:"F j, Y" }}</span>
+            </div>
+            {% if request.user == post.author or request.user.is_superuser %}
+            <a href="{% url 'insight-delete' post.slug %}" class="btn btn-danger btn-sm me-2" title="Delete">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+            <a href="{% url 'insight-update' post.slug %}" class="btn btn-warning btn-sm" title="Edit">
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+            </a><
+       
+        {% endif %}
+    </div>
+        {% if post.status == 0 %}
+        <h4 class="text-center mb-4 pb-2 text-warning">
+            This Post is waiting for admin approval.
+        </h4>
+        {% else %}
+        <div class="d-flex justify-content-center m-3">
+            <i class="fa fa-thumbs-up"></i><span class="badge bg-white text-dark p-2">1</span>
+            <i class="fa fa-heart-o"></i><span class="badge bg-white text-dark p-2">1</span>
+            <i class="fa fa-comment-o" aria-hidden="true"></i><span class="badge bg-white text-dark p-2">1</span>
+        </div>
+        {% endif %}
+    </div>
+</div>
