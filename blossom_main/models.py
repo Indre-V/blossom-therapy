@@ -62,8 +62,9 @@ class Post(models.Model):
     Model representing a blog post.
     """
     STATUS_CHOICES = (
-        (0, 'Draft'),
-        (1, 'Published')
+        (0, 'Ready to Publish'),
+        (1, 'Published'),
+        (2, 'Save for Later')
     )
 
     title = models.CharField(max_length=200, unique=True)
@@ -91,6 +92,7 @@ class Post(models.Model):
         String for representing the Model object
         """
         return f"{self.title}"
+
 
 class Comment(models.Model):
     """

@@ -5,15 +5,15 @@
 <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
     {% if "placeholder" in post.featured_image.url %}
     <a href="{% url 'insight-details' post.slug %}" class="card-link">
-        <img class="insight-detail-img p-4" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
+        <img class="insight-detail-img" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
     </a>
     {% else %}
     <a href="{% url 'insight-details' post.slug %}" class="card-link">
-        <img src="{{ post.featured_image.url }}" class="insight-detail-img p-4" alt="Insight Photo {{ post.title }}"
+        <img src="{{ post.featured_image.url }}" class="insight-detail-img" alt="Insight Photo {{ post.title }}"
             loading="lazy">
     </a>
     {% endif %}
-    <div class="article-title mb-3">
+    <div class="article-title p-3">
         <h6 class="text-secondary">
             <a href="#">{{ post.category.name }}</a>
         </h6>
@@ -40,7 +40,8 @@
             <a href="{% url 'insight-update' post.slug %}" class="btn btn-warning btn-sm" title="Edit">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
-            < {% endif %} </div>
+            {% endif %} </div>
+            
                 {% if post.status == 0 %}
                 <h4 class="text-center mb-4 pb-2 text-warning">
                     This Post is waiting for admin approval.
@@ -53,5 +54,8 @@
                         class="badge bg-white text-dark p-2">1</span>
                 </div>
                 {% endif %}
+                <p class="card-text">
+                    {{post.excerpt}}
+                  </p>
         </div>
     </div>

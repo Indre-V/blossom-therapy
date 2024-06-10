@@ -10,34 +10,64 @@
 <!--Main layout-->
 <div class="container my-5">
   <div class="row">
-      <div class="col-md-6">
-          <h1 class="primary-color">Quaint Village Nestled Between Rolling Hills and a Sparkling river</h1>
-          <p class="mt-4">Children played in the fields, their laughter echoing through the air as they chased butterflies and explored hidden nooks. 
-            Farmers tended to their crops with care, the earth yielding its bounty in response to their hard work. The village market bustled with activity, 
-            stalls overflowing with colorful produce, handmade crafts, and the latest gossip.</p>
-          <button class="cta-btn mt-4">Subscribe Now</button>
-      </div>
-      <div class="col-md-6">
-          <img src="https://placehold.co/600x400" alt="Punchcard" class="img-fluid">
-      </div>
+    <div class="col-md-6">
+      <h1 class="primary-color">Quaint Village Nestled Between Rolling Hills and a Sparkling river</h1>
+      <p class="mt-4">Children played in the fields, their laughter echoing through the air as they chased butterflies
+        and explored hidden nooks.
+        Farmers tended to their crops with care, the earth yielding its bounty in response to their hard work. The
+        village market bustled with activity,
+        stalls overflowing with colorful produce, handmade crafts, and the latest gossip.</p>
+      <button class="cta-btn mt-4">Subscribe Now</button>
+    </div>
+    <div class="col-md-6">
+      <img src="https://placehold.co/600x400" alt="Punchcard" class="img-fluid">
+    </div>
   </div>
 </div>
 <section class="container text-center">
   <h2 class="primary-color">Why idyllic village, with its charm and tranquility?</h2>
-  <p class="mt-4">Testament to the beauty of a life well-lived, where happiness was found in the embrace of community and the rhythm of nature.</p>
+  <p class="mt-4">Testament to the beauty of a life well-lived, where happiness was found in the embrace of community
+    and the rhythm of nature.</p>
 </section>
-{% for post in insights %}
-<div class="col-lg-4 col-md-6 mb-4">
-  <div class="card">
-{% include 'listview_template/list_cards.html' %}
-<p class="card-text">
-      {{post.excerpt}}
-    </p>
-<a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
-</div>
-</div>
-{% endfor %}
-
-<!--Main layout-->
-
-{% endblock %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <h2 class="text-center">Latest</h2>
+        {% for post in insights %}
+        <div class="col-lg-6 col-md-6 mb-4">
+          <div class="card p-4">
+            {% include 'listview_template/list_cards.html' %}
+            <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+        <!-- Trending Section Column -->
+        <div class="col-lg-4">
+          <h2>Most Popular</h2>
+          <h5>Photo of me:</h5>
+          <div class="fakeimg">Fake Image</div>
+          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+          <h3 class="mt-4">Some Links</h3>
+          <p>Lorem ipsum dolor sit ame.</p>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <hr class="d-sm-none">
+        </div>
+      </div>
+    </div>
+    {% endblock %}

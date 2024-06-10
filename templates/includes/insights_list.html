@@ -16,9 +16,6 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card">
         {% include 'listview_template/list_cards.html' %}
-        <p class="card-text p-3">
-              {{post.excerpt}}
-            </p>
         <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
       </div>
     </div>

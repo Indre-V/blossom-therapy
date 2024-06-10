@@ -53,6 +53,10 @@ class InsightForm(forms.ModelForm):
     """
     Form for creating and updating a Post.
     """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['excerpt'].widget = forms.Textarea(attrs={'rows': 2})
+        self.fields['content'].widget = SummernoteWidget(attrs={'rows': 5})
 
     class Meta:
         """
@@ -71,6 +75,8 @@ class InsightForm(forms.ModelForm):
             'featured_image': 'Featured Image',
             'excerpt': 'Excerpt',
             'content': 'Content',
+            'status': 'Status',
+
         }
         widgets = {
             'content': SummernoteWidget(),
