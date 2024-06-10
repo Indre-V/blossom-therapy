@@ -1,5 +1,5 @@
 """Views Imports """
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.generic import CreateView, View, ListView, DetailView, DeleteView
 from django.contrib.auth.models import User
@@ -182,6 +182,7 @@ class InsightsListView(ListView):
     context_object_name = "insights"
     success_url = reverse_lazy("home")
 
+
 class InsightDetailsView(View):
     """
     View for displaying the details of a specific post (insight) and adding comments.
@@ -220,6 +221,7 @@ class InsightDetailsView(View):
                 self.request,
                 "Comment created successfully!"
             )
+            return redirect('insight-details', slug=post.slug)
         else:
             messages.error(
                 self.request,

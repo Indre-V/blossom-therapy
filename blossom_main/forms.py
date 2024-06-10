@@ -58,13 +58,19 @@ class InsightForm(forms.ModelForm):
         self.fields['excerpt'].widget = forms.Textarea(attrs={'rows': 2})
         self.fields['content'].widget = SummernoteWidget(attrs={'rows': 5})
 
+        STATUS_CHOICES = [
+            choice for choice in self.fields['status'].choices
+            if choice[0] in (0, 2)  # Assuming 0 and 1 are the values you want to include
+        ]
+        self.fields['status'].choices = STATUS_CHOICES
+
     class Meta:
         """
         Meta options for the PostForm.
         Specifies the model to use and the fields to include in the form.
         """
         model = Post
-        fields = ['title', 'featured_image','excerpt', 'content', 'category']
+        fields = ['title', 'featured_image','excerpt', 'content', 'category', 'status']
         widgets = {
             'content': forms.Textarea(attrs={'rows': 5}),
             'excerpt': forms.Textarea(attrs={'rows': 2}),

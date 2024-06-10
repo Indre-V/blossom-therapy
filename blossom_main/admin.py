@@ -43,8 +43,7 @@ class PostAdmin(SummernoteModelAdmin):
         """
         Custom admin action to approve posts.
         """
-        queryset.update(status=1)
+        queryset.filter(status=0).update(status=1)
     approve_posts.short_description = "Approve selected posts"
-
 
 admin.site.register(Post, PostAdmin)
