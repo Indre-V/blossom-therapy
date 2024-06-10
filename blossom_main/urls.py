@@ -44,4 +44,10 @@ urlpatterns = [
         "comments/<int:pk>/editcomment/",
         views.CommentEditView.as_view(),
         name="edit-comment"),
+    path("like/<slug:slug>/",
+         views.LikePostView.as_view(),
+         name='like-post'),
+    path("favourite/<slug:slug>/",
+         views.FavouritePostView.as_view(),
+         name='favourite_post'),
 ]

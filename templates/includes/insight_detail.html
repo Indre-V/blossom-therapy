@@ -13,79 +13,90 @@
                     {% if post.status == 1 %}
                     <div class="d-flex justify-content-between m-4">
                         <div>
-                            <button class="btn btn-outline-primary" id="like_btn">
+                            <!-- <button class="btn btn-outline-primary" id="like_btn">
                                 <i class="fa fa-thumbs-up"></i> Like
                             </button>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-primary" id="favourite_btn">
-                                <i class="fa fa-heart-o"></i> Favourite
-                            </button>
+                        </div> -->
+                            <form class="d-inline" action="{% url 'like-post' post.slug %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="post_id" value="{{ post.slug }}">
+                                <button type="submit" class="btn btn-outline-primary"
+                                    aria-label="Like and Unlike">
+                                    {% if liked %}
+                                    <i class="fa-solid fa-thumbs-up outline-primary">Like</i>
+                                    {% else %}
+                                    <i class="fa-regular fa-thumbs-up outline-primary">Like</i>
+                                    {% endif %}
+                                </button>
+                            </form>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline-primary" id="favourite_btn">
+                                    <i class="fa fa-heart-o"></i> Favourite
+                                </button>
+                            </div>
                         </div>
                     </div>
             </div>
+            {% endif %}
+            </article>
         </div>
-        {% endif %}
-        </article>
     </div>
-</div>
-<section class="gradient-custom">
-    <div class="container my-5 py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10 col-xl-8">
-                <div class="card">
-                    <div class="card-body p-4">
-                        {% if post.status == 1 %}
-                        <h4 class="text-center mb-4 pb-2">Comments</h4>
-                        {% for comment in comments %}
-                        <div class="mb-4">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ comment.author.profile.profile_picture.url }}" alt="Profile Picture"
-                                        class="rounded-circle me-3" width="40" height="40">
-                                    <span><strong>{{ comment.author.username }}</strong> |
-                                        {{comment.created_on|date:"F j, Y" }}</span>
+    <section class="gradient-custom">
+        <div class="container my-5 py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10 col-xl-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            {% if post.status == 1 %}
+                            <h4 class="text-center mb-4 pb-2">Comments</h4>
+                            {% for comment in comments %}
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ comment.author.profile.profile_picture.url }}"
+                                            alt="Profile Picture" class="rounded-circle me-3" width="40" height="40">
+                                        <span><strong>{{ comment.author.username }}</strong> |
+                                            {{comment.created_on|date:"F j, Y" }}</span>
+                                    </div>
+                                    {% if request.user == comment.author or request.user.is_superuser %}
+                                    <div>
+                                        <a class="text-secondary fw-bolder"
+                                            href="{% url 'delete-comment' comment.pk %}">
+                                            {% csrf_token %}
+                                            <i class="fas fa-trash-alt"></i>Delete</a>
+                                        <a class="text-secondary fw-bolder" href="{% url 'edit-comment' comment.pk %}">
+                                            {% csrf_token %}
+                                            <i class="fas fa-pen"></i>Edit</a>
+                                    </div>
+                                    {% endif %}
                                 </div>
-                                {% if request.user == comment.author or request.user.is_superuser %}
-                                <div>
-                                    <a class="text-secondary fw-bolder" href="{% url 'delete-comment' comment.pk %}">
-                                        {% csrf_token %}
-                                        <i class="fas fa-trash-alt"></i>Delete</a>
-                                    <a class="text-secondary fw-bolder" href="{% url 'edit-comment' comment.pk %}">
-                                        {% csrf_token %}
-                                        <i class="fas fa-pen"></i>Edit</a>
-                                </div>
+                                <p class="mb-1">{{ comment.content|linebreaks }}</p>
+                                <hr class="my-0">
+                            </div>
+                            {% empty %}
+                            <p>No comments yet.</p>
+                            {% endfor %}
+                            <!-- Comment form -->
+                            <div class="mt-4">
+                                {% if user.is_authenticated %}
+                                <p class="mb-1">Posting as: {{ user.username }}</p>
+                                <form id="commentForm" method="post">
+                                    {% csrf_token %} {{ comment_form|crispy }}
+                                    <button id="submitButton" type="submit" class="btn btn-primary">
+                                        Submit
+                                    </button>
+                                </form>
+                                {% else %}
+                                <p>Log in to leave a comment</p>
+                                {% endif %}
                                 {% endif %}
                             </div>
-                            <p class="mb-1">{{ comment.content|linebreaks }}</p>
-                            <hr class="my-0">
-                        </div>
-                        {% empty %}
-                        <p>No comments yet.</p>
-                        {% endfor %}
-                        <!-- Comment form -->
-                        <div class="mt-4">
-                            {% if user.is_authenticated %}
-                            <p class="mb-1">Posting as: {{ user.username }}</p>
-                            <form id="commentForm" method="post">
-                                {% csrf_token %} {{ comment_form|crispy }}
-                                <button id="submitButton" type="submit" class="btn btn-primary">
-                                    Submit
-                                </button>
-                            </form>
-                            {% else %}
-                            <p>Log in to leave a comment</p>
-                            {% endif %}
-                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
-{% endblock %}
-{% block extras %}
-<!-- <script src="{% static 'js/comments.js' %}"></script> -->
 {% endblock %}

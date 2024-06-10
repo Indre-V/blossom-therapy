@@ -30,7 +30,6 @@ def create_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
 
 
-
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     """
@@ -116,3 +115,33 @@ class Comment(models.Model):
         String for representing the Model object.
         """
         return f'Comment by {self.author} on {self.post}'
+
+
+class Like(models.Model):
+    """
+    Model to represent a like on a post.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', related_name='likes', on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """
+        Meta options for the Like model.
+        """
+        unique_together = ('user', 'post')
+
+    def __str__(self):
+        return f"{self.user.username} likes {self.post.title}"
+
+
+class Favourite(models.Model):
+    """
+    Model to represent a favourite post.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', related_name='favourites', on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.post)
