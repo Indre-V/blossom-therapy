@@ -7,9 +7,6 @@ urlpatterns = [
     path("", views.HomeView.as_view(), name="home"),
     path("insights/", views.InsightsListView.as_view(), name="insights"),
     path(
-        "profile/<str:username>/",
-        views.ProfilePageView.as_view(), name="profile"),
-    path(
         "insight/add/",
         views.InsightAddView.as_view(),
         name="add-insight"),
@@ -25,13 +22,6 @@ urlpatterns = [
         "insight/<slug:slug>/update/",
         views.InsightUpdateView.as_view(),
         name="insight-update"),
-    path(
-        "profile_delete/<int:pk>/",
-        views.ProfileDeleteView.as_view(),
-        name="profile-delete"),
-    path("profile_update/<int:pk>/",
-         views.ProfileUpdateView.as_view(),
-         name="profile-update"),
     path(
         "category/<str:category_name>/",
         views.CategoryPageView.as_view(),

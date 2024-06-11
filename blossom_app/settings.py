@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'cloudinary',
     'blossom_main',
+    'user_profile',
     'developer',
 ]
 

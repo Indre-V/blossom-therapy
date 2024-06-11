@@ -37,7 +37,7 @@
         {% for post in insights %}
         <div class="col-lg-6 col-md-6 mb-4">
           <div class="card p-4">
-            {% include 'listview_template/list_cards.html' %}
+            {% include 'insights/list_cards.html' %}
             <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
           </div>
         </div>
@@ -70,5 +70,5 @@
         </div>
       </div>
     </div>
-    {% include 'listview_template/pagination.html' %}
+    {% include 'insights/pagination.html' %}
     {% endblock %}

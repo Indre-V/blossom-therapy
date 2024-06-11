@@ -2,9 +2,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.views import generic
 from django.http import HttpResponseRedirect
-from django.views.generic import CreateView, View, ListView, DetailView, DeleteView
-from django.contrib.auth.models import User
-from django.contrib.auth import logout
+from django.views.generic import CreateView, View, ListView, DeleteView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -12,8 +10,8 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
-from .models import Profile, Category, Post, Comment
-from .forms import UserForm, ProfileForm, CommentForm, InsightForm
+from .models import Category, Post, Comment
+from .forms import CommentForm, InsightForm
 
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-argument
@@ -28,102 +26,6 @@ class HomeView(ListView):
     template_name = "index.html"
     paginate_by = 4
     context_object_name = 'insights'
-
-
-class ProfilePageView(LoginRequiredMixin, DetailView):
-    """This view is used to display user profile page"""
-    template_name = "includes/profile.html"
-    context_object_name = "profile"
-
-    def get_object(self, queryset=None):
-        """
-        Retrieve the profile object based on the provided username.
-        """
-        user = get_object_or_404(User, username=self.kwargs.get("username"))
-        return get_object_or_404(Profile, user=user)
-
-    def get_context_data(self, **kwargs):
-        """
-        Prepares and adds additional context data for rendering
-        the profile page.
-        """
-        context = super().get_context_data(**kwargs)
-        profile = self.get_object()
-        user = profile.user
-        insights = user.posts.all()
-        total_likes = sum(post.count_likes() for post in insights)
-
-        context['profile'] = profile
-        context['user'] = user
-        context['insights'] = insights
-        context['total_likes'] = total_likes
-
-        return context
-
-
-class ProfileDeleteView(DeleteView):
-    """
-    View for deleting an user profile
-    """
-    model = User
-    template_name = "includes/profile_delete.html"
-    success_url = reverse_lazy("home")
-
-    def delete(self, request, *args, **kwargs):
-        """
-        Handles the deletion of an user profile and related objects
-        """
-        # Log out the user
-        logout(request)
-
-        # Delete the user profile and related objects
-        return super().delete(request, *args, **kwargs)
-
-
-class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    """
-    View for updating user profile information.
-    """
-    model = Profile
-    form_class = ProfileForm
-    success_message = "Profile has been updated"
-    template_name = "includes/profile_update.html"
-
-    def get_object(self, queryset=None):
-        """
-        Returns the profile of the current user.
-        """
-        profile, created = Profile.objects.get_or_create(user=self.request.user)
-        return profile
-
-    def get_success_url(self):
-        """
-        Returns the URL to redirect to after processing a valid form.
-        """
-        return reverse_lazy("profile", kwargs={"username": self.request.user.username})
-
-    def get_context_data(self, **kwargs):
-        """
-        Add user form to the context.
-        """
-        context = super().get_context_data(**kwargs)
-        if self.request.method == 'GET':
-            context["user_form"] = UserForm(instance=self.request.user)
-        else:
-            context["user_form"] = UserForm(self.request.POST, instance=self.request.user)
-        return context
-
-    def form_valid(self, form):
-        """
-        If the form is valid, save the associated models.
-        """
-        context = self.get_context_data()
-        user_form = context['user_form']
-        if user_form.is_valid():
-            user_form.save()
-            return super().form_valid(form)
-        else:
-            return self.form_invalid(form)
 
 
 class CategoryPageView(ListView):
@@ -156,7 +58,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     View for creating a new blog post
     """
     model = Post
-    template_name = "includes/add_insight.html"
+    template_name = "insights/add_insight.html"
     form_class = InsightForm
     success_url = reverse_lazy("home")
 
@@ -185,7 +87,7 @@ class InsightsListView(ListView):
     """
     model = Post
     queryset = Post.objects.filter(status=1)
-    template_name = "includes/insights_list.html"
+    template_name = "insights/insights_list.html"
     context_object_name = "insights"
     success_url = reverse_lazy("home")
     paginate_by = 6
@@ -195,7 +97,7 @@ class InsightDetailsView(View):
     """
     View for displaying the details of a specific post (insight) and adding comments.
     """
-    template_name = "includes/insight_detail.html"
+    template_name = "insights/insight_detail.html"
 
     def get(self, request, slug, *args, **kwargs):
         """
@@ -244,7 +146,6 @@ class InsightDetailsView(View):
         return render(request, self.template_name, context)
 
 
-
 class CommentDeleteView(
         LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
@@ -252,7 +153,7 @@ class CommentDeleteView(
     This view is used to allow logged in users to delete their own comments
     """
     model = Comment
-    template_name = "includes/delete_comment.html"
+    template_name = "comments/delete_comment.html"
     success_message = "Comment deleted successfully"
 
     def test_func(self):
@@ -278,7 +179,7 @@ class CommentEditView(
     """
     model = Comment
     fields = ["content"]
-    template_name = "includes/edit_comment.html"
+    template_name = "comments/edit_comment.html"
     success_message = "Comment updated successfully"
 
     def get_success_url(self):
@@ -295,7 +196,7 @@ class InsightDeleteView(
     Delete insights by author or superuser
     """
     model = Post
-    template_name = "includes/insight_delete.html"
+    template_name = "insights/insight_delete.html"
     success_message = "Insight removed successfully"
     success_url = reverse_lazy("insights")
 
@@ -311,7 +212,7 @@ class InsightUpdateView(
     """
     model = Post
     form_class = InsightForm
-    template_name = "includes/insight_update.html"
+    template_name = "insights/insight_update.html"
     success_message = "%(calculated_field)s was edited successfully"
 
     def form_valid(self, form):
