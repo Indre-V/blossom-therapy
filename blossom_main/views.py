@@ -1,8 +1,7 @@
 """Views Imports """
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views import generic
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, View, ListView, DetailView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
@@ -13,7 +12,7 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
-from .models import Profile, Category, Post, Comment, Like, Favourite
+from .models import Profile, Category, Post, Comment, Favourite
 from .forms import UserForm, ProfileForm, CommentForm, InsightForm
 
 # pylint: disable=locally-disabled, no-member
@@ -197,15 +196,13 @@ class InsightDetailsView(View):
         """
         post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
-        liked = post.likes.filter(user=request.user).exists() if request.user.is_authenticated else False
+        liked = post.likes.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
         favourited = post.favourites.filter(user=request.user).exists() if request.user.is_authenticated else False
-        likes_count = post.likes.count()
         favourites_count = post.favourites.count()
         context = {
             "post": post,
             "liked": liked,
             "favourited": favourited,
-            "likes_count": likes_count,
             "favourites_count": favourites_count,
             "comments": comments,
             "comment_form": CommentForm(),
@@ -241,35 +238,6 @@ class InsightDetailsView(View):
         }
         return render(request, self.template_name, context)
 
-    @method_decorator(login_required)
-    def like_post(self, request, slug):
-        """
-        Handle POST requests to like/unlike a post.
-        """
-        post = get_object_or_404(Post, slug=slug)
-        like, created = Like.objects.get_or_create(user=request.user, post=post)
-        if created:
-            post.likes_count += 1
-        else:
-            like.delete()
-            post.likes_count -= 1
-        post.save()
-        return redirect('insight-details', slug=slug)
-
-    @method_decorator(login_required)
-    def favourite_post(self, request, slug):
-        """
-        Handle POST requests to favourite/unfavourite a post.
-        """
-        post = get_object_or_404(Post, slug=slug)
-        favourite, created = Favourite.objects.get_or_create(user=request.user, post=post)
-        if created:
-            post.favourites_count += 1
-        else:
-            favourite.delete()
-            post.favourites_count -= 1
-        post.save()
-        return redirect('insight-details', slug=slug)
 
 
 class CommentDeleteView(
@@ -363,26 +331,26 @@ class InsightUpdateView(
             calculated_field=self.object.title,
         )
 
-class LikePostView(LoginRequiredMixin, View):
+class LikeInsightView(LoginRequiredMixin, View):
     """
     A view that handles the liking and unliking of a post by a user.
     """
-    login_url = 'login'
-
     def post(self, request, slug, *args, **kwargs):
         """
-        Handle the POST request to like or unlike a post.
+        Toggle user's like for a post and redirect to post detail
         """
         post = get_object_or_404(Post, slug=slug)
-        like, created = Like.objects.get_or_create(user=request.user, post=post)
-
-        if created:
-            messages.success(request, 'Post liked.')
+        if post.likes.filter(id=self.request.user.id).exists():
+            post.likes.remove(request.user)
+            messages.success(
+                self.request,
+                "Insight Unliked!")
         else:
-            like.delete()
-            messages.success(request, 'Like removed.')
-
-        return redirect('insight-details', slug=slug)
+            post.likes.add(request.user)
+            messages.success(
+                self.request,
+                "Thank You for Liking!")
+        return HttpResponseRedirect(reverse("insight-details", args=[slug]))
 
 class FavouritePostView(LoginRequiredMixin, View):
     """

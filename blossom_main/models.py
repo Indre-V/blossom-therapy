@@ -76,7 +76,7 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     excerpt = models.TextField(max_length=200, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    likes_count = models.IntegerField(default=0)
+    likes = models.ManyToManyField(User, related_name="track_likes", blank=True)
     favourites_count = models.IntegerField(default=0)
     comment_count = models.IntegerField(default=0)
 
@@ -85,6 +85,12 @@ class Post(models.Model):
         Meta options for the Post model.
         """
         ordering = ["-created_on"]
+
+    def count_likes(self):
+        """
+        Returns number of post likes
+        """
+        return self.likes.count()
 
     def __str__(self):
         """
@@ -115,42 +121,6 @@ class Comment(models.Model):
         String for representing the Model object.
         """
         return f'Comment by {self.author} on {self.post}'
-
-
-class Like(models.Model):
-    """
-    Model to represent a like on a post.
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey('Post', related_name='likes', on_delete=models.CASCADE)
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        """
-        Meta options for the Like model.
-        """
-        unique_together = ('user', 'post')
-
-    def save(self, *args, **kwargs):
-        # Check if the like instance already exists
-        if self.pk is None:
-            # New like, increase likes_count
-            self.post.likes_count += 1
-        else:
-            # Existing like being updated or removed
-            if self._state.adding:
-                # New like being added
-                self.post.likes_count += 1
-            else:
-                # Existing like being removed
-                self.post.likes_count -= 1
-        # Save the like instance
-        super(Like, self).save(*args, **kwargs)
-        # Save the associated post
-        self.post.save()
-
-    def __str__(self):
-        return f"{self.user.username} likes {self.post.title}"
 
 
 class Favourite(models.Model):
