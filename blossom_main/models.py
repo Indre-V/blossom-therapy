@@ -77,7 +77,7 @@ class Post(models.Model):
     excerpt = models.TextField(max_length=200, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name="track_likes", blank=True)
-    favourites_count = models.IntegerField(default=0)
+    favourite = models.ManyToManyField(User, related_name="track_favs", blank=True)
     comment_count = models.IntegerField(default=0)
 
     class Meta:
@@ -91,6 +91,12 @@ class Post(models.Model):
         Returns number of post likes
         """
         return self.likes.count()
+ 
+    def count_favs(self):
+        """
+        Returns number of post likes
+        """
+        return self.favourite.count()
 
     def __str__(self):
         """
@@ -121,15 +127,3 @@ class Comment(models.Model):
         String for representing the Model object.
         """
         return f'Comment by {self.author} on {self.post}'
-
-
-class Favourite(models.Model):
-    """
-    Model to represent a favourite post.
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey('Post', related_name='favourites', on_delete=models.CASCADE)
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.post)

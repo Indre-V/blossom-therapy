@@ -12,7 +12,7 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
-from .models import Profile, Category, Post, Comment, Favourite
+from .models import Profile, Category, Post, Comment
 from .forms import UserForm, ProfileForm, CommentForm, InsightForm
 
 # pylint: disable=locally-disabled, no-member
@@ -203,13 +203,11 @@ class InsightDetailsView(View):
         post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
         liked = post.likes.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
-        favourited = post.favourites.filter(user=request.user).exists() if request.user.is_authenticated else False
-        favourites_count = post.favourites.count()
+        favourited = post.favourite.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
         context = {
             "post": post,
             "liked": liked,
             "favourited": favourited,
-            "favourites_count": favourites_count,
             "comments": comments,
             "comment_form": CommentForm(),
             "commented": False,
@@ -358,23 +356,24 @@ class LikeInsightView(LoginRequiredMixin, View):
                 "Thank You for Liking!")
         return HttpResponseRedirect(reverse("insight-details", args=[slug]))
 
-class FavouritePostView(LoginRequiredMixin, View):
+class FavouriteInsightView(LoginRequiredMixin, ListView):
     """
     A view that handles the favouriting and unfavouriting of a post by a user.
     """
-    login_url = 'login'
-
-    def post(self, request, pk, *args, **kwargs):
+    def post(self, request, slug, *args, **kwargs):
         """
         Handle the POST request to favourite or unfavourite a post.
         """
-        post = get_object_or_404(Post, pk=pk)
-        favourite, created = Favourite.objects.get_or_create(user=request.user, post=post)
+        post = get_object_or_404(Post, slug=slug)
 
-        if created:
-            messages.success(request, 'Post added to favourites.')
+        if post.favourite.filter(id=self.request.user.id).exists():
+            post.favourite.remove(request.user)
+            messages.success(
+                self.request,
+                "Insight Removed from Favourites")
         else:
-            favourite.delete()
-            messages.success(request, 'Post removed from favourites.')
-
-        return redirect('insight_details', slug=post.slug)
+            post.favourite.add(request.user)
+            messages.success(
+                self.request,
+                "Insight Added to Favourites List!")
+        return HttpResponseRedirect(reverse("insight-details", args=[slug]))

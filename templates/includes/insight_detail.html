@@ -17,7 +17,7 @@
                                 <i class="fa fa-thumbs-up"></i> Like
                             </button>
                         </div> -->
-                            <form class="d-inline" action="{% url 'like-post' post.slug %}" method="POST">
+                            <form class="d-inline" action="{% url 'like-insight' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="post_id" value="{{ post.slug }}">
                                 <button type="submit" class="btn btn-outline-primary"
@@ -31,10 +31,19 @@
                             </form>
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary" id="favourite_btn">
-                                    <i class="fa fa-heart-o"></i> Favourite
+                                <form class="d-inline" action="{% url 'favourite-insight' post.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="post_id" value="{{ post.slug }}">
+                                <button type="submit" class="btn btn-outline-primary"
+                                    aria-label="Favourite and Unfavourite">
+                                    {% if favourited %}
+                                    <i class="fa-solid fa-heart-o outline-primary">UnFavourite</i>
+                                    {% else %}
+                                    <i class="fa-regular fa-heart-o">Favourite</i>
+                                    {% endif %}
                                 </button>
                             </div>
+                        </form>
                         </div>
                     </div>
             </div>

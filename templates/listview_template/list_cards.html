@@ -49,7 +49,7 @@
                 {% else %}
                 <div class="d-flex justify-content-center m-3">
                     <i class="fa fa-thumbs-up"></i><span class="badge bg-white text-dark p-2">{{ post.count_likes }}</span>
-                    <i class="fa fa-heart-o"></i><span class="badge bg-white text-dark p-2">1</span>
+                    <i class="fa fa-heart-o"></i><span class="badge bg-white text-dark p-2">{{ post.count_favs }}</span>
                     <i class="fa fa-comment-o" aria-hidden="true"></i>
                     <span class="badge bg-white text-dark p-2">{{ post.comments.count }}</span>
                 </div>
