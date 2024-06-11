@@ -30,7 +30,7 @@ class HomeView(ListView):
     context_object_name = 'insights'
 
 
-class ProfilePageView(DetailView):
+class ProfilePageView(LoginRequiredMixin, DetailView):
     """This view is used to display user profile page"""
     template_name = "includes/profile.html"
     context_object_name = "profile"
@@ -49,9 +49,15 @@ class ProfilePageView(DetailView):
         """
         context = super().get_context_data(**kwargs)
         profile = self.get_object()
+        user = profile.user
+        insights = user.posts.all()
+        total_likes = sum(post.count_likes() for post in insights)
+
         context['profile'] = profile
-        context['user'] = profile.user
-        context['insights'] = profile.user.posts.all()
+        context['user'] = user
+        context['insights'] = insights
+        context['total_likes'] = total_likes
+
         return context
 
 
