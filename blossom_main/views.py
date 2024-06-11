@@ -26,7 +26,7 @@ class HomeView(ListView):
     model = Post
     queryset = Post.objects.all().filter(status=1).order_by("-created_on")
     template_name = "index.html"
-    paginate_by = 10
+    paginate_by = 4
     context_object_name = 'insights'
 
 
@@ -188,6 +188,7 @@ class InsightsListView(ListView):
     template_name = "includes/insights_list.html"
     context_object_name = "insights"
     success_url = reverse_lazy("home")
+    paginate_by = 6
 
 
 class InsightDetailsView(View):
