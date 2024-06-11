@@ -1,6 +1,8 @@
 """Views Imports """
 from django.shortcuts import render, redirect
 from django.views import generic
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, View, ListView, DetailView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
@@ -196,9 +198,15 @@ class InsightDetailsView(View):
         post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
         liked = post.likes.filter(user=request.user).exists() if request.user.is_authenticated else False
+        favourited = post.favourites.filter(user=request.user).exists() if request.user.is_authenticated else False
+        likes_count = post.likes.count()
+        favourites_count = post.favourites.count()
         context = {
             "post": post,
             "liked": liked,
+            "favourited": favourited,
+            "likes_count": likes_count,
+            "favourites_count": favourites_count,
             "comments": comments,
             "comment_form": CommentForm(),
             "commented": False,
@@ -209,8 +217,7 @@ class InsightDetailsView(View):
         """
         Handle POST requests to add a comment to the specific post.
         """
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
         comment_form = CommentForm(request.POST)
 
@@ -219,15 +226,12 @@ class InsightDetailsView(View):
             comment.post = post
             comment.author = request.user
             comment.save()
-            messages.success(
-                self.request,
-                "Comment created successfully!"
-            )
+            post.comment_count = post.comments.count()
+            post.save()
+            messages.success(request, "Comment created successfully!")
             return redirect('insight-details', slug=post.slug)
         else:
-            messages.error(
-                self.request,
-                "There was an error. Action not registered!")
+            messages.error(request, "There was an error. Action not registered!")
 
         context = {
             "post": post,
@@ -236,6 +240,36 @@ class InsightDetailsView(View):
             "commented": False,
         }
         return render(request, self.template_name, context)
+
+    @method_decorator(login_required)
+    def like_post(self, request, slug):
+        """
+        Handle POST requests to like/unlike a post.
+        """
+        post = get_object_or_404(Post, slug=slug)
+        like, created = Like.objects.get_or_create(user=request.user, post=post)
+        if created:
+            post.likes_count += 1
+        else:
+            like.delete()
+            post.likes_count -= 1
+        post.save()
+        return redirect('insight-details', slug=slug)
+
+    @method_decorator(login_required)
+    def favourite_post(self, request, slug):
+        """
+        Handle POST requests to favourite/unfavourite a post.
+        """
+        post = get_object_or_404(Post, slug=slug)
+        favourite, created = Favourite.objects.get_or_create(user=request.user, post=post)
+        if created:
+            post.favourites_count += 1
+        else:
+            favourite.delete()
+            post.favourites_count -= 1
+        post.save()
+        return redirect('insight-details', slug=slug)
 
 
 class CommentDeleteView(

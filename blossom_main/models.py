@@ -131,6 +131,24 @@ class Like(models.Model):
         """
         unique_together = ('user', 'post')
 
+    def save(self, *args, **kwargs):
+        # Check if the like instance already exists
+        if self.pk is None:
+            # New like, increase likes_count
+            self.post.likes_count += 1
+        else:
+            # Existing like being updated or removed
+            if self._state.adding:
+                # New like being added
+                self.post.likes_count += 1
+            else:
+                # Existing like being removed
+                self.post.likes_count -= 1
+        # Save the like instance
+        super(Like, self).save(*args, **kwargs)
+        # Save the associated post
+        self.post.save()
+
     def __str__(self):
         return f"{self.user.username} likes {self.post.title}"
 
