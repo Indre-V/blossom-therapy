@@ -27,29 +27,27 @@ class ProfilePageView(LoginRequiredMixin, DetailView):
         user = get_object_or_404(User, username=self.kwargs.get("username"))
         return get_object_or_404(Profile, user=user)
 
+    
     def get_context_data(self, **kwargs):
-        """
-        Prepares and adds additional context data for rendering
-        the profile page.
-        """
         context = super().get_context_data(**kwargs)
         profile = self.get_object()
         user = profile.user
-        # insights = self.profile_insights(user)
-        # favourites = self.profile_favourites(user)
-        # drafts = self.profile_drafts(user)
-        insights = user.posts.all()
+        insights = Post.objects.filter(author=user, status__in=[0, 1])
+        drafts = Post.objects.filter(author=user, status=2)
+        favourites = Post.objects.filter(favourite=user)
         total_likes = sum(post.count_likes() for post in insights)
+        total_favourites = sum(post.count_favs() for post in insights)
 
-        context['profile'] = profile
-        context['user'] = user
-        # context['insights'] = insights
-        # context['favourites'] = favourites
-        # context['drafts'] = drafts
-        context['total_likes'] = total_likes
-
+        context.update({
+            'profile': profile,
+            'user': user,
+            'insights': insights,
+            'drafts': drafts,
+            'favourites': favourites,
+            'total_likes': total_likes,
+            'total_favourites': total_favourites
+        })
         return context
-
 
 class ProfileFavouritesView(View):
     """
