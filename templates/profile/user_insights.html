@@ -2,9 +2,9 @@
 {% load static %} 
 {% block title %}Blossom Therapy Insights | {{ profile.username }} Insights{% endblock %}
 {% block content %}
-
-
 <div class="container mt-5">
+    <a href="{% url 'profile' user.username %}" class="btn btn-info mb-1"
+    >Return to Profile</a>
     <div class="row">
         <div class="col-md-12 bg-light border">
             <h4 class="text-center mt-4">My Posts</h4>
@@ -20,12 +20,8 @@
                 {% empty %}
                 <p>No Posts yet.</p>
                 {% endfor %}
-                
             </div>
         </div>
-        <!-- <div class="col-md-6 bg-light border">
-            <h4 class="text-center">Favourites</h4>
-        </div> -->
     </div>
 </div>
 {% include 'insights/pagination.html' %}

@@ -27,7 +27,6 @@ class ProfilePageView(LoginRequiredMixin, DetailView):
         user = get_object_or_404(User, username=self.kwargs.get("username"))
         return get_object_or_404(Profile, user=user)
 
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         profile = self.get_object()

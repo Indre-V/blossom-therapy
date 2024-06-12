@@ -1,38 +1,48 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block title %}Blossom Therapy Insights | {{ profile.username }}{% endblock %}
 {% block content %}
- <div class="container py-5">
+<div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-xl-6 col-md-12">
+        <div class="col-sm-10 col-md-12">
             <div class="card user-card-full">
                 <div class="row g-3">
                     <div class="col-sm-4 bg-c-lite-green text-center text-white user-profile">
                         <div class="p-3">
                             <h6>{{ profile.user.username }}</h6>
-                            {% if "placeholder" in profile.profile_picture.url %}
-                            <img src="{% static 'images/profile.jpg' %}" class="img-radius w-50" alt="Profile Placeholder" loading="lazy">
+                            {% if "placeholder" in profile.profile_picture.url%}
+                            <img src="{% static 'images/profile.jpg' %}" class="img-radius w-50"
+                                alt="Profile Placeholder" loading="lazy">
                             {% else %}
-                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-50" alt="Profile Picture" loading="lazy">
+                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-50" alt="Profile Picture"
+                                loading="lazy">
                             {% endif %}
                         </div>
-                            <a href="{% url 'profile-insights' profile.user.username %}" class="btn btn-outline-discovery my-2">
-                                <i class="fas fa-book" aria-hidden="true"></i> My Insights
-                            </a>
-                            <a href="{% url 'profile-drafts' profile.user.username %}" class="btn btn-outline-discovery my-2">
-                               <i class="fa fa-pencil" aria-hidden="true"></i> My Drafts
-                            </a>
-                            <a href="{% url 'profile-favourites' profile.user.username %}" class="btn btn-outline-discovery my-2">
-                                <i class="fas fa-heart"aria-hidden="true"></i> My Favourites
-                            </a>
+                        <a href="{% url 'profile-insights' profile.user.username %}"
+                            class="btn btn-outline-discovery m-1">
+                            <i class="fas fa-book" aria-hidden="true"></i> My
+                            Insights
+                        </a>
+                        <a href="{% url 'profile-drafts' profile.user.username %}"
+                            class="btn btn-outline-discovery m-1">
+                            <i class="fa fa-pencil" aria-hidden="true"></i> My
+                            Drafts
+                        </a>
+                        <a href="{% url 'profile-favourites' profile.user.username %}"
+                            class="btn btn-outline-discovery m-1">
+                            <i class="fas fa-heart" aria-hidden="true"></i> My
+                            Favourites
+                        </a>
                     </div>
                     <div class="col-sm-8">
                         <div class="card-body">
-                            <h6 class="mb-4 pb-2 border-bottom">Profile Summary</h6>
+                            <h6 class="mb-4 pb-2 border-bottom">Profile
+                                Summary</h6>
                             <div class="row">
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold">Full Name:</p>
-                                    <h6 class="text-muted">{{ user.first_name }} {{ user.last_name }}</h6>
+                                    <h6 class="text-muted">{{ user.first_name }}
+                                        {{ user.last_name }}</h6>
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold">Location:</p>
@@ -48,27 +58,28 @@
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold">Insights <i class="fa fa-heart"></i>: {{ total_favourites }}</p>
                                 </div>
-                                <div class="p-1 text-center">
-                                <a href="{% url 'profile-update' user.id %}"  role="button" class="btn btn-info my-1">
-                                    <i class="fas fa-user-edit"></i> Update Profile
-                                </a>
-                                <a href="{% url 'account_change_password' %}" role="button" class="btn btn-warning my-1">
-                                    <i class="fas fa-user-lock"></i> Change Password
-                                </a>
-                                <a href="{% url 'profile-delete' user.id %}" role="button" class="btn btn-danger my-1">
-                                    <i class="fas fa-user-slash"></i> Delete Account
-                                </a>
+                                <div class="py-5 text-center">
+                                    <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-info m-3">
+                                        <i class="fas fa-user-edit"></i> Update
+                                        Profile
+                                    </a>
+                                    <a href="{% url 'account_change_password' %}" role="button"
+                                        class="btn btn-warning m-3">
+                                        <i class="fas fa-user-lock"></i> Change
+                                        Password
+                                    </a>
+                                    <a href="{% url 'profile-delete' user.id %}" role="button"
+                                        class="btn btn-danger m-3">
+                                        <i class="fas fa-user-slash"></i> Delete
+                                        Account
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        </div>
-   
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
-                         
 </div>
 {% endblock content %}
-

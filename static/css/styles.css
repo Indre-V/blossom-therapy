@@ -31,6 +31,11 @@ body {
   padding: 5rem;
 }
 
+.custom-navbar {
+  background-color: var(--primary-color); 
+  font-weight: 400;
+  
+}
 
 .testhover {
 
