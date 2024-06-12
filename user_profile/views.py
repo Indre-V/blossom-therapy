@@ -2,11 +2,12 @@
 from django.views.generic import DetailView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, View
+from blossom_main.models import Post
 from .models import Profile
 from .forms import UserForm, ProfileForm
 
@@ -34,16 +35,78 @@ class ProfilePageView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         profile = self.get_object()
         user = profile.user
+        # insights = self.profile_insights(user)
+        # favourites = self.profile_favourites(user)
+        # drafts = self.profile_drafts(user)
         insights = user.posts.all()
         total_likes = sum(post.count_likes() for post in insights)
 
         context['profile'] = profile
         context['user'] = user
-        context['insights'] = insights
+        # context['insights'] = insights
+        # context['favourites'] = favourites
+        # context['drafts'] = drafts
         context['total_likes'] = total_likes
 
         return context
 
+
+class ProfileFavouritesView(View):
+    """
+    View for display and manage user drafts
+    """
+    def get(self, request, username):
+        """
+        Renders the user's favourites page.
+        """
+        user = get_object_or_404(User, username=username)
+        profile = get_object_or_404(Profile, user=user)
+        favourites = Post.objects.filter(favourite=user)
+
+        context = {
+            'profile': profile,
+            'favourites': favourites,
+        }
+
+        return render(request, 'profile/user_favourites.html', context)
+
+class ProfileDraftsView(View):
+    """
+    View for display and manage user drafts
+    """
+    def get(self, request, username):
+        """
+        Renders the user's drafts page.
+        """
+        user = get_object_or_404(User, username=username)
+        profile = get_object_or_404(Profile, user=user)
+        drafts = Post.objects.filter(author=user, status=2)
+
+        context = {
+            'profile': profile,
+            'drafts': drafts,
+        }
+
+        return render(request, 'profile/user_drafts.html', context)
+
+class ProfileInsightsView(View):
+    """
+    View for display and manage user insights
+    """
+    paginate_by = 4
+    def get(self, request, username):
+        """
+        Handles display render of the user insights
+        """
+        user = get_object_or_404(User, username=username)
+        profile = get_object_or_404(Profile, user=user)
+        insights = Post.objects.filter(author=user, status__in=[0, 1])
+        context = {
+            'profile': profile,
+            'insights': insights,
+        }
+
+        return render(request, 'profile/user_insights.html', context)
 
 class ProfileDeleteView(DeleteView):
     """

@@ -14,4 +14,13 @@ path(
 path("profile_update/<int:pk>/",
          views.ProfileUpdateView.as_view(),
          name="profile-update"),
+path("profile/<str:username>/insights/",
+     views.ProfileInsightsView.as_view(),
+     name='profile-insights'),
+path("profile/<str:username>/favourites/",
+     views.ProfileFavouritesView.as_view(),
+         name='profile-favourites'),
+path("profile/<str:username>/drafts/",
+     views.ProfileDraftsView.as_view(),
+     name='profile-drafts'),
 ]

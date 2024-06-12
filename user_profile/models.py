@@ -18,3 +18,5 @@ class Profile(models.Model):
     total_likes = models.IntegerField(default=0)
     total_favourites = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.username)

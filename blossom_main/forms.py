@@ -15,7 +15,7 @@ class InsightForm(forms.ModelForm):
 
         STATUS_CHOICES = [
             choice for choice in self.fields['status'].choices
-            if choice[0] in (0, 2)  # Assuming 0 and 1 are the values you want to include
+            if choice[0] in (0, 2)
         ]
         self.fields['status'].choices = STATUS_CHOICES
 
