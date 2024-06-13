@@ -90,7 +90,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     template_name = "insights/add_insight.html"
     form_class = InsightForm
-    success_url = reverse_lazy("insights")
+    success_url = reverse_lazy("home")
 
     def form_valid(self, form):
         """
@@ -132,6 +132,7 @@ class InsightDetailsView(View):
             "comments": comments,
             "comment_form": CommentForm(),
             "commented": False,
+            "author_profile_image": post.author.profile.profile_picture,
         }
         return render(request, self.template_name, context)
 

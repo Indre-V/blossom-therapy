@@ -37,6 +37,9 @@ body {
   
 }
 
+search {
+  background-color: var(--peach-puff);
+}
 .testhover {
 
   background-color: #f8f5f580; /* Hex color code for the hover state */

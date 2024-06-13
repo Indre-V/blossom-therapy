@@ -11,7 +11,7 @@
                         <div class="p-3">
                             <h6>{{ profile.user.username }}</h6>
                             {% if "placeholder" in profile.profile_picture.url%}
-                            <img src="{% static 'images/profile.jpg' %}" class="img-radius w-50"
+                            <img src="{% static 'images/placeholder_profile.jpg' %}" class="img-radius w-50"
                                 alt="Profile Placeholder" loading="lazy">
                             {% else %}
                             <img src="{{ profile.profile_picture.url }}" class="img-radius w-50" alt="Profile Picture"

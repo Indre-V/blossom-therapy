@@ -1,43 +1,41 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %} Blossom Therapy Insights | Insights List {% endblock %}
 
 {% block content %}
-  <div class="container my-5">
-    <div class="row">
-      <!-- Sidebar Column -->
-      <div class="col-md-4">
-        {% include 'includes/category_sidebar.html' %}
-      </div>
-      <div class="col-md-8">
-        <section class="text-center">
-          <h4 class="mb-5">
-            <strong>
-              {% if search_query %}
-                Search Results for: "{{ search_query }}"
-              {% elif category %}
-                Posts in Category: {{ category.name }}
-              {% else %}
-                Browse All Insights
-              {% endif %}
-            </strong>
-          </h4>
-          <div class="row">
-            {% for post in insights %}
-            <div class="col-lg-6 col-md-8 mb-6">
-              <div class="card">
-                {% include 'insights/list_cards.html' %}
-                <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary">Read</a>
-              </div>
-            </div>
-            {% empty %}
-       <h6>Nothing found .... Feel free to add an Insight.</h6>
-            {% endfor %}
+<div class="container-fluid my-5">
+  <div class="row">
+    <!-- Sidebar Column -->
+    <div class="col-md-4 mb-5">
+      {% include 'includes/category_sidebar.html' %}
+    </div>
+    <div class="col-md-8" id="">
+      <h4 class="mb-3 text-center">
+        <strong>
+          {% if search_query %}
+          Search Results for: "{{ search_query }}"
+          {% elif category %}
+          Posts in Category: {{ category.name }}
+          {% else %}
+          Browse All Insights
+          {% endif %}
+        </strong>
+      </h4>
+      <div class="row">
+        {% for post in insights %}
+        <div class="col-lg-6 col-md-8 mb-6">
+          <div class="card">
+            {% include 'insights/list_cards.html' %}
+            <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary">Read</a>
           </div>
-        </section>
+        </div>
+        {% empty %}
+        <h6 class="text-center">Nothing found .... Feel free to add an Insight.</h6>
+        {% endfor %}
       </div>
     </div>
   </div>
-  {% include 'insights/pagination.html' %}
+</div>
+{% include 'insights/pagination.html' %}
 {% endblock %}

@@ -15,18 +15,18 @@
     {% endif %}
     <div class="article-title p-3">
         <h6 class="text-secondary">
-            <a href="#">{{ post.category.name }}</a>
+            <a href="{% url 'category-posts' post.category.name %}">{{ post.category.name }}</a>
         </h6>
         <h2 class="card-title">{{ post.title }}</h2>
         <div class="d-flex align-items-center m-3">
             <div class="avatar me-3">
-                {% if "placeholder" in post.author.profile.profile_picture.url %}
-                <img src="{% static 'images/profile.jpg' %}" class="rounded-circle" alt="Profile Placeholder"
-                    alt="{{ post.author.username }}" width="65" height="65" class="img-radius w-50">
+                {% if "placeholder_profile" in post.author.profile.profile_picture.url %}
+                <img src="{% static 'images/placeholder_profile.jpg' %}" class="rounded-circle"
+                    alt="Profile Placeholder" alt="{{ post.author.username }}" width="65" height="65"
+                    class="img-radius w-50">
                 {% else %}
                 <img src="{{ post.author.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle"
                     alt="{{ post.author.username }}" width="65" height="65" loading="lazy">
-
                 {% endif %}
             </div>
             <div class="media-body p-2">
@@ -40,22 +40,22 @@
             <a href="{% url 'insight-update' post.slug %}" class="btn btn-warning btn-sm" title="Edit">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
-            {% endif %} </div>
-            
-                {% if post.status == 0 %}
-                <h4 class="text-center mb-4 pb-2 text-warning">
-                    This Post is waiting for admin approval.
-                </h4>
-                {% else %}
-                <div class="d-flex justify-content-center m-3">
-                    <i class="fa fa-thumbs-up"></i><span class="badge bg-white text-dark p-2">{{ post.count_likes }}</span>
-                    <i class="fa fa-heart-o"></i><span class="badge bg-white text-dark p-2">{{ post.count_favs }}</span>
-                    <i class="fa fa-comment-o" aria-hidden="true"></i>
-                    <span class="badge bg-white text-dark p-2">{{ post.comments.count }}</span>
-                </div>
-                {% endif %}
-                <p class="card-text">
-                    {{post.excerpt}}
-                  </p>
+            {% endif %}
         </div>
+        {% if post.status == 0 %}
+        <h4 class="text-center mb-4 pb-2 text-warning">
+            This Post is waiting for admin approval.
+        </h4>
+        {% else %}
+        <div class="d-flex justify-content-center m-3">
+            <i class="fa fa-thumbs-up"></i><span class="badge bg-white text-dark p-2">{{ post.count_likes }}</span>
+            <i class="fa fa-heart-o"></i><span class="badge bg-white text-dark p-2">{{ post.count_favs }}</span>
+            <i class="fa fa-comment-o" aria-hidden="true"></i>
+            <span class="badge bg-white text-dark p-2">{{ post.comments.count }}</span>
+        </div>
+        {% endif %}
+        <p class="card-text">
+            {{post.excerpt}}
+        </p>
     </div>
+</div>
