@@ -4,8 +4,7 @@
 {% block title %} Blossom Therapy Insights | Insights List {% endblock %}
 
 {% block content %}
-<main class="my-5">
-  <div class="container">
+  <div class="container my-5">
     <div class="row">
       <!-- Sidebar Column -->
       <div class="col-md-4">
@@ -15,7 +14,9 @@
         <section class="text-center">
           <h4 class="mb-5">
             <strong>
-              {% if category %}
+              {% if search_query %}
+                Search Results for: "{{ search_query }}"
+              {% elif category %}
                 Posts in Category: {{ category.name }}
               {% else %}
                 Browse All Insights
@@ -31,7 +32,7 @@
               </div>
             </div>
             {% empty %}
-       <h6>No Insights in this category.</h6>
+       <h6>Nothing found .... Feel free to add an Insight.</h6>
             {% endfor %}
           </div>
         </section>
@@ -39,5 +40,4 @@
     </div>
   </div>
   {% include 'insights/pagination.html' %}
-</main>
 {% endblock %}

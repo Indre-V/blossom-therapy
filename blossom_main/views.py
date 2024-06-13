@@ -10,6 +10,7 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
+from django.db.models import Q
 from .models import Category, Post, Comment
 from .forms import CommentForm, InsightForm
 
@@ -27,31 +28,60 @@ class HomeView(ListView):
     paginate_by = 4
     context_object_name = 'insights'
 
-def insights_list(request):
-    """
-    A view for displaying all insights.
-    """
-    posts = Post.objects.filter(status=1).order_by('-created_on')
-    categories = Category.objects.all()
-    context = {
-        'insights': posts,
-        'categories': categories,
-    }
-    return render(request, 'insights/insights_list.html', context)
+class SearchResultsView(ListView):
+    model = Post
+    template_name = 'insights/search_results.html'
 
-def category_posts(request, category_name):
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = Post.objects.filter(
+            Q(content__icontains=query) | Q(excerpt__icontains=query)
+        )
+        return object_list
+
+class InsightsListView(ListView):
     """
-    A view for displaying posts filtered by a specific category.
+    View for displaying insights, with support for category filtering and search functionality.
     """
-    category = get_object_or_404(Category, name=category_name)
-    posts = Post.objects.filter(category=category, status=1).order_by('-created_on')
-    categories = Category.objects.all()
-    context = {
-        'insights': posts,
-        'categories': categories,
-        'category': category,
-    }
-    return render(request, 'insights/insights_list.html', context)
+    model = Post
+    template_name = "insights/insights_list.html"
+    context_object_name = "insights"
+    paginate_by = 4
+
+    def get_queryset(self):
+        """
+        Filters the posts based on the category obtained from the URL and search queries.
+        """
+        category_name = self.kwargs.get('category_name')
+        query = self.request.GET.get("q")
+
+        posts = Post.objects.filter(status=1).order_by('-created_on')
+
+        if query:
+            posts = posts.filter(
+                Q(content__icontains=query) | Q(excerpt__icontains=query)
+            )
+
+        if category_name:
+            category = get_object_or_404(Category, name=category_name)
+            posts = posts.filter(category=category)
+
+        return posts
+
+    def get_context_data(self, **kwargs):
+        """
+        Adds additional context data to the template.
+        """
+        context = super().get_context_data(**kwargs)
+        category_name = self.kwargs.get('category_name')
+        query = self.request.GET.get("q")
+
+        if category_name:
+            context['category'] = get_object_or_404(Category, name=category_name)
+        context['categories'] = Category.objects.all()
+        context['search_query'] = query
+        return context
+
 
 class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
@@ -267,7 +297,3 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
                 self.request,
                 "Insight Added to Favourites List!")
         return HttpResponseRedirect(reverse("insight-details", args=[slug]))
-
-
-
-    

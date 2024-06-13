@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Blossom Therapy Insights | Insights List {% endblock %}
+
+
+{% block content %}
+<h1>Search Results</h1>
+
+<ul>
+  {% for post in object_list %}
+    <li>
+        {{ post.title }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -5,8 +5,8 @@ from . import views
 
 urlpatterns = [
     path("", views.HomeView.as_view(), name="home"),
-    path("insights/", views.insights_list, name="insights"),
-    path("category/<str:category_name>/", views.category_posts, name="category-posts"),
+    path("insights/", views.InsightsListView.as_view(), name="insights"),
+    path("search/", views.SearchResultsView.as_view(), name="search-results"),
     path(
         "insight/add/",
         views.InsightAddView.as_view(),
@@ -23,6 +23,10 @@ urlpatterns = [
         "insight/<slug:slug>/update/",
         views.InsightUpdateView.as_view(),
         name="insight-update"),
+    path(
+        "category/<str:category_name>/",
+        views.InsightsListView.as_view(),
+        name="category-posts"),
     path(
         "comments/<int:pk>/delcomment/",
         views.CommentDeleteView.as_view(),
