@@ -27,32 +27,31 @@ class HomeView(ListView):
     paginate_by = 4
     context_object_name = 'insights'
 
-
-class CategoryPageView(ListView):
+def insights_list(request):
     """
-    A view class for displaying a list of posts based on a specific category.
+    A view for displaying all insights.
     """
-    model = Post
-    template_name = "includes/category.html"
-    paginate_by = 6
+    posts = Post.objects.filter(status=1).order_by('-created_on')
+    categories = Category.objects.all()
+    context = {
+        'insights': posts,
+        'categories': categories,
+    }
+    return render(request, 'insights/insights_list.html', context)
 
-    def get_queryset(self):
-        """
-        Filters the posts based on the category obtained from the URL.
-        """
-        category_name = self.kwargs['category_name']
-        category = get_object_or_404(Category, name=category_name)
-        return Post.objects.filter(category=category, status=1).order_by('-created_on')
-
-    def get_context_data(self, **kwargs):
-        """
-        Adds additional context data to the template.
-        """
-        context = super().get_context_data(**kwargs)
-        context['category'] = get_object_or_404(Category, name=self.kwargs['category_name'])
-        context['categories'] = Category.objects.all()  
-        return context
-
+def category_posts(request, category_name):
+    """
+    A view for displaying posts filtered by a specific category.
+    """
+    category = get_object_or_404(Category, name=category_name)
+    posts = Post.objects.filter(category=category, status=1).order_by('-created_on')
+    categories = Category.objects.all()
+    context = {
+        'insights': posts,
+        'categories': categories,
+        'category': category,
+    }
+    return render(request, 'insights/insights_list.html', context)
 
 class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
@@ -61,7 +60,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     template_name = "insights/add_insight.html"
     form_class = InsightForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("insights")
 
     def form_valid(self, form):
         """
@@ -80,26 +79,6 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         response = super().form_invalid(form)
         messages.error(self.request, "Post creation failed. Please check your input.")
         return response
-
-
-class InsightsListView(ListView):
-    """
-    View for creating a new blog post
-    """
-    model = Post
-    queryset = Post.objects.filter(status=1)
-    template_name = "insights/insights_list.html"
-    context_object_name = "insights"
-    success_url = reverse_lazy("home")
-    paginate_by = 6
-
-    def get_queryset(self):
-        return Post.objects.filter(status=1).order_by('-created_on')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        return context
 
 
 class InsightDetailsView(View):
