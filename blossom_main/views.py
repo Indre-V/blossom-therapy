@@ -33,7 +33,7 @@ class CategoryPageView(ListView):
     A view class for displaying a list of posts based on a specific category.
     """
     model = Post
-    template_name = "category.html"
+    template_name = "includes/category.html"
     paginate_by = 6
 
     def get_queryset(self):
@@ -50,6 +50,7 @@ class CategoryPageView(ListView):
         """
         context = super().get_context_data(**kwargs)
         context['category'] = get_object_or_404(Category, name=self.kwargs['category_name'])
+        context['categories'] = Category.objects.all()  
         return context
 
 
@@ -91,6 +92,14 @@ class InsightsListView(ListView):
     context_object_name = "insights"
     success_url = reverse_lazy("home")
     paginate_by = 6
+
+    def get_queryset(self):
+        return Post.objects.filter(status=1).order_by('-created_on')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 
 class InsightDetailsView(View):
@@ -279,3 +288,7 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
                 self.request,
                 "Insight Added to Favourites List!")
         return HttpResponseRedirect(reverse("insight-details", args=[slug]))
+
+
+
+    

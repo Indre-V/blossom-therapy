@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
 
 # pylint: disable=unused-argument
 # pylint: disable=locally-disabled, no-member
@@ -25,6 +26,12 @@ class Category(models.Model):
         String for representing the Model object
         """
         return f"{self.name}"
+
+    def get_absolute_url(self):
+        """
+        Returns the absolute URL for the GameCategory instance
+        """
+        return reverse('insights')
 
 class Post(models.Model):
     """
