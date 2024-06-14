@@ -26,8 +26,8 @@
 
 <body class="d-flex flex-column h-100">
     <!-- Navigation -->
-    <header class="top-nav">
-        <nav class="navbar navbar-expand-lg custom-navbar">
+    <header class="top-nav mb-5">
+        <nav class=" fixed-top navbar navbar-expand-lg">
             <div class="container-fluid" <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="" alt="logo" width="30" height="24">
                 </a>
@@ -43,7 +43,7 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'insights' %}">Insights</a>
+                            <a class="nav-link" aria-current="page" href="{% url 'insights' %}">Insights</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="" 'developer' %>Developer</a>
@@ -89,25 +89,23 @@
 
     </main>
     <!-- Start of Footer  -->
-    <footer class="bg-light text-center text-black mt-3">
-        <div class="container pb-4 mb-4"></div>
-        <a href="https://github.com/Indre-V" target="_blank" aria-label="Go to Github page of developer.">
-            <i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/indre-vilickaite/" target="_blank"
-            aria-label="Go to LinkedIn page of developer.">
-            <i class="fa-brands fa-linkedin-in"></i></a>
-
-        <!-- Email -->
-        <a class="btn btn-outline-light m-1 email" href="mailto:indre.vilickaite@gmail.com" role="button"
-            aria-label="Email the developer">
-            <i class="fa fa-envelope"></i>
-        </a>
+    <footer class="footer container-fluid d-flex flex-column align-items-center mt-auto py-3" id="bg-footer">
+            <!-- Social Icons -->
+            <div>
+                <a href="https://github.com/Indre-V" target="_blank" aria-label="Go to Github page of developer." class="btn btn-dark btn-floating m-1">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/indre-vilickaite/" target="_blank" aria-label="Go to LinkedIn page of developer." class="btn btn-primary btn-floating m-1">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a class="btn btn-outline-dark btn-floating m-1 email" href="mailto:indre.vilickaite@gmail.com" role="button" aria-label="Email the developer">
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </div>
+        <div class="text-center p-3">
+            © 2024 Copyright: Blossom Therapy Insights - For educational purposes
         </div>
-        <div class="text-center p-3"">
-                    © 2024 Copyright: Blossom Therapy Insights - For educational
-                    purposes
-                </div>
-            </footer>
+    </footer>
             <!-- Bootstrap scripts -->
             <script>
             document.addEventListener("DOMContentLoaded", function() {

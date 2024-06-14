@@ -6,7 +6,7 @@
   --primary-color: #FF6347; /* Tomato */
   --secondary-color: #4682B4; /* Steel Blue */
   --accent-color: #FFD700; /* Gold */
-  --peach-puff: #FFDAB9; /* Peach Puff */
+  --peach-puff: #f8ede2; /* Peach Puff */
   --powder-blue: #B0E0E6; /* Powder Blue */
   --background-color: #ffffff; /* White */
   --text-color: #222020; /* Dark Gray */
@@ -31,7 +31,7 @@ body {
   padding: 5rem;
 }
 
-.custom-navbar {
+.navbar {
   background-color: var(--primary-color); 
   font-weight: 400;
   
@@ -91,3 +91,6 @@ h6 {
   min-height: 20rem;
 }
 
+#bg-footer {
+  background-color: var(--peach-puff);
+}
