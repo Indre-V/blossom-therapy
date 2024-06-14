@@ -232,7 +232,7 @@ class InsightUpdateView(
     model = Post
     form_class = InsightForm
     template_name = "insights/insight_update.html"
-    success_message = "%(calculated_field)s was edited successfully"
+    success_message = "POst was edited successfully"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -245,16 +245,9 @@ class InsightUpdateView(
     def get_success_url(self):
         return reverse_lazy("insight-details", kwargs={"slug": self.object.slug})
 
+
     def get_success_message(self, cleaned_data):
-        """
-        Override the get_success_message() method to add the recipe title
-        into the success message.
-        source: https://docs.djangoproject.com/en/4.0/ref/contrib/messages/
-        """
-        return self.success_message % dict(
-            cleaned_data,
-            calculated_field=self.object.title,
-        )
+        return self.success_message % cleaned_data
 
 class LikeInsightView(LoginRequiredMixin, View):
     """

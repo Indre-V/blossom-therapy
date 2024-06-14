@@ -4,7 +4,6 @@
 {% block title %} Blossom Therapy Insights | Edit Insight {% endblock %}
 
 {% block content %}
-
 <div class="row justify-content-center mt-3 mb-5">
     <div class="col-md-5 col-sm-12">
         {% load cloudinary %}
@@ -12,7 +11,7 @@
             {{ form | crispy }}
             {% csrf_token %}
             <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-outline-dark">Update</button>
+                <button type="submit" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
             </div>
         </form>
         <a class="btn" href="{% url 'insight-details' post.slug %}">Cancel</a>
