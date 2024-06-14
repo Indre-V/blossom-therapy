@@ -79,34 +79,10 @@
                 </div>
         </nav>
     </header>
-    <!-- Modal for displaying messages -->
-    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalLabel">Notification</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }}">
-                                {{ message|safe }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+   
     <main class="flex-shrink-0 main-bg">
 
-
+        {% include 'includes/messages.html' %}
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}

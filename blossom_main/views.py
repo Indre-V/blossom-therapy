@@ -125,6 +125,7 @@ class InsightDetailsView(View):
         comments = post.comments.order_by("-created_on")
         liked = post.likes.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
         favourited = post.favourite.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
+
         context = {
             "post": post,
             "liked": liked,
@@ -215,8 +216,9 @@ class InsightDeleteView(
     Delete insights by author or superuser
     """
     model = Post
-    template_name = "insights/insight_delete.html"
+    template_name = "includes/delete_modal.html"
     success_message = "Insight removed successfully"
+    warning_message = "Post Will be rmeoved permantently"
     success_url = reverse_lazy("insights")
 
     def test_func(self):
@@ -232,7 +234,7 @@ class InsightUpdateView(
     model = Post
     form_class = InsightForm
     template_name = "insights/insight_update.html"
-    success_message = "POst was edited successfully"
+    success_message = "Post was edited successfully"
 
     def form_valid(self, form):
         form.instance.author = self.request.user

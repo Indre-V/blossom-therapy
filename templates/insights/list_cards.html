@@ -34,10 +34,8 @@
                 <span class="text-muted">{{ post.created_on|date:"F j, Y" }}</span>
             </div>
             {% if request.user == post.author or request.user.is_superuser %}
-            <a href="{% url 'insight-delete' post.slug %}" class="btn btn-danger btn-sm me-2" title="Delete">
-                <i class="fa-solid fa-trash"></i>
-            </a>
-            <a href="{% url 'insight-update' post.slug %}" class="btn btn-warning btn-sm" title="Edit">
+            {% include 'includes/delete_modal.html' %}
+            <a href="{% url 'insight-update' post.slug %}" type ="button" class="btn btn-warning" title="Edit">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
             {% endif %}

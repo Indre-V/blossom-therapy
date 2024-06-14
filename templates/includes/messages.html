@@ -1,0 +1,25 @@
+<!-- Modal for displaying messages -->
+{% if messages %}
+{% for message in messages %}
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content alert {{ message.tags }}">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Notification</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message|safe }}
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info text-center" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
