@@ -10,8 +10,6 @@ class InsightForm(forms.ModelForm):
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['excerpt'].widget = forms.Textarea(attrs={'rows': 2})
-        self.fields['content'].widget = SummernoteWidget(attrs={'rows': 5})
 
         STATUS_CHOICES = [
             choice for choice in self.fields['status'].choices
@@ -25,10 +23,10 @@ class InsightForm(forms.ModelForm):
         Specifies the model to use and the fields to include in the form.
         """
         model = Post
-        fields = ['title', 'featured_image','excerpt', 'content', 'category', 'status']
+        fields = ['title', 'featured_image', 'excerpt', 'content', 'category', 'status']
         widgets = {
-            'content': forms.Textarea(attrs={'rows': 5}),
-            'excerpt': forms.Textarea(attrs={'rows': 2}),
+            'excerpt': SummernoteWidget(attrs={'rows': 2}),
+            'content': SummernoteWidget(attrs={'rows': 5}),
         }
         labels = {
             'title': 'Title',
@@ -37,13 +35,7 @@ class InsightForm(forms.ModelForm):
             'excerpt': 'Excerpt',
             'content': 'Content',
             'status': 'Status',
-
         }
-        widgets = {
-            'content': SummernoteWidget(),
-            'excerpt': SummernoteWidget(),
-        }
-
 
 class CommentForm(forms.ModelForm):
     """
