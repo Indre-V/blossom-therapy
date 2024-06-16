@@ -25,7 +25,7 @@ class InsightForm(forms.ModelForm):
         model = Post
         fields = ['title', 'featured_image', 'excerpt', 'content', 'category', 'status']
         widgets = {
-            'excerpt': SummernoteWidget(attrs={'rows': 2}),
+            'excerpt': forms.Textarea(attrs={'rows': 4, 'maxlength': 200}),
             'content': SummernoteWidget(attrs={'rows': 5}),
         }
         labels = {

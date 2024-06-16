@@ -27,15 +27,14 @@
   <p class="mt-4">Gardening brings joy, tranquility, and a sense of accomplishment. It's a way to connect with nature, nurture life, 
   and create beauty in your own space. Join our community and find out why so many people find happiness in their gardens</p>
 </section>
-
-
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="row">
-        <h2 class="text-center">Latest</h2>
-        {% for post in insights %}
-        <div class="col-lg-6 col-md-6 mb-4">
+  <!-- Latest Insights Row -->
+  <div class="row mb-5 justify-content-center"> 
+    <div class="col-10">
+      <h2 class="text-center my-3">Latest</h2>
+      <div class="row justify-content-center">
+        {% for post in latest_insights %}
+        <div class="col-md-12 col-lg-6 mb-4">
           <div class="card p-4">
             {% include 'insights/list_cards.html' %}
             <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
@@ -44,31 +43,24 @@
         {% endfor %}
       </div>
     </div>
-        <!-- Trending Section Column -->
-        <div class="col-lg-4">
-          <h2>Most Popular</h2>
-          <h5>Photo of me:</h5>
-          <div class="fakeimg">Fake Image</div>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-          <h3 class="mt-4">Some Links</h3>
-          <p>Lorem ipsum dolor sit ame.</p>
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-          <hr class="d-sm-none">
+  </div>
+  <!-- Most Popular Insights Row -->
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h2 class="text-center my-3">Most Popular</h2>
+      <div class="row justify-content-center">
+        {% for post in most_popular %}
+        <div class="col-md-6 col-lg-6 mb-4">
+          <div class="card p-4">
+            {% include 'insights/list_cards.html' %}
+            <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+          </div>
         </div>
+        {% endfor %}
       </div>
     </div>
-    {% include 'insights/pagination.html' %}
-    {% endblock %}
+  </div>
+  <div class="text-center m-5">
+    <a href="{% url 'insights' %}" class="btn btn-secondary">More Insights</a>
+  </div>  </div>
+{% endblock %}

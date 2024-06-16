@@ -12,6 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
 from django.db.models import Q
 from .models import Category, Post, Comment
+from django.db.models import Count
 from .forms import CommentForm, InsightForm
 
 # pylint: disable=locally-disabled, no-member
@@ -20,15 +21,25 @@ from .forms import CommentForm, InsightForm
 
 class HomeView(ListView):
     """
-    A view class for displaying all posts on the home page.
+    A view class for displaying the home page.
     """
     model = Post
-    queryset = Post.objects.all().filter(status=1).order_by("-created_on")
     template_name = "index.html"
-    paginate_by = 4
     context_object_name = 'insights'
+    queryset = Post.objects.filter(status=1).annotate(like_count=Count('likes')).order_by('-created_on')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_insights'] = self.queryset[:2]
+        context['most_popular'] = self.queryset.order_by('-like_count')[:2]
+        return context
+
 
 class SearchResultsView(ListView):
+    """
+    A view class for displaying search results.
+    """
+
     model = Post
     template_name = 'insights/search_results.html'
 
