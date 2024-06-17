@@ -11,10 +11,10 @@ class Contact(models.Model):
     """
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=254)
-    phone = models.CharField(max_length=15, blank=True, null=True)  
+    phone = models.CharField(max_length=15, blank=True, null=True)
     subject = models.CharField(max_length=255)
     message = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True) 
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
 
@@ -34,4 +34,4 @@ class DeveloperProfile(models.Model):
         verbose_name_plural = 'Developer Profiles'
 
     def __str__(self):
-        return str(self.user.username)
+        return str(self.user)
