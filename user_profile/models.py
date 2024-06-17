@@ -17,6 +17,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=255, blank=True)
     total_likes = models.IntegerField(default=0)
     total_favourites = models.IntegerField(default=0)
+    is_developer = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.username)
+        return str(self.user)

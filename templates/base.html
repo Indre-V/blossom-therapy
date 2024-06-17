@@ -46,7 +46,7 @@
                             <a class="nav-link" aria-current="page" href="{% url 'insights' %}">Insights</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" 'developer' %>Developer</a>
+                            <a class="nav-link" href="{% url 'developer' username=user.username %}">Developer</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">

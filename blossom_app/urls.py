@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 
+# Customize admin headers and titles
+admin.site.site_header = "Blossom Therapy Administration"
+admin.site.site_title = "Blossom Therapy Admin"
+admin.site.index_title = "Welcome to Blossom Therapy Administration"
 
 urlpatterns = [
     path("", include('blossom_main.urls')),

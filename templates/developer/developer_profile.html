@@ -1,0 +1,31 @@
+<!-- developer_profile.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="developer-profile-picture">
+                    <img src="{{ developer.profile.profile_picture.url }}" alt="Profile Picture">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="developer-profile-details">
+                    <h1>{{ developer.user.username }}</h1>
+                    <p>{{ developer.profile.bio }}</p>
+                    <p><strong>Location:</strong> {{ developer_profile.profile.location }}</p>
+                    {% if developer_profile.resume_download_link %}
+                        <p><strong>Resume:</strong> <a href="{{ developer.resume_download_link }}" target="_blank">Download Resume</a></p>
+                    {% endif %}
+                    {% if developer_profile.github_portfolio_link %}
+                        <p><strong>GitHub Portfolio:</strong> <a href="{{ developer.github_portfolio_link }}" target="_blank">{{ developer.github_portfolio_link }}</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
