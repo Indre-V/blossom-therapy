@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %} -->
+{% load static %}
+
+{% block content %}
+<!-- Contact Us Section -->
+<section class="Material-contact-section section-padding section-dark">
+    <div class="container">
+      <div class="row">
+        <!-- Section Title -->
+        <div class="col-md-12 wow fadeInLeft" data-wow-delay=".2s">
+          <h1 class="section-title">Love to Hear From You</h1>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Contact Form -->
+        <div class="col-md-6 wow fadeInRight" data-wow-delay=".2s">
+          <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" name="name" required data-error="Please enter your name">
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required data-error="Please enter your Email">
+              <div class="invalid-feedback">Please enter your email.</div>
+            </div>
+            <!-- Subject -->
+            <div class="mb-3">
+              <label for="msg_subject" class="form-label">Subject</label>
+              <input type="text" class="form-control" id="msg_subject" name="subject" required data-error="Please enter your message subject">
+              <div class="invalid-feedback">Please enter your message subject.</div>
+            </div>
+            <!-- Message -->
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" rows="3" id="message" name="message" required data-error="Write your message"></textarea>
+              <div class="invalid-feedback">Write your message.</div>
+            </div>
+            <!-- Form Submit -->
+            <div class="mt-5">
+              <button type="submit" class="btn btn-common" id="form-submit">
+                <i class="material-icons mdi mdi-message-outline"></i> Send Message
+              </button>
+              <div id="msgSubmit" class="h3 text-center hidden"></div>
+              <div class="clearfix"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+  
