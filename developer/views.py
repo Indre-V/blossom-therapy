@@ -1,5 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def developer_view(request):
+def developer(request):
     return HttpResponse("Developer Section")

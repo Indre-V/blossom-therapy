@@ -16,16 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from developer.views import developer_view
 
 
 
 urlpatterns = [
     path("", include('blossom_main.urls')),
     path("", include('user_profile.urls')),
+    path("", include('developer.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('developer/', developer_view, name='developer'),
 
 ]
