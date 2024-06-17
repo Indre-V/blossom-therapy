@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ContactForm
 
@@ -11,7 +11,8 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'developer/success.html')
-    form = ContactForm()
-    context = {'form': form}
-    return render(request, 'developer/contact.html', context)
+            return redirect('success')
+    else:
+        form = ContactForm()
+
+    return render(request, 'developer/contact.html', {'form': form})

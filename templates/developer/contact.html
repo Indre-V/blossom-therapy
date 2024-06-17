@@ -1,6 +1,7 @@
 
 {% extends 'base.html' %} -->
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <!-- Contact Us Section -->
@@ -16,30 +17,8 @@
         <!-- Contact Form -->
         <div class="col-md-6 wow fadeInRight" data-wow-delay=".2s">
           <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
-            <!-- Name -->
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required data-error="Please enter your name">
-              <div class="invalid-feedback">Please enter your name.</div>
-            </div>
-            <!-- Email -->
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required data-error="Please enter your Email">
-              <div class="invalid-feedback">Please enter your email.</div>
-            </div>
-            <!-- Subject -->
-            <div class="mb-3">
-              <label for="msg_subject" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="msg_subject" name="subject" required data-error="Please enter your message subject">
-              <div class="invalid-feedback">Please enter your message subject.</div>
-            </div>
-            <!-- Message -->
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" rows="3" id="message" name="message" required data-error="Write your message"></textarea>
-              <div class="invalid-feedback">Write your message.</div>
-            </div>
+            {% csrf_token %}
+            {{ form|crispy }}
             <!-- Form Submit -->
             <div class="mt-5">
               <button type="submit" class="btn btn-common" id="form-submit">
