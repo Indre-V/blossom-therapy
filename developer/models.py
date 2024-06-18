@@ -1,7 +1,8 @@
 """Developer models imports"""
 from django.db import models
 from django.contrib.auth.models import User
-from user_profile.models import Profile
+from cloudinary.models import CloudinaryField
+
 
 # pylint: disable=locally-disabled, no-member
 
@@ -21,17 +22,16 @@ class Contact(models.Model):
         return f"{self.email} - {self.created_on}"
 
 class DeveloperProfile(models.Model):
-    """
-    Model representing a developer profile.
-    """
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-    profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    about = models.TextField(blank=True)
+    image = CloudinaryField('image', blank=True)
     resume_download_link = models.URLField(max_length=255, blank=True)
     github_portfolio_link = models.URLField(max_length=255, blank=True)
-
-    class Meta:
-        verbose_name = 'Developer Profile'
-        verbose_name_plural = 'Developer Profiles'
+    linkedin_profile_link = models.URLField(max_length=255, blank=True)
+    skills = models.TextField(blank=True)
+    languages = models.TextField(blank=True)
+    education = models.TextField(blank=True)
+    certifications = models.TextField(blank=True)
 
     def __str__(self):
-        return str(self.user)
+        return self.user.username

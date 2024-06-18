@@ -9,20 +9,11 @@ from .forms import ContactForm
 
 
 def developer_profile_view(request):
-    """
-    View function to display the developer profile.
-    
-    Retrieves the DeveloperProfile associated with a Profile marked as a developer.
-    Renders 'developer/developer_profile.html' template with developer_profile context.
-    """
-    try:
-        developer_profile = DeveloperProfile.objects.select_related(
-            'user__profile').get(user__profile__is_developer=True)
-    except DeveloperProfile.DoesNotExist:
-        developer_profile = None
+    # Retrieve all DeveloperProfile instances
+    developer_profiles = DeveloperProfile.objects.all()
 
     context = {
-        'developer_profile': developer_profile
+        'developer_profiles': developer_profiles
     }
 
     return render(request, 'developer/developer_profile.html', context)

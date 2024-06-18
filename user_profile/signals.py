@@ -26,15 +26,3 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-@receiver(post_save, sender=Profile)
-def create_or_update_developer_profile(sender, instance, created, **kwargs):
-    """Signal to create or delete DeveloperProfile based on is_developer flag
-        If is_developer is False, delete the associated DeveloperProfile (if exists)
-        """
-    if instance.is_developer:
-        developer_profile, created = DeveloperProfile.objects.get_or_create(
-    user=instance.user,
-    profile=instance
-)
-    else:
-        DeveloperProfile.objects.filter(user=instance.user).delete()
