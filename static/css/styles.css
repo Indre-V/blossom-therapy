@@ -89,3 +89,7 @@ h6 {
 #bg-footer {
   background-color: var(--light-orange);
 }
+
+#dev-img {
+  height: 300px;
+}
