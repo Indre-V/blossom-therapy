@@ -9,7 +9,9 @@ from .forms import ContactForm
 
 
 def developer_profile_view(request):
-    # Retrieve all DeveloperProfile instances
+    """
+    Retrieve all DeveloperProfile instances
+    """
     developer_profiles = DeveloperProfile.objects.all()
 
     context = {
@@ -29,7 +31,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')  # Replace 'success' with the appropriate URL name
+            return redirect('success')
     else:
         form = ContactForm()
 

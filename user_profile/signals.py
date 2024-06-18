@@ -2,7 +2,6 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-from developer.models import DeveloperProfile
 from .models import Profile
 
 # pylint: disable=locally-disabled, no-member
@@ -24,5 +23,3 @@ def save_user_profile(sender, instance, **kwargs):
     Save the user profile whenever the associated User object is saved.
     """
     instance.profile.save()
-
-

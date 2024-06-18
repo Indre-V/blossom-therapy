@@ -22,6 +22,9 @@ class Contact(models.Model):
         return f"{self.email} - {self.created_on}"
 
 class DeveloperProfile(models.Model):
+    """
+    Developer profile model
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.TextField(blank=True)
     image = CloudinaryField('image', blank=True)
