@@ -10,29 +10,24 @@ from .forms import ContactForm
 
 def developer_profile_view(request):
     """
-    Retrieve all DeveloperProfile instances
+    Retrieve all DeveloperProfile instances and handle contact form.
     """
     developer_profiles = DeveloperProfile.objects.all()
+    success_message = None
 
-    context = {
-        'developer_profiles': developer_profiles
-    }
-
-    return render(request, 'developer/developer_profile.html', context)
-
-def contact(request):
-    """
-    View function to handle contact form submission and display contact form.
-    
-    Displays a contact form to submit data. On form submission (POST), saves the form data
-    and redirects to 'success' URL upon successful validation.
-    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')
+            success_message = "Your message has been sent successfully!"
+            form = ContactForm()  # Reset the form
     else:
         form = ContactForm()
 
-    return render(request, 'developer/contact.html', {'form': form})
+    context = {
+        'developer_profiles': developer_profiles,
+        'form': form,
+        'success_message': success_message
+    }
+
+    return render(request, 'developer/developer_profile.html', context)

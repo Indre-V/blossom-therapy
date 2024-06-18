@@ -1,36 +1,41 @@
-
-{% extends 'base.html' %} -->
-{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 <!-- Contact Us Section -->
 <section class="Material-contact-section section-padding section-dark">
     <div class="container">
-      <div class="row">
-        <!-- Section Title -->
-        <div class="col-md-12 wow fadeInLeft" data-wow-delay=".2s">
-          <h1 class="section-title">Love to Hear From You</h1>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Contact Form -->
-        <div class="col-md-6 wow fadeInRight" data-wow-delay=".2s">
-          <form class="shake" role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <!-- Form Submit -->
-            <div class="mt-5">
-              <button type="submit" class="btn btn-common" id="form-submit">
-                <i class="material-icons mdi mdi-message-outline"></i> Send Message
-              </button>
-              <div id="msgSubmit" class="h3 text-center hidden"></div>
-              <div class="clearfix"></div>
+        <div class="row">
+            <!-- Section Title -->
+            <div class="col-md-12" data-wow-delay=".2s">
+                <h1 class="section-title text-center mb-5">Love to Hear From You</h1>
             </div>
-          </form>
         </div>
-      </div>
+        <div class="row">
+            <!-- Contact Form Card -->
+            <div class="col-md-6 mx-auto wow fadeInRight" data-wow-delay=".2s">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <!-- Form Submit -->
+                            <div class="mt-4 text-center">
+                                <button type="submit" class="btn btn-primary" id="form-submit">
+                                    <i class="bi bi-send"></i> Send Message
+                                </button>
+                                {% if success_message %}
+                                <div class="alert alert-success mt-3" role="alert">
+                                    <strong>Thank you!</strong> {{ success_message }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
-  {% endblock %}
+</section>
+{% endblock %}
+
   
