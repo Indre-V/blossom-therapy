@@ -1,13 +1,11 @@
 {% load crispy_forms_tags %}
 
-{% block content %}
-<!-- Contact Us Section -->
 <!-- Modal Structure -->
 <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="contactModalLabel">Love to Hear From You</h5>
+                <h5 class="text-center modal-title" id="contactModalLabel">Love to Hear From You</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -26,11 +24,6 @@
                                                 <button type="submit" class="btn btn-primary" id="form-submit">
                                                     <i class="bi bi-send"></i> Send Message
                                                 </button>
-                                                {% if success_message %}
-                                                <div class="alert alert-success mt-3" role="alert">
-                                                    <strong>Thank you!</strong> {{ success_message }}
-                                                </div>
-                                                {% endif %}
                                             </div>
                                         </form>
                                     </div>
@@ -43,6 +36,3 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-  

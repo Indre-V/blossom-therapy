@@ -1,9 +1,8 @@
 """URL Patterns"""
 from django.urls import path
-from . import views
+from .views import DeveloperProfileView
 
 urlpatterns = [
-path('developer/', views.developer_profile_view, name='developer'),
-
-
+    path('developer/', DeveloperProfileView.as_view(), name='developer_profile'),
 ]
+
