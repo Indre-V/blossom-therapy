@@ -105,7 +105,7 @@ class ProfileInsightsView(View):
 
         return render(request, 'profile/user_insights.html', context)
 
-class ProfileDeleteView(DeleteView):
+class ProfileDeleteView(LoginRequiredMixin, DeleteView):
     """
     View for deleting an user profile
     """
@@ -117,10 +117,9 @@ class ProfileDeleteView(DeleteView):
         """
         Handles the deletion of an user profile and related objects
         """
-        # Log out the user
+
         logout(request)
 
-        # Delete the user profile and related objects
         return super().delete(request, *args, **kwargs)
 
 
@@ -168,3 +167,31 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             return super().form_valid(form)
         else:
             return self.form_invalid(form)
+
+class PublicProfileView(DetailView):
+    """This view is used to display a public user profile page"""
+    template_name = "profile/public_profile.html"
+
+    def get_object(self, queryset=None):
+        """
+        Retrieve the profile object based on the provided username.
+        """
+        user = get_object_or_404(User, username=self.kwargs.get("username"))
+        return get_object_or_404(Profile, user=user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.get_object()
+        user = profile.user
+        insights = Post.objects.filter(author=user, status__in=[0, 1])
+        total_likes = sum(post.count_likes() for post in insights)
+        total_favourites = sum(post.count_favs() for post in insights)
+
+        context.update({
+            'profile': profile,
+            'user': user,
+            'insights': insights,
+            'total_likes': total_likes,
+            'total_favourites': total_favourites
+        })
+        return context

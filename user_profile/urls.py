@@ -4,11 +4,13 @@ from . import views
 
 
 urlpatterns = [
-path(
-        "profile/<str:username>/",
-        views.ProfilePageView.as_view(), name="profile"),
-path(
-        "profile_delete/<int:pk>/",
+path("profile/private/<str:username>/",
+        views.ProfilePageView.as_view(),
+        name="profile"),
+path("profile/<str:username>/",
+     views.PublicProfileView.as_view(),
+     name="public-profile"),
+path("profile_delete/<int:pk>/",
         views.ProfileDeleteView.as_view(),
         name="profile-delete"),
 path("profile_update/<int:pk>/",

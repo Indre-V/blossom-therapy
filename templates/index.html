@@ -10,7 +10,6 @@
       <p class="mt-4">Welcome to Blossom Therapy, your go-to destination for all things gardening!
         Whether you're a seasoned green thumb or just starting your gardening journey,
         we're here to help you cultivate a thriving, beautiful, and therapeutic outdoor space.</p>
-
       {% if user.is_authenticated %}
       <a href="{% url 'add-insight' %}" class="btn rounded mb-0 text-nowrap button-style">Add your Insight</a>
       {% else %}
@@ -18,7 +17,7 @@
       {% endif %}
     </div>
     <div class="col-md-6">
-      <img src="{% static 'images/hero.jpg' %}" alt="Hero Image" class="img-fluid">
+      <img src="{% static 'images/hero.jpg' %}" alt="Hero Image" class="img-fluid w-80">
     </div>
   </div>
 </div>
@@ -39,7 +38,7 @@
       <div class="row justify-content-center">
         {% for post in latest_insights %}
         <div class="col-md-6 mb-4">
-          <div class="card p-4">
+          <div class="card p-4 m-5">
             {% include 'insights/list_cards.html' %}
             <div class="text-center">
             <a href="{% url 'insight-details' post.slug %}" class="btn rounded mb-0 text-nowrap button-style">Read</a></div>
@@ -55,8 +54,8 @@
         {% for post in most_popular %}
         <div class="col-md-12 mb-4">
           <div class="card p-4">
-            <h5><a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></h5>
-            <p>by {{ post.author }}</p>
+            <p><a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></p>
+            <a href="{% url 'public-profile' post.author.username %}" class="mb-0"><strong> by {{ post.author.username }}</strong></a>
           </div>
         </div>
         {% endfor %}
