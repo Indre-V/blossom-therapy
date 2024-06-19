@@ -22,17 +22,26 @@
                     </ul>
                     <p>{{ developer.about }}</p>
                 </div>
-                <div class="card-footer center-align">
+                <div class="card-footer center-align d-flex justify-content-around">
                     {% if developer.github_portfolio_link %}
-                        <a href="{{ developer.github_portfolio_link }}" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                        <a href="{{ developer.github_portfolio_link }}" target="_blank">
+                            <i class="fa fa-github icon" aria-hidden="true"></i>
+                        </a>
                     {% endif %}
                     {% if developer.linkedin_profile_link %}
-                        <a href="{{ developer.linkedin_profile_link }}" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+                        <a href="{{ developer.linkedin_profile_link }}" target="_blank">
+                            <i class="fa fa-linkedin-square icon" aria-hidden="true"></i>
+                        </a>
                     {% endif %}
                     {% if developer.resume_download_link %}
-                        <a href="{{ developer.resume_download_link }}" target="_blank"><i class="fa fa-file-download fa-2x" aria-hidden="true"></i></a>
+                        <a href="{{ developer.resume_download_link }}" target="_blank">
+                            <i class="fa fa-file-download icon" aria-hidden="true"></i>
+                        </a>
                     {% endif %}
-                </div>
+                    <button type="button" class="icon-size icon btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </button>
+                </div>                
             </div>
         </div>
 
