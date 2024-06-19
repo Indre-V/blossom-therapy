@@ -33,7 +33,6 @@ class DeveloperProfile(models.Model):
     skills = models.TextField(blank=True)
     languages = models.TextField(blank=True)
     education = models.TextField(blank=True)
-    certifications = models.TextField(blank=True)
 
     def __str__(self):
         return self.user.username

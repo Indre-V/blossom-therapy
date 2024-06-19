@@ -28,13 +28,13 @@
   and create beauty in your own space. Join our community and find out why so many people find happiness in their gardens</p>
 </section>
 <div class="container mt-5">
-  <!-- Latest Insights Row -->
-  <div class="row mb-5 justify-content-center"> 
-    <div class="col-10">
+  <div class="row justify-content-center">
+    <!-- Latest Insights Column-->
+    <div class="col-md-8 mb-5">
       <h2 class="text-center my-3">Latest</h2>
       <div class="row justify-content-center">
         {% for post in latest_insights %}
-        <div class="col-md-12 col-lg-6 mb-4">
+        <div class="col-md-6 mb-4">
           <div class="card p-4">
             {% include 'insights/list_cards.html' %}
             <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
@@ -43,24 +43,28 @@
         {% endfor %}
       </div>
     </div>
-  </div>
-  <!-- Most Popular Insights Row -->
-  <div class="row justify-content-center">
-    <div class="col-10">
+    
+    <!-- Most Popular Insights Column -->
+    <div class="col-md-4 mb-5">
       <h2 class="text-center my-3">Most Popular</h2>
       <div class="row justify-content-center">
         {% for post in most_popular %}
-        <div class="col-md-6 col-lg-6 mb-4">
+        <div class="col-md-12 mb-4">
           <div class="card p-4">
-            {% include 'insights/list_cards.html' %}
-            <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary" data-mdb-ripple-init>Read</a>
+            <h5><a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></h5>
+            <p>by {{ post.author }}</p>
           </div>
         </div>
         {% endfor %}
       </div>
     </div>
   </div>
+
   <div class="text-center m-5">
     <a href="{% url 'insights' %}" class="btn btn-secondary">More Insights</a>
-  </div>  </div>
+  </div>
+</div>
+
+
+  
 {% endblock %}
