@@ -3,50 +3,20 @@
 {% load static %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<div class="blog-single bg-light py-5">
-    <div class="container">
+<div class="blog-single py-5">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 mb-4">
-                <button class="btn btn-info mb-1" onclick="history.back()">Go Back</button>
                 <article class="article bg-white p-4 shadow-sm rounded">
                     {% include 'insights/list_cards.html' %}
-                    <div class="article-content">{{ post.content|safe }}</div>
                     {% if post.status == 1 %}
                     <div class="d-flex justify-content-between m-4">
-                        <div>
-                            <form class="d-inline" action="{% url 'like-insight' post.slug %}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="post_id" value="{{ post.slug }}">
-                                <button type="submit" class="btn btn-outline-primary" aria-label="Like and Unlike">
-                                    {% if liked %}
-                                    <i class="fa-solid fa-thumbs-up outline-primary">Unlike</i>
-                                    {% else %}
-                                    <i class="fa-regular fa-thumbs-up outline-primary">Like</i>
-                                    {% endif %}
-                                </button>
-                            </form>
-                        </div>
-                        <div>
-                            <form class="d-inline" action="{% url 'favourite-insight' post.slug %}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="post_id" value="{{ post.slug }}">
-                                <button type="submit" class="btn btn-outline-primary"
-                                    aria-label="Favourite and Unfavourite">
-                                    {% if favourited %}
-                                    <i class="fa-solid fa-heart-o outline-primary">UnFavourite</i>
-                                    {% else %}
-                                    <i class="fa-regular fa-heart-o">Favourite</i>
-                                    {% endif %}
-                                </button>
-                        </div>
-                        </form>
-                    </div>
+                            <div class="article-content pt-5">{{ post.content|safe }}</div>
             </div>
         </div>
         {% endif %}
         </article>
     </div>
-</div>
 <section class="gradient-custom">
     <div class="container my-5 py-5">
         <div class="row justify-content-center">
@@ -54,7 +24,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         {% if post.status == 1 %}
-                        <h4 class="text-center mb-4 pb-2">Comments</h4>
+                        <h2 class="text-center mb-4 pb-2">Comments</h2>
                         {% for comment in comments %}
                         <div class="mb-4">
                             <div class="d-flex justify-content-between">
@@ -71,12 +41,10 @@
                                 </div>
                                 {% if request.user == comment.author or request.user.is_superuser %}
                                 <div>
-                                    <a class="text-secondary fw-bolder" href="{% url 'delete-comment' comment.pk %}">
+                                    {% include 'comments/delete_comment.html' %}
+                                    <a class="btn btn-warning icon m-2" href="{% url 'edit-comment' comment.pk %}">
                                         {% csrf_token %}
-                                        <i class="fas fa-trash-alt"></i>Delete</a>
-                                    <a class="text-secondary fw-bolder" href="{% url 'edit-comment' comment.pk %}">
-                                        {% csrf_token %}
-                                        <i class="fas fa-pen"></i>Edit</a>
+                                        <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                                 </div>
                                 {% endif %}
                             </div>
@@ -84,7 +52,7 @@
                             <hr class="my-0">
                         </div>
                         {% empty %}
-                        <p>No comments yet.</p>
+                        <p class="m-4">No comments yet.</p>
                         {% endfor %}
                         <!-- Comment form -->
                         <div class="mt-4">

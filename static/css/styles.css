@@ -43,6 +43,18 @@ body {
   min-height: 100vh;
 }
 
+/* Specific styles for form elements */
+.form-control {
+    font-size: 1.6rem; 
+    font-family: inherit; 
+}
+
+
+.btn {
+  font-size: 1.2rem; /* Inherits the 16px size */
+  padding: 0.8rem 1.6rem; /* Adjust padding if needed */
+}
+
 .padding{
   padding: 5rem;
 }

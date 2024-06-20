@@ -1,25 +1,38 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
-{% block title %} Blossom Therapy Insights | Delete Comment {% endblock %}
-
-{% block content %}
-<div class="container">
-    <h1 class="page-title">Delete Comment</h1>
-    <hr class="my-0">
-    <p class="text-center mt-3">Are you sure you want to delete this comment?</p>
-    <p>{{comment.content }}</p>
-    <div class="row justify-content-center">
-        <div class="col-11 col-md-6 col-lg-4 mt-3">
-            <!-- Delete Comment Form -->
-            <div>
-                <form method="post" class="d-inline">
-                    {% csrf_token %}
-                <button class="btn btn-danger" data-comment_id="{{ comment.id }}" type="submit">Delete</button></form>
-                <a class="btn" href="{% url 'insight-details' comment.post.slug %}">Cancel</a>
-                </div>
-           
-        </div>
-    </div>
+<!-- comment_delete_modal.html -->
+<button
+ type="button"
+ class="btn btn-danger icon m-2"
+ data-bs-toggle="modal"
+ data-bs-target="#exampleModal-{{ comment.id }}">
+ <i class="fa-solid fa-trash-alt"></i></button>
+<div
+ class="modal fade"
+ id="exampleModal-{{ comment.id }}"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered"">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">{{ comment.content }} will be deleted!</h5>
+       <button
+type="button"
+class="btn-close"
+data-bs-dismiss="modal"
+aria-label="Close"></button>
 </div>
-{% endblock %}
+<div class="modal-body">This action cannot be reverted!</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+Cancel
+</button>
+<form method="post" action="{% url 'delete-comment' comment.pk %}">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">
+  <i class="fa-solid fa-trash"></i> Confirm Delete
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>

@@ -177,15 +177,18 @@ class InsightDetailsView(View):
         return render(request, self.template_name, context)
 
 
+
 class CommentDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
 
     """
     This view is used to allow logged in users to delete their own comments
     """
     model = Comment
     template_name = "comments/delete_comment.html"
-    success_message = "Comment deleted successfully"
+    warning_message = "Comment Will be removed permantently"
+    success_message = "Comment removed successfully"
+
 
     def test_func(self):
         """
@@ -229,7 +232,7 @@ class InsightDeleteView(
     model = Post
     template_name = "includes/delete_modal.html"
     success_message = "Insight removed successfully"
-    warning_message = "Post Will be rmeoved permantently"
+    warning_message = "Post Will be removed permantently"
     success_url = reverse_lazy("insights")
 
     def test_func(self):
