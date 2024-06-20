@@ -284,8 +284,9 @@ class LikeInsightView(LoginRequiredMixin, View):
             messages.success(
                 self.request,
                 "Thank You for Liking!")
-        return HttpResponseRedirect(reverse("insight-details", args=[slug]))
+        referer = request.META.get('HTTP_REFERER')
 
+        return redirect(referer)
 class FavouriteInsightView(LoginRequiredMixin, ListView):
     """
     A view that handles the favouriting and unfavouriting of a post by a user.
