@@ -93,7 +93,7 @@ h6 {
 
 
 .insight-detail-img{
-  max-height: 20rem;
+  max-height: 30rem;
   height: 17rem;
   object-fit: cover;
   width: 100%;
@@ -136,3 +136,19 @@ h6 {
 .icon-size {
   padding: 0;
 }
+
+ .author{
+  width: 100%;
+  height: 60px;
+  background-color: var(--background-color)
+}
+
+.author-image{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+

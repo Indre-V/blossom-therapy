@@ -24,9 +24,8 @@
       <div class="row">
         {% for post in insights %}
         <div class="col-lg-6 col-md-8 mb-6">
-          <div class="card p-4">
+          <div class="p-4">
             {% include 'insights/list_cards.html' %}
-            <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary">Read</a>
           </div>
         </div>
         {% empty %}

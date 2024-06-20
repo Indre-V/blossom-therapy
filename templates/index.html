@@ -38,11 +38,7 @@
       <div class="row justify-content-center">
         {% for post in latest_insights %}
         <div class="col-md-6 mb-4">
-          <div class="card p-4 m-5">
             {% include 'insights/list_cards.html' %}
-            <div class="text-center">
-            <a href="{% url 'insight-details' post.slug %}" class="btn rounded mb-0 text-nowrap button-style">Read</a></div>
-          </div>
         </div>
         {% endfor %}
       </div>
