@@ -43,7 +43,7 @@ class Post(models.Model):
         (2, 'Save for Later')
     )
 
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     featured_image = CloudinaryField('image', default='placeholder_insights')
