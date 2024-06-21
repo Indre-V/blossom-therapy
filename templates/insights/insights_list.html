@@ -9,8 +9,8 @@
     <div class="col-md-4 mb-5">
       {% include 'includes/category_sidebar.html' %}
     </div>
-    <div class="col-md-8" id="">
-      <h4 class="mb-3 text-center">
+    <div class="col-md-8">
+      <h3 class="mb-3 text-center">
         <strong>
           {% if search_query %}
           Search Results for: "{{ search_query }}"
@@ -20,7 +20,7 @@
           Browse All Insights
           {% endif %}
         </strong>
-      </h4>
+      </h3>
       <div class="row">
         {% for post in insights %}
         <div class="col-lg-6 col-md-8 mb-6">
@@ -29,11 +29,12 @@
           </div>
         </div>
         {% empty %}
-        <h6 class="text-center">Nothing found .... Feel free to add an Insight.</h6>
+        <h3 class="text-center">Nothing found .... Feel free to add an Insight.</h3>
         {% endfor %}
       </div>
+      {% include 'insights/pagination.html' %}
     </div>
   </div>
 </div>
-{% include 'insights/pagination.html' %}
+
 {% endblock %}

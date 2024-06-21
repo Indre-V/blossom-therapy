@@ -307,4 +307,7 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
             messages.success(
                 self.request,
                 "Insight Added to Favourites List!")
-        return HttpResponseRedirect(reverse("insight-details", args=[slug]))
+
+        referer = request.META.get('HTTP_REFERER')
+
+        return redirect(referer)

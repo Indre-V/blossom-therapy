@@ -55,6 +55,16 @@ body {
   padding: 0.8rem 1.6rem; /* Adjust padding if needed */
 }
 
+/* Btns and Fa icons */
+.btn.icon {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+}
+
 .padding{
   padding: 5rem;
 }
@@ -126,7 +136,7 @@ h6 {
   height: 300px;
 }
 
-/* Developer section icons */
+/* Button and Fa icons */
 .icon {
   font-size: 2rem; 
   color: var(--secondary-color);
@@ -135,6 +145,7 @@ h6 {
 .icon:hover{
   color: var(--powder-blue);
 }
+
 .card-footer {
   display: flex;
   justify-content: space-around; 
@@ -164,3 +175,28 @@ h6 {
   margin-top: 5px;
 }
 
+/* pagination styles */
+.pagination .page-link {
+  font-size: 1.2rem; /* Increase font size */
+  padding: 0.75rem 1.25rem; /* Increase padding */
+}
+
+.pagination .page-item .page-link {
+  border-radius: 0.25rem; /* Default Bootstrap border-radius */
+  margin: 0 0.25rem; /* Add margin for spacing */
+}
+
+@media (max-width: 1024px) {
+  .card .row {
+      flex-direction: column;
+      max-width: 100%;
+  }
+  .card .col-md-6 {
+      max-width: 100%;
+      flex: 0 0 100%;
+  }
+  .bg-image {
+    display: flex;
+    justify-content: center;
+}
+}
