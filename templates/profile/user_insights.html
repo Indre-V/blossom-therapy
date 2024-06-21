@@ -4,24 +4,20 @@
 {% block content %}
 <div class="container mt-5">
     <button class="btn btn-info mb-1" onclick="history.back()">Return to Profile</button>
-    <div class="row">
-        <div class="col-md-12 bg-light border">
-            <h4 class="text-center mt-4">My Posts</h4>
-            <hr class="my-0">
-            <div class="row justify-content-center">
+    <div class="col-md-12">
+        <h4 class="text-center mt-4">Insights</h4>
+        <hr class="hr hr-blurry">
+        <div class="row justify-content-center">
                 {% for post in insights %}
-                <div class="col-lg-6 col-md-6 mb-6 mt-2">
-                    <div class="card p-3">
-                        {% include 'insights/list_cards.html' %}
-                        <a href="{% url 'insight-details' post.slug %}" class="btn btn-primary btn-sm mx-1">Read</a> 
-                    </div>
+                <div class="col-lg-4 col-md-6 mb-4 mt-2">
+                    {% include 'insights/list_cards.html' %}
+                  </div>
+                  {% empty %}
+                  <p>No Insights yet.</p>
+                  {% endfor %}
                 </div>
-                {% empty %}
-                <p>No Posts yet.</p>
-                {% endfor %}
+              </div>
+             {% include 'insights/pagination.html' %}  
             </div>
-        </div>
-    </div>
-</div>
-{% include 'insights/pagination.html' %}
 {% endblock content %}
+            
