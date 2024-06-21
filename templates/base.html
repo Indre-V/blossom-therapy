@@ -104,20 +104,24 @@
     </footer>
 
     <!-- Bootstrap scripts -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if (document.querySelector(".modal-body .alert")) {
-                var myModal = new bootstrap.Modal(document.getElementById('messageModal'));
-                myModal.show();
-            }
-        });
-    </script>
+   
+<script>
+            document.addEventListener('DOMContentLoaded', function() {
+        var successModal = document.getElementById('successModal');
+        if (successModal) {
+            successModal.addEventListener('hidden.bs.modal', function (event) {
+                location.reload();
+            });
+        }
+    });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- Font Awesome script -->
     <script src="https://kit.fontawesome.com/27545168c5.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
-</body>
 
+
+</body> 
 </html>

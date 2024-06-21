@@ -41,10 +41,11 @@
             </div>
             {% if request.user == post.author or request.user.is_superuser %}
                 {% include 'includes/delete_modal.html' %}
-                <a href="{% url 'insight-update' post.slug %}" type="button" class="btn btn-warning icon ml-2" title="Edit">
+                <a href="{% url 'insight-update' post.slug %}" type="button" class="btn btn-warning icon" title="Edit">
                     <i class="fa fa-pencil-square" aria-hidden="true"></i>
                 </a>
-            {% endif %} </div>
+            {% endif %} 
+        </div>
             <hr class="hr hr-blurry">
             {% if post.status == 0 %}
             <h4 class="text-center mb-4 pb-2 text-warning">
