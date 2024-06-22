@@ -19,6 +19,7 @@ from .forms import CommentForm, InsightForm
 # pylint: disable=unused-argument
 # pylint: disable=unused-variable
 
+
 class HomeView(ListView):
     """
     A view class for displaying the home page.
@@ -109,8 +110,14 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         """
         form.instance.author = self.request.user
         form.instance.slug = slugify(form.instance.title)
+        # Determine the success message based on the post status
+        if form.instance.status == 0:
+            success_message = "Post added successfully! Waiting for Admin approval."
+        elif form.instance.status == 2:
+            success_message = "Post added to drafts successfully."
+
         response = super().form_valid(form)
-        messages.success(self.request, "Post created successfully! Waiting for Admin approval")
+        messages.success(self.request, success_message)
         return response
 
     def form_invalid(self, form):
@@ -118,7 +125,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         Handles form validation when creating a new post
         """
         response = super().form_invalid(form)
-        messages.error(self.request, "Post creation failed. Please check your input.")
+        messages.error(self.request, "Try Again. Please check all fields.")
         return response
 
 
@@ -261,9 +268,16 @@ class InsightUpdateView(
     def get_success_url(self):
         return reverse_lazy("insight-details", kwargs={"slug": self.object.slug})
 
-
     def get_success_message(self, cleaned_data):
         return self.success_message % cleaned_data
+
+    def form_invalid(self, form):
+        """
+        Handles form validation when creating a new post
+        """
+        response = super().form_invalid(form)
+        messages.error(self.request, "Try Again. Please check all fields.")
+        return response
 
 class LikeInsightView(LoginRequiredMixin, View):
     """
