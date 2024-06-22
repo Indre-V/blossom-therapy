@@ -24,11 +24,14 @@ class ProfilePageView(DetailView):
         """
         Retrieve the profile object based on the provided username.
         """
-        return get_object_or_404(User, username=self.kwargs.get("username"))
+        username = self.kwargs.get("username")
+        user = get_object_or_404(User, username=username)
+        profile, created = Profile.objects.get_or_create(user=user)
+        return profile
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user = self.get_object()
+        user = self.get_object().user 
         insights = Post.objects.filter(author=user, status__in=[0, 1])
         drafts = Post.objects.filter(author=user, status=2)
         favourites = Post.objects.filter(favourite=user)

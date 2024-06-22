@@ -7,8 +7,8 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-12 bg-c-lite-green text-center text-white">
                         <div class="col-sm-12">
-                            <h3 class="m-3">{{ profile.username }}</h3>
-                            {% if "image" in profile.profile_picture %}
+                            <h3 class="m-3">{{ profile.user.username }}</h3>
+                            {% if "placeholder_profile" in profile.profile_picture.url %}
                             <img src="{% static 'images/placeholder_profile.jpg' %}" class="img-radius w-25 mb-5"
                                 alt="Profile Placeholder" loading="lazy">
                             {% else %}
@@ -16,17 +16,17 @@
                                 loading="lazy">
                             {% endif %}
                         </div>
-                        <a href="{% url 'profile-insights' profile.username %}""
+                        <a href="{% url 'profile-insights' profile.user.username %}"
                             class="btn btn-outline-discovery m-2">
                             <i class="fas fa-book" aria-hidden="true"></i> Insights
                         </a>
-                        {% if user.is_authenticated and user.id == profile.id %}
-                        <a href="{% url 'profile-drafts' user.username %}"
+                        {% if user.is_authenticated and user.id == profile.user.id %}
+                        <a href="{% url 'profile-drafts' profile.user.username %}"
                             class="btn btn-outline-discovery m-2">
                             <i class="fa fa-pencil" aria-hidden="true"></i> My
                             Drafts
                         </a>
-                        <a href="{% url 'profile-favourites' user.username %}"
+                        <a href="{% url 'profile-favourites' profile.user.username %}"
                             class="btn btn-outline-discovery m-2">
                             <i class="fas fa-heart" aria-hidden="true"></i> My
                             Favourites
@@ -40,16 +40,16 @@
                             <div class="row">
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold">Full Name:</p>
-                                    <h6 class="text-muted">{{ profile.first_name }}
+                                    <h6 class="text-muted">{{ profile.user.first_name }}
                                         {{ profile.last_name }}</h6>
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold">Location:</p>
-                                    <h6 class="text-muted">{{ profile.profile.location }}</h6>
+                                    <h6 class="text-muted">{{ profile.location }}</h6>
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <p class="mb-1 fw-bold">Bio:</p>
-                                    <h6 class="text-muted">{{ profile.profile.bio }}</h6>
+                                    <h6 class="text-muted">{{ profile.bio }}</h6>
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold d-inline">Insights <i class="fa fa-thumbs-up"></i>: {{ total_likes }}</p>
@@ -57,7 +57,7 @@
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold">Insights <i class="fa fa-heart"></i>: {{ total_favourites }}</p>
                                 </div>
-                                {% if user.is_authenticated and user.id == profile.id %}
+                                {% if user.is_authenticated and user.id == profile.user.id %}
                                 <div class="py-5 text-center">
                                     <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-info m-3">
                                         <i class="fas fa-user-edit"></i> Update
