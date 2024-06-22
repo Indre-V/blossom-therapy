@@ -51,6 +51,7 @@ class SearchResultsView(ListView):
         )
         return object_list
 
+
 class InsightsListView(ListView):
     """
     View for displaying insights, with support for category filtering and search functionality.
@@ -219,7 +220,7 @@ class CommentEditView(
     This view is used to allow logged in users to updatetheir own comments
     """
     model = Comment
-    fields = ["content"]
+    form_class = CommentForm
     template_name = "comments/edit_comment.html"
     success_message = "Comment updated successfully"
 
@@ -279,6 +280,7 @@ class InsightUpdateView(
         messages.error(self.request, "Try Again. Please check all fields.")
         return response
 
+
 class LikeInsightView(LoginRequiredMixin, View):
     """
     A view that handles the liking and unliking of a post by a user.
@@ -301,6 +303,8 @@ class LikeInsightView(LoginRequiredMixin, View):
         referer = request.META.get('HTTP_REFERER')
 
         return redirect(referer)
+
+
 class FavouriteInsightView(LoginRequiredMixin, ListView):
     """
     A view that handles the favouriting and unfavouriting of a post by a user.

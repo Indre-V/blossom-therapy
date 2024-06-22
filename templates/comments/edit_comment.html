@@ -4,21 +4,23 @@
 {% block title %} Blossom Therapy Insights | Edit Comment {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1 class="page-title">Edit Comment</h1>
-    <hr class="my-0">
+<div class="container mt-5">
+    <h1 class="page-title text-center">Edit Comment</h1>
+    <hr class="hr hr-blurry">
     <p class="text-center mt-3">Are you sure you want to edit this comment?</p>
     <div class="row justify-content-center">
         <div class="col-11 col-md-6 col-lg-4 mt-3">
             <!-- Edit Comment Form -->
-            <div>
-                <form method="post" class="d-inline">
-                    {{ form | crispy }}
+            <div class="card p-4 shadow-sm">
+                <form method="post">
+                    {{ form|crispy }}
                     {% csrf_token %}
-                <button class="btn btn-danger" data-comment_id="{{ comment.id }}" type="submit">Submit</button></form>
-                 <a class="btn" href="{% url 'insight-details' comment.post.slug %}">Cancel</a>
-                </div>
-           
+                    <div class="d-flex justify-content-between mt-3">
+                        <button class="btn btn-sucess" type="submit">Submit</button>
+                        <a class="btn rounded mb-0 text-nowrap button-style" href="{% url 'insight-details' comment.post.slug %}">Cancel</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
