@@ -15,7 +15,7 @@ from .forms import UserForm, ProfileForm
 # pylint: disable=unused-argument
 # pylint: disable=unused-variable
 
-class ProfilePageView(LoginRequiredMixin, DetailView):
+class ProfilePageView(DetailView):
     """This view is used to display user profile page"""
     template_name = "profile/profile.html"
     context_object_name = "profile"
@@ -24,13 +24,11 @@ class ProfilePageView(LoginRequiredMixin, DetailView):
         """
         Retrieve the profile object based on the provided username.
         """
-        user = get_object_or_404(User, username=self.kwargs.get("username"))
-        return get_object_or_404(Profile, user=user)
+        return get_object_or_404(User, username=self.kwargs.get("username"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        profile = self.get_object()
-        user = profile.user
+        user = self.get_object()
         insights = Post.objects.filter(author=user, status__in=[0, 1])
         drafts = Post.objects.filter(author=user, status=2)
         favourites = Post.objects.filter(favourite=user)
@@ -38,13 +36,11 @@ class ProfilePageView(LoginRequiredMixin, DetailView):
         total_favourites = sum(post.count_favs() for post in insights)
 
         context.update({
-            'profile': profile,
-            'user': user,
             'insights': insights,
             'drafts': drafts,
             'favourites': favourites,
             'total_likes': total_likes,
-            'total_favourites': total_favourites
+            'total_favourites': total_favourites,
         })
         return context
 
@@ -57,11 +53,9 @@ class ProfileFavouritesView(View):
         Renders the user's favourites page.
         """
         user = get_object_or_404(User, username=username)
-        profile = get_object_or_404(Profile, user=user)
         favourites = Post.objects.filter(favourite=user)
 
         context = {
-            'profile': profile,
             'favourites': favourites,
         }
 
@@ -76,11 +70,9 @@ class ProfileDraftsView(View):
         Renders the user's drafts page.
         """
         user = get_object_or_404(User, username=username)
-        profile = get_object_or_404(Profile, user=user)
         drafts = Post.objects.filter(author=user, status=2)
 
         context = {
-            'profile': profile,
             'drafts': drafts,
         }
 
@@ -96,10 +88,8 @@ class ProfileInsightsView(View):
         Handles display render of the user insights
         """
         user = get_object_or_404(User, username=username)
-        profile = get_object_or_404(Profile, user=user)
         insights = Post.objects.filter(author=user, status__in=[0, 1])
         context = {
-            'profile': profile,
             'insights': insights,
         }
 
@@ -168,30 +158,3 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         else:
             return self.form_invalid(form)
 
-class PublicProfileView(DetailView):
-    """This view is used to display a public user profile page"""
-    template_name = "profile/public_profile.html"
-
-    def get_object(self, queryset=None):
-        """
-        Retrieve the profile object based on the provided username.
-        """
-        user = get_object_or_404(User, username=self.kwargs.get("username"))
-        return get_object_or_404(Profile, user=user)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        profile = self.get_object()
-        user = profile.user
-        insights = Post.objects.filter(author=user, status__in=[0, 1])
-        total_likes = sum(post.count_likes() for post in insights)
-        total_favourites = sum(post.count_favs() for post in insights)
-
-        context.update({
-            'profile': profile,
-            'user': user,
-            'insights': insights,
-            'total_likes': total_likes,
-            'total_favourites': total_favourites
-        })
-        return context

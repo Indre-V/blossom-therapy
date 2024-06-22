@@ -51,7 +51,7 @@
         <div class="col-md-12 mb-4">
           <div class="card p-4">
             <p><a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></p>
-            <a href="{% url 'public-profile' post.author.username %}" class="mb-0"><strong> by {{ post.author.username }}</strong></a>
+            <a href="{% url 'profile' post.author.username %}" class="mb-0"><strong> by {{ post.author }}</strong></a>
           </div>
         </div>
         {% endfor %}

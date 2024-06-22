@@ -59,8 +59,8 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link text-capitalize" href="{% url 'profile' user.username %}"><i
-                                    class="fa-solid fa-user"></i> {{ user }}</a>
-                        </li>
+                                    class="fa-solid fa-user"></i> {{ user.username }}</a>
+                        </li> 
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         </li>
