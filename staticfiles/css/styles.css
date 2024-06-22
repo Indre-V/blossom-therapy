@@ -1,0 +1,202 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap');
+
+/* Global Styling */
+
+:root {
+  --primary-color: #FF6347; /* Tomato */
+  --secondary-color: #46626d;
+  --accent-color: #FFD700; /* Gold */
+  --light-orange: #edd0b3; /* Light grayish orange */
+  --powder-blue: #b0d3e6; 
+  --background-color: #ffffff; /* White */
+  --text-color: #222020; /* Dark Gray */
+  --floral-white: #FCF7F2;
+  --ivory: #FFFFF0; /* Ivory */
+   
+  /* Additional Colors */
+  --sea-green: #2E8B57; /* Sea Green */
+  --coral: #FF7F50; /* Coral */
+  --bean: #381b21;
+
+  --taupe-gray: #8e8581; /* Light Gray */
+ 
+
+}
+*,
+*::before,
+*::after {margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}  
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: 300;
+  background-color: var(--floral-white);
+  min-height: 100vh;
+}
+
+/* Specific styles for form elements */
+.form-control {
+    font-size: 1.6rem; 
+    font-family: inherit; 
+}
+
+
+.btn {
+  font-size: 1.2rem; /* Inherits the 16px size */
+  padding: 0.8rem 1.6rem; /* Adjust padding if needed */
+}
+
+/* Btns and Fa icons */
+.btn.icon {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.padding{
+  padding: 5rem;
+}
+
+
+.navbar {
+  background-color: var(--primary-color); 
+  font-weight: 400;
+}
+
+search {
+  background-color: var(--peach-puff);
+}
+
+.bg-c-lite-green {
+  background: linear-gradient(to right, var(--primary-color), var(--light-orange));
+}
+
+.user-profile {
+  padding: 2rem 0;
+}
+
+.img-radius {
+  border-radius: 0.5rem;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* button background color */
+.button-style {
+  background-color: var(--powder-blue); 
+  font-weight: 700;
+}
+
+.button-style:hover {
+  background-color: var(--light-orange); 
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
+
+
+.insight-detail-img{
+  max-height: 30rem;
+  height: 17rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.list-img {
+  width: 100%;
+  height: 15vh;
+  object-fit: cover;
+  min-height: 20rem;
+}
+
+#bg-footer {
+  background-color: var(--light-orange);
+}
+
+#dev-img {
+  height: 300px;
+}
+
+/* Button and Fa icons */
+.icon {
+  font-size: 2rem; 
+  color: var(--secondary-color);
+}
+
+.icon:hover{
+  color: var(--powder-blue);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
+}
+
+.card-footer a, .card-footer button {
+  text-align: center;
+}
+
+.icon-size {
+  padding: 0;
+}
+
+ .author{
+  width: 100%;
+  height: 60px;
+  background-color: var(--background-color)
+}
+
+.author-image{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+/* pagination styles */
+.pagination .page-link {
+  font-size: 1.2rem; /* Increase font size */
+  padding: 0.75rem 1.25rem; /* Increase padding */
+}
+
+.pagination .page-item .page-link {
+  border-radius: 0.25rem; /* Default Bootstrap border-radius */
+  margin: 0 0.25rem; /* Add margin for spacing */
+}
+
+@media (max-width: 1024px) {
+  .card .row {
+      flex-direction: column;
+      max-width: 100%;
+  }
+  .card .col-md-6 {
+      max-width: 100%;
+      flex: 0 0 100%;
+  }
+  .bg-image {
+    display: flex;
+    justify-content: center;
+}
+}
