@@ -10,10 +10,12 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from .models import Category, Post, Comment
 from django.db.models import Count
 from .forms import CommentForm, InsightForm
+
 
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-argument
@@ -144,15 +146,15 @@ class InsightDetailsView(View):
         comments = post.comments.order_by("-created_on")
         liked = post.likes.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
         favourited = post.favourite.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
-
+        
         context = {
+
             "post": post,
             "liked": liked,
             "favourited": favourited,
             "comments": comments,
             "comment_form": CommentForm(),
             "commented": False,
-            "author_profile_image": post.author.profile.profile_picture,
         }
         return render(request, self.template_name, context)
 

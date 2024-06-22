@@ -11,7 +11,7 @@ class PostAdmin(SummernoteModelAdmin):
     """
     Allows admin to manage posts via the admin panel
     """
-    list_display = ("title", "slug", "created_on", "status")
+    list_display = ("title", "created_on", "status", "author")
     search_fields = ["title", "content"]
     list_filter = ("created_on", "category")
     prepopulated_fields = {"slug": ("title",)}

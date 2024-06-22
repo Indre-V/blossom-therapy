@@ -8,11 +8,11 @@
                     <div class="col-xl-4 col-lg-12 bg-c-lite-green text-center text-white">
                         <div class="col-sm-12">
                             <h3 class="m-3">{{ profile.username }}</h3>
-                            {% if "placeholder" in profile.profile.profile_picture.url%}
+                            {% if "image" in profile.profile_picture %}
                             <img src="{% static 'images/placeholder_profile.jpg' %}" class="img-radius w-25 mb-5"
                                 alt="Profile Placeholder" loading="lazy">
                             {% else %}
-                            <img src="{{ profile.profile.profile_picture.url }}" class="img-radius w-25 mb-5" alt="Profile Picture"
+                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-25 mb-5" alt="Profile Picture"
                                 loading="lazy">
                             {% endif %}
                         </div>

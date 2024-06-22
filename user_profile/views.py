@@ -105,13 +105,14 @@ class ProfileInsightsView(View):
 
         return render(request, 'profile/user_insights.html', context)
 
-class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """
     View for deleting an user profile
     """
     model = User
     template_name = "profile/profile_delete.html"
     success_url = reverse_lazy("home")
+    success_message = "Your profile has been successfully deleted."
 
     def delete(self, request, *args, **kwargs):
         """
@@ -119,7 +120,6 @@ class ProfileDeleteView(LoginRequiredMixin, DeleteView):
         """
 
         logout(request)
-
         return super().delete(request, *args, **kwargs)
 
 

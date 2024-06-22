@@ -1,5 +1,6 @@
 <!-- Comment section -->
 {% load static %}
+{% load humanize %}
 {% load crispy_forms_tags %}
 
 <h2 class="text-center mb-4 pb-2">Comments</h2>
@@ -15,7 +16,7 @@
                 height="40" alt="Profile Picture" loading="lazy">
             {% endif %}
             <span><strong>{{ comment.author.username }}</strong> |
-                {{comment.created_on|date:"F j, Y" }}</span>
+                {{comment.created_on|naturaltime }}</span>
         </div>
         {% if request.user == comment.author or request.user.is_superuser %}
         <div>

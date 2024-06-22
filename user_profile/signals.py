@@ -11,15 +11,7 @@ from .models import Profile
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     """
-    Create a user profile when a new user is created.
+    Signal handler to create a user profile when a new user is created.
     """
-    if created:
+    if created and not kwargs.get('raw', False):
         Profile.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    """
-    Save the user profile whenever the associated User object is saved.
-    """
-    instance.profile.save()
