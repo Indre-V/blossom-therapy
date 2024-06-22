@@ -9,12 +9,10 @@
             <div class="col-lg-8 mb-4">
                 <article class="article bg-white p-4 shadow-sm rounded">
                     {% include 'insights/list_cards.html' %}
-                    {% if post.status == 1 %}
                     <div class="d-flex justify-content-between m-4">
                             <div class="article-content pt-5">{{ post.content|safe }}</div>
             </div>
         </div>
-        {% endif %}
         </article>
     </div>
 <section class="gradient-custom">

@@ -80,16 +80,26 @@ class ProfileDraftsView(View):
 
 class ProfileInsightsView(View):
     """
-    View for display and manage user insights
+    View for displaying and managing user insights
     """
     paginate_by = 4
+
     def get(self, request, username):
         """
         Handles display render of the user insights
         """
         user = get_object_or_404(User, username=username)
-        insights = Post.objects.filter(author=user, status__in=[0, 1])
+        profile = get_object_or_404(Profile, user=user)
+
+        if request.user.is_authenticated and request.user.id == user.id:
+            # For logged-in user viewing their own profile: show all insights
+            insights = Post.objects.filter(author=user, status__in=[0, 1])
+        else:
+            # For public profile view or other users: show only approved insights
+            insights = Post.objects.filter(author=user, status=1)
+
         context = {
+            'profile': profile,
             'insights': insights,
         }
 

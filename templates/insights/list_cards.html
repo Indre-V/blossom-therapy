@@ -48,9 +48,13 @@
         </div>
             <hr class="hr hr-blurry">
             {% if post.status == 0 %}
-            <h4 class="m-3 text-warning">
+            <h4 class="m-3 text-info">
                 This Post is waiting for admin approval.
             </h4>
+            {% elif post.status == 2 %}
+                    <h4 class="m-3 text-info">
+                        This Post is a draft.
+                    </h4>
         {% else %}
         <div class="d-flex justify-content-center m-3">
             <div class="d-flex align-items-center">
@@ -90,6 +94,7 @@
                 <i class="fa fa-comment-o me-2"></i>
                 <span class="d-inline">{{ post.comments.count }}</span>
             </div>
+            
         </div>
         {% endif %}
     </div>
