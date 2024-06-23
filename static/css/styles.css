@@ -43,6 +43,8 @@ body {
   min-height: 100vh;
 }
 
+a { color: inherit; } 
+
 /* Specific styles for form elements */
 .form-control {
     font-size: 1.6rem; 
@@ -122,11 +124,9 @@ h6 {
 }
 
 .list-img {
-  width: 100%;
-  height: 15vh;
   object-fit: cover;
-  min-height: 20rem;
 }
+
 
 #bg-footer {
   background-color: var(--light-orange);
@@ -185,6 +185,8 @@ h6 {
   border-radius: 0.25rem; /* Default Bootstrap border-radius */
   margin: 0 0.25rem; /* Add margin for spacing */
 }
+
+
 
 @media (max-width: 1024px) {
   .card .row {
