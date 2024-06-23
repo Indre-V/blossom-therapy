@@ -11,13 +11,13 @@
         Whether you're a seasoned green thumb or just starting your gardening journey,
         we're here to help you cultivate a thriving, beautiful, and therapeutic outdoor space.</p>
       {% if user.is_authenticated %}
-      <a href="{% url 'add-insight' %}" class="btn rounded mb-0 text-nowrap button-style">Add your Insight</a>
+      <a href="{% url 'add-insight' %}" class="btn rounded my-5 text-nowrap button-style">Add your Insight</a>
       {% else %}
-      <a href="{% url 'account_signup' %}" class="btn rounded mb-5 text-nowrap button-style">Join Us</a>
+      <a href="{% url 'account_signup' %}" class="btn rounded my-5 text-nowrap button-style">Join Us</a>
       {% endif %}
     </div>
     <div class="col-md-6">
-      <img src="{% static 'images/hero.jpg' %}" alt="Hero Image" class="img-fluid w-75">
+      <img src="{% static 'images/hero.jpg' %}" alt="Hero Image" class="img-fluid w-100">
     </div>
   </div>
 </div>
@@ -44,14 +44,14 @@
       </div>
     </div>
     <!-- Most Popular Insights Column -->
-    <div class="col-md-2 mb-5">
+    <div class="col-sm-4 col-xl-2">
       <h1 class="text-center my-3">Most Popular</h1>
       <div class="row justify-content-center">
         {% for post in most_popular %}
         <div class="col-md-12 mb-4">
           <div class="card p-4">
             <p><a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></p>
-            <a class="fw-bold" href="{% url 'profile' post.author.username %}" class="mb-0"> by {{ post.author }}</a>
+            <a class="fw-bold" href="{% url 'profile' post.author.username %}"> by {{ post.author }}</a>
           </div>
         </div>
         {% endfor %}

@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,9 +28,9 @@
     <!-- Navigation -->
     <header class="top-nav mb-5">
         <nav class="fixed-top navbar navbar-expand-lg">
-            <div class="container-fluid" class="navbar-brand">
-                <a href="{% url 'home' %}">🦋</a>
-                <a class="navbar-brand" href="{% url 'home' %}">Blossom Therapy Insights</a>
+            <div class="container-fluid">
+                <a class="fs-3" href="{% url 'home' %}">🦋</a>
+                <a class="navbar-brand fs-3" href="{% url 'home' %}">Blossom Therapy Insights</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -105,16 +104,6 @@
 
     <!-- Bootstrap scripts -->
    
-<script>
-            document.addEventListener('DOMContentLoaded', function() {
-        var successModal = document.getElementById('successModal');
-        if (successModal) {
-            successModal.addEventListener('hidden.bs.modal', function (event) {
-                location.reload();
-            });
-        }
-    });
-</script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- Font Awesome script -->
