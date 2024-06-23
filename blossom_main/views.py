@@ -1,7 +1,6 @@
 """Views Imports """
 from django.shortcuts import render, redirect, reverse
 from django.views import generic
-from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, View, ListView, DeleteView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
@@ -10,10 +9,9 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
-from .models import Category, Post, Comment
 from django.db.models import Count
+from .models import Category, Post, Comment
 from .forms import CommentForm, InsightForm
 
 
@@ -27,9 +25,11 @@ class HomeView(ListView):
     A view class for displaying the home page.
     """
     model = Post
-    template_name = "index.html"
+    template_name = 'index.html'
     context_object_name = 'insights'
-    queryset = Post.objects.filter(status=1).annotate(like_count=Count('likes')).order_by('-created_on')
+
+    queryset = Post.objects.filter(
+        status=1).annotate(like_count=Count('likes')).order_by('-created_on')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,11 +42,10 @@ class SearchResultsView(ListView):
     """
     A view class for displaying search results.
     """
-
     model = Post
     template_name = 'insights/search_results.html'
 
-    def get_queryset(self):  # new
+    def get_queryset(self):
         query = self.request.GET.get("q")
         object_list = Post.objects.filter(
             Q(content__icontains=query) | Q(excerpt__icontains=query)
@@ -59,8 +58,8 @@ class InsightsListView(ListView):
     View for displaying insights, with support for category filtering and search functionality.
     """
     model = Post
-    template_name = "insights/insights_list.html"
-    context_object_name = "insights"
+    template_name = 'insights/insights_list.html'
+    context_object_name = 'insights'
     paginate_by = 4
 
     def get_queryset(self):
@@ -85,11 +84,11 @@ class InsightsListView(ListView):
 
     def get_context_data(self, **kwargs):
         """
-        Adds additional context data to the template.
+        Adds additional context data for categories to the template.
         """
         context = super().get_context_data(**kwargs)
         category_name = self.kwargs.get('category_name')
-        query = self.request.GET.get("q")
+        query = self.request.GET.get('q')
 
         if category_name:
             context['category'] = get_object_or_404(Category, name=category_name)
@@ -100,7 +99,7 @@ class InsightsListView(ListView):
 
 class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
-    View for creating a new blog post
+    View for creating a new insight post
     """
     model = Post
     template_name = "insights/add_insight.html"
@@ -113,11 +112,11 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         """
         form.instance.author = self.request.user
         form.instance.slug = slugify(form.instance.title)
-        # Determine the success message based on the post status
+
         if form.instance.status == 0:
-            success_message = "Post added successfully! Waiting for Admin approval."
+            success_message = "Insight added successfully! Waiting for Admin approval."
         elif form.instance.status == 2:
-            success_message = "Post added to drafts successfully."
+            success_message = "Insight added to drafts successfully."
 
         response = super().form_valid(form)
         messages.success(self.request, success_message)
@@ -134,7 +133,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class InsightDetailsView(View):
     """
-    View for displaying the details of a specific post (insight) and adding comments.
+    View for displaying the details of a specific post and adding comments.
     """
     template_name = "insights/insight_detail.html"
 
@@ -144,9 +143,16 @@ class InsightDetailsView(View):
         """
         post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
-        liked = post.likes.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
-        favourited = post.favourite.filter(id=self.request.user.id).exists() if request.user.is_authenticated else False
-        
+        liked = (
+            post.likes.filter(id=self.request.user.id).exists()
+            if request.user.is_authenticated
+            else False
+        )
+        favourited = (
+            post.favourite.filter(id=self.request.user.id).exists()
+            if request.user.is_authenticated
+            else False
+        )
         context = {
 
             "post": post,
@@ -196,9 +202,7 @@ class CommentDeleteView(
     """
     model = Comment
     template_name = "comments/delete_comment.html"
-    warning_message = "Comment Will be removed permantently"
     success_message = "Comment removed successfully"
-
 
     def test_func(self):
         """
@@ -219,33 +223,42 @@ class CommentEditView(
         LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
 
     """
-    This view is used to allow logged in users to updatetheir own comments
+    This view is used to allow logged in users and admin to update their own comments
     """
     model = Comment
     form_class = CommentForm
     template_name = "comments/edit_comment.html"
     success_message = "Comment updated successfully"
 
-    def get_success_url(self):
-        post = self.object.post
-        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
-
     def test_func(self):
+        """
+        Ensure that only the comment author or admin can delete the comment.
+        """
         comment = self.get_object()
         return self.request.user == comment.author or self.request.user.is_superuser
 
+    def get_success_url(self):
+        """
+        Redirect to the post detail view after a successful comment deletion.
+        """
+        post = self.object.post
+        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
+
+
 class InsightDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.DeleteView):
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     """
     Delete insights by author or superuser
     """
     model = Post
     template_name = "includes/delete_modal.html"
     success_message = "Insight removed successfully"
-    warning_message = "Post Will be removed permantently"
     success_url = reverse_lazy("insights")
 
     def test_func(self):
+        """
+        Ensure that only insight author or admin can delete the recodrd..
+        """
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
 

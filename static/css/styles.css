@@ -45,7 +45,6 @@ body {
 
 a { color: inherit; } 
 
-
 #bg-footer {
   background-color: var(--light-orange);
 }
@@ -96,8 +95,6 @@ a { color: inherit; }
 .button-style:hover {
   background-color: var(--light-orange); 
 }
-
-
 
 /* Button and Fa icons */
 .icon {

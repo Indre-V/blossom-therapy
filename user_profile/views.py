@@ -30,8 +30,11 @@ class ProfilePageView(DetailView):
         return profile
 
     def get_context_data(self, **kwargs):
+        """
+        Extend the context data provided to the template.
+        """
         context = super().get_context_data(**kwargs)
-        user = self.get_object().user 
+        user = self.get_object().user
         insights = Post.objects.filter(author=user, status__in=[0, 1])
         drafts = Post.objects.filter(author=user, status=2)
         favourites = Post.objects.filter(favourite=user)
@@ -95,10 +98,8 @@ class ProfileInsightsView(View):
         profile = get_object_or_404(Profile, user=user)
 
         if request.user.is_authenticated and request.user.id == user.id:
-            # For logged-in user viewing their own profile: show all insights
             insights = Post.objects.filter(author=user, status__in=[0, 1])
         else:
-            # For public profile view or other users: show only approved insights
             insights = Post.objects.filter(author=user, status=1)
 
         context = {
@@ -114,8 +115,9 @@ class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """
     model = User
     template_name = "profile/profile_delete.html"
-    success_url = reverse_lazy("home")
     success_message = "Your profile has been successfully deleted."
+    success_url = reverse_lazy("home")
+
 
     def delete(self, request, *args, **kwargs):
         """
@@ -170,4 +172,3 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
             return super().form_valid(form)
         else:
             return self.form_invalid(form)
-

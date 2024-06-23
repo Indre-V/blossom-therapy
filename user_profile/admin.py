@@ -16,7 +16,7 @@ class UserAdmin(admin.ModelAdmin):
     Custom configuration for admin to update
     user profiles
     """
-    model = User, Profile
+    model = Profile, User
     inlines = [ProfileInline]
 
 

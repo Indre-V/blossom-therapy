@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-12 bg-c-lite-green text-center text-white">
                         <div class="col-sm-12">
-                            <h3 class="m-3">{{ profile.user.username }}</h3>
+                            <h3 class="my-5">{{ profile.user.username }}</h3>
                             {% if "placeholder_profile" in profile.profile_picture.url %}
                             <img src="{% static 'images/placeholder_profile.jpg' %}" class="img-radius w-25 mb-5"
                                 alt="Profile Placeholder" loading="lazy">
@@ -39,17 +39,17 @@
                                 Summary</h3>
                             <div class="row">
                                 <div class="col-sm-6 mb-3">
-                                    <p class="mb-1 fw-bold">Full Name:</p>
-                                    <h6 class="text-muted">{{ profile.user.first_name }}
-                                        {{ profile.last_name }}</h6>
+                                    <p class="fs-4 text-muted mb-1">Full Name:</p>
+                                    <p class="fs-3 fw-bold">{{ profile.user.first_name }}
+                                        {{ profile.user.last_name }}</p>
                                 </div>
                                 <div class="col-sm-6 mb-3">
-                                    <p class="mb-1 fw-bold">Location:</p>
-                                    <h6 class="text-muted">{{ profile.location }}</h6>
+                                    <p class="fs-4 text-muted mb-1">Location:</p>
+                                    <h6 class="fs-3 fw-bold">{{ profile.location }}</h6>
                                 </div>
                                 <div class="col-sm-12 mb-3">
-                                    <p class="mb-1 fw-bold">Bio:</p>
-                                    <h6 class="text-muted">{{ profile.bio }}</h6>
+                                    <p class="fs-4 text-muted mb-1">Bio:</p>
+                                    <h6 class="fs-4">{{ profile.bio }}</h6>
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <p class="mb-1 fw-bold d-inline">Insights <i class="fa fa-thumbs-up"></i>: {{ total_likes }}</p>
