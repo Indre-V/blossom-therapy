@@ -51,7 +51,6 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
-    excerpt = models.CharField(max_length=200, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name="track_likes", blank=True)
     favourite = models.ManyToManyField(User, related_name="track_favs", blank=True)
