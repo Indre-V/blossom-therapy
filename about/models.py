@@ -1,4 +1,4 @@
-"""Developer models imports"""
+"""About models imports"""
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -20,7 +20,7 @@ class Contact(models.Model):
 
         return f"{self.email} - {self.created_on}"
 
-class DeveloperProfile(models.Model):
+class DevProfile(models.Model):
     """
     Developer profile model
     """

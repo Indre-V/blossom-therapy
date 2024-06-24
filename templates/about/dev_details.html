@@ -1,7 +1,6 @@
 {% load static %}
-
 <div class="container my-5">
-    {% for developer in developer_profiles %}
+    {% for devProfile in dev_profiles %}
         <div class="row mb-5">
             <!-- Left Column -->
             <div class="col-md-6 mb-4">
@@ -9,31 +8,31 @@
                 <div class="card mb-4">
                     <div class="card-image">
                         <!-- Displaying picture (CloudinaryField 'image') -->
-                        <img src="{{ developer.image.url }}" id="dev-img" class="card-img-top w-100" loading="lazy" alt="Profile Picture">
+                        <img src="{{ devProfile.image.url }}" id="dev-img" class="card-img-top w-100" loading="lazy" alt="Profile Picture">
                     </div>
                     <div class="card-body">
-                        <h3>{{ developer.user.first_name }} {{ developer.user.last_name }}</h3>
+                        <h3>{{ devProfile.user.first_name }} {{ devProfile.user.last_name }}</h3>
                         <hr>
                         <ul class="fa-ul">
                             <li><i class="fa-li fa fa-map-marker" aria-hidden="true"></i>Kerry, Ireland</li>
-                            <li><i class="fa-li fa fa-comments-o" aria-hidden="true"></i>{{ developer.languages }}</li>
-                            <li><i class="fa-li fa fa-code" aria-hidden="true"></i>{{ developer.skills }}</li>
+                            <li><i class="fa-li fa fa-comments-o" aria-hidden="true"></i>{{ devProfile.languages }}</li>
+                            <li><i class="fa-li fa fa-code" aria-hidden="true"></i>{{ devProfile.skills }}</li>
                         </ul>
-                        <p>{{ developer.about }}</p>
+                        <p>{{ devProfile.about }}</p>
                     </div>
                     <div class="card-footer center-align d-flex justify-content-around">
-                        {% if developer.github_portfolio_link %}
-                            <a href="{{ developer.github_portfolio_link }}" target="_blank">
+                        {% if devProfile.github_portfolio_link %}
+                            <a href="{{ devProfile.github_portfolio_link }}" target="_blank">
                                 <i class="fa fa-github icon" aria-hidden="true"></i>
                             </a>
                         {% endif %}
-                        {% if developer.linkedin_profile_link %}
-                            <a href="{{ developer.linkedin_profile_link }}" target="_blank">
+                        {% if devProfile.linkedin_profile_link %}
+                            <a href="{{ devProfile.linkedin_profile_link }}" target="_blank">
                                 <i class="fa fa-linkedin-square icon" aria-hidden="true"></i>
                             </a>
                         {% endif %}
-                        {% if developer.resume_download_link %}
-                            <a href="{{ developer.resume_download_link }}" download target="_blank">
+                        {% if devProfile.resume_download_link %}
+                            <a href="{{ devProfile.resume_download_link }}" download target="_blank">
                                 <i class="fa fa-file-download icon" aria-hidden="true"></i>
                             </a>
                         {% endif %}
@@ -80,7 +79,7 @@
                         <div class="card-body">
                             <span class="card-title">Education</span>
                             <hr>
-                            <p>{{ developer.education }}</p>
+                            <p>{{ devProfile.education }}</p>
                         </div>
                     </div>
                 </div>

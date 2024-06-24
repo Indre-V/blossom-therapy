@@ -1,5 +1,5 @@
 """Views Imports """
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.generic import CreateView, View, ListView, DeleteView
 from django.contrib import messages

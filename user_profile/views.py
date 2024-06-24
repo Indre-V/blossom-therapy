@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView, View
-from blossom_main.models import Post
+from insights.models import Post
 from .models import Profile
 from .forms import UserForm, ProfileForm
 

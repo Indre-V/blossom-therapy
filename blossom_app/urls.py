@@ -24,9 +24,9 @@ admin.site.site_title = "Blossom Therapy Admin"
 admin.site.index_title = "Welcome to Blossom Therapy Administration"
 
 urlpatterns = [
-    path("", include('blossom_main.urls')),
+    path("", include('insights.urls')),
     path("", include('user_profile.urls')),
-    path("", include('developer.urls')),
+    path("", include('about.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),

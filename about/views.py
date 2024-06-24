@@ -1,12 +1,13 @@
+"""About Imports"""
 from django.views.generic import ListView, FormView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from .models import DeveloperProfile
+from .models import DevProfile
 from .forms import ContactForm
 
 # pylint: disable=locally-disabled, no-member
 
-class DeveloperProfileView(SuccessMessageMixin, ListView, FormView):
+class DevProfileView(SuccessMessageMixin, ListView, FormView):
     """
     Retrieve all DeveloperProfile instances and handle contact form submissions.
 
@@ -14,18 +15,18 @@ class DeveloperProfileView(SuccessMessageMixin, ListView, FormView):
     the contact form. It manages both GET requests for displaying data and POST requests
     for form submission.
     """
-    model = DeveloperProfile
-    template_name = 'developer/developer_profile.html'
-    context_object_name = 'developer_profiles'
+    model = DevProfile
+    template_name = 'about/dev_profile.html'
+    context_object_name = 'dev_profiles'
     form_class = ContactForm
-    success_url = reverse_lazy('developer_profile')
+    success_url = reverse_lazy('dev_profile')
     success_message = "Your message has been sent successfully!"
 
     def get_queryset(self):
         """
         Return the list of DeveloperProfile instances for the ListView.
         """
-        return DeveloperProfile.objects.all()
+        return DevProfile.objects.all()
 
     def get_context_data(self, **kwargs):
         """

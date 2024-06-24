@@ -45,7 +45,7 @@
                             <a class="nav-link {% if request.path == '/insights/' %}active{% endif %}" aria-current="page" href="{% url 'insights' %}">Insights</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/developer/' %}active{% endif %}" href="{% url 'developer_profile' %}">Developer</a>
+                            <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'dev_profile' %}">Developer</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
