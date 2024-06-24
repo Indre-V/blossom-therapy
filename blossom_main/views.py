@@ -48,7 +48,7 @@ class SearchResultsView(ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         object_list = Post.objects.filter(
-            Q(content__icontains=query) | Q(excerpt__icontains=query)
+            Q(content__icontains=query)
         )
         return object_list
 
@@ -73,7 +73,7 @@ class InsightsListView(ListView):
 
         if query:
             posts = posts.filter(
-                Q(content__icontains=query) | Q(excerpt__icontains=query)
+                Q(content__icontains=query)
             )
 
         if category_name:

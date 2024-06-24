@@ -23,16 +23,14 @@ class InsightForm(forms.ModelForm):
         Specifies the model to use and the fields to include in the form.
         """
         model = Post
-        fields = ['title', 'featured_image', 'excerpt', 'content', 'category', 'status']
+        fields = ['title', 'featured_image', 'content', 'category', 'status']
         widgets = {
-            'excerpt': forms.Textarea(attrs={'rows': 4, 'maxlength': 200}),
             'content': SummernoteWidget(attrs={'rows': 5}),
         }
         labels = {
             'title': 'Title',
             'category': 'Category',
             'featured_image': 'Featured Image',
-            'excerpt': 'Excerpt',
             'content': 'Content',
             'status': 'Status',
         }
