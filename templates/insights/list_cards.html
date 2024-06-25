@@ -17,14 +17,19 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-sm-12 col-xl-6 ms-3">
-                <h3 class="fw-bolder my-3">
-                    <a href="{% url 'category-posts' post.category.name %}">{{ post.category.name }}</a>
-                </h3>
-                <hr class="hr hr-blurry">
-                <a class="mt-2" href="{% url 'insight-details' post.slug %}">{{ post.title }}</a>
-                <hr class="hr hr-blurry">
-            </div>
+            <div class="col-sm-12 col-xl-6 ms-3 d-flex flex-column justify-content-between h-100">
+                <div>
+                    <hr class="hr hr-blurry">
+                    <a class="fw-bolder" href="{% url 'insight-details' post.slug %}">{{ post.title }}</a>
+                    <hr class="hr hr-blurry">
+                </div>
+                <div>
+                    <span class="text-secondary fs-5">Category:</span>
+                    <p class="fs-4">
+                        <a href="{% url 'category-posts' post.category.name %}">{{ post.category.name }}</a>
+                    </p>
+                </div>
+            </div>            
         </div>
         <div class="d-flex align-items-center author">
             <div class="avatar">

@@ -8,12 +8,12 @@
             <div class="col-md-12 col-lg-10 col-xl-8">
                 <article class="bg-white p-4 shadow-sm rounded">
                     {% include 'insights/list_cards.html' %}
-                    <div class="d-flex justify-content-between m-4">
-                        <div class="py-5">{{ post.content|safe }}</div>
+                    <div class="text-wrap m-4 post-content">
+                        <p>{{ post.content|safe }}</p>
                     </div>
             </div>
-            </article>
-        </div>
+           </article>
+        </div> 
         <section class="gradient-custom">
             <div class="container my-5 py-5">
                 <div class="row justify-content-center">
