@@ -112,14 +112,18 @@ a { color: inherit; }
 
 /* Insights Image */
 
+
 .list-img {
-  object-fit: cover;
+    width: 100%;
+    max-height: 30vh;
+    object-fit: cover; 
 }
 
 .post-content {
   word-wrap: break-word; /* Ensure links wrap */
 }
-/* Dev Section card layout */
+
+/* About Section card layout */
 
 .card-footer {
   display: flex;

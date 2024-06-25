@@ -11,13 +11,13 @@
                     </a>
                     {% else %}
                     <a href="{% url 'insight-details' post.slug %}" class="card-link">
-                        <img src="{{ post.featured_image.url }}" class="rounded img-fluid list-img "
+                        <img src="{{ post.featured_image.url }}" class="rounded img-fluid list-img w-100"
                             alt="Insight Photo {{ post.title }}" loading="lazy">
                     </a>
                     {% endif %}
                 </div>
             </div>
-            <div class="col-sm-12 col-xl-6 ms-3 d-flex flex-column justify-content-between h-100">
+            <div class="col-sm-12 col-xl-6 ms-3 d-flex flex-column justify-content-between">
                 <div>
                     <hr class="hr hr-blurry">
                     <a class="fw-bolder" href="{% url 'insight-details' post.slug %}">{{ post.title }}</a>

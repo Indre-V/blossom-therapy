@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %} Blossom Therapy Insights {% endblock %}
 {% block content %}
-<!--Main layout-->
 <div class="container my-5">
   <div class="row">
     <div class="col-md-6 d-flex align-items-center justify-content-center flex-column">
@@ -44,11 +43,11 @@
       </div>
     </div>
     <!-- Most Popular Insights Column -->
-    <div class="col-sm-4 col-xl-2">
+    <div class="col-sm-8 col-xl-2">
       <h1 class="text-center my-3">Most Popular</h1>
       <div class="row justify-content-center">
         {% for post in most_popular %}
-        <div class="col-md-12 mb-4">
+        <div class="col-sm-12 mb-4">
           <div class="card p-4">
             <p><a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></p>
             <a class="fw-bold" href="{% url 'profile' post.author.username %}"> by {{ post.author }}</a>
