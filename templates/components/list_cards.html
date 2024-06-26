@@ -1,15 +1,20 @@
 {% load static %}
+{% load cloudinary %}
+
 <div class="card d-flex p-3 mb-3">
     <div class="row g-0">
         <div class="card-body d-flex flex-column flex-xl-row">
+            <!-- Featured Image Section -->
             <div class="col-sm-12 col-xl-6">
                 <div class="bg-image hover-overlay" data-mdb-ripple-color="light">
                     {% if "placeholder" in post.featured_image.url %}
+                    <!-- Placeholder image link -->
                     <a href="{% url 'insight-details' post.slug %}" class="card-link">
                         <img class="rounded img-fluid list-img" src="{% static 'images/default.webp' %}"
                             alt="placeholder image" loading="lazy">
                     </a>
                     {% else %}
+                    <!-- Actual post image link -->
                     <a href="{% url 'insight-details' post.slug %}" class="card-link">
                         <img src="{{ post.featured_image.url }}" class="rounded img-fluid list-img w-100"
                             alt="Insight Photo {{ post.title }}" loading="lazy">
@@ -17,12 +22,15 @@
                     {% endif %}
                 </div>
             </div>
+            <!-- Post Details Section -->
             <div class="col-sm-12 col-xl-6 ms-3 d-flex flex-column justify-content-between">
+                <!-- Title -->
                 <div>
                     <hr class="hr hr-blurry">
                     <a class="fw-bolder" href="{% url 'insight-details' post.slug %}">{{ post.title }}</a>
                     <hr class="hr hr-blurry">
                 </div>
+                <!-- Category -->
                 <div>
                     <span class="fs-5">Category:</span>
                     <p class="fs-4 fw-bolder">
@@ -31,9 +39,11 @@
                 </div>
             </div>
         </div>
+        <!-- Author Section -->
         <div class="d-flex align-items-center author">
             <div class="avatar">
                 {% if "placeholder_profile" in post.author.profile.profile_picture.url %}
+                <!-- Placeholder profile image -->
                 <img src="{% static 'images/placeholder_profile.webp' %}" class="author-image" alt="Profile Placeholder"
                     loading="lazy">
                 {% else %}
@@ -41,20 +51,23 @@
                     alt="{{ post.author.username }}" loading="lazy">
                 {% endif %}
             </div>
+            <!-- Author Details -->
             <div class="media-body d-flex flex-column justify-content-between px-4">
                 <a href="{% url 'profile' post.author.username %}" class="mb-0">
                     <p class="fs-4 fw-bold">by {{ post.author.username }}</p>
                 </a>
                 <p class="fs-5 text-muted">{{ post.created_on|date:"F j, Y" }}</p>
             </div>
+            <!-- Edit and Delete Buttons (for author or superuser) -->
             {% if request.user == post.author or request.user.is_superuser %}
-            {% include 'includes/delete_modal.html' %}
+            {% include 'insights/delete_modal.html' %}
             <a href="{% url 'insight-update' post.slug %}" type="button" class="btn btn-warning icon px-2" title="Edit">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
             {% endif %}
         </div>
         <hr class="hr hr-blurry">
+        <!-- Post Status Section -->
         {% if post.status == 0 %}
         <h4 class="m-3 text-info">
             This Post is waiting for admin approval.
@@ -64,6 +77,7 @@
             This Post is a draft.
         </h4>
         {% else %}
+        <!-- Like, Favorite, and Comment Count Section -->
         <div class="d-flex justify-content-center m-3">
             <div class="d-flex align-items-center">
                 <!-- Like Button and Count -->
@@ -81,11 +95,11 @@
                 <span class="badge bg-white text-dark p-2 ms-1">{{ post.count_likes }}</span>
             </div>
             <div class="d-flex align-items-center ms-3">
-                <!-- Favourite Button and Count -->
+                <!-- Favorite Button and Count -->
                 <form class="d-inline" action="{% url 'favourite-insight' post.slug %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="post_id" value="{{ post.slug }}">
-                    <button type="submit" class="btn icon" aria-label="Favourite and Unfavourite">
+                    <button type="submit" class="btn icon" aria-label="Favorite and Unfavorite">
                         {% if favourited %}
                         <i class="fa-solid fa-heart" aria-hidden="true"></i>
                         {% else %}

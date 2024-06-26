@@ -1,34 +1,45 @@
 {% load static %}
+
 <nav class="fixed-top navbar navbar-expand-lg">
     <div class="container-fluid">
+        <!-- Brand logo or icon -->
         <a class="fs-3" href="{% url 'home' %}">🦋</a>
+        <!-- Brand name -->
         <a class="navbar-brand fs-4" href="{% url 'home' %}">Blossom Therapy Insights</a>
+
+        <!-- Navbar toggle button for responsive design -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left-aligned navbar links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <!-- Home link -->
                     <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
                         href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <!-- Insights link -->
                     <a class="nav-link {% if request.path == '/insights/' %}active{% endif %}" aria-current="page"
                         href="{% url 'insights' %}">Insights</a>
                 </li>
                 <li class="nav-item">
+                    <!-- About link -->
                     <a class="nav-link {% if request.path == '/about/' %}active{% endif %}"
-                        href="{% url 'dev_profile' %}">About
-                    </a>
+                        href="{% url 'dev_profile' %}">About</a>
                 </li>
                 {% if user.is_authenticated %}
+                <!-- Add Insight link for authenticated users -->
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/add-insight/' %}active{% endif %}"
                         href="{% url 'add-insight' %}">Add Insight</a>
                 </li>
                 {% endif %}
                 {% if user.is_superuser %}
+                <!-- Pending Approvals link for superusers -->
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/posts/pending/' %}active{% endif %}"
                         href="{% url 'pending-posts' %}">Pending Approvals</a>
@@ -36,20 +47,25 @@
                 {% endif %}
             </ul>
 
+            <!-- Right-aligned navbar links -->
             <ul class="navbar-nav mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
+                <!-- User profile link for authenticated users -->
                 <li class="nav-item">
                     <a class="nav-link text-capitalize" href="{% url 'profile' user.username %}"><i
                             class="fa-solid fa-user"></i> {{ user.username }}</a>
                 </li>
+                <!-- Logout link for authenticated users -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                 </li>
                 {% else %}
+                <!-- Register link for non-authenticated users -->
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/accounts/signup/' %}active{% endif %}"
                         href="{% url 'account_signup' %}">Register</a>
                 </li>
+                <!-- Login link for non-authenticated users -->
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}"
                         href="{% url 'account_login' %}">Login</a>
