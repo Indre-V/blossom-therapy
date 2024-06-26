@@ -9,7 +9,7 @@
     <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
             {% if "placeholder_profile" in comment.author.profile.profile_picture.url%}
-            <img src="{% static 'images/placeholder_profile.jpg' %}" class="rounded-circle me-3" width="40" height="40"
+            <img src="{% static 'images/placeholder_profile.webp' %}" class="rounded-circle me-3" width="40" height="40"
                 alt="Profile Placeholder" loading="lazy">
             {% else %}
             <img src="{{ comment.author.profile.profile_picture.url }}" class="rounded-circle me-3" width="40"

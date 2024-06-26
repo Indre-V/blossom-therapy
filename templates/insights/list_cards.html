@@ -6,7 +6,7 @@
                 <div class="bg-image hover-overlay" data-mdb-ripple-color="light">
                     {% if "placeholder" in post.featured_image.url %}
                     <a href="{% url 'insight-details' post.slug %}" class="card-link">
-                        <img class="rounded img-fluid list-img" src="{% static 'images/default.jpg' %}"
+                        <img class="rounded img-fluid list-img" src="{% static 'images/default.webp' %}"
                             alt="placeholder image" loading="lazy">
                     </a>
                     {% else %}
@@ -34,7 +34,7 @@
         <div class="d-flex align-items-center author">
             <div class="avatar">
                 {% if "placeholder_profile" in post.author.profile.profile_picture.url %}
-                <img src="{% static 'images/placeholder_profile.jpg' %}" class="author-image" alt="Profile Placeholder"
+                <img src="{% static 'images/placeholder_profile.webp' %}" class="author-image" alt="Profile Placeholder"
                     loading="lazy">
                 {% else %}
                 <img src="{{ post.author.profile.profile_picture.url }}" class="author-image"
