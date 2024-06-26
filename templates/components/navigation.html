@@ -3,33 +3,37 @@
     <div class="container-fluid">
         <a class="fs-3" href="{% url 'home' %}">🦋</a>
         <a class="navbar-brand fs-4" href="{% url 'home' %}">Blossom Therapy Insights</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
+                        href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/insights/' %}active{% endif %}" aria-current="page" href="{% url 'insights' %}">Insights</a>
+                    <a class="nav-link {% if request.path == '/insights/' %}active{% endif %}" aria-current="page"
+                        href="{% url 'insights' %}">Insights</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'dev_profile' %}">About
+                    <a class="nav-link {% if request.path == '/about/' %}active{% endif %}"
+                        href="{% url 'dev_profile' %}">About
                     </a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/add-insight/' %}active{% endif %}" href="{% url 'add-insight' %}">Add Insight</a>
+                    <a class="nav-link {% if request.path == '/add-insight/' %}active{% endif %}"
+                        href="{% url 'add-insight' %}">Add Insight</a>
                 </li>
                 {% endif %}
                 {% if user.is_superuser %}
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/posts/pending/' %}active{% endif %}" href="{% url 'pending-posts' %}">Pending Approvals</a>
+                    <a class="nav-link {% if request.path == '/posts/pending/' %}active{% endif %}"
+                        href="{% url 'pending-posts' %}">Pending Approvals</a>
                 </li>
-    {% endif %}
+                {% endif %}
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">
@@ -37,16 +41,18 @@
                 <li class="nav-item">
                     <a class="nav-link text-capitalize" href="{% url 'profile' user.username %}"><i
                             class="fa-solid fa-user"></i> {{ user.username }}</a>
-                </li> 
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/accounts/signup/' %}active{% endif %}" href="{% url 'account_signup' %}">Register</a>
+                    <a class="nav-link {% if request.path == '/accounts/signup/' %}active{% endif %}"
+                        href="{% url 'account_signup' %}">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'account_login' %}">Login</a>
+                    <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}"
+                        href="{% url 'account_login' %}">Login</a>
                 </li>
                 {% endif %}
             </ul>
