@@ -258,7 +258,7 @@ class InsightDeleteView(
     Delete insights by author or superuser
     """
     model = Post
-    template_name = "includes/delete_modal.html"
+    template_name = "insights/delete_modal.html"
     success_message = "Insight removed successfully"
     success_url = reverse_lazy("insights")
 

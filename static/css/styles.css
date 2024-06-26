@@ -142,6 +142,9 @@ a { color: inherit; }
   margin-top: 0.5rem;
 }
 
+#dev-img {
+  max-height: 50vh;
+}
 
 /* Pagination styles */
 .pagination .page-link {

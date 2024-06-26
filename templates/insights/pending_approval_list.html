@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Blossom Therapy Insights | Pending Insights {% endblock %}
+
 {% block content %}
 <div class="container my-5">
     <h2>Pending Approvals</h2>
     <article class="mt-5">
+        <!-- Admin instructions -->
         <strong>Admin Note:</strong>
         <ul>
             <li>Records can be approved either by clicking on the 'Approve' button or by navigating to the insight
@@ -16,6 +21,7 @@
         </ul>
     </article>
     {% if posts %}
+    <!-- Table to display pending posts -->
     <table class="table my-5">
         <thead>
             <tr class="fs-3 fw-bolder">
@@ -26,6 +32,7 @@
             </tr>
         </thead>
         <tbody class="fs-4">
+            <!-- Loop through each pending post -->
             <tr>
                 {% for post in posts %}
                 <td>{{ post.author }}</td>
@@ -34,6 +41,7 @@
                 </td>
                 <td>{{ post.created_on|date:"F j, Y" }}</td>
                 <td>
+                    <!-- Form to approve the post -->
                     <form method="post" action="{% url 'approve-post' post.pk %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-warning">Approve</button>
@@ -44,6 +52,7 @@
         </tbody>
     </table>
     {% else %}
+    <!-- Display message when there are no pending posts -->
     <div class="alert fw-bold">
         There are no posts pending approval.
     </div>

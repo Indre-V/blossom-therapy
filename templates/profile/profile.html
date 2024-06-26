@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load cloudinary %}
+
 {% block title %}Blossom Therapy Insights | {{ profile.username }}{% endblock %}
+
 {% block content %}
 <div class="container mt-5 py-5">
     <div class="card justify-content-center">
         <div class="row">
+            <!-- Left Column: Profile Picture and Links -->
             <div class="col-xl-4 col-lg-12 bg-c-lite-green text-center text-white">
                 <div class="col-sm-12">
                     <h3 class="my-5">{{ profile.user.username }}</h3>
+                    <!-- Profile Picture: Show Placeholder if None -->
                     {% if "placeholder_profile" in profile.profile_picture.url %}
                     <img src="{% static 'images/placeholder_profile.webp' %}" class="img-radius w-25 mb-5"
                         alt="Profile Placeholder" loading="lazy">
@@ -17,38 +21,40 @@
                         loading="lazy">
                     {% endif %}
                 </div>
+                <!-- Profile Links: Insights, Drafts, Favourites -->
                 <a href="{% url 'profile-insights' profile.user.username %}" class="btn btn-outline-discovery m-2">
                     <i class="fas fa-book" aria-hidden="true"></i> Insights
                 </a>
                 {% if user.is_authenticated and user.id == profile.user.id %}
                 <a href="{% url 'profile-drafts' profile.user.username %}" class="btn btn-outline-discovery m-2">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> My
-                    Drafts
+                    <i class="fa fa-pencil" aria-hidden="true"></i> My Drafts
                 </a>
                 <a href="{% url 'profile-favourites' profile.user.username %}" class="btn btn-outline-discovery m-2">
-                    <i class="fas fa-heart" aria-hidden="true"></i> My
-                    Favourites
+                    <i class="fas fa-heart" aria-hidden="true"></i> My Favourites
                 </a>
                 {% endif %}
             </div>
+            <!-- Right Column: Profile Details -->
             <div class="col-sm-8">
                 <div class="card-body">
-                    <h3 class="mb-4 pb-2 border-bottom">Profile
-                        Summary</h3>
+                    <h3 class="mb-4 pb-2 border-bottom">Profile Summary</h3>
                     <div class="row">
+                        <!-- Full Name -->
                         <div class="col-sm-6 mb-3">
                             <p class="fs-4 text-muted mb-1">Full Name:</p>
-                            <p class="fs-3 fw-bold">{{ profile.user.first_name }}
-                                {{ profile.user.last_name }}</p>
+                            <p class="fs-3 fw-bold">{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
                         </div>
+                        <!-- Location -->
                         <div class="col-sm-6 mb-3">
                             <p class="fs-4 text-muted mb-1">Location:</p>
                             <h6 class="fs-3 fw-bold">{{ profile.location }}</h6>
                         </div>
+                        <!-- Bio -->
                         <div class="col-sm-12 mb-3">
                             <p class="fs-4 text-muted mb-1">Bio:</p>
                             <h6 class="fs-4">{{ profile.bio }}</h6>
                         </div>
+                        <!-- Insights Stats -->
                         <div class="col-sm-6 mb-3">
                             <p class="mb-1 fw-bold d-inline">Insights <i class="fa fa-thumbs-up"></i>: {{ total_likes }}
                             </p>
@@ -56,19 +62,17 @@
                         <div class="col-sm-6 mb-3">
                             <p class="mb-1 fw-bold">Insights <i class="fa fa-heart"></i>: {{ total_favourites }}</p>
                         </div>
+                        <!-- Profile Actions (Only for the profile owner) -->
                         {% if user.is_authenticated and user.id == profile.user.id %}
                         <div class="py-5 text-center">
                             <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-info m-3">
-                                <i class="fas fa-user-edit"></i> Update
-                                Profile
+                                <i class="fas fa-user-edit"></i> Update Profile
                             </a>
                             <a href="{% url 'account_change_password' %}" role="button" class="btn btn-warning m-3">
-                                <i class="fas fa-user-lock"></i> Change
-                                Password
+                                <i class="fas fa-user-lock"></i> Change Password
                             </a>
                             <a href="{% url 'profile-delete' user.id %}" role="button" class="btn btn-danger m-3">
-                                <i class="fas fa-user-slash"></i> Delete
-                                Account
+                                <i class="fas fa-user-slash"></i> Delete Account
                             </a>
                         </div>
                         {% endif %}

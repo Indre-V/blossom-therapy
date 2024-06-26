@@ -1,26 +1,33 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block title %} Blossom Therapy Insights | Add Insight {% endblock %}
 
 {% block content %}
   <div class="container py-5">
+    <!-- Page Title -->
     <h1 class="page-title text-center">Add Insight</h1>
     <hr class="hr hr-blurry">
+    <!-- Instructions -->
     <p class="text-center mt-3">All Insights are approved by Admin. Drafts can be found in Profile Section.</p>
     <div class="row justify-content-center">
       <div class="col-11 col-md-6 col-lg-4 mt-3">
-          <form class="text-dark" method="post" enctype="multipart/form-data">
-            {{ form | crispy }}
-            {% csrf_token %}
-            {{ message }}
-            <div class="d-flex justify-content-between mt-3">
-              <button type="submit" class="btn btn-success mt-4">Submit</button>
-              <a class="btn rounded mb-0 text-nowrap button-style mt-4" href="{% url 'home' %}">Cancel</a>
-            </form>
+        {% load cloudinary %}
+        <!-- Insight Form -->
+        <form class="text-dark" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- Render the form using Crispy Forms for better styling -->
+          {{ form | crispy }}
+          <!-- Display messages, if any -->
+          {{ message }}
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
+            <a class="btn rounded mb-0 text-nowrap button-style mt-4" href="{% url 'home' %}">Cancel</a>
           </div>
-        </div>
+        </form>
       </div>
     </div>
+  </div>
 {% endblock %}

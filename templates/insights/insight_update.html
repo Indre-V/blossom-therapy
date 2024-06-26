@@ -4,27 +4,34 @@
 {% block title %} Blossom Therapy Insights | Edit Insight {% endblock %}
 
 {% block content %}
-
 <section>
     <div class="container py-5">
-      <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-md-12 col-lg-8">
-          <h3 class="fw-bold mb-4 text-center">Edit Insightt</h3>
-          <div class="card bg-clr-dom-light shadow-sm m-5 p-5">
-            {% load cloudinary %}
-            <form class="text-dark" method="post" enctype="multipart/form-data">
-              {{ form | crispy }}
-              {% csrf_token %}
-              {{ message }}
-              <div class="d-flex justify-content-center mt-4">
-                <button type="submit" class="btn btn-success btn-sm mt-4">Update</button>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-12 col-lg-8">
+                <h3 class="fw-bold mb-4 text-center">Edit Insight</h3>
+                <div class="card bg-clr-dom-light shadow-sm m-5 p-5">
+                    <!-- Load cloudinary library for image handling -->
+                    {% load cloudinary %}
+                    <!-- Form for editing insight -->
+                    <form class="text-dark" method="post" enctype="multipart/form-data">
+                        <!-- Render form fields using Crispy Forms for better styling -->
+                        {{ form | crispy }}
+                        <!-- CSRF token for security -->
+                        {% csrf_token %}
+                        <!-- Display any messages, e.g., success or error messages -->
+                        {{ message }}
+                        <div class="d-flex justify-content-center mt-4">
+                            <button type="submit" class="btn btn-success btn-sm mt-4">Update</button>
+                        </div>
+                    </form>
+                    <!-- Cancel button to return to insight details page -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <a class="btn" href="{% url 'insight-details' post.slug %}">Cancel</a>
+                    </div>
+                </div> 
             </div>
-        </form>
-        <div class="d-flex justify-content-center mt-3">
-        <a class="btn" href="{% url 'insight-details' post.slug %}">Cancel</a>
-    </div></div>
-            </div>
-          </div>
         </div>
-  </section>
-  {% endblock %}
+    </div>
+</section>
+{% endblock %}
+

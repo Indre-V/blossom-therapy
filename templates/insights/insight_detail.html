@@ -1,33 +1,39 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
+
 {% block title %}{{ post.title }}{% endblock %}
+
 {% block content %}
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10 col-xl-8">
-                <article class="bg-white p-4 shadow-sm rounded">
-                    {% include 'insights/list_cards.html' %}
-                    <div class="text-wrap m-4 post-content">
-                        <p>{{ post.content|safe }}</p>
-                    </div>
-            </div>
-           </article>
-        </div> 
-        <section class="gradient-custom">
-            <div class="container my-5 py-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-12 col-lg-10 col-xl-8">
-                        <div class="card">
-                            <div class="card-body p-4">
-                                {% if post.status == 1 %}
-                                {% include 'comments/add_comment.html' %}
-                                {% endif %}
-                            </div>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10 col-xl-8">
+            <!-- Main Article Section -->
+            <article class="bg-white p-4 shadow-sm rounded">
+                <!-- Include List Cards Component -->
+                {% include 'components/list_cards.html' %}
+                <!-- Post Content -->
+                <div class="text-wrap m-4 post-content">
+                    <p>{{ post.content|safe }}</p>
+                </div>
+            </article>
+        </div>
+    </div>
+    <!-- Comment Section -->
+    <section class="gradient-custom">
+        <div class="container my-5 py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10 col-xl-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <!-- Add Comment Form -->
+                            {% if post.status == 1 %}
+                            {% include 'comments/add_comment.html' %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-    {% endblock %}
+        </div>
+    </section>
+</div>
+{% endblock %}

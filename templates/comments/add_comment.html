@@ -1,14 +1,18 @@
 <!-- Comment section -->
+
 {% load static %}
 {% load humanize %}
 {% load crispy_forms_tags %}
 
 <h2 class="text-center mb-4 pb-2">Comments</h2>
+<!-- Iterate through each comment -->
 {% for comment in comments %}
 <div class="mb-4">
     <div class="d-flex justify-content-between">
+        <!-- Comment Author Information -->
         <div class="d-flex align-items-center">
-            {% if "placeholder_profile" in comment.author.profile.profile_picture.url%}
+            {% if "placeholder_profile" in comment.author.profile.profile_picture.url %}
+            <!-- Default Profile Picture if Profile Picture is Placeholder -->
             <img src="{% static 'images/placeholder_profile.webp' %}" class="rounded-circle me-3" width="40" height="40"
                 alt="Profile Placeholder" loading="lazy">
             {% else %}
@@ -16,14 +20,15 @@
                 height="40" alt="Profile Picture" loading="lazy">
             {% endif %}
             <span><strong>{{ comment.author.username }}</strong> |
-                {{comment.created_on|naturaltime }}</span>
+                {{ comment.created_on|naturaltime }}</span>
         </div>
+        <!-- Edit and Delete Buttons (visible to comment owner or superuser) -->
         {% if request.user == comment.author or request.user.is_superuser %}
         <div>
             {% include 'comments/delete_comment.html' %}
             <a class="btn btn-warning icon m-2" href="{% url 'edit-comment' comment.pk %}">
-                {% csrf_token %}
-                <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+            </a>
         </div>
         {% endif %}
     </div>
@@ -33,17 +38,19 @@
 {% empty %}
 <p class="m-4">No comments yet.</p>
 {% endfor %}
-<!-- Comment form -->
 <div class="mt-4">
     {% if user.is_authenticated %}
     <p class="mb-1">Posting as: {{ user.username }}</p>
     <form id="commentForm" method="post">
-        {% csrf_token %} {{ comment_form|crispy }}
+        {% csrf_token %}
+        <!-- Render the comment form using Crispy Forms for better styling -->
+        {{ comment_form|crispy }}
         <button id="submitButton" type="submit" class="btn rounded mb-0 text-nowrap button-style">
             Submit
         </button>
     </form>
     {% else %}
-    <p><a href="{% url 'account_login' %}">Log in </a>to leave a comment</p>
+    <!-- Displayed when user is not authenticated -->
+    <p><a href="{% url 'account_login' %}">Log in</a> to leave a comment</p>
     {% endif %}
 </div>

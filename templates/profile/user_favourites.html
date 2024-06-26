@@ -1,24 +1,29 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block title %}Blossom Therapy Insights | {{ profile.username }} Favourites{% endblock %}
-{% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
+{% block title %}Blossom Therapy Insights | {{ profile.username }} Favourites{% endblock %}
+
+{% block content %}
 <div class="container mt-5">
-    <a href="{% url 'profile' user.username %}" class="btn btn-info mb-1"
-    >Return to Profile</a>
+    <!-- Button to return to the user's profile page -->
+    <a href="{% url 'profile' user.username %}" class="btn btn-info mb-1">Return to Profile</a>
     <div class="col-md-12">
-            <h4 class="text-center mt-4">My Favourites</h4>
-            <hr class="hr hr-blurry">
-            <div class="row justify-content-center">
-                {% for post in favourites %}
-                <div class="col-lg-4 col-md-6 mb-4 mt-2">
-                        {% include 'insights/list_cards.html' %}
-                    </div>
-                {% empty %}
-                <p>No Posts yet.</p>
-                {% endfor %}
+        <h4 class="text-center mt-4">My Favourites</h4>
+        <hr class="hr hr-blurry">
+        <div class="row justify-content-center">
+            <!-- Loop through the list of favourite posts -->
+            {% for post in favourites %}
+            <div class="col-lg-4 col-md-6 mb-4 mt-2">
+                <!-- Include the template for displaying each post -->
+                {% include 'components/list_cards.html' %}
             </div>
+            {% empty %}
+            <!-- Message to display if the user has no favourite posts -->
+            <p>No Posts yet.</p>
+            {% endfor %}
         </div>
-    {% include 'components/pagination.html' %}        
     </div>
+    <!-- Include pagination controls -->
+    {% include 'components/pagination.html' %}
+</div>
 {% endblock content %}

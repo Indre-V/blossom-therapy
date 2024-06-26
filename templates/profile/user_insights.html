@@ -1,23 +1,29 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
+
 {% block title %}Blossom Therapy Insights | {{ profile.username }} Insights{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
-    <button class="btn btn-info mb-1" onclick="history.back()">Return to Profile</button>
-    <div class="col-md-12">
-        <h3 class="text-center mt-4">Insights</h3>
-        <hr class="hr hr-blurry">
-        <div class="row justify-content-center">
-                {% for post in insights %}
-                <div class="col-lg-4 col-md-6 mb-4 mt-2">
-                    {% include 'insights/list_cards.html' %}
-                  </div>
-                  {% empty %}
-                  <p>No Insights yet.</p>
-                  {% endfor %}
-                </div>
-              </div>
-             {% include 'components/pagination.html' %}  
-            </div>
+  <!-- Button to return to the profile page -->
+  <button class="btn btn-info mb-1" onclick="history.back()">Return to Profile</button>
+  <div class="col-md-12">
+    <!-- Title for the Insights section -->
+    <h3 class="text-center mt-4">Insights</h3>
+    <hr class="hr hr-blurry">
+    <div class="row justify-content-center">
+      <!-- Loop through the insights and display each card -->
+      {% for post in insights %}
+      <div class="col-lg-4 col-md-6 m-5">
+        {% include 'components/list_cards.html' %}
+      </div>
+      {% empty %}
+      <!-- Message to display if there are no insights -->
+      <p>No Insights yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- Include the pagination component -->
+  {% include 'components/pagination.html' %}
+</div>
 {% endblock content %}
-            

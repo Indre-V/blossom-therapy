@@ -1,35 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+
 {% block title %} Blossom Therapy Insights | Insights List {% endblock %}
 
 {% block content %}
 <div class="container-fluid mt-5">
   <div class="row">
+    <!-- Sidebar column -->
     <div class="col-md-4 mb-5">
-      {% include 'includes/category_sidebar.html' %}
+      {% include 'components/category_sidebar.html' %}
     </div>
+    <!-- Main content column -->
     <div class="col-md-8">
+      <!-- Heading based on search or category -->
       <h3 class="fw-bold my-5 text-center">
-          {% if search_query %}
-          Search Results for: "{{ search_query }}"
-          {% elif category %}
-          Posts in Category: {{ category.name }}
-          {% else %}
-          Browse All Insights
-          {% endif %}
+        {% if search_query %}
+        Search Results for: "{{ search_query }}"
+        {% elif category %}
+        Posts in Category: {{ category.name }}
+        {% else %}
+        Browse All Insights
+        {% endif %}
       </h3>
+      <!-- Row for displaying insights -->
       <div class="row">
         {% for post in insights %}
+        <!-- Column for each insight -->
         <div class="col-lg-6 col-md-10 mb-6">
           <div class="p-4">
-            {% include 'insights/list_cards.html' %}
+            {% include 'components/list_cards.html' %}
           </div>
         </div>
         {% empty %}
+        <!-- Message displayed when no insights are found -->
         <h3 class="text-center">Nothing found .... Feel free to add an Insight.</h3>
         {% endfor %}
       </div>
+      <!-- Pagination component for navigating through insights -->
       {% include 'components/pagination.html' %}
     </div>
   </div>
