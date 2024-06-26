@@ -9,13 +9,23 @@ class InsightForm(forms.ModelForm):
     Form for creating and updating a Post.
     """
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
-        STATUS_CHOICES = [
-            choice for choice in self.fields['status'].choices
-            if choice[0] in (0, 2)
-        ]
-        self.fields['status'].choices = STATUS_CHOICES
+        if self.user_is_admin():
+            self.fields['status'].choices = Post.STATUS_CHOICES
+        else:
+            self.fields['status'].choices = [
+                choice for choice in Post.STATUS_CHOICES
+                if choice[0] in (0, 2)
+            ]
+
+    def user_is_admin(self):
+        """
+        Helper method to check if the user is an admin.
+        You can customize this method based on your user model or permissions.
+        """
+        return self.user and self.user.is_superuser
 
     class Meta:
         """

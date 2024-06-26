@@ -25,6 +25,11 @@
                     <a class="nav-link {% if request.path == '/add-insight/' %}active{% endif %}" href="{% url 'add-insight' %}">Add Insight</a>
                 </li>
                 {% endif %}
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/posts/pending/' %}active{% endif %}" href="{% url 'pending-posts' %}">Pending Approvals</a>
+                </li>
+    {% endif %}
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">

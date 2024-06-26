@@ -1,7 +1,7 @@
 """Views Imports """
 from django.shortcuts import render, redirect
 from django.views import generic
-from django.views.generic import CreateView, View, ListView, DeleteView
+from django.views.generic import CreateView, View, ListView, DeleteView, FormView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -106,6 +106,11 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = InsightForm
     success_url = reverse_lazy("home")
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user  # Pass the current user to the form
+        return kwargs
+
     def form_valid(self, form):
         """
         Custom logic to handle form validation when creating a new post
@@ -117,6 +122,8 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             success_message = "Insight added successfully! Waiting for Admin approval."
         elif form.instance.status == 2:
             success_message = "Insight added to drafts successfully."
+        elif form.instance.status == 1:
+            success_message = "Insight posted successfully."
 
         response = super().form_valid(form)
         messages.success(self.request, success_message)
@@ -271,11 +278,20 @@ class InsightUpdateView(
     model = Post
     form_class = InsightForm
     template_name = "insights/insight_update.html"
-    success_message = "Post was edited successfully"
+    success_message = "Insight was edited successfully"
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+        if not form.instance.author:
+            form.instance.author = self.request.user
+
+        form.instance.slug = slugify(form.instance.title)
+        response = super().form_valid(form)
+        return response
 
     def test_func(self):
         post = self.get_object()
@@ -344,3 +360,43 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
         referer = request.META.get('HTTP_REFERER')
 
         return redirect(referer)
+
+
+class PendingApprovalListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    """
+    A view for displaying a list of posts pending approval by admins.
+    """
+    model = Post
+    template_name = 'insights/pending_approval_list.html'
+    context_object_name = 'posts'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Post.objects.filter(status=0).order_by('-created_on')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class ApprovePostView(LoginRequiredMixin, UserPassesTestMixin, View):
+    """
+    A view for displaying a list of posts pending approval by admins.
+    """
+    def post(self, request, pk, *args, **kwargs):
+        """
+        Handles HTTP POST requests to approve a post with the specified pk.
+        If the post is pending (status=0), changes its status to approved (status=1).
+        Redirects to the 'pending-posts' URL after approval.
+        """
+        post = get_object_or_404(Post, pk=pk)
+        if post.status == 0:
+            post.status = 1
+            post.save()
+            messages.success(request, f'Post "{post.title}" has been approved.')
+        else:
+            messages.info(request, f'Post "{post.title}" is already approved.')
+
+        return redirect('pending-posts')
+
+    def test_func(self):
+        return self.request.user.is_superuser

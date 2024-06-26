@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+    <h2>Pending Approvals</h2>
+    <article class="mt-5">
+        <strong>Admin Note:</strong>
+        <ul>
+            <li>Records can be approved either by clicking on the 'Approve' button or by navigating to the insight content.</li>
+            <li>Click on the title to view the content.</li>
+            <li>Insights can be deleted or edited.</li>
+            <li>If the content is satisfactory, change the status to 'Publish' in <i class="fa fa-edit" aria-hidden="true"> </i> view</li>
+            <li>Otherwise, you can either delete the post or 'Save to drafts' for the user to manage.</li>
+        </ul>
+    </article>
+    {% if posts %}
+    <table class="table my-5">
+        <thead>
+          <tr class="fs-3 fw-bolder">
+            <th scope="col">Author</th>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="fs-4">
+          <tr>
+        {% for post in posts %}
+        <td>{{ post.author }}</td>
+        <td>
+            <a href="{% url 'insight-details' post.slug %}">{{ post.title }}</a></td>
+            <td>{{ post.created_on|date:"F j, Y" }}</td>
+            <td>
+            <form method="post" action="{% url 'approve-post' post.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-warning">Approve</button>
+            </form></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert fw-bold">
+        There are no posts pending approval.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
