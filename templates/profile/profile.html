@@ -10,12 +10,12 @@
                 <div class="col-sm-12">
                     <h3 class="my-5">{{ profile.user.username }}</h3>
                     {% if "placeholder_profile" in profile.profile_picture.url %}
-                            <img src="{% static 'images/placeholder_profile.webp' %}" class="img-radius w-25 mb-5"
-                                alt="Profile Placeholder" loading="lazy">
-                            {% else %}
-                            <img src="{{ profile.profile_picture.url }}" class="img-radius w-25 mb-5" alt="Profile Picture"
-                                loading="lazy">
-                            {% endif %}
+                    <img src="{% static 'images/placeholder_profile.webp' %}" class="img-radius w-25 mb-5"
+                        alt="Profile Placeholder" loading="lazy">
+                    {% else %}
+                    <img src="{{ profile.profile_picture.url }}" class="img-radius w-25 mb-5" alt="Profile Picture"
+                        loading="lazy">
+                    {% endif %}
                 </div>
                 <a href="{% url 'profile-insights' profile.user.username %}" class="btn btn-outline-discovery m-2">
                     <i class="fas fa-book" aria-hidden="true"></i> Insights

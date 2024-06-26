@@ -1,7 +1,7 @@
 """Views Imports """
 from django.shortcuts import render, redirect
 from django.views import generic
-from django.views.generic import CreateView, View, ListView, DeleteView, FormView
+from django.views.generic import CreateView, View, ListView, DeleteView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
