@@ -240,7 +240,7 @@ Usage: Used for button backgrounds and various highlights. This color is calming
 
 Summary:
 
-```:root
+:root
   --primary-color: #FF6347;
   --secondary-color: #46626d;
   --background-color: #FCF7F2;
@@ -366,7 +366,7 @@ The view prominently displays the user’s profile picture. If no picture is upl
 
 User full name, location and bio displayed publicly to all visitors of the page. They can be updated at anytime. 
 
-![Profile Deatils](/readme/docs/profile-details.png)
+![Profile Details](/readme/docs/profile-details.png)
 
 **Navigation and Interaction:**
 
@@ -374,7 +374,7 @@ User full name, location and bio displayed publicly to all visitors of the page.
 
 Users can easily navigate to their insights, drafts, and favorite posts using intuitive buttons displayed on the left column. These buttons provide direct access to specific sections of the user’s profile based on their interactions within the platform. Users can remove favourites from the list. Edit, publish or delete the insights. 
 
-<details><summary><b>Sections Summary View</b></summary>
+<details><summary><b>User Content Summary View</b></summary>
 
 ![Profile Insights](/readme/docs/profile-insights-sm-screen.png)
 ![My Drafts](/readme/docs/my-drafts-ml-screen.png)
@@ -408,6 +408,78 @@ For authenticated users who own the profile, actionable buttons are provided at 
 ![Public Profile View](/readme/docs/public-profile-view.png)
 
 Visitors can click on the insight author's username and access their public profile. View excludes actions, favourites and drafts to protect the author's privacy.
+
+### Add Insight
+
+The "Add Insight" page features a user-friendly form, allowing users to easily submit new insights to the platform. The page includes a clear title, informative instructions, and a form styled with Crispy Forms for enhanced usability. Users can enter their post details, attach images, and submit their insights, with all submissions by generic users pending admin approval. Additionally, there is an option to save insights as drafts in the user profile section. The design prioritizes simplicity and functionality. Superusers have also an option to 'Publish' the Insight instantly. 
+
+<details><summary><b>Add Insight Form</b></summary>
+
+![Update View](/readme/docs/add-insight-sm-screen.png)
+
+</details><br/>
+
+### Edit Insight
+
+The "Edit Insight" page allows users to modify existing insights. The page displayes the same fields and overall look as *Add Insight*.  Users can update insight details directly within the form, with a submit button for applying changes securely. Additionally, a cancel button is provided to return users to the detailed view of the insight, ensuring straightforward navigation and editing capabilities.
+
+<details><summary><b>Edit Insight Form</b></summary>
+
+![Edit View](/readme/docs/edit-insight-sm-screen.png)
+
+</details><br/>
+
+### Delete Insight
+
+Trash can icon that triggers the delete modal when clicked by the user on the Insight card. Inside the modal, the insight's title is displayed in the header, confirming the deletion action. Users are warned that this action is irreversible in the modal body. The modal footer offers a cancel button to dismiss the modal without deleting the insight. 
+
+<details><summary><b>Delete Insight Modal</b></summary>
+
+![Delete Modal](/readme/docs/delete-insight-sm-screen.png)
+
+</details><br/>
+
+### Pending Approvals
+
+This option is only available to superusers. They are instructed on how to manage pending insights, including approval, viewing content, deletion, editing, and changing status to publish or saving to drafts. If there are pending records, they are displayed in a table format showing details author, title (linked to the insight details), creation date, and an action column with a button to approve each post. If no posts are pending, message informs that there are no pending posts.
+
+<details><summary><b>Delete Insight Modal</b></summary>
+
+![Pending Approvals](/readme/docs/pending-approvals-sm-screen.png)
+
+</details><br/>
+
+### Insight Card
+
+![Insight Card](/readme/docs/insight-card-sm-screen.png)
+
+Insight card layout for each post, features the post's title, featured image, category, author details, publication date, interactive elements based on the user status. It begins with the post's featured image, which links to the detailed view of the post. The card also includes the post's title, category with a link to related posts, and details about the author, including their profile picture and username with a link to their public profile page. For authorized users (author or superuser), edit and delete buttons are provided.
+For published posts it includes like and favorite buttons with counts, and the number of comments. If the posts is pending approval or a draft it displays the status.
+
+<details><summary><b> Insight Status Display</b></summary>
+
+![Status Draft Display](/readme/docs/status-draft-sm-screen.png)
+![Status Pending Display](/readme/docs/status-pending-sm-screen.png)
+
+</details><br/>
+
+### Insight Details
+
+It dynamically displays insight card followed by the content of the post which is securely rendered using the safe filter to ensure HTML tags are displayed correctly. 
+Additionally, depending on the post status, a comment section with an interactive form allows users to contribute comments. This structured approach ensures a user-friendly interface for reading and interacting with posts on the platform.
+
+
+<details><summary><b> Insight Details Display</b></summary>
+
+![Insight Details Display](/readme/docs/insight-details-sm-screen.png)
+
+</details><br/>
+
+### User Interactions
+
+**Insight Like**
+
+
 
 ### Custom Error Pages
 
