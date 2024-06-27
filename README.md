@@ -298,7 +298,32 @@ The header of the Blossom Therapy Insights page is designed to be visually appea
 
 ![Footer](/readme/docs/footer-ml-screen.png)
 
-The footer maintains consistency with the overall site design, featuring the same font and color scheme, and is fully responsive to adapt to various screen sizes. This attention to detail helps reinforce the site's branding and enhances the user experience by providing clear and accessible navigation options at the bottom of the page. Media links are included. Also, users can email site owner by clicking on the :envelope: icon is they wish to do so. 
+The footer maintains consistency with the overall site design, featuring the same font and color scheme, and is fully responsive to adapt to various screen sizes. This attention to detail helps reinforce the site's branding and enhances the user experience by providing clear and accessible navigation options at the bottom of the page. Media links are included. Also, users can contact site owner by clicking on the :envelope: icon is they wish to do so. 
+
+**Contact Form:**
+
+This contact form is designed to facilitate user communication with developers in a streamlined and secure manner. All Contact submitted via the form can be viewed in Django Admin Portal.
+
+<details><summary><b>Contact Form</b></summary>
+
+![Contact Modal](/readme/docs/contact-modal.png)
+![Contact List](/readme/docs/contact-list.png)
+
+</details><br/>
+
+
+**About Section:**
+
+Showcases detailed information about website developer in a visually appealing format. Profile card includes a profile picture, name, location, languages spoken, skills, and a brief bio. Links to the developer’s GitHub, LinkedIn, and resume are also provided, along with a button to contact the developer via email. Additional cards highlight the developer’s coding philosophy, design enthusiasm, and educational background. This comprehensive and user-friendly layout allows for easy navigation and access to important information about the developer involved in the project.
+The data is managed via the Django Admin Portal. 
+
+
+<details><summary><b>About Section</b></summary>
+
+![About Section](/readme/docs/about-page-view.png)
+
+</details><br/>
+
 
 ### Landing Page
 
@@ -463,6 +488,20 @@ For published posts it includes like and favorite buttons with counts, and the n
 
 </details><br/>
 
+### Browse Insights
+
+ It features a sidebar for easy navigation through different categories, enhancing the user’s ability to filter content. The page dynamically adjusts its heading to display search results or the selected category. In the event that no insights match the user's search or category selection, a prompt encourages users to add new insights. Additionally, the inclusion of a pagination component ensures smooth navigation through multiple pages of insights, making the browsing experience seamless and efficient. Category list is managed by the superuser in Django Admin Portal.
+
+ <details><summary><b> Insight Status Display</b></summary>
+
+![Sidebar](/readme/docs/sidebar.png)
+![Insights List View](/readme/docs/Insights-list-view-sm-screen.png)
+![Search Results](/readme/docs/search-results-sm-screen.png)
+![Category Search](/readme/docs/category-search-sm-screen.png)
+![No Records](/readme/docs/no-records-sm-screen.png)
+
+</details><br/>
+
 ### Insight Details
 
 It dynamically displays insight card followed by the content of the post which is securely rendered using the safe filter to ensure HTML tags are displayed correctly. 
@@ -477,8 +516,47 @@ Additionally, depending on the post status, a comment section with an interactiv
 
 ### User Interactions
 
-**Insight Like**
+![Interactions Display](/readme/docs/interactions-snippet.png)
 
+**Insight Like and Unlike:**
+
+Application allows users to like and unlike insights. This functionality is available for all published posts.  If the user has already liked the post, the like is removed. If the user has not liked the post, the like is added. The total of likes is displayed in the author profile section. The post to be liked or unliked is identified by its unique slug, which is passed in the URL.
+After the like or unlike action, the user is redirected back to the page they came from, maintaining their navigation context.
+
+<details><summary><b>Like Functionality</b></summary>
+
+![Like Message](/readme/docs/like-message.png)
+![Liked Insight View](/readme/docs/liked-insight.png)
+![Unliked Message](/readme/docs/unlike-message.png)
+
+</details><br/>
+
+**Favourite and Unfavourite Insight:**
+
+Application allows users to add or remove insights from their favourites. If the user has already favourited the post, the favourite is removed. If the user has not favourited the post, the favourite is added. After an action (favourite or unfavourite), the user receives a success message indicating whether the insight was added to or removed from their favourites. After the favourite or unfavourite action, the user is redirected back to the page they came from, maintaining their navigation context. 
+
+<details><summary><b>Favourite Functionality</b></summary>
+
+![Like Message](/readme/docs/like-message.png)
+![Liked Insight View](/readme/docs/liked-insight.png)
+![Unliked Message](/readme/docs/unlike-message.png)
+
+</details><br/>
+
+**Comments:**
+
+Authenticated users can add comments to insights. Comments are displayed in the insight details view accompanied by user profile image and name. The comment date is displayed using `Humanize` built-in Django model to make the date more user friendly. There is no requirement for the comments to be approved by admin. However, all superusers and comment authors can edit and delete comments within the insight details view. If user is not logged in, the message is displayed with log in link. Comment creation, deletion and editing functionalities have coded in user feedback messages that are displayed in the notification modal. After successful action, users are redirected to the detail view of the post associated with the comment. If the comment form field is left empty, the standard error message is displayed.
+
+<details><summary><b>Comments View</b></summary>
+
+![Comment Form](/readme/docs/comment-form.png)
+![Comment Edit](/readme/docs/comment-edit.png)
+![Comment Delete](/readme/docs/comment-delete.png)
+![Comment Add Success Message](/readme/docs/comment-add.png)
+![Comment Add Edit Message](/readme/docs/comment-add.png)
+![Comment Add Success Message](/readme/docs/comment-add.png)
+
+</details><br/>
 
 
 ### Custom Error Pages
@@ -489,6 +567,7 @@ Additionally, depending on the post status, a comment section with an interactiv
 - **500 Server Error** - The platform is currently experiencing technical difficulties and cannot process this request.
 
 [Back to top](#contents)
+
 ## Deployment
 
 ### To deploy the project to Heroku
@@ -570,11 +649,11 @@ Testing summary and results can be found [here](/blossom-therapy/TESTING.md).
 
 ###  Languages
 
--   [Python](https://www.python.org/) - high-level, general-purpose programming language.
--   [Markdown](https://en.wikipedia.org/wiki/Markdown) - markdown language used to write README and TESTING documents.
-- [HTML](https://developer.mozilla.org/en-US/docs/Glossary/HTML5 "HTML") - the standard markup language for creating Web pages.
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS") - a stylesheet language used for styling of a document written in a markup language.
-- [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript "JS") - programming language that allows developer to implement complex features on web pages.
+- [Python](https://www.python.org/) 
+- [Markdown](https://en.wikipedia.org/wiki/Markdown)
+- [HTML](https://developer.mozilla.org/en-US/docs/Glossary/HTML5 "HTML")
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS "CSS")
+- [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript "JS")
 
 
 ### Python Libraries
@@ -583,6 +662,7 @@ Testing summary and results can be found [here](/blossom-therapy/TESTING.md).
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Used to manage Django forms, making form rendering in templates simpler and more elegant.
 
 ### Frameworks
+
 - [Django](https://www.djangoproject.com/): Django is the main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
 
 ### Programs
