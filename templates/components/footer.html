@@ -1,15 +1,16 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!-- Social Icons -->
 <div>
-    <a href="https://github.com/Indre-V" target="_blank" aria-label="Go to Github page of developer.">
-        <i class="fa-brands fa-github icon"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/indre-vilickaite/" target="_blank"
-        aria-label="Go to LinkedIn page of developer.">
-        <i class="fa-brands fa-linkedin-in icon mx-2"></i>
-    </a>
-    <a href="mailto:indre.vilickaite@gmail.com" role="button" aria-label="Email the developer">
-        <i class="fa fa-envelope icon"></i>
+    <!-- Include the contact form modal -->
+    {% include 'about/contact.html' %}
+    <!-- Contact button to trigger the modal -->
+    <button type="button" class="icon-size icon btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+        <i class="fa fa-envelope icon mx-3" aria-hidden="true"></i>
+    </button>
+    <!-- Link to developer profile -->
+    <a href="{% url 'dev_profile' %}" role="button" aria-label="Site Owner View">
+        <i class="fa fa-address-card icon"></i>
     </a>
 </div>
 <div class="text-center p-3">

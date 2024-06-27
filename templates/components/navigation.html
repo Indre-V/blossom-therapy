@@ -26,11 +26,6 @@
                     <a class="nav-link {% if request.path == '/insights/' %}active{% endif %}" aria-current="page"
                         href="{% url 'insights' %}">Insights</a>
                 </li>
-                <li class="nav-item">
-                    <!-- About link -->
-                    <a class="nav-link {% if request.path == '/about/' %}active{% endif %}"
-                        href="{% url 'dev_profile' %}">About</a>
-                </li>
                 {% if user.is_authenticated %}
                 <!-- Add Insight link for authenticated users -->
                 <li class="nav-item">
