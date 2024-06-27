@@ -212,29 +212,44 @@ The database schema outlines the structure and relationships between key tables 
 
 ### Colour Scheme
 
-This color scheme aims to create a harmonious balance between the vibrant, nature-inspired elements of the gardening insights and the professional, reliable tone needed for the developer section. By combining these carefully chosen colors, I aim to deliver a visually appealing and user-friendly experience that resonates with both gardeners and potential customers. 
+This color scheme aims to create a harmonious balance between the vibrant, nature-inspired elements of the gardening insights and the professional, reliable tone needed for the about section. By combining these carefully chosen colors, I aim to deliver a visually appealing and user-friendly experience that resonates with both gardeners and potential customers. 
 
 ![Coolors Scheme](/readme/docs/color-scheme.png)
 
-| Color | Description |
-|-------|-------------|
-| **Primary Color:** | Tomato (#FF6347) |
-| | Tomato is a warm, energetic color that evokes the vitality and freshness of a garden in full bloom. Its boldness grabs attention, making it perfect for call-to-action buttons and important highlights. This lively hue reflects the passion and enthusiasm of gardening enthusiasts, adding a sense of excitement to the blog. |
-| **Secondary Color:** | Steel Blue (#4682B4) |
-| | Steel Blue provides a calming and reliable counterpoint to the vibrant primary color. It symbolizes trust, stability, and depth, making it an ideal choice for the developer section, where clarity and reliability are paramount. This color helps create a serene environment that encourages focus and productivity. |
-| **Accent Color:** | Gold (#FFD700) |
-| | Gold is used as an accent color to add a touch of elegance and sophistication. It represents achievement and high quality, which can enhance the perceived value of the content. Gold is versatile and works well for highlighting key information, links, and decorative elements, providing a cohesive look across both sections of the site. |
-| **Supporting Colors:** | |
-| | **Peach Puff (#FFDAB9):** This soft, warm color complements the primary color, creating a gentle and inviting atmosphere. It can be used for backgrounds, secondary buttons, and subtle highlights, enhancing the site's overall warmth and friendliness. |
-| | **Powder Blue (#B0E0E6):** A lighter shade of blue, Powder Blue provides a refreshing and airy feel. It is perfect for background elements and less critical components, maintaining the site's clean and spacious look without overwhelming the user. |
-| | **Ivory (#FFFFF0):** Ivory is used as an alternative background color to add warmth and softness. It can be applied to sections that need a gentle, neutral backdrop, ensuring that the content remains the focal point. |
-| **Background and Text Colors:** | |
-| | **Background Color:** White (#ffffff): White serves as the main background color, offering a clean, minimalist canvas that enhances readability and makes other colors stand out. |
-| | **Text Color:** Dark Gray (#222020): Dark Gray is chosen for the text color due to its excellent legibility and modern appearance. It provides a strong contrast against the white background, ensuring that the text is easy to read without being as stark as black. |
+Color Palette
+
+Primary Color (Tomato)
+Hex Code: #FF6347
+Usage: This color is used for the navbar background and gradients. It is a vibrant and eye-catching color that draws user attention and creates a lively atmosphere.
+
+Secondary Color (Gunmetal)
+Hex Code: #46626d
+Usage: Applied to icons and other secondary text elements, this color provides good contrast without being too harsh, maintaining readability and a balanced design.
+
+Background Color (Linen)
+Hex Code: #FCF7F2
+Usage: Used as the background color for the entire body to create a soft and clean look. This color is light and pleasant, ensuring that text and other elements stand out clearly against it.
+
+Light Orange
+Hex Code: #EDD0B3
+Usage: Applied to the footer background and as a hover effect for buttons. This color adds warmth and highlights important interactive elements, drawing user attention effectively.
+
+Powder Blue
+Hex Code: #B0D3E6
+Usage: Used for button backgrounds and various highlights. This color is calming and soft, ensuring that buttons are noticeable but not overwhelming. It complements the other colors well, adding to the overall aesthetic.
+
+Summary:
+
+```:root
+  --primary-color: #FF6347;
+  --secondary-color: #46626d;
+  --background-color: #FCF7F2;
+  --light-orange: #edd0b3;
+  --powder-blue: #b0d3e6;
 
 ### Images
 
-Combination of images sourced from [Unsplash](https://unsplash.com/), [Gencraft](https://gencraft.com/ "Gencraft"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Unsplash and Gencraft AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
+Combination of images sourced from [Unsplash](https://unsplash.com/), [Gencraft](https://leonardo.ai/ "Leonardo AI"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Unsplash and Leonardo AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
 
 
 ### Responsiveness
@@ -259,12 +274,6 @@ My website is responsive to different layouts depending on the size of the viewp
 ### Form Validation
 If incorrect or empty data is added to a form, the form won't submit, and a warning will appear to the user informing them which field raised the error.
 
-### Custom Error Pages
-
-- **400 Bad Request** - The Platform is unable to process this request.
-- **403 Page Forbidden** - It seems user trying to access restricted content. Please log out and sign in to the appropriate account.
-- **404 Page Not Found** - The page user is looking for doesn't exist.
-- **500 Server Error** - The Plantform is currently experiencing technical difficulties and cannot process this request.
 
 ### Database Security
 
@@ -275,19 +284,137 @@ If incorrect or empty data is added to a form, the form won't submit, and a warn
 
 ### Header
 
+![Visitor Large Screen](/readme/docs/header-visitor-ml-screen.png)
+
+The header of the Blossom Therapy Insights page is designed to be visually appealing and user-friendly, featuring a prominent logo, a navigation menu, user authentication links, and a search bar. It uses a cohesive color scheme with primary, secondary, and background colors, and ensures accessibility with good color contrast and ARIA labels. The responsive design adapts well to both desktop and mobile devices, maintaining functionality and ease of navigation across all screen sizes. The use of 'Merriweather' font and consistent font sizes enhances readability, contributing to a seamless user experience. Once the user is logged in more options become available. For generic authorised users, 'Add Insight' option appears. Superusers have an extra option to approve pending posts.
+
+<details><summary><b>Header - User View</b></summary>
+![User Large Screen](/readme/docs/header-user-ml-screen.png)
+![Admin Large Screen](/readme/docs/header-admin-ml-screen.png)
+
+</details><br/>
+
 ### Footer
+
+![Footer](/readme/docs/footer-ml-screen.png)
+
+The footer maintains consistency with the overall site design, featuring the same font and color scheme, and is fully responsive to adapt to various screen sizes. This attention to detail helps reinforce the site's branding and enhances the user experience by providing clear and accessible navigation options at the bottom of the page. Media links are included. Also, users can email site owner by clicking on the :envelope: icon is they wish to do so. 
 
 ### Landing Page
 
-### User Account
+The landing page is designed to captivate visitors with its vibrant and welcoming aesthetic. Dominated by a primary color palette of floral white, light orange, and powder blue, it sets a calming yet engaging tone. The hero section prominently features a headline complemented by an inviting image that spans the width of the page. For authenticated users, a clear call-to-action button encourages adding insights, while new visitors are prompted to join the community. The layout is clean and organized, ensuring that content is easily readable and visually appealing, thereby enhancing user engagement from the first interaction.
+
+<details><summary><b>Landing View Large Screen</b></summary>
+
+![Landing View Large Screen](/readme/docs/landing-view-ml-screen.png)
+
+</details><br/>
+
+### User Account Pages
+
+THe user account pages ensure a smooth and secure process for managing user access, enhancing the overall user experience on Blossom Therapy Insights.
+
+**Sign Up Page:**
+
+The Sign Up page features a clean and intuitive form where users can create an account by entering their username, first name, last name, email, and password. The form uses a responsive design, ensuring accessibility and ease of use across devices. By prioritizing user-friendly design, the Sign Up page helps facilitate quick and easy registration, encouraging new users to join the community and start their gardening journey.
+
+<details><summary><b>Register View</b></summary>
+
+![Register](/readme/docs/register-small-screen.png)
+
+</details><br/>
+
+---
+
+**Log In Page:**
+
+The Log In page offers a straightforward and secure way for existing users to access their accounts. The page includes fields for the username and password, with clear labels and a prominent login button. The page maintains consistency with the site's overall aesthetic, ensuring a cohesive user experience. The focus on simplicity and security helps users quickly and confidently access their accounts to engage with the Blossom Therapy community.
+
+<details><summary><b>Log In view</b></summary>
+
+![Log In](/readme/docs/login-small-screen.png)
+
+</details><br/>
+
+---
+
+**Log Out Page:**
+
+The Log Out page provides users with confirmation of a successful logout from their account. It features a brief message indicating that the user has been logged out. The design is minimalistic, reinforcing the action taken and providing a clear path to continue exploring the site or logging in again.
+
+<details><summary><b>Log Out View View</b></summary>
+
+![Log Out View](/readme/docs/logout-small-screen.png)
+
+</details><br/>
+
+---
+
+### Profile Page
+
+The Profile Page on Blossom Therapy Insights serves as a personalized view for users to manage and showcase their gardening insights and track engagement. 
+
+![Personal Profile View](/readme/docs/personal-view-sm-screen.png)
+
+**Profile Image**
+
+![Profile Image](/readme/docs/profile-image.png)
+
+The view prominently displays the user’s profile picture. If no picture is uploaded, a placeholder image is shown instead, ensuring a visually consistent layout.
+
+**Profile Details**
+
+User full name, location and bio displayed publicly to all visitors of the page. They can be updated at anytime. 
+
+![Profile Deatils](/readme/docs/profile-details.png)
+
+**Navigation and Interaction:**
+
+![Navigation](/readme/docs/navigation.png)
+
+Users can easily navigate to their insights, drafts, and favorite posts using intuitive buttons displayed on the left column. These buttons provide direct access to specific sections of the user’s profile based on their interactions within the platform. Users can remove favourites from the list. Edit, publish or delete the insights. 
+
+<details><summary><b>Sections Summary View</b></summary>
+
+![Profile Insights](/readme/docs/profile-insights-sm-screen.png)
+![My Drafts](/readme/docs/my-drafts-ml-screen.png)
+![My Favourites](/readme/docs/my-favourites-ml-screen.png)
+
+</details><br/>
 
 
+**Insights Statistics:**
 
+![Insights Statistics](/readme/docs/insights-statistics.png)
 
+Users can view insightful statistics related to their posts, including total likes and favorites received. These metrics provide feedback on the impact and popularity of their contributions within the community.
 
+**Interactive Actions:**
 
-### Error Pages
+![Interactive Actions](/readme/docs/interactive-actions.png)
 
+For authenticated users who own the profile, actionable buttons are provided at the bottom for updating the profile, changing passwords, and deleting the account. These actions are centrally located for ease of access and management.
+
+<details><summary><b>Actions Summary View</b></summary>
+
+![Update View](/readme/docs/update-profile-sm-screen.png)
+![Change Password View](/readme/docs/change-password-ml-screen.png)
+![Delete Account](/readme/docs/delete-account-ml-screen.png)
+
+</details><br/>
+
+**Public Profile View:**
+
+![Public Profile View](/readme/docs/public-profile-view.png)
+
+Visitors can click on the insight author's username and access their public profile. View excludes actions, favourites and drafts to protect the author's privacy.
+
+### Custom Error Pages
+
+- **400 Bad Request** - The platform is unable to process this request.
+- **403 Page Forbidden** - It seems user trying to access restricted content. Please log out and sign in to the appropriate account.
+- **404 Page Not Found** - The page user is looking for doesn't exist.
+- **500 Server Error** - The platform is currently experiencing technical difficulties and cannot process this request.
 
 [Back to top](#contents)
 ## Deployment
@@ -386,10 +513,6 @@ Testing summary and results can be found [here](/blossom-therapy/TESTING.md).
 ### Frameworks
 - [Django](https://www.djangoproject.com/): Django is the main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
 
-### Libraries
-- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Django-allauth is an authentication library used to create user accounts, providing features such as registration, login, and social authentication.
-- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Crispy Forms is used to manage Django forms, making form rendering in templates simpler and more elegant.
-
 ### Programs
 
 - [Balsamiq](https://balsamiq.com/): Wireframing tool used to generate wireframe images, allowing for quick and easy visualization of the application's layout and design.
@@ -412,11 +535,6 @@ Testing summary and results can be found [here](/blossom-therapy/TESTING.md).
 - [W3C](https://www.w3.org/): Used for HTML & CSS validation, ensuring that the project's code complies with web standards and is error-free.
 - [WAVE](https://webaim.org/resources/contrastchecker/): Used for accessibility testing, providing tools to check for accessibility issues such as color contrast and semantic structure.
  
-
-### Frameworks
-
-- [Django](https://www.djangoproject.com/): The main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
-
 
 [Back to top](#contents)
 
