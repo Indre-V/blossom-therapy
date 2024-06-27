@@ -34,6 +34,7 @@ class ProfilePageView(DetailView):
         Extend the context data provided to the template.
         """
         context = super().get_context_data(**kwargs)
+        profile = self.get_object()
         user = self.get_object().user
         insights = Post.objects.filter(author=user, status__in=[0, 1])
         drafts = Post.objects.filter(author=user, status=2)
@@ -42,6 +43,7 @@ class ProfilePageView(DetailView):
         total_favourites = sum(post.count_favs() for post in insights)
 
         context.update({
+            'profile': profile,
             'insights': insights,
             'drafts': drafts,
             'favourites': favourites,
