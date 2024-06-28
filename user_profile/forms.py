@@ -36,13 +36,11 @@ class UserForm(forms.ModelForm):
 
         model = User
         fields = [
-            "username",
             "first_name",
             "last_name",
             "email",
         ]
 
-    username = forms.CharField(max_length=15)
     first_name = forms.CharField(max_length=15)
     last_name = forms.CharField(max_length=15)
     email = forms.EmailField(max_length=40)
