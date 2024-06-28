@@ -1,4 +1,3 @@
-
 """About Imports"""
 from django.views.generic import ListView, FormView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -8,26 +7,14 @@ from .forms import ContactForm
 
 # pylint: disable=locally-disabled, no-member
 
-class DevProfileView(SuccessMessageMixin, ListView, FormView):
+class ContactFormView(SuccessMessageMixin, FormView):
     """
-    Retrieve all DeveloperProfile instances and handle contact form submissions.
-
-    This view combines ListView to display DeveloperProfile instances and FormView to handle
-    the contact form. It manages both GET requests for displaying data and POST requests
-    for form submission.
+    View to handle the contact form submission.
     """
-    model = DevProfile
-    template_name = 'about/dev_profile.html'
-    context_object_name = 'dev_profiles'
     form_class = ContactForm
-    success_url = reverse_lazy('dev_profile')
+    template_name = 'about/contact.html'
+    success_url = reverse_lazy('home')
     success_message = "Your message has been sent successfully!"
-
-    def get_queryset(self):
-        """
-        Return the list of DeveloperProfile instances for the ListView.
-        """
-        return DevProfile.objects.all()
 
     def get_context_data(self, **kwargs):
         """
@@ -50,3 +37,17 @@ class DevProfileView(SuccessMessageMixin, ListView, FormView):
         Handle invalid form submission and re-render the page with the form and errors.
         """
         return self.render_to_response(self.get_context_data(form=form))
+
+class DevProfileView(ListView):
+    """
+    View to display developer profiles.
+    """
+    model = DevProfile
+    template_name = 'about/dev_details.html'
+    context_object_name = 'dev_profiles'
+
+    def get_queryset(self):
+        """
+        Return the queryset of DeveloperProfile instances.
+        """
+        return DevProfile.objects.all()

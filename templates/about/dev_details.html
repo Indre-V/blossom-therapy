@@ -1,4 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
+
+{% block title %} Blossom Therapy Insights | About {% endblock %}
+
+{% block content %}
 <div class="container-fluid my-5">
     {% for devProfile in dev_profiles %}
         <div class="row mb-5">
@@ -84,3 +89,4 @@
         </div>
     {% endfor %}
 </div>
+{% endblock %}

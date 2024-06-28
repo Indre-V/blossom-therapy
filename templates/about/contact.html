@@ -1,33 +1,34 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-<!-- Modal Structure -->
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="text-center modal-title" id="contactModalLabel">Love to Hear From You</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <section class="Material-contact-section section-padding section-dark">
-                            <!-- Contact Form Card -->
-                            <div class="col-md-12 wow fadeInRight" data-wow-delay=".2s">
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <form role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
-                                            {% csrf_token %}
-                                            {{ form|crispy }}
-                                            <!-- Form Submit -->
-                                            <div class="mt-4 text-center">
-                                                <button type="submit" class="btn rounded text-nowrap button-style" id="form-submit">
-                                                    <i class="bi bi-send"></i> Send Message</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+
+{% block title %} Blossom Therapy Insights | Contact {% endblock %}
+
+{% block content %}
+<!-- Contact Section -->
+<section class="Material-contact-section section-padding section-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center my-4">
+                    <h3 class="modal-title">Love to Hear From You</h3>
+                </div>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <!-- Form Submit -->
+                            <div class="mt-4 text-center">
+                                <button type="submit" class="btn rounded text-nowrap button-style" id="form-submit">
+                                    <i class="bi bi-send"></i> Send Message
+                                </button>
                             </div>
-                        </section>
+                        </form>
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
+    </div>
+</section>
+{% endblock %}
