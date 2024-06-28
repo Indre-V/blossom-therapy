@@ -216,40 +216,19 @@ This color scheme aims to create a harmonious balance between the vibrant, natur
 
 ![Coolors Scheme](/readme/docs/color-scheme.png)
 
-Color Palette
+# Color Palette
 
-Primary Color (Tomato)
-Hex Code: #FF6347
-Usage: This color is used for the navbar background and gradients. It is a vibrant and eye-catching color that draws user attention and creates a lively atmosphere.
-
-Secondary Color (Gunmetal)
-Hex Code: #46626d
-Usage: Applied to icons and other secondary text elements, this color provides good contrast without being too harsh, maintaining readability and a balanced design.
-
-Background Color (Linen)
-Hex Code: #FCF7F2
-Usage: Used as the background color for the entire body to create a soft and clean look. This color is light and pleasant, ensuring that text and other elements stand out clearly against it.
-
-Light Orange
-Hex Code: #EDD0B3
-Usage: Applied to the footer background and as a hover effect for buttons. This color adds warmth and highlights important interactive elements, drawing user attention effectively.
-
-Powder Blue
-Hex Code: #B0D3E6
-Usage: Used for button backgrounds and various highlights. This color is calming and soft, ensuring that buttons are noticeable but not overwhelming. It complements the other colors well, adding to the overall aesthetic.
-
-Summary:
-
-:root
-  --primary-color: #FF6347;
-  --secondary-color: #46626d;
-  --background-color: #FCF7F2;
-  --light-orange: #edd0b3;
-  --powder-blue: #b0d3e6;
+| Color             | Hex Code   | Usage                                                                                                                                         |
+|-------------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Primary Color     | #FF6347    | This color is used for the navbar background and gradients. It is a vibrant and eye-catching color that draws user attention and creates a lively atmosphere.                  |
+| Secondary Color   | #46626d    | Applied to icons and other secondary text elements, this color provides good contrast without being too harsh, maintaining readability and a balanced design.                    |
+| Background Color  | #FCF7F2    | Used as the background color for the entire body to create a soft and clean look. This color is light and pleasant, ensuring that text and other elements stand out clearly against it. |
+| Light Orange      | #EDD0B3    | Applied to the footer background and as a hover effect for buttons. This color adds warmth and highlights important interactive elements, drawing user attention effectively.          |
+| Powder Blue       | #B0D3E6    | Used for button backgrounds and various highlights. This color is calming and soft, ensuring that buttons are noticeable but not overwhelming. It complements the other colors well, adding to the overall aesthetic.         |
 
 ### Images
 
-Combination of images sourced from [Unsplash](https://unsplash.com/), [Gencraft](https://leonardo.ai/ "Leonardo AI"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Unsplash and Leonardo AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
+Combination of images sourced from [Leonardo](https://leonardo.ai/ "Leonardo AI"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Unsplash and Leonardo AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
 
 
 ### Responsiveness
@@ -566,6 +545,14 @@ Authenticated users can add comments to insights. Comments are displayed in the 
 - **404 Page Not Found** - The page user is looking for doesn't exist.
 - **500 Server Error** - The platform is currently experiencing technical difficulties and cannot process this request.
 
+<details><summary><b>Comments View</b></summary>
+
+![Error 400](/readme/docs/error-400.png)
+![Error 403](/readme/docs/error-403.png)
+![Error 404](/readme/docs/error-404.png)
+![Error 500](/readme/docs/error-500.png)
+</details><br/>
+
 [Back to top](#contents)
 
 ## Deployment
@@ -641,7 +628,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 ## Testing
 
-Testing summary and results can be found [here](/blossom-therapy/TESTING.md).
+Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
 ## Future Features
 
