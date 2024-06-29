@@ -1,17 +1,16 @@
-<!-- delete_modal.html -->
 {% load static %}
 <button type="button" class="btn btn-danger icon m-2" data-bs-toggle="modal"
   data-bs-target="#exampleModal-{{ post.slug }}" aria-label="Delete {{ post.title }}">
   <i class="fa-solid fa-trash-alt"></i>
 </button>
 
-<div class="modal fade" id="exampleModal-{{ post.slug }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="exampleModal-{{ post.slug }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ post.slug }}"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <!-- Modal Header -->
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ post.title }} will be deleted!</h5>
+        <h5 class="modal-title" id="deleteModalLabel-{{ post.slug }}">{{ post.title }} will be deleted!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 

@@ -45,6 +45,7 @@ class InsightForm(forms.ModelForm):
             'status': 'Status',
         }
 
+
 class CommentForm(forms.ModelForm):
     """
     A form for creating and updating comments on a blog post.

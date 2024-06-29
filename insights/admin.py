@@ -6,7 +6,6 @@ from .models import Category, Comment, Post
 admin.site.register(Category)
 admin.site.register(Comment)
 
-
 class PostAdmin(SummernoteModelAdmin):
     """
     Allows admin to manage posts via the admin panel

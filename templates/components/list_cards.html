@@ -48,7 +48,7 @@
                     loading="lazy">
                 {% else %}
                 <img src="{{ post.author.profile.profile_picture.url }}" class="author-image"
-                    alt="{{ post.author.username }}" loading="lazy">
+                    alt="{{ post.author.username }} Image" loading="lazy">
                 {% endif %}
             </div>
             <!-- Author Details -->
@@ -61,7 +61,7 @@
             <!-- Edit and Delete Buttons (for author or superuser) -->
             {% if request.user == post.author or request.user.is_superuser %}
             {% include 'insights/delete_modal.html' %}
-            <a href="{% url 'insight-update' post.slug %}" type="button" class="btn btn-warning icon px-2" title="Edit">
+            <a href="{% url 'insight-update' post.slug %}" class="btn btn-warning icon px-2" title="Edit">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
             {% endif %}

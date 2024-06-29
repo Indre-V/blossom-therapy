@@ -10,7 +10,7 @@
 <div class="mb-4">
     <div class="d-flex justify-content-between">
         <!-- Comment Author Information -->
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center mb-3">
             {% if "placeholder_profile" in comment.author.profile.profile_picture.url %}
             <!-- Default Profile Picture if Profile Picture is Placeholder -->
             <img src="{% static 'images/placeholder_profile.webp' %}" class="rounded-circle me-3" width="40" height="40"
@@ -32,7 +32,7 @@
         </div>
         {% endif %}
     </div>
-    <p class="mb-1">{{ comment.content|linebreaks }}</p>
+    {{ comment.content|linebreaks }}
     <hr class="my-0">
 </div>
 {% empty %}

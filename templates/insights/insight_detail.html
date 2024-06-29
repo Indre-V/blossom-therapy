@@ -13,7 +13,7 @@
                 {% include 'components/list_cards.html' %}
                 <!-- Post Content -->
                 <div class="text-wrap m-4 post-content">
-                    <p>{{ post.content|safe }}</p>
+                    {{ post.content|safe }}
                 </div>
             </article>
         </div>
