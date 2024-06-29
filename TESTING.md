@@ -1,3 +1,9 @@
+
+  # Testing
+
+Return back to the [README.md](README.md) file.
+
+
 - [Testing](#testing)
   * [Bugs Fixed](#bugs-fixed)
   * [Responsiveness Tests](#responsiveness-tests)
@@ -11,10 +17,6 @@
   * [Accessibility Testing](#accessibility-testing)
   * [Lighthouse Testing](#lighthouse-testing)
   * [Browser Testing](#browser-testing)
-
-  # Testing
-
-Return back to the [README.md](README.md) file.
 
 ## Responsiveness Tests
 
@@ -105,6 +107,8 @@ Blossom-Therapy was tested in the [Chrome Dev Tools](https://developer.chrome.co
 * Accessibility - test analyses how well people who use assistive technologies can use your website.
 * Best Practices - checks whether the page is built on the modern standards of web development.
 * SEO - checks if the website is optimised for search engine result rankings.
+
+Initial Lighthouse tests returned an error *Background and foreground colors do not have a sufficient contrast ratio.*. This was due to the button font in the Profile Section. Once the font was updated, the Accessibility score returned 100.
 
 <details><summary><b>Lighthouse Test Results</b></summary>
 

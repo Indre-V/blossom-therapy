@@ -47,12 +47,12 @@
                         <!-- Location -->
                         <div class="col-sm-6 mb-3">
                             <p class="fs-4 text-muted mb-1">Location:</p>
-                            <h6 class="fs-3 fw-bold">{{ profile.location }}</h6>
+                            <p class="fs-3 fw-bold">{{ profile.location }}</p>
                         </div>
                         <!-- Bio -->
                         <div class="col-sm-12 mb-3">
                             <p class="fs-4 text-muted mb-1">Bio:</p>
-                            <h6 class="fs-4">{{ profile.bio }}</h6>
+                            <p class="fs-4">{{ profile.bio }}</p>
                         </div>
                         <!-- Insights Stats -->
                         <div class="col-sm-6 mb-3">
@@ -65,13 +65,13 @@
                         <!-- Profile Actions (Only for the profile owner) -->
                         {% if user.is_authenticated and user.id == profile.user.id %}
                         <div class="py-5 text-center">
-                            <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-info m-3">
+                            <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-warning m-3">
                                 <i class="fas fa-user-edit"></i> Update Profile
                             </a>
-                            <a href="{% url 'account_change_password' %}" role="button" class="btn btn-warning m-3">
+                            <a href="{% url 'account_change_password' %}" role="button" class="btn btn-info profile-buttons m-3">
                                 <i class="fas fa-user-lock"></i> Change Password
                             </a>
-                            <a href="{% url 'profile-delete' user.id %}" role="button" class="btn btn-danger m-3">
+                            <a href="{% url 'profile-delete' user.id %}" role="button" class="btn btn-danger profile-buttons m-3">
                                 <i class="fas fa-user-slash"></i> Delete Account
                             </a>
                         </div>

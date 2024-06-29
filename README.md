@@ -545,7 +545,7 @@ Authenticated users can add comments to insights. Comments are displayed in the 
 - **404 Page Not Found** - The page user is looking for doesn't exist.
 - **500 Server Error** - The platform is currently experiencing technical difficulties and cannot process this request.
 
-<details><summary><b>Comments View</b></summary>
+<details><summary><b>Error View</b></summary>
 
 ![Error 400](/readme/docs/error-400.png)
 ![Error 403](/readme/docs/error-403.png)
