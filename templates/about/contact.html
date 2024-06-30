@@ -13,7 +13,7 @@
                     <h2 class="text-center mb-5">Love to Hear From You</h2>
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form role="form" method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
+                        <form method="post" id="contactForm" name="contact-form" data-bs-toggle="validator">
                             {% csrf_token %}
                             {{ form|crispy }}
                             <!-- Form Submit -->

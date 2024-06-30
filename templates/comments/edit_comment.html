@@ -21,7 +21,7 @@ Blossom Therapy Insights | Edit Comment
                     {{ form|crispy }}
                     {% csrf_token %}
                     <div class="d-flex justify-content-between mt-3">
-                        <button class="btn btn-sucess" type="submit">Submit</button>
+                        <button class="btn btn-success txt-btn" type="submit">Submit</button>
                         <!-- Cancel Button -->
                         <a class="btn rounded mb-0 text-nowrap button-style"
                             href="{% url 'insight-details' comment.post.slug %}">Cancel</a>

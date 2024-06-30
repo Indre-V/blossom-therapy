@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-image">
                         <!-- Displaying picture (CloudinaryField 'image') -->
-                        <img src="{{ devProfile.image.url }}" id="dev-img" class="card-img-top w-100" loading="lazy" alt="Profile Picture">
+                        <img src="{{ devProfile.image.url }}" class="card-img-top img-fluid dev-img" loading="lazy" alt="Profile Background">
                     </div>
                     <div class="card-body">
                         <h3>{{ devProfile.user.first_name }} {{ devProfile.user.last_name }}</h3>
@@ -27,22 +27,22 @@
                     </div>
                     <div class="card-footer center-align d-flex justify-content-around">
                         {% if devProfile.github_portfolio_link %}
-                            <a href="{{ devProfile.github_portfolio_link }}" target="_blank">
+                            <a href="{{ devProfile.github_portfolio_link }}" target="_blank" aria-label="GitHub">
                                 <i class="fa fa-github icon" aria-hidden="true"></i>
                             </a>
                         {% endif %}
                         {% if devProfile.linkedin_profile_link %}
-                            <a href="{{ devProfile.linkedin_profile_link }}" target="_blank">
+                            <a href="{{ devProfile.linkedin_profile_link }}" target="_blank" aria-label="LinkedIn">
                                 <i class="fa fa-linkedin-square icon" aria-hidden="true"></i>
                             </a>
                         {% endif %}
                         {% if devProfile.resume_download_link %}
-                            <a href="{{ devProfile.resume_download_link }}" download target="_blank">
+                            <a href="{{ devProfile.resume_download_link }}" download target="_blank" aria-label="CV">
                                 <i class="fa fa-file-download icon" aria-hidden="true"></i>
                             </a>
                         {% endif %}
-                        <a href="mailto:indre.vilickaite@gmail.com" role="button" aria-label="Email the developer">
-                            <i class="fa fa-envelope icon"></i>
+                        <a href="mailto:indre.vilickaite@gmail.com" aria-label="Email the developer">
+                            <i class="fa fa-envelope icon" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>

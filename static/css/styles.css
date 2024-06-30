@@ -151,8 +151,11 @@ a { color: inherit; }
   margin-top: 0.5rem;
 }
 
-#dev-img {
-  max-height: 50vh;
+
+.dev-img {
+  max-height: 50vh; 
+  width: 100%;      
+  object-fit: cover; 
 }
 
 /* Pagination styles */
