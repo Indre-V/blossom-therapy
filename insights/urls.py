@@ -41,7 +41,11 @@ urlpatterns = [
     path("favourite/<slug:slug>/",
          views.FavouriteInsightView.as_view(),
          name='favourite-insight'),
-    path('posts/pending/', views.PendingApprovalListView.as_view(), name='pending-posts'),
-    path('posts/approve/<int:pk>/', views.ApprovePostView.as_view(), name='approve-post'),
+    path("posts/pending/",
+         views.PendingApprovalListView.as_view(),
+         name='pending-posts'),
+    path("posts/approve/<int:pk>/",
+         views.ApprovePostView.as_view(),
+         name='approve-post'),
 
 ]
