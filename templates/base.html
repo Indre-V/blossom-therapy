@@ -25,8 +25,7 @@
     <title>{% block title %}Blossom Therapy Insights{% endblock %}</title>
 </head>
 
-<body>
-    <div class="d-flex flex-column h-100">
+<body class="d-flex flex-column min-vh-100">
     <header class="top-nav mb-5 fs-3">
         {% include 'components/navigation.html' %}
     </header>
@@ -41,7 +40,5 @@
         {% include 'components/footer.html' %}
     </footer>
     {% include 'components/scripts.html' %}
-    </div>
 </body>
-
 </html>

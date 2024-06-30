@@ -5,11 +5,11 @@
 {% block title %}Blossom Therapy Insights | {{ profile.username }}{% endblock %}
 
 {% block content %}
-<div class="container mt-5 py-5">
-    <div class="card justify-content-center">
-        <div class="row">
+<div class="container mt-5">
+    <div class="card justify-content-center card-profile">
+        <div class="row no-gutters">
             <!-- Left Column: Profile Picture and Links -->
-            <div class="col-xl-4 col-lg-12 bg-c-lite-green text-center text-white">
+            <div class="col-xl-4 col-lg-12 img-bg text-center text-white">
                 <div class="col-sm-12">
                     <h3 class="my-5">{{ profile.user.username }}</h3>
                     <!-- Profile Picture: Show Placeholder if None -->
@@ -35,29 +35,24 @@
                 {% endif %}
             </div>
             <!-- Right Column: Profile Details -->
-            <div class="col-sm-8">
+            <div class="col-xl-8 col-lg-12">
                 <div class="card-body">
                     <h3 class="mb-4 pb-2 border-bottom">Profile Summary</h3>
                     <div class="row">
-                        <!-- Full Name -->
                         <div class="col-sm-6 mb-3">
                             <p class="fs-4 text-muted mb-1">Full Name:</p>
                             <p class="fs-3 fw-bold">{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
                         </div>
-                        <!-- Location -->
                         <div class="col-sm-6 mb-3">
                             <p class="fs-4 text-muted mb-1">Location:</p>
                             <p class="fs-3 fw-bold">{{ profile.location }}</p>
                         </div>
-                        <!-- Bio -->
                         <div class="col-sm-12 mb-3">
                             <p class="fs-4 text-muted mb-1">Bio:</p>
                             <p class="fs-4">{{ profile.bio }}</p>
                         </div>
-                        <!-- Insights Stats -->
                         <div class="col-sm-6 mb-3">
-                            <p class="mb-1 fw-bold d-inline">Insights <i class="fa fa-thumbs-up"></i>: {{ total_likes }}
-                            </p>
+                            <p class="mb-1 fw-bold d-inline">Insights <i class="fa fa-thumbs-up"></i>: {{ total_likes }}</p>
                         </div>
                         <div class="col-sm-6 mb-3">
                             <p class="mb-1 fw-bold">Insights <i class="fa fa-heart"></i>: {{ total_favourites }}</p>
@@ -65,10 +60,10 @@
                         <!-- Profile Actions (Only for the profile owner) -->
                         {% if user.is_authenticated and user.id == profile.user.id %}
                         <div class="py-5 text-center">
-                            <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-warning m-3">
+                            <a href="{% url 'profile-update' user.id %}" role="button" class="btn btn-info profile-buttons m-3">
                                 <i class="fas fa-user-edit"></i> Update Profile
                             </a>
-                            <a href="{% url 'account_change_password' %}" role="button" class="btn btn-info profile-buttons m-3">
+                            <a href="{% url 'account_change_password' %}" role="button" class="btn btn-warning profile-buttons m-3">
                                 <i class="fas fa-user-lock"></i> Change Password
                             </a>
                             <a href="{% url 'profile-delete' user.id %}" role="button" class="btn btn-danger profile-buttons m-3">

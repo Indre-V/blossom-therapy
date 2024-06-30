@@ -66,8 +66,13 @@ a { color: inherit; }
   color: black;
 }
 
-.bg-c-lite-green {
+.img-bg {
   background: linear-gradient(to right, var(--primary-color), var(--light-orange));
+}
+
+.card-profile {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* Button background color */
@@ -107,9 +112,9 @@ a { color: inherit; }
     max-height: 30vh;
     object-fit: cover; 
 }
-
+ /* Ensure links wrap */
 .post-content {
-  word-wrap: break-word; /* Ensure links wrap */
+  word-wrap: break-word;
 }
 
 /* About Section card layout */
@@ -154,12 +159,13 @@ a { color: inherit; }
 @media (max-width: 1024px) {
   .card .row {
       flex-direction: column;
-      max-width: 100%;
+
   }
   .card .col-md-6 {
       max-width: 100%;
       flex: 0 0 100%;
   }
+  
   .bg-image {
     display: flex;
     justify-content: center;

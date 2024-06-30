@@ -16,7 +16,7 @@ from django.contrib import messages
 import dj_database_url
 # Prevent error when hidden env.py is not found
 if os.path.isfile('env.py'):
-    import env
+    import env  # noqa
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
