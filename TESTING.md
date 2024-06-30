@@ -141,4 +141,4 @@ While building the application, the general principles of accessibility where ad
 - Testing the game to make sure it does not crash from user input
 - Using ARIA labels in the README
 
-![WAVE](docs/summary.png)
+![WAVE](/readme/docs/summary.png)

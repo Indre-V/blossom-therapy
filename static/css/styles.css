@@ -62,8 +62,19 @@ a { color: inherit; }
 
 .navbar {
   background-color: var(--primary-color); 
-  font-weight: 700;
-  color: black;
+  font-weight: 400;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #030303; /* Dark text color */
+}
+
+/* Darker color for active and hover states */
+.navbar .nav-link.active,
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    font-weight: 700;
 }
 
 .img-bg {
@@ -165,7 +176,7 @@ a { color: inherit; }
       max-width: 100%;
       flex: 0 0 100%;
   }
-  
+
   .bg-image {
     display: flex;
     justify-content: center;
