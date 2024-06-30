@@ -60,7 +60,7 @@ class InsightsListView(ListView):
     model = Post
     template_name = 'insights/insights_list.html'
     context_object_name = 'insights'
-    paginate_by = 4
+    paginate_by = 6
 
     def get_queryset(self):
         """
