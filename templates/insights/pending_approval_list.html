@@ -44,7 +44,7 @@
                     <!-- Form to approve the post -->
                     <form method="post" action="{% url 'approve-post' post.pk %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-warning">Approve</button>
+                        <button type="submit" class="btn btn-warning txt-btn">Approve</button>
                     </form>
                 </td>
             </tr>

@@ -268,6 +268,15 @@ class InsightDeleteView(
         """
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
+    
+    def get_success_url(self):
+        """
+        Redirect to the HTTP referrer if available, otherwise use the default success URL.
+        """
+        referrer = self.request.META.get('HTTP_REFERER')
+        if referrer:
+            return referrer
+        return super().get_success_url()
 
 
 class InsightUpdateView(
