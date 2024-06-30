@@ -5,29 +5,35 @@
 {% block title %} Blossom Therapy Insights | Add Insight {% endblock %}
 
 {% block content %}
+<section>
   <div class="container py-5">
-    <!-- Page Title -->
-    <h1 class="page-title text-center">Add Insight</h1>
-    <hr class="hr hr-blurry">
-    <!-- Instructions -->
-    <p class="text-center mt-3">All Insights are approved by Admin. Drafts can be found in Profile Section.</p>
-    <div class="row justify-content-center">
-      <div class="col-11 col-md-6 col-lg-4 mt-3">
-        {% load cloudinary %}
-        <!-- Insight Form -->
-        <form class="text-dark" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <!-- Render the form using Crispy Forms for better styling -->
-          {{ form | crispy }}
-          <!-- Display messages, if any -->
-          {{ message }}
-          <!-- Buttons -->
-          <div class="d-flex justify-content-between mt-3">
-            <button type="submit" class="btn btn-success mt-4">Submit</button>
-            <a class="btn rounded mb-0 text-nowrap button-style mt-4" href="{% url 'home' %}">Cancel</a>
-          </div>
-        </form>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-md-12 col-lg-8">
+        <h2 class="fw-bold my-4 text-center">Add Insight</h2>
+        <div class="card bg-clr-dom-light shadow-sm m-5 p-5">
+          <!-- Instructions -->
+          {% if user.is_superuser %}
+          <p class="text-center mt-3">As a Superuser, your insights can be published immediately without approval.</p>
+          {% else %}
+          <p class="text-center mt-3">All Insights are approved by Admin. Drafts can be found in the Profile Section.
+          </p>
+          {% endif %}
+          {% load cloudinary %}
+          <!-- Insight Form -->
+          <form class="text-dark" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Render the form using Crispy Forms for better styling -->
+            {{ form | crispy }}
+            <!-- Display messages, if any -->
+            {{ message }}
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-3">
+              <button type="submit" class="btn btn-success txt-btn mt-4">Submit</button>
+          </form>
+          <a class="btn rounded mb-0 text-nowrap button-style mt-4" href="{% url 'home' %}">Cancel</a>
+        </div>
       </div>
     </div>
   </div>
+</section>
 {% endblock %}
