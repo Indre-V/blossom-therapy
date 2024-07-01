@@ -26,19 +26,19 @@ I have also used Google Chrome's Mobile Simulator extension to evaluate the resp
 
 Final Test Results:
 
-| Size | Device Example     | Navigation | Element Alignments | Content Placement | Functionality | Notes                                             |
-| ---- | ------------------ | ---------- | ------------------ | ----------------- | ------------- | ------------------------------------------------- |
-| sm   | Samsung Galaxy S20 | Good       | Good               | Good              | Good          | 
-| sm   | iPhone 11 PRO      | Good       | Good               | Good              | Good          |                           
-| sm   | iPhone 13 PRO MAX  | Good       | Good               | Good              | Good          | 
-| md   | iPad MINI          | Good       | Good               | Good              | Good          |                                                   |
-| md   | Galaxy Tab S7      | Good       | Good               | Good              | Good          |                                                   |
-| md   | iPad Air           | Good       | Good               | Good              | Good          |                                                   |
-| lg   | iPad Pro           | Good       | Good               | Good              | Good          |                                                   |
-| xl   | Mackbook Air       | Good       | Good               | Good              | Good          |                             
-| xl   | HP Stream Laptop   | Good       | Good               | Good              | Good          |
-| xxl  | Dell Lattitude     | Good       | Good               | Good              | Good          |                                                   |
-| xxl  | Desktop            | Good       | Good               | Good              | Good          |                                                   |
+| Size | Device Example     | Navigation | Element Alignments | Content Placement | Functionality | Notes                             |
+| ---- | ------------------ | ---------- | ------------------ | ----------------- | ------------- | --------------------------------- |
+| sm   | Samsung Galaxy S20 | &check;    | &check;            | &check;           | &check;       |                                   |
+| sm   | iPhone 11 PRO      | &check;    | &check;            | &check;           | &check;       |
+| sm   | iPhone 13 PRO MAX  | &check;    | &check;            | &check;           | &check;       |
+| md   | iPad MINI          | &check;    | &check;            | &check;           | &check;       |                                   |
+| md   | Galaxy Tab S7      | &check;    | &check;            | &check;           | &check;       |                                   |
+| md   | iPad Air           | &check;    | &check;            | &check;           | &check;       |                                   |
+| lg   | iPad Pro           | &check;    | &check;            | &check;           | &check;       | Update About section image sizing |
+| xl   | Mackbook Air       | &check;    | &check;            | &check;           | &check;       |                                   |
+| xl   | HP Stream Laptop   | &check;    | &check;            | &check;           | &check;       |                                   |
+| xxl  | Dell Lattitude     | &check;    | &check;            | &check;           | &check;       |                                   |
+| xxl  | Desktop            | &check;    | &check;            | &check;           | &check;       |                                   |
 
 [Back to top](#contents)
 
@@ -90,12 +90,8 @@ Defensive programming testing involves verifying that the defensive measures imp
 
 The deployed project was tested on the most popular browsers for compatibility issues.
 
-| Browser | Screenshot | Notes |
-| --- | --- | --- |
-| Chrome | ![screenshot](/readme/docs/chrome.png) | Works as expected |
-| Firefox | ![screenshot](/readme/docs/firefox.png) | Works as expected |
-| Edge | ![screenshot](/readme/docs//edge.png) | Works as expected |
 
+![Browser Testing Results](/readme/docs/browser_testing.pdf)
 
 ## User Story Testing
 
@@ -112,17 +108,7 @@ Initial Lighthouse tests returned an error *Background and foreground colors do 
 
 <details><summary><b>Lighthouse Test Results</b></summary>
 
-Tests for Desktop on Lighthouse Chrome:
-![Lighthouse-Desktop-Chrome](/readme/docs/lighthouse-desktop-chrome-index.png "Lighthouse-Desktop-Chrome")
 
-Tests for Mobile on Lighthouse Chrome:
-![Lighthouse-Mobile-Chrome](/readme/docs/lighthouse-mobile-chrome-index.png "Lighthouse-Mobile-Chrome")
-
-Tests for Desktop Lighthouse Edge:
-![Lighthouse-Desktop-Edge](/readme/docs/lighthouse-desktop-edge-index.png "Lighthouse-Desktop-Edge")
-
-Tests for Mobile on Lighthouse Edge:
-![Lighthouse-Mobile-Edge](/readme/docs/lighthouse-mobile-edge-index.png "Lighthouse-Mobile-Edge")
 
 </details><br/>
 

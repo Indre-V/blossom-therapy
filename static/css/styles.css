@@ -151,7 +151,6 @@ a { color: inherit; }
   margin-top: 0.5rem;
 }
 
-
 .dev-img {
   max-height: 50vh; 
   width: 100%;      
@@ -166,7 +165,7 @@ a { color: inherit; }
 
 .pagination .page-item .page-link {
   border-radius: 0.25rem; 
-  margin: 0 0.25rem; /
+  margin: 0 0.25rem;
 }
 
 
