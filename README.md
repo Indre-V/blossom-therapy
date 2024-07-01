@@ -54,7 +54,7 @@ The MoSCoW prioritization technique is used to determine the importance of vario
 
 Using GitHub Projects, tasks are managed and prgress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Future Features/Uresolved). Issue labels include the user, prioritization and sprints.
 
-![Kanban Board](/readme/docs/kanban-board.png)
+![Kanban Board](/docs/readme.md/kanban-board.png)
 
 ### EPICS
 
@@ -125,6 +125,8 @@ As a **visitor**:
 
 - I want to **able to register an account** so **I can create an account**.
 
+- I want to **provide feedback, report issues, and suggest improvements through a contact form,** so that I can **actively participate in improving the platform and receive support when needed**.
+
 ****************************************************
 
 ### Registered User Stories
@@ -147,7 +149,14 @@ As a **registered user**:
 
 - I want **the ability to interact with posts and comments by liking, un-liking, and favoriting them,** so that I can **engage with content that resonates with me**.
 
-- I want to **provide feedback, report issues, and suggest improvements through a contact form,** so that I can **actively participate in improving the platform and receive support when needed**.
+
+### Admin User Stories
+
+As an **admin user**:
+
+- As an **admin user**, I want **the ability to perform all CRUD (Create, Read, Update, Delete) operations** so that **manually manage, control and edit content**.
+
+- As an **admin user**, I want to **approve comments and posts** so that **I can ensure content quality and appropriateness before it is published**.
 
 ## Website Goals and Objectives
 
@@ -628,6 +637,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 ## Testing
 
+Blossom-Therapy website underwent an extensive testing process to ensure its functionality, accessibility, and performance. This involved validating the code, assessing accessibility, conducting performance tests, performing cross-device testing, verifying browser compatibility, evaluating user stories, and incorporating user feedback to improve the overall user experience
 Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
 ## Future Features

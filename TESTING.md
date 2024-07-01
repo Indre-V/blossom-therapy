@@ -49,6 +49,13 @@ Final Test Results:
 
 ### CSS
 
+The [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) tool, provided by the W3C, enables to validate and verify the correctness of CSS code. It ensures that your web pages adhere to W3C standards, promoting interoperability and accessibility.
+
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|CSS file | No errors |<details><summary>Result Summary</summary>![Result](docs/test.md/css-test.png)</details>| ✅
+|Webpage | No errors  |[Result]()| ✅
+
 ### JavaScript
 
 ### Python
@@ -91,9 +98,62 @@ Defensive programming testing involves verifying that the defensive measures imp
 The deployed project was tested on the most popular browsers for compatibility issues.
 
 
-![Browser Testing Results](/readme/docs/browser_testing.pdf)
+[Browser Testing Results](/docs/testing.md/browser-testing.pdf)
 
 ## User Story Testing
+
+**Developer User Stories**
+
+
+| User Story                                                                                                      | Acceptance Criteria Complete | Notes                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [Adopt Agile Methodology] (https://github.com/Indre-V/blossom-therapy/issues/9#issue-2302892613)                | ✅                            | Documented in README.md                                                                                           |
+| [Design Database Schema] (https://github.com/Indre-V/blossom-therapy/issues/10#issue-2302944970)                | ✅                            | Database design documented in README.md                                                                           |
+| [Create Wireframes] (https://github.com/Indre-V/blossom-therapy/issues/11#issue-2302950413)                     | ✅                            | Wireframes documented in README.md                                                                                |
+| [Design Visuals] (https://github.com/Indre-V/blossom-therapy/issues/12#issue-2303047004)                        | ✅                            | Design process documented in README.md                                                                            |
+| [Create Django Project] (https://github.com/Indre-V/blossom-therapy/issues/14#issue-2303105943)                 | ✅                            | Git Commit [548ffe2] (https://github.com/Indre-V/blossom-therapy/commit/548ffe2c2b877163958e9e8c22e90f9ed1afc997) |
+| [Initial Deployment to Heroku] (https://github.com/Indre-V/blossom-therapy/issues/15#issue-2303122957)          | ✅                            | Git Commit [8c7d0f4] (https://github.com/Indre-V/blossom-therapy/commit/8c7d0f44072c5897084b06c738a39a6eed9f4037) |
+| [Update Developer Profile] (https://github.com/Indre-V/blossom-therapy/issues/51#issue-2308275825)              | ✅                            | Available in Django Admin Panel                                                                                   |
+| [Performance Optimization] (https://github.com/Indre-V/blossom-therapy/issues/41#issue-2304290974)              | ✅                            | Results documented in TESTING.md                                                                                  |
+| [Code Validation] (https://github.com/Indre-V/blossom-therapy/issues/44#issue-2304298110)                       | ✅                            | Results documented in TESTING.md                                                                                  |
+| [Comprehensive Project Documentation] (https://github.com/Indre-V/blossom-therapy/issues/45#issue-2304301021)   | ✅                            | Comprehensive README.md and TESTING.md                                                                            |
+| [User Story Testing] (https://github.com/Indre-V/blossom-therapy/issues/46#issue-2304303369)                    | ✅                            | Results documented in TESTING.md                                                                                  |
+| [Heroku Deployment] (https://github.com/Indre-V/blossom-therapy/issues/47#issue-2304304912)                     | ✅                            | Git commit [23f1988] (https://github.com/Indre-V/blossom-therapy/commit/23f1988a49387c9e13add7e08afa4e5b6769dc7c) |
+| [Performance and Accessibility Testing] (https://github.com/Indre-V/blossom-therapy/issues/48#issue-2304308035) | ✅                            | Results documented in TESTING.md                                                                                  |
+
+**Visitor User Stories**
+
+| User Story                                                                                                          | Acceptance Criteria Complete | Screenshot/Notes                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [User Registration] (https://github.com/Indre-V/blossom-therapy/issues/17#issue-2303311873)                         | ✅                            |  <details><summary>Screenshot</summary>![Registration] (/docs/testing.md/userstories/user-reg.png)</details>     |
+| [Display Filter] (https://github.com/Indre-V/blossom-therapy/issues/37#issue-2304284083)                            | ✅                            |  <details><summary>Screenshot</summary>![Filter] (/docs/testing.md/userstories/filter.png)</details>             |
+| [View Developer Profile] (https://github.com/Indre-V/blossom-therapy/issues/50#issue-2308263786)                    | ✅                            |  <details><summary>Screenshot</summary>![About] (/docs/testing.md/userstories/about.png)</details>               |
+| [Access Developer's Resume] (https://github.com/Indre-V/blossom-therapy/issues/52#issue-2308280758)                 | ✅                            |  <details><summary>Screenshot</summary>![CV-Link] (/docs/testing.md/userstories/cv-link.png)</details>           |
+| [Navigate to Developer's GitHub Portfolio] (https://github.com/Indre-V/blossom-therapy/issues/53#issue-2308294861]) | ✅                            |  <details><summary>Screenshot</summary>![About-Footer] (/docs/testing.md/userstories/about-footer.png)</details> |
+| [Implement Navigation Experience] (https://github.com/Indre-V/blossom-therapy/issues/38#issue-2304286025)           | ✅                            | Summary documented in README.md                                                                                  |
+| [Visual Consistency] (https://github.com/Indre-V/blossom-therapy/issues/39#issue-2304287983)                        | ✅                            | Summary documented in README.md                                                                                  |
+| [Accessibility Enhancement] (https://github.com/Indre-V/blossom-therapy/issues/40#issue-2304289636)                 | ✅                            | Test results documented in TESTING.md                                                                            |
+| [Developer Feedback and Support] (https://github.com/Indre-V/blossom-therapy/issues/34#issue-2304132868)            | ✅                            |  <details><summary>Screenshot</summary>![Contact-Form] (/docs/testing.md/userstories/contact-form.png)</details> |
+
+**Registered User Stories**
+
+| User Story                                                                                                    | Acceptance Criteria Complete | Screenshot                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [User Login and Logout Functionality] (https://github.com/Indre-V/blossom-therapy/issues/18#issue-2303341463) | ✅                            |  <details><summary>Screenshot</summary>![Log] (/docs/testing.md/userstories/login.png)</details>                         |
+| [Password Reset] (https://github.com/Indre-V/blossom-therapy/issues/19#issue-2303364772)                      | ✅                            |  <details><summary>Screenshot</summary>![Password-Reset] (/docs/testing.md/userstories/password-reset.png)</details>     |
+| [Profile Management] (https://github.com/Indre-V/blossom-therapy/issues/20#issue-2303381892)                  | ✅                            |  <details><summary>Screenshot</summary>![Profile] (/docs/testing.md/userstories/profile-view.png)</details>              |
+| [Create New Insight] (https://github.com/Indre-V/blossom-therapy/issues/22#issue-2304082436)                  | ✅                            |  <details><summary>Screenshot</summary>![Add-Insight] (/docs/testing.md/userstories/add-insight.png)</details>           |
+| [Manage Insight] (https://github.com/Indre-V/blossom-therapy/issues/23#issue-2304088784)                      | ✅                            |  <details><summary>Screenshot</summary>![Manage-Insight] (/docs/testing.md/userstories/manage-insight.png)</details>     |
+| [Add a Comment] (https://github.com/Indre-V/blossom-therapy/issues/24#issue-2304095247)                       | ✅                            |  <details><summary>Screenshot</summary>![Add-Comment] (/docs/testing.md/userstories/add-comment.png)</details>           |
+| [Manage Comments] (https://github.com/Indre-V/blossom-therapy/issues/25#issue-2304099460)                     | ✅                            |  <details><summary>Screenshot</summary>![Manage-Comment] (/docs/testing.md/userstories/manage-comment.png)</details>     |
+| [User Interaction with Posts] (https://github.com/Indre-V/blossom-therapy/issues/29#issue-2304113934)         | ✅                            |  <details><summary>Screenshot</summary>![User-Interaction] (/docs/testing.md/userstories/user-interaction.png)</details> |
+
+**Admin User Stories**
+
+| User Story                                                                                            | Acceptance Criteria Complete | Notes                                                                                                                                                                                                              |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [User Content Approvals] (https://github.com/Indre-V/blossom-therapy/issues/28#issue-2304109153)      | ✅                            | Comments can be edited and deleted by admin in front end. The same functionality is available in backend admin panel as well. There is an extra tab for superusers in navigation to view and manage pending posts. |
+| [Administration Content CRUD] (https://github.com/Indre-V/blossom-therapy/issues/27#issue-2304105029) | ✅                            | Superusers can manage user profiles via admin portal. Insights and Comments can also be managed in front and backend. Admin users have an extra option to post insights without requiring an approval.             |
 
 ## Lighthouse Testing
 
@@ -127,4 +187,4 @@ While building the application, the general principles of accessibility where ad
 - Testing the game to make sure it does not crash from user input
 - Using ARIA labels in the README
 
-![WAVE](/readme/docs/summary.png)
+![WAVE](/docs/testing.md/summary.png)
