@@ -13,7 +13,7 @@
         <div class="d-flex align-items-center mb-3">
             {% if "placeholder_profile" in comment.author.profile.profile_picture.url %}
             <!-- Default Profile Picture if Profile Picture is Placeholder -->
-            <img src="{% static 'images/placeholder_profile.webp' %}" class="rounded-circle me-3" width="40" height="40"
+            <img src="{% static 'images/placeholder-profile.webp' %}" class="rounded-circle me-3" width="40" height="40"
                 alt="Profile Placeholder" loading="lazy">
             {% else %}
             <img src="{{ comment.author.profile.profile_picture.url }}" class="rounded-circle me-3" width="40"
@@ -25,7 +25,7 @@
         <!-- Edit and Delete Buttons (visible to comment owner or superuser) -->
         {% if request.user == comment.author or request.user.is_superuser %}
         <div>
-            {% include 'comments/delete_comment.html' %}
+            {% include 'comments/delete-comment.html' %}
             <a class="btn btn-warning icon m-2" href="{% url 'edit-comment' comment.pk %}">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>

@@ -12,11 +12,12 @@ from .models import Profile
 from .forms import UserForm, ProfileForm
 
 # pylint: disable=locally-disabled, no-member
-# pylint: disable=unused-argument
 # pylint: disable=unused-variable
 
 class ProfilePageView(DetailView):
-    """This view is used to display user profile page"""
+    """
+    This view is used to display user profile page
+    """
     template_name = "profile/profile.html"
     context_object_name = "profile"
 
@@ -51,6 +52,7 @@ class ProfilePageView(DetailView):
             'total_favourites': total_favourites,
         })
         return context
+
 
 class ProfileFavouritesView(View):
     """
@@ -116,7 +118,7 @@ class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     View for deleting an user profile
     """
     model = User
-    template_name = "profile/profile_delete.html"
+    template_name = "profile/profile-delete.html"
     success_message = "Your profile has been successfully deleted."
     success_url = reverse_lazy("home")
 
@@ -137,7 +139,7 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
     success_message = "Profile has been updated"
-    template_name = "profile/profile_update.html"
+    template_name = "profile/profile-update.html"
 
     def get_object(self, queryset=None):
         """

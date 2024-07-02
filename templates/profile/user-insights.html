@@ -12,10 +12,9 @@
     <h3 class="text-center mt-4">Insights</h3>
     <hr class="hr hr-blurry">
     <div class="row justify-content-center">
-      <!-- Loop through the insights and display each card -->
       {% for post in insights %}
       <div class="col-lg-4 col-md-6 m-5">
-        {% include 'components/list_cards.html' %}
+        {% include 'components/list-cards.html' %}
       </div>
       {% empty %}
       <!-- Message to display if there are no insights -->

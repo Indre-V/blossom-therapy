@@ -36,8 +36,8 @@
                 {% if user.is_superuser %}
                 <!-- Pending Approvals link for superusers -->
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/posts/pending/' %}active{% endif %}"
-                        href="{% url 'pending-posts' %}">Pending Approvals</a>
+                    <a class="nav-link {% if request.path == '/pending/insights/' %}active{% endif %}"
+                        href="{% url 'pending-insights' %}">Pending Approvals</a>
                 </li>
                 {% endif %}
             </ul>

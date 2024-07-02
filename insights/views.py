@@ -17,7 +17,6 @@ from .forms import CommentForm, InsightForm
 
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-argument
-# pylint: disable=unused-variable
 
 
 class HomeView(ListView):
@@ -43,7 +42,7 @@ class SearchResultsView(ListView):
     A view class for displaying search results.
     """
     model = Post
-    template_name = 'insights/search_results.html'
+    template_name = 'insights/search-results.html'
 
     def get_queryset(self):
         query = self.request.GET.get("q")
@@ -58,7 +57,7 @@ class InsightsListView(ListView):
     View for displaying insights, with support for category filtering and search functionality.
     """
     model = Post
-    template_name = 'insights/insights_list.html'
+    template_name = 'insights/insights-list.html'
     context_object_name = 'insights'
     paginate_by = 6
 
@@ -102,7 +101,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     View for creating a new insight post
     """
     model = Post
-    template_name = "insights/add_insight.html"
+    template_name = "insights/add-insight.html"
     form_class = InsightForm
     success_url = reverse_lazy("home")
 
@@ -142,7 +141,7 @@ class InsightDetailsView(View):
     """
     View for displaying the details of a specific post and adding comments.
     """
-    template_name = "insights/insight_detail.html"
+    template_name = "insights/insight-detail.html"
 
     def get(self, request, slug, *args, **kwargs):
         """
@@ -189,7 +188,7 @@ class InsightDetailsView(View):
             messages.success(request, "Comment created successfully!")
             return redirect('insight-details', slug=post.slug)
         else:
-            messages.error(request, "There was an error. Action not registered!")
+            messages.error(request, "There was an error. Please try again!")
 
         context = {
             "post": post,
@@ -234,7 +233,7 @@ class CommentEditView(
     """
     model = Comment
     form_class = CommentForm
-    template_name = "comments/edit_comment.html"
+    template_name = "comments/edit-comment.html"
     success_message = "Comment updated successfully"
 
     def test_func(self):
@@ -258,9 +257,9 @@ class InsightDeleteView(
     Delete insights by author or superuser
     """
     model = Post
-    template_name = "insights/delete_modal.html"
+    template_name = "insights/delete-modal.html"
     success_message = "Insight removed successfully"
-    success_url = reverse_lazy("insights")
+    success_url = reverse_lazy("home")
 
     def test_func(self):
         """
@@ -268,15 +267,8 @@ class InsightDeleteView(
         """
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
-    
-    def get_success_url(self):
-        """
-        Redirect to the HTTP referrer if available, otherwise use the default success URL.
-        """
-        referrer = self.request.META.get('HTTP_REFERER')
-        if referrer:
-            return referrer
-        return super().get_success_url()
+
+
 
 
 class InsightUpdateView(
@@ -286,7 +278,7 @@ class InsightUpdateView(
     """
     model = Post
     form_class = InsightForm
-    template_name = "insights/insight_update.html"
+    template_name = "insights/insight-update.html"
     success_message = "Insight was edited successfully"
 
     def get_form_kwargs(self):
@@ -376,7 +368,7 @@ class PendingApprovalListView(LoginRequiredMixin, UserPassesTestMixin, ListView)
     A view for displaying a list of posts pending approval by admins.
     """
     model = Post
-    template_name = 'insights/pending_approval_list.html'
+    template_name = 'insights/pending-approval-list.html'
     context_object_name = 'posts'
     paginate_by = 10
 
@@ -405,7 +397,7 @@ class ApprovePostView(LoginRequiredMixin, UserPassesTestMixin, View):
         else:
             messages.info(request, f'Post "{post.title}" is already approved.')
 
-        return redirect('pending-posts')
+        return redirect('pending-insights')
 
     def test_func(self):
         return self.request.user.is_superuser

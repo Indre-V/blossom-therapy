@@ -7,10 +7,9 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-10 col-xl-8">
-            <!-- Main Article Section -->
             <article class="bg-white p-4 shadow-sm rounded">
                 <!-- Include List Cards Component -->
-                {% include 'components/list_cards.html' %}
+                {% include 'components/list-cards.html' %}
                 <!-- Post Content -->
                 <div class="text-wrap m-4 post-content">
                     {{ post.content|safe }}
@@ -27,7 +26,7 @@
                         <div class="card-body p-4">
                             <!-- Add Comment Form -->
                             {% if post.status == 1 %}
-                            {% include 'comments/add_comment.html' %}
+                            {% include 'comments/add-comment.html' %}
                             {% endif %}
                         </div>
                     </div>

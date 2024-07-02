@@ -12,7 +12,7 @@ class ContactFormView(SuccessMessageMixin, FormView):
     View to handle the contact form submission.
     """
     form_class = ContactForm
-    template_name = 'about/contact.html'
+    template_name = 'components/contact.html'
     success_url = reverse_lazy('home')
     success_message = "Your message has been sent successfully!"
 
@@ -43,7 +43,7 @@ class DevProfileView(ListView):
     View to display developer profiles.
     """
     model = DevProfile
-    template_name = 'about/dev_details.html'
+    template_name = 'about/dev-details.html'
     context_object_name = 'dev_profiles'
 
     def get_queryset(self):

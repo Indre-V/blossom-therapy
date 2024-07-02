@@ -14,7 +14,7 @@
                     <h3 class="my-5">{{ profile.user.username }}</h3>
                     <!-- Profile Picture: Show Placeholder if None -->
                     {% if "placeholder" in profile.profile_picture.url %}
-                    <img src="{% static 'images/placeholder_profile.webp' %}" class="img-radius w-25 mb-5"
+                    <img src="{% static 'images/placeholder-profile.webp' %}" class="img-radius w-25 mb-5"
                         alt="Profile Placeholder">
                     {% else %}
                     <img src="{{ profile.profile_picture.url }}" class="img-radius w-25 mb-5" alt="Profile Picture"

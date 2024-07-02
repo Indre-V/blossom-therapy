@@ -42,7 +42,7 @@
                 <td>{{ post.created_on|date:"F j, Y" }}</td>
                 <td>
                     <!-- Form to approve the post -->
-                    <form method="post" action="{% url 'approve-post' post.pk %}">
+                    <form method="post" action="{% url 'approve-insight' post.pk %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-warning txt-btn">Approve</button>
                     </form>

@@ -44,7 +44,7 @@
             <div class="avatar">
                 {% if "placeholder_profile" in post.author.profile.profile_picture.url %}
                 <!-- Placeholder profile image -->
-                <img src="{% static 'images/placeholder_profile.webp' %}" class="author-image" alt="Profile Placeholder"
+                <img src="{% static 'images/placeholder-profile.webp' %}" class="author-image" alt="Profile Placeholder"
                     loading="lazy">
                 {% else %}
                 <img src="{{ post.author.profile.profile_picture.url }}" class="author-image"
@@ -60,7 +60,7 @@
             </div>
             <!-- Edit and Delete Buttons (for author or superuser) -->
             {% if request.user == post.author or request.user.is_superuser %}
-            {% include 'insights/delete_modal.html' %}
+            {% include 'insights/delete-modal.html' %}
             <a href="{% url 'insight-update' post.slug %}" class="btn btn-warning icon px-2" title="Edit">
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
