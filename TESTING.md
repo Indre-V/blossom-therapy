@@ -99,7 +99,32 @@ Defensive programming testing involves verifying that the defensive measures imp
 
 - Negative Testing: Provide invalid or unexpected inputs to the application to see how well it handles errors and exceptions.
 
-### Role-based restrictions
+## Role-based Restrictions
+
+The user role based restrictions were tested to ensure that view and functionality reflects the scope of the project.
+
+| Admin                                             | Test Pass |
+| ------------------------------------------------- | --------- |
+| Full access to all resources and features.        | ✅         |
+| Can create, read, update, and delete any content. | ✅         |
+| Can manage user roles and permissions.            | ✅         |
+| Access to admin dashboard and settings.           | ✅         |
+| Can publish content without approval.             | ✅         |
+
+
+| Registered User                                         | Test Pass |
+| ------------------------------------------------------- | --------- |
+| Can create, read, update, and delete their own content. | ✅         |
+| Cannot manage content created by other users.           | ✅         |
+| Can create and manage their own comments.               | ✅         |
+| Can like and favorite posts.                            | ✅         |
+
+
+| Visitor                                       | Test Pass |
+| --------------------------------------------- | --------- |
+| Can only read publicly available content.     | ✅         |
+| Cannot create, update, or delete any content. | ✅         |
+| Cannot manage comments, likes, or favorites.  | ✅         |
 
 ## Bugs Fixed
 
@@ -183,59 +208,59 @@ Initial Lighthouse tests returned an error *Background and foreground colors do 
 
 | Page                 | Status          | Size    | Screenshot                                                                     | Notes                                                  |
 | -------------------- | --------------- | ------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| Home                 | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/logged_out_home_desktop.png )        |                                                        |
-| Home                 | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/logged_in_home_desktop.png )         |                                                        |
-| Home                 | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/logged_out_home_mobile.png )         |                                                        |
-| Home                 | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/logged_in_home_mobile.png )          |                                                        |
-| Insights             | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_insights_desktop.png )       |                                                        |
-| Insights             | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_insights_desktop.png )      |                                                        |
-| Insights             | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_insights_mobile.png )        |                                                        |
-| Insights             | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_insights_mobile.png )       |                                                        |
-| Add Insight          | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_add_insight_mobile.png )    |                                                        |
-| Add Insight          | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_add_insight_desktop.png )   |                                                        |
-| Pending Approvals    | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_pending_mobile.png )        |                                                        |
-| Pending Approvals    | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_pending_desktop.png )       |                                                        |
-| Profile - private    | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_profile_mobile.png )        |                                                        |
-| Profile - private    | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_profile_desktop.png )       |                                                        |
-| Profile - public     | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_profile_public_mobile.png )  |                                                        |
-| Profile - public     | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_prof_public_desktop.png )    |                                                        |
-| Profile - public     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_public_mobile.png )    |                                                        |
-| Profile - public     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_public.png )           |                                                        |
-| Profile - Insights   | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_prof_insights_mobile.png )   |                                                        |
-| Profile - Insights   | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_prof_insights.png )          |                                                        |
-| Profile - Insights   | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_insights.png )         |                                                        |
-| Profile - Drafts     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_drafts.png )           |                                                        |
-| Profile - Drafts     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_drafts_mobile.png )    |                                                        |
-| Profile - Favourites | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_favs_desktop.png )     |                                                        |
-| Profile - Favourites | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_prof_favs_mobile.png )      |                                                        |
-| Profile - Update     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/prof_update_desktop.png )            |                                                        |
-| Profile - Update     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/prof_update_mobile.png )             |                                                        |
-| Change-Password      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/change_pass_desktop.png )            |                                                        |
-| Change-Password      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/change_pass_mobile.png )             | Accessibility score of 96 due to button contrast.      |
-| Delete-Account       | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/del_acc_desktop.png )                |                                                        |
-| Delete-Account       | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/del_acc_mobile.png )                 | Accessibility score of 95 due to button contrast.      |
-| Insights-Detail      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_insights_dets_desktop.png ) |                                                        |
-| Insights-Detail      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_insights_dets_mobile.png )  |                                                        |
-| Insights-Detail      | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_insight_dets_desktop.png )   |                                                        |
-| Insights-Detail      | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_insight_dets_mobile.png )    |                                                        |
-| Edit-Comment         | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_edit_comment_desktop.png )  |                                                        |
-| Edit-Comment         | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_edit_comment_mobile.png )   |                                                        |
-| Contact-Form         | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_contact_mobile.png )         |                                                        |
-| Contact-Form         | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_contact_mobile.png )        |                                                        |
-| Contact-Form         | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_contact_desktop.png )        |                                                        |
-| Contact-Form         | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_contact_desktop.png )       |                                                        |
-| About                | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_about_desktop.png )          |                                                        |
-| About                | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_about_desktop.png )         |                                                        |
-| About                | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_about_mobile.png )           | Very poor scores returned so removed dev profile image |
-| About                | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_about_mobile.png )          |                                                        |
-| Search-Results       | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_search_desktop.png )         |                                                        |
-| Search-Results       | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_search_desktop.png )        |                                                        |
-| Search-Results       | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_search_mobile.png )          |                                                        |
-| Search-Results       | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_search_mobile.png )         |                                                        |
-| Category-filter      | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor_cat_filter_desktop.png )     |                                                        |
-| Category-filter      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg_user_cat_filter_desktop.png )    |                                                        |
-| Category-filter      | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor_category_mobile.png )        |                                                        |
-| Category-filter      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg_user_category_mobile.png )       |                                                        |
+| Home                 | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/logged-out-home-desktop.png )        |                                                        |
+| Home                 | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/logged-in-home-desktop.png )         |                                                        |
+| Home                 | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/logged-out-home-mobile.png )         |                                                        |
+| Home                 | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/logged-in-home-mobile.png )          |                                                        |
+| Insights             | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-insights-desktop.png )       |                                                        |
+| Insights             | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-desktop.png )      |                                                        |
+| Insights             | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-insights-mobile.png )        |                                                        |
+| Insights             | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-mobile.png )       |                                                        |
+| Add Insight          | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-add-insight-mobile.png )    |                                                        |
+| Add Insight          | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-add-insight-desktop.png )   |                                                        |
+| Pending Approvals    | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-pending-mobile.png )        |                                                        |
+| Pending Approvals    | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-pending-desktop.png )       |                                                        |
+| Profile - private    | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-profile-mobile.png )        |                                                        |
+| Profile - private    | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-profile-desktop.png )       |                                                        |
+| Profile - public     | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-profile-public-mobile.png )  |                                                        |
+| Profile - public     | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-prof-public-desktop.png )    |                                                        |
+| Profile - public     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-public-mobile.png )    |                                                        |
+| Profile - public     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-public.png )           |                                                        |
+| Profile - Insights   | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-prof-insights-mobile.png )   |                                                        |
+| Profile - Insights   | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-prof-insights.png )          |                                                        |
+| Profile - Insights   | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-insights.png )         |                                                        |
+| Profile - Drafts     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-drafts.png )           |                                                        |
+| Profile - Drafts     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-drafts-mobile.png )    |                                                        |
+| Profile - Favourites | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-favs-desktop.png )     |                                                        |
+| Profile - Favourites | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-favs-mobile.png )      |                                                        |
+| Profile - Update     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/prof-update-desktop.png )            |                                                        |
+| Profile - Update     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/prof-update-mobile.png )             |                                                        |
+| Change-Password      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/change-pass-desktop.png )            |                                                        |
+| Change-Password      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/change-pass-mobile.png )             | Accessibility score of 96 due to button contrast.      |
+| Delete-Account       | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/del-acc-desktop.png )                |                                                        |
+| Delete-Account       | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/del-acc-mobile.png )                 | Accessibility score of 95 due to button contrast.      |
+| Insights-Detail      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-dets-desktop.png ) |                                                        |
+| Insights-Detail      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-dets-mobile.png )  |                                                        |
+| Insights-Detail      | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-insight-dets-desktop.png )   |                                                        |
+| Insights-Detail      | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-insight-dets-mobile.png )    |                                                        |
+| Edit-Comment         | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-edit-comment-desktop.png )  |                                                        |
+| Edit-Comment         | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-edit-comment-mobile.png )   |                                                        |
+| Contact-Form         | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-contact-mobile.png )         |                                                        |
+| Contact-Form         | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-contact-mobile.png )        |                                                        |
+| Contact-Form         | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-contact-desktop.png )        |                                                        |
+| Contact-Form         | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-contact-desktop.png )       |                                                        |
+| About                | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-about-desktop.png )          |                                                        |
+| About                | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-about-desktop.png )         |                                                        |
+| About                | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-about-mobile.png )           | Very poor scores returned so removed dev profile image |
+| About                | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-about-mobile.png )          |                                                        |
+| Search-Results       | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-search-desktop.png )         |                                                        |
+| Search-Results       | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-search-desktop.png )        |                                                        |
+| Search-Results       | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-search-mobile.png )          |                                                        |
+| Search-Results       | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-search-mobile.png )         |                                                        |
+| Category-filter      | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-cat-filter-desktop.png )     |                                                        |
+| Category-filter      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-cat-filter-desktop.png )    |                                                        |
+| Category-filter      | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-category-mobile.png )        |                                                        |
+| Category-filter      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-category-mobile.png )       |                                                        |
 </details><br/>
 
 [Back to top](#contents)
