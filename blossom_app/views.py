@@ -2,15 +2,17 @@
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 
+# pylint: disable=unused-argument
 
-def handler400(request):
+
+def handler400(request, exception):
     '''
     Render 400 page
     '''
     return render(request, 'errors/400.html', status=400)
 
 
-def handler404(request):
+def handler404(request, exception):
     '''
     Render 404 page
     '''
@@ -29,4 +31,4 @@ def handler500(request):
     '''
     Render 500 page
     '''
-    return render(request, 'erros/500.html', status=500)
+    return render(request, 'errors/500.html', status=500)

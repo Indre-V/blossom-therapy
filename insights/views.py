@@ -149,7 +149,11 @@ class InsightDetailsView(View):
         """
         Handle GET requests to display the details of a specific post and its comments.
         """
-        post = get_object_or_404(Post, slug=slug)
+        try:
+            post = get_object_or_404(Post, slug=slug)
+        except Http404:
+            return redirect('insights')
+
         comments = post.comments.order_by("-created_on")
         liked = (
             post.likes.filter(id=self.request.user.id).exists()
@@ -280,10 +284,9 @@ class InsightDeleteView(
                 response = requests.head(referrer, timeout=2)
                 response.raise_for_status()
                 return referrer
-            except requests.RequestException as e:
-                raise Http404 from e
-        # If referrer is not valid, redirect to default success URL
-        return super().get_success_url()
+            except requests.RequestException:
+                pass
+        return self.success_url
 
 
 class InsightUpdateView(
