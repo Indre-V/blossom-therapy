@@ -69,7 +69,7 @@ class ProfileFavouritesView(View):
             'favourites': favourites,
         }
 
-        return render(request, 'profile/user_favourites.html', context)
+        return render(request, 'profile/user-favourites.html', context)
 
 class ProfileDraftsView(View):
     """
@@ -86,7 +86,7 @@ class ProfileDraftsView(View):
             'drafts': drafts,
         }
 
-        return render(request, 'profile/user_drafts.html', context)
+        return render(request, 'profile/user-drafts.html', context)
 
 class ProfileInsightsView(View):
     """
@@ -111,7 +111,7 @@ class ProfileInsightsView(View):
             'insights': insights,
         }
 
-        return render(request, 'profile/user_insights.html', context)
+        return render(request, 'profile/user-insights.html', context)
 
 class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """

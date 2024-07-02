@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import custom_400, custom_403, custom_404, custom_500
 
 
 # Customize admin headers and titles
@@ -32,3 +33,8 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
 
 ]
+
+handler400 = custom_400
+handler403 = custom_403
+handler404 = custom_404
+handler500 = custom_500

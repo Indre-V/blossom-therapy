@@ -5,20 +5,20 @@ from django.shortcuts import render
 # pylint: disable=unused-argument
 
 
-def handler400(request, exception):
+def custom_400(request, exception):
     '''
     Render 400 page
     '''
     return render(request, 'errors/400.html', status=400)
 
 
-def handler404(request, exception):
+def custom_404(request, exception):
     '''
     Render 404 page
     '''
     return render(request, 'errors/404.html', status=404)
 
-def handler403(request, exception):
+def custom_403(request, exception):
     '''
     Render 403 page
     '''
@@ -27,7 +27,7 @@ def handler403(request, exception):
     else:
         return render(request, 'errors/500.html', status=500)
 
-def handler500(request):
+def custom_500(request):
     '''
     Render 500 page
     '''
