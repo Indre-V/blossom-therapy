@@ -117,7 +117,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
-
+CSRF_FAILURE_VIEW = 'blossom_app.views.custom_csrf_failure'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
