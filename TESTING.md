@@ -202,7 +202,10 @@ Blossom-Therapy was tested in the [Chrome Dev Tools](https://developer.chrome.co
 * Best Practices - checks whether the page is built on the modern standards of web development.
 * SEO - checks if the website is optimised for search engine result rankings.
 
-Initial Lighthouse tests returned an error *Background and foreground colors do not have a sufficient contrast ratio.*. This was due to the button font in the Profile Section. Once the font was updated, the Accessibility score returned 100.
+Initial Lighthouse tests returned accessibility error *Background and foreground colors do not have a sufficient contrast ratio.*. This was due to the button font in the Profile Section. Once the font was updated, the Accessibility score returned 100.
+
+All images were compressed and converted to .webp using [tiny.png](https://tinypng.com/) to improve performance scores. Website was tested with extra content to replicate real life scenario.
+Performance results on mobile were on a lower side due to Heroku and Cloudinary speed issues. Due to time constraints the retest of mobile performance could not be carried out.
 
 <details><summary><b>Lighthouse Test Results</b></summary>
 
