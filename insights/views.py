@@ -11,6 +11,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
 from django.db.models import Q
 from django.db.models import Count
+from django.http import Http404
+import requests
 from .models import Category, Post, Comment
 from .forms import CommentForm, InsightForm
 
@@ -268,7 +270,20 @@ class InsightDeleteView(
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
 
-
+    def get_success_url(self):
+        """
+        Redirect to the HTTP referrer if available, otherwise use the default success URL.
+        """
+        referrer = self.request.META.get('HTTP_REFERER')
+        if referrer:
+            try:
+                response = requests.head(referrer, timeout=2)
+                response.raise_for_status()
+                return referrer
+            except requests.RequestException as e:
+                raise Http404 from e
+        # If referrer is not valid, redirect to default success URL
+        return super().get_success_url()
 
 
 class InsightUpdateView(
