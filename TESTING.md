@@ -58,6 +58,16 @@ The [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) tool, provided by the W3C
 
 ### JavaScript
 
+No major errors were found when validating JavaScript through [Jshint](https://jshint.com/).
+
+Jshint retruned one note that `bootstrap` variable is undefined. This can be ignored because `bootstrap.Modal` relies on bootstrap being a globally defined object, which Bootstrap itself provides.
+<details>
+
+<summary>Jshint</summary>
+
+![Jshint](docs/testing.md/validations/js_result.png)
+</details>
+
 ### Python
 
 The python files have all been passed through [PEP8 CI Online](https://pep8ci.herokuapp.com/)
