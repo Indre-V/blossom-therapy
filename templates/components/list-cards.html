@@ -42,7 +42,7 @@
         <!-- Author Section -->
         <div class="d-flex align-items-center author">
             <div class="avatar">
-                {% if "placeholder_profile" in post.author.profile.profile_picture.url %}
+                {% if "placeholder" in post.author.profile.profile_picture.url %}
                 <!-- Placeholder profile image -->
                 <img src="{% static 'images/placeholder-profile.webp' %}" class="author-image" alt="Profile Placeholder"
                     loading="lazy">

@@ -44,7 +44,7 @@ class SearchResultsView(ListView):
     A view class for displaying search results.
     """
     model = Post
-    template_name = 'insights/search-results.html'
+
 
     def get_queryset(self):
         query = self.request.GET.get("q")
@@ -192,7 +192,7 @@ class InsightDetailsView(View):
             post.comment_count = post.comments.count()
             post.save()
             messages.success(request, "Comment created successfully!")
-            return redirect('insight-details', slug=post.slug)
+            return redirect("insight-details", slug=post.slug)
         else:
             messages.error(request, "There was an error. Please try again!")
 

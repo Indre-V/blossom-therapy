@@ -11,7 +11,7 @@
     <div class="d-flex justify-content-between">
         <!-- Comment Author Information -->
         <div class="d-flex align-items-center mb-3">
-            {% if "placeholder_profile" in comment.author.profile.profile_picture.url %}
+            {% if "placeholder" in comment.author.profile.profile_picture.url %}
             <!-- Default Profile Picture if Profile Picture is Placeholder -->
             <img src="{% static 'images/placeholder-profile.webp' %}" class="rounded-circle me-3" width="40" height="40"
                 alt="Profile Placeholder" loading="lazy">

@@ -82,6 +82,11 @@ The python files have all been passed through [PEP8 CI Online](https://pep8ci.he
 
 ## Automated Testing
 
+A number of automated tests were carried out.
+
+-higher application quality
+-easier refactoring
+-easier version upgrades
 
 
 ### Python (Unit Testing)
