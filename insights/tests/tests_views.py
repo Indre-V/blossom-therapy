@@ -1,9 +1,9 @@
+"""Imports for Test Views"""
 from django.test import TestCase, Client
-from django.contrib.auth.models import User
-from insights.models import Post, Category
-from insights.views import InsightUpdateView
 from django.contrib.messages import get_messages
 from django.urls import reverse
+from django.contrib.auth.models import User
+from insights.models import Post, Category
 
 # pylint: disable=locally-disabled, no-member
 
@@ -210,8 +210,6 @@ class InsightAddViewTestCase(TestCase):
         invalid_data['title'] = ''  # Simulate an invalid form field
 
         response = self.client.post(self.url, invalid_data, follow=True)
-        print(response.status_code)
-        print(response.content)  # Print response content for debugging
 
         self.assertEqual(response.status_code, 200)
 
