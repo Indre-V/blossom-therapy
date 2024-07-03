@@ -9,7 +9,7 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
-from django.core.paginator import Paginator
+from django.http import HttpResponseForbidden
 from django.db.models import Q
 from django.db.models import Count
 from django.http import Http404
@@ -125,6 +125,9 @@ class InsightDetailsView(View):
         post = get_object_or_404(Post, slug=slug)
         comments = post.comments.order_by("-created_on")
         comment_form = CommentForm(request.POST)
+
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden("You must be logged in to comment.")
 
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
@@ -250,6 +253,7 @@ class CategoryFilterView(ListView):
         context['category'] = category
         context['categories'] = Category.objects.all()
         return context
+
 
 class InsightDeleteView(
         LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
