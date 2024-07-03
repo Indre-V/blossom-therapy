@@ -26,12 +26,12 @@ urlpatterns = [
         views.InsightDetailsView.as_view(),
         name="insight-details"),
     path(
-        "search/",
-         views.SearchResultsView.as_view(),
-         name="search-results"),
+        "search/", 
+        views.SearchView.as_view(),
+        name="search"),
     path(
-        "category/<str:category_name>/",
-        views.InsightsListView.as_view(),
+        "categories/<str:category_name>/", 
+        views.CategoryFilterView.as_view(),
         name="category-posts"),
     path(
         "comments/<int:pk>/delete/",

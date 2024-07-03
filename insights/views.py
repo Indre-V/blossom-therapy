@@ -9,6 +9,7 @@ from django.utils.text import slugify
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models import Count
 from django.http import Http404
@@ -39,65 +40,6 @@ class HomeView(ListView):
         return context
 
 
-class SearchResultsView(ListView):
-    """
-    A view class for displaying search results.
-    """
-    model = Post
-
-
-    def get_queryset(self):
-        query = self.request.GET.get("q")
-        object_list = Post.objects.filter(
-            Q(content__icontains=query)
-        )
-        return object_list
-
-
-class InsightsListView(ListView):
-    """
-    View for displaying insights, with support for category filtering and search functionality.
-    """
-    model = Post
-    template_name = 'insights/insights-list.html'
-    context_object_name = 'insights'
-    paginate_by = 6
-
-    def get_queryset(self):
-        """
-        Filters the posts based on the category obtained from the URL and search queries.
-        """
-        category_name = self.kwargs.get('category_name')
-        query = self.request.GET.get("q")
-
-        posts = Post.objects.filter(status=1).order_by('-created_on')
-
-        if query:
-            posts = posts.filter(
-                Q(content__icontains=query)
-            )
-
-        if category_name:
-            category = get_object_or_404(Category, name=category_name)
-            posts = posts.filter(category=category)
-
-        return posts
-
-    def get_context_data(self, **kwargs):
-        """
-        Adds additional context data for categories to the template.
-        """
-        context = super().get_context_data(**kwargs)
-        category_name = self.kwargs.get('category_name')
-        query = self.request.GET.get('q')
-
-        if category_name:
-            context['category'] = get_object_or_404(Category, name=category_name)
-        context['categories'] = Category.objects.all()
-        context['search_query'] = query
-        return context
-
-
 class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
     View for creating a new insight post
@@ -109,7 +51,7 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user  # Pass the current user to the form
+        kwargs['user'] = self.request.user
         return kwargs
 
     def form_valid(self, form):
@@ -205,57 +147,109 @@ class InsightDetailsView(View):
         return render(request, self.template_name, context)
 
 
-
-class CommentDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
-
+class InsightsListView(ListView):
     """
-    This view is used to allow logged in users to delete their own comments
+    Base view for displaying insights with support for category filtering and search functionality.
     """
-    model = Comment
-    template_name = "comments/delete_comment.html"
-    success_message = "Comment removed successfully"
+    model = Post
+    template_name = 'insights/insights-list.html'
+    context_object_name = 'insights'
+    paginate_by = 6
 
-    def test_func(self):
+    def get_queryset(self):
         """
-        Ensure that only the comment author or admin can delete the comment.
+        Filters the posts based on the search query and category.
         """
-        comment = self.get_object()
-        return self.request.user == comment.author or self.request.user.is_superuser
+        query = self.request.GET.get("q")
+        category_name = self.kwargs.get('category_name')
 
-    def get_success_url(self):
+        posts = Post.objects.filter(status=1).order_by('-created_on')
+
+        if query:
+            posts = posts.filter(Q(content__icontains=query))
+
+        if category_name:
+            category = get_object_or_404(Category, name=category_name)
+            posts = posts.filter(category=category)
+
+        return posts
+
+    def get_context_data(self, **kwargs):
         """
-        Redirect to the post detail view after a successful comment deletion.
+        Adds additional context data for categories and search query.
         """
-        post = self.object.post
-        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
+        context = super().get_context_data(**kwargs)
+        category_name = self.kwargs.get('category_name')
+        query = self.request.GET.get('q')
+
+        if category_name:
+            context['category'] = get_object_or_404(Category, name=category_name)
+
+        context['categories'] = Category.objects.all()
+        context['search_query'] = query
+
+        return context
 
 
-class CommentEditView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
-
+class SearchView(ListView):
     """
-    This view is used to allow logged in users and admin to update their own comments
+    A class-based view for displaying search results across all categories.
     """
-    model = Comment
-    form_class = CommentForm
-    template_name = "comments/edit-comment.html"
-    success_message = "Comment updated successfully"
+    model = Post
+    template_name = 'insights/search-results.html'
+    context_object_name = 'insights'
+    paginate_by = 6
 
-    def test_func(self):
+    def get_queryset(self):
         """
-        Ensure that only the comment author or admin can delete the comment.
+        Filters the posts based on the search query.
         """
-        comment = self.get_object()
-        return self.request.user == comment.author or self.request.user.is_superuser
+        query = self.request.GET.get("q", "")
+        object_list = Post.objects.filter(status=1).order_by('-created_on')
 
-    def get_success_url(self):
-        """
-        Redirect to the post detail view after a successful comment deletion.
-        """
-        post = self.object.post
-        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
+        if query:
+            object_list = object_list.filter(Q(content__icontains=query))
 
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        """
+        Adds search query and categories to context data.
+        """
+        context = super().get_context_data(**kwargs)
+        context['search_query'] = self.request.GET.get("q", "")
+        context['categories'] = Category.objects.all()
+        return context
+
+
+class CategoryFilterView(ListView):
+    """
+    View for displaying insights filtered by category.
+    """
+    model = Post
+    template_name = 'insights/categories-search.html'
+    context_object_name = 'insights'
+    paginate_by = 6
+
+    def get_queryset(self):
+        """
+        Filters the insights based on the category obtained from the URL.
+        """
+        category_name = self.kwargs.get('category_name')
+        category = get_object_or_404(Category, name=category_name)
+        object_list = Post.objects.filter(status=1, category=category).order_by('-created_on')
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        """
+        Adds additional context data for categories and category name.
+        """
+        context = super().get_context_data(**kwargs)
+        category_name = self.kwargs.get('category_name')
+        category = get_object_or_404(Category, name=category_name)
+        context['category'] = category
+        context['categories'] = Category.objects.all()
+        return context
 
 class InsightDeleteView(
         LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
@@ -379,6 +373,56 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
         referer = request.META.get('HTTP_REFERER')
 
         return redirect(referer)
+
+class CommentDeleteView(
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+
+    """
+    This view is used to allow logged in users to delete their own comments
+    """
+    model = Comment
+    template_name = "comments/delete_comment.html"
+    success_message = "Comment removed successfully"
+
+    def test_func(self):
+        """
+        Ensure that only the comment author or admin can delete the comment.
+        """
+        comment = self.get_object()
+        return self.request.user == comment.author or self.request.user.is_superuser
+
+    def get_success_url(self):
+        """
+        Redirect to the post detail view after a successful comment deletion.
+        """
+        post = self.object.post
+        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
+
+
+class CommentEditView(
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+
+    """
+    This view is used to allow logged in users and admin to update their own comments
+    """
+    model = Comment
+    form_class = CommentForm
+    template_name = "comments/edit-comment.html"
+    success_message = "Comment updated successfully"
+
+    def test_func(self):
+        """
+        Ensure that only the comment author or admin can delete the comment.
+        """
+        comment = self.get_object()
+        return self.request.user == comment.author or self.request.user.is_superuser
+
+    def get_success_url(self):
+        """
+        Redirect to the post detail view after a successful comment deletion.
+        """
+        post = self.object.post
+        return reverse_lazy("insight-details", kwargs={"slug": post.slug})
 
 
 class PendingApprovalListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
