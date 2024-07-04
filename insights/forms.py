@@ -1,8 +1,11 @@
 """Imports for Forms page"""
 from django import forms
+from django.core.exceptions import ValidationError
+from django.utils.text import slugify
 from django_summernote.widgets import SummernoteWidget
 from .models import Comment, Post
 
+# pylint: disable=locally-disabled, no-member
 
 class InsightForm(forms.ModelForm):
     """
@@ -27,6 +30,16 @@ class InsightForm(forms.ModelForm):
         """
         return self.user and self.user.is_superuser
 
+    def clean_title(self):
+        """
+        Custom validation to check if a post with the same title already exists.
+        """
+        title = self.cleaned_data.get('title')
+        slug = slugify(title)
+        if Post.objects.filter(slug=slug).exists():
+            raise ValidationError('A post with this title already exists.')
+        return title
+
     class Meta:
         """
         Meta options for the PostForm.
@@ -36,6 +49,7 @@ class InsightForm(forms.ModelForm):
         fields = ['title', 'featured_image', 'content', 'category', 'status']
         widgets = {
             'content': SummernoteWidget(attrs={'rows': 5}),
+
         }
 
 
