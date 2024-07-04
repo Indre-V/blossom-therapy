@@ -22,14 +22,14 @@
       <!-- Modal Footer -->
       <div class="modal-footer">
         <!-- Cancel Button -->
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+        <button type="button" class="btn button-style" data-bs-dismiss="modal">
           Cancel
         </button>
 
         <!-- Delete Form -->
         <form method="post" action="{% url 'insight-delete' post.slug %}">
           {% csrf_token %}
-          <button class="btn btn-danger" type="submit">
+          <button class="btn btn-danger txt-btn" type="submit">
             <i class="fa-solid fa-trash"></i> Confirm Delete
           </button>
         </form>

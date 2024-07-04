@@ -89,18 +89,19 @@ a { color: inherit; }
 /* Button background color */
 
 .button-style {
-  background-color: var(--powder-blue); 
+  background-color: var(--powder-blue);
+  color: #242424;
   font-weight: 700;
-}
-
-.txt-btn {
-  color: black;
 }
 
 .button-style:hover {
   background-color: var(--light-orange); 
 }
 
+.txt-btn {
+  color: #242424;
+  font-weight: 700;
+}
 /* Button and Fa icons */
 .icon {
   font-size: 2rem; 
@@ -171,7 +172,7 @@ a { color: inherit; }
 }
 
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .card .row {
       flex-direction: column;
 
@@ -185,4 +186,4 @@ a { color: inherit; }
     display: flex;
     justify-content: center;
 }
-}
+} */
