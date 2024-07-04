@@ -15,7 +15,7 @@
                     <!-- Form for editing insight -->
                     <form class="text-dark" method="post" enctype="multipart/form-data">
                         <!-- Render form fields using Crispy Forms for better styling -->
-                        {{ form | crispy }}
+                        {% crispy form %}
                         <!-- CSRF token for security -->
                         {% csrf_token %}
                         <!-- Display any messages, e.g., success or error messages -->

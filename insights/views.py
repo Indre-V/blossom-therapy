@@ -1,6 +1,5 @@
 """Views Imports """
 from django.shortcuts import render, redirect
-from django.views import generic
 from django.views.generic import CreateView, View, ListView, DeleteView
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
@@ -287,7 +286,7 @@ class InsightDeleteView(
 
 
 class InsightUpdateView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     """
     Edit insights by author or superuser
     """

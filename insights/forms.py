@@ -37,13 +37,6 @@ class InsightForm(forms.ModelForm):
         widgets = {
             'content': SummernoteWidget(attrs={'rows': 5}),
         }
-        labels = {
-            'title': 'Title',
-            'category': 'Category',
-            'featured_image': 'Featured Image',
-            'content': 'Content',
-            'status': 'Status',
-        }
 
 
 class CommentForm(forms.ModelForm):
