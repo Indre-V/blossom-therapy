@@ -92,7 +92,7 @@ The automated tests highlighted a redundant view and non existant html file. Alt
 
 ## Manual Testing
 
-In addition to using unittest, extensive manual testing was performed on the application. Each feature was verified against success criteria. Where applicable, negative testing was conducted by providing invalid or unexpected inputs to assess the application's robustness in handling errors and exceptions.
+In addition to using `unittest`, extensive manual testing was performed on the application. Each feature was verified against success criteria. Where applicable, negative testing was conducted by providing invalid or unexpected inputs to assess the application's robustness in handling errors and exceptions.
 
 <details><summary><b>Manual Testing Results</b></summary>
 
@@ -260,14 +260,16 @@ In addition to using unittest, extensive manual testing was performed on the app
 | Invalid Comment Submission                            | Comment form, Submit button               | Submit an empty comment                           | Error message "There was an error. Please try again!" displayed                                                                | ✅      |
 | Edit Comment                                          | Edit button                               | Edit an existing comment                          | Success message "Comment updated successfully" displayed                                                                       | ✅      |
 | Delete Comment                                        | Delete button                             | Delete an existing comment                        | Success message "Comment removed successfully" displayed                                                                       | ✅      |
+
 </details><br/>
 
+[Back to top](#contents)
 
 ## Role-based Restrictions
 
 The user role based restrictions were tested to ensure that view and functionality reflects the scope of the project.
 
-| Admin                                             | Test Pass |
+| Admin                                             | Result |
 | ------------------------------------------------- | --------- |
 | Full access to all resources and features.        | ✅         |
 | Can create, read, update, and delete any content. | ✅         |
@@ -276,7 +278,7 @@ The user role based restrictions were tested to ensure that view and functionali
 | Can publish content without approval.             | ✅         |
 
 
-| Registered User                                         | Test Pass |
+| Registered User                                         | Result |
 | ------------------------------------------------------- | --------- |
 | Can create, read, update, and delete their own content. | ✅         |
 | Cannot manage content created by other users.           | ✅         |
@@ -284,7 +286,7 @@ The user role based restrictions were tested to ensure that view and functionali
 | Can like and favorite posts.                            | ✅         |
 
 
-| Visitor                                       | Test Pass |
+| Visitor                                       | Result |
 | --------------------------------------------- | --------- |
 | Can only read publicly available content.     | ✅         |
 | Cannot create, update, or delete any content. | ✅         |
