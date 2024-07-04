@@ -385,7 +385,7 @@ class CommentDeleteView(
     This view is used to allow logged in users to delete their own comments
     """
     model = Comment
-    template_name = "comments/delete_comment.html"
+    template_name = "comments/delete-comment.html"
     success_message = "Comment removed successfully"
 
     def test_func(self):
