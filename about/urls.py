@@ -1,4 +1,4 @@
-"""URL Patterns"""
+"""URL Imports"""
 from django.urls import path
 from .views import DevProfileView, ContactFormView
 

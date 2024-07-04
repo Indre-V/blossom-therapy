@@ -1,14 +1,12 @@
-"""About models imports"""
+"""About Models imports"""
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
-# pylint: disable=locally-disabled, no-member
-
 class Contact(models.Model):
     """
-    Contact form model
+    Recording contact information
     """
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=254)
@@ -22,7 +20,7 @@ class Contact(models.Model):
 
 class DevProfile(models.Model):
     """
-    Developer profile model
+    Developer profile details
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.TextField(blank=True)
@@ -35,4 +33,4 @@ class DevProfile(models.Model):
     education = models.TextField(blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.username # pylint: disable=locally-disabled, no-member

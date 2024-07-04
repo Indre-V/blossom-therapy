@@ -56,7 +56,7 @@ class ProfilePageView(DetailView):
 
 class ProfileFavouritesView(View):
     """
-    View for display and manage user drafts
+    View for display and manage user favourites
     """
     def get(self, request, username):
         """
@@ -70,6 +70,7 @@ class ProfileFavouritesView(View):
         }
 
         return render(request, 'profile/user-favourites.html', context)
+
 
 class ProfileDraftsView(View):
     """
@@ -87,6 +88,7 @@ class ProfileDraftsView(View):
         }
 
         return render(request, 'profile/user-drafts.html', context)
+
 
 class ProfileInsightsView(View):
     """
@@ -112,6 +114,7 @@ class ProfileInsightsView(View):
         }
 
         return render(request, 'profile/user-insights.html', context)
+
 
 class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """

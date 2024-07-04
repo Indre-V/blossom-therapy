@@ -10,7 +10,6 @@ class ProfileInline(admin.StackedInline):
     """
     model = Profile
 
-
 class UserAdmin(admin.ModelAdmin):
     """
     Custom configuration for admin to update

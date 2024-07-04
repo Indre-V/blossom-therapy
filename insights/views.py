@@ -21,7 +21,6 @@ from .forms import CommentForm, InsightForm
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-argument
 
-
 class HomeView(ListView):
     """
     A view class for displaying the home page.
@@ -377,6 +376,7 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
         referer = request.META.get('HTTP_REFERER')
 
         return redirect(referer)
+
 
 class CommentDeleteView(
         LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):

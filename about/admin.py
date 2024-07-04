@@ -1,4 +1,4 @@
-""" Admin Site settings"""
+""" Admin Site Imports"""
 from django.contrib import admin
 from .models import Contact, DevProfile
 

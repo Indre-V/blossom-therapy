@@ -38,9 +38,10 @@ class ContactFormView(SuccessMessageMixin, FormView):
         """
         return self.render_to_response(self.get_context_data(form=form))
 
+
 class DevProfileView(ListView):
     """
-    View to display developer profiles.
+    View to display developer profile.
     """
     model = DevProfile
     template_name = 'about/dev-details.html'
