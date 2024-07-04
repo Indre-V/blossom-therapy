@@ -53,7 +53,7 @@ The [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) tool, provided by the W3C
 
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|CSS file | No errors |<details><summary>Result Summary</summary>![Result](docs/testing.md/validations/css-test.png)</details>| ✅
+|CSS file | No errors |<details><summary>Result Summary</summary>![Result](docs/testing-md/validations/css-test.png)</details>| ✅
 
 
 ### JavaScript
@@ -65,7 +65,7 @@ Jshint retruned one note that `bootstrap` variable is undefined. This can be ign
 
 <summary>Jshint</summary>
 
-![Jshint](docs/testing.md/validations/js_result.png)
+![Jshint](docs/testing-md/validations/js_result.png)
 </details>
 
 ### Python
@@ -82,11 +82,12 @@ The python files have all been passed through [PEP8 CI Online](https://pep8ci.he
 
 ## Automated Testing
 
-A number of automated tests were carried out.
+Python's `unittest` framework offers a robust and flexible testing solution. 
+Ideally, every part of the project should be put through the robust automated testing. Due to time constraints I have utilized automated tests for Insights application concentrating on CRUD related functionality views, models and forms. 
 
--higher application quality
--easier refactoring
--easier version upgrades
+The automated tests highlighted a redundant view and non existant html file. Although these issues did not affect the functionality of the application, the quality and maintainability of the code are equally important. 
+
+![Unittest](/docs/testing-md/automated-test-results.png)
 
 
 ### Python (Unit Testing)
@@ -138,7 +139,7 @@ The user role based restrictions were tested to ensure that view and functionali
 The deployed project was tested on the most popular browsers for compatibility issues.
 No major issues identified. 
 
-[Browser Testing Results](/docs/testing.md/browser-testing.pdf)
+[Browser Testing Results](/docs/testing-md/browser-testing.pdf)
 
 ## User Story Testing
 
@@ -154,40 +155,40 @@ No major issues identified.
 | [Create Django Project](https://github.com/Indre-V/blossom-therapy/issues/14#issue-2303105943)                 | ✅                            | Git commit [548ffe2](https://github.com/Indre-V/blossom-therapy/commit/548ffe2c2b877163958e9e8c22e90f9ed1afc997) |
 | [Initial Deployment to Heroku](https://github.com/Indre-V/blossom-therapy/issues/15#issue-2303122957)          | ✅                            | Git commit [8c7d0f4](https://github.com/Indre-V/blossom-therapy/commit/8c7d0f44072c5897084b06c738a39a6eed9f4037) |
 | [Update Developer Profile](https://github.com/Indre-V/blossom-therapy/issues/51#issue-2308275825)              | ✅                            | Available in Django Admin Panel                                                                                  |
-| [Performance Optimization](https://github.com/Indre-V/blossom-therapy/issues/41#issue-2304290974)              | ✅                            | Results documented in TESTING.md                                                                                 |
-| [Code Validation](https://github.com/Indre-V/blossom-therapy/issues/44#issue-2304298110)                       | ✅                            | Results documented in TESTING.md                                                                                 |
-| [Comprehensive Project Documentation](https://github.com/Indre-V/blossom-therapy/issues/45#issue-2304301021)   | ✅                            | Comprehensive README.md and TESTING.md                                                                           |
-| [User Story Testing](https://github.com/Indre-V/blossom-therapy/issues/46#issue-2304303369)                    | ✅                            | Results documented in TESTING.md                                                                                 |
+| [Performance Optimization](https://github.com/Indre-V/blossom-therapy/issues/41#issue-2304290974)              | ✅                            | Results documented in testing-md                                                                                 |
+| [Code Validation](https://github.com/Indre-V/blossom-therapy/issues/44#issue-2304298110)                       | ✅                            | Results documented in testing-md                                                                                 |
+| [Comprehensive Project Documentation](https://github.com/Indre-V/blossom-therapy/issues/45#issue-2304301021)   | ✅                            | Comprehensive README.md and testing-md                                                                           |
+| [User Story Testing](https://github.com/Indre-V/blossom-therapy/issues/46#issue-2304303369)                    | ✅                            | Results documented in testing-md                                                                                 |
 | [Heroku Deployment](https://github.com/Indre-V/blossom-therapy/issues/47#issue-2304304912)                     | ✅                            | Git commit [23f1988](https://github.com/Indre-V/blossom-therapy/commit/23f1988a49387c9e13add7e08afa4e5b6769dc7c) |
-| [Performance and Accessibility Testing](https://github.com/Indre-V/blossom-therapy/issues/48#issue-2304308035) | ✅                            | Results documented in TESTING.md                                                                                 |
+| [Performance and Accessibility Testing](https://github.com/Indre-V/blossom-therapy/issues/48#issue-2304308035) | ✅                            | Results documented in testing-md                                                                                 |
 
 **Visitor User Stories**
 
 | User Story                                                                                                        | Acceptance Criteria Complete | Screenshot/Notes                                                                                                |
 | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| [User Registration](https://github.com/Indre-V/blossom-therapy/issues/17#issue-2303311873)                        | ✅                            |  <details><summary>Screenshot</summary>![Registration](/docs/testing.md/userstories/user-reg.png)</details>     |
-| [Display Filter](https://github.com/Indre-V/blossom-therapy/issues/37#issue-2304284083)                           | ✅                            |  <details><summary>Screenshot</summary>![Filter](/docs/testing.md/userstories/filter.png)</details>             |
-| [View Developer Profile](https://github.com/Indre-V/blossom-therapy/issues/50#issue-2308263786)                   | ✅                            |  <details><summary>Screenshot</summary>![About](/docs/testing.md/userstories/about.png)</details>               |
-| [Access Developer's Resume](https://github.com/Indre-V/blossom-therapy/issues/52#issue-2308280758)                | ✅                            |  <details><summary>Screenshot</summary>![CV-Link](/docs/testing.md/userstories/cv-link.png)</details>           |
-| [Navigate to Developer's GitHub Portfolio](https://github.com/Indre-V/blossom-therapy/issues/53#issue-2308294861) | ✅                            |  <details><summary>Screenshot</summary>![About-Footer](/docs/testing.md/userstories/about-footer.png)</details> |
+| [User Registration](https://github.com/Indre-V/blossom-therapy/issues/17#issue-2303311873)                        | ✅                            |  <details><summary>Screenshot</summary>![Registration](/docs/testing-md/userstories/user-reg.png)</details>     |
+| [Display Filter](https://github.com/Indre-V/blossom-therapy/issues/37#issue-2304284083)                           | ✅                            |  <details><summary>Screenshot</summary>![Filter](/docs/testing-md/userstories/filter.png)</details>             |
+| [View Developer Profile](https://github.com/Indre-V/blossom-therapy/issues/50#issue-2308263786)                   | ✅                            |  <details><summary>Screenshot</summary>![About](/docs/testing-md/userstories/about.png)</details>               |
+| [Access Developer's Resume](https://github.com/Indre-V/blossom-therapy/issues/52#issue-2308280758)                | ✅                            |  <details><summary>Screenshot</summary>![CV-Link](/docs/testing-md/userstories/cv-link.png)</details>           |
+| [Navigate to Developer's GitHub Portfolio](https://github.com/Indre-V/blossom-therapy/issues/53#issue-2308294861) | ✅                            |  <details><summary>Screenshot</summary>![About-Footer](/docs/testing-md/userstories/about-footer.png)</details> |
 | [Implement Navigation Experience](https://github.com/Indre-V/blossom-therapy/issues/38#issue-2304286025)          | ✅                            | Summary documented in README.md                                                                                 |
 | [Visual Consistency](https://github.com/Indre-V/blossom-therapy/issues/39#issue-2304287983)                       | ✅                            | Summary documented in README.md                                                                                 |
-| [Accessibility Enhancement](https://github.com/Indre-V/blossom-therapy/issues/40#issue-2304289636)                | ✅                            | Test results documented in TESTING.md                                                                           |
-| [Developer Feedback and Support](https://github.com/Indre-V/blossom-therapy/issues/34#issue-2304132868)           | ✅                            |  <details><summary>Screenshot</summary>![Contact-Form](/docs/testing.md/userstories/contact-form.png)</details> |
+| [Accessibility Enhancement](https://github.com/Indre-V/blossom-therapy/issues/40#issue-2304289636)                | ✅                            | Test results documented in testing-md                                                                           |
+| [Developer Feedback and Support](https://github.com/Indre-V/blossom-therapy/issues/34#issue-2304132868)           | ✅                            |  <details><summary>Screenshot</summary>![Contact-Form](/docs/testing-md/userstories/contact-form.png)</details> |
 
 
 **Registered User Stories**
 
 | User Story                                                                                                   | Acceptance Criteria Complete | Screenshot                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [User Login and Logout Functionality](https://github.com/Indre-V/blossom-therapy/issues/18#issue-2303341463) | ✅                            |  <details><summary>Screenshot</summary>![Log](/docs/testing.md/userstories/login.png)</details>                         |
-| [Password Reset](https://github.com/Indre-V/blossom-therapy/issues/19#issue-2303364772)                      | ✅                            |  <details><summary>Screenshot</summary>![Password-Reset](/docs/testing.md/userstories/password-reset.png)</details>     |
-| [Profile Management](https://github.com/Indre-V/blossom-therapy/issues/20#issue-2303381892)                  | ✅                            |  <details><summary>Screenshot</summary>![Profile](/docs/testing.md/userstories/profile-view.png)</details>              |
-| [Create New Insight](https://github.com/Indre-V/blossom-therapy/issues/22#issue-2304082436)                  | ✅                            |  <details><summary>Screenshot</summary>![Add-Insight](/docs/testing.md/userstories/add-insight.png)</details>           |
-| [Manage Insight](https://github.com/Indre-V/blossom-therapy/issues/23#issue-2304088784)                      | ✅                            |  <details><summary>Screenshot</summary>![Manage-Insight](/docs/testing.md/userstories/manage-insight.png)</details>     |
-| [Add a Comment](https://github.com/Indre-V/blossom-therapy/issues/24#issue-2304095247)                       | ✅                            |  <details><summary>Screenshot</summary>![Add-Comment](/docs/testing.md/userstories/add-comment.png)</details>           |
-| [Manage Comments](https://github.com/Indre-V/blossom-therapy/issues/25#issue-2304099460)                     | ✅                            |  <details><summary>Screenshot</summary>![Manage-Comment](/docs/testing.md/userstories/manage-comment.png)</details>     |
-| [User Interaction with Posts](https://github.com/Indre-V/blossom-therapy/issues/29#issue-2304113934)         | ✅                            |  <details><summary>Screenshot</summary>![User-Interaction](/docs/testing.md/userstories/user-interaction.png)</details> |
+| [User Login and Logout Functionality](https://github.com/Indre-V/blossom-therapy/issues/18#issue-2303341463) | ✅                            |  <details><summary>Screenshot</summary>![Log](/docs/testing-md/userstories/login.png)</details>                         |
+| [Password Reset](https://github.com/Indre-V/blossom-therapy/issues/19#issue-2303364772)                      | ✅                            |  <details><summary>Screenshot</summary>![Password-Reset](/docs/testing-md/userstories/password-reset.png)</details>     |
+| [Profile Management](https://github.com/Indre-V/blossom-therapy/issues/20#issue-2303381892)                  | ✅                            |  <details><summary>Screenshot</summary>![Profile](/docs/testing-md/userstories/profile-view.png)</details>              |
+| [Create New Insight](https://github.com/Indre-V/blossom-therapy/issues/22#issue-2304082436)                  | ✅                            |  <details><summary>Screenshot</summary>![Add-Insight](/docs/testing-md/userstories/add-insight.png)</details>           |
+| [Manage Insight](https://github.com/Indre-V/blossom-therapy/issues/23#issue-2304088784)                      | ✅                            |  <details><summary>Screenshot</summary>![Manage-Insight](/docs/testing-md/userstories/manage-insight.png)</details>     |
+| [Add a Comment](https://github.com/Indre-V/blossom-therapy/issues/24#issue-2304095247)                       | ✅                            |  <details><summary>Screenshot</summary>![Add-Comment](/docs/testing-md/userstories/add-comment.png)</details>           |
+| [Manage Comments](https://github.com/Indre-V/blossom-therapy/issues/25#issue-2304099460)                     | ✅                            |  <details><summary>Screenshot</summary>![Manage-Comment](/docs/testing-md/userstories/manage-comment.png)</details>     |
+| [User Interaction with Posts](https://github.com/Indre-V/blossom-therapy/issues/29#issue-2304113934)         | ✅                            |  <details><summary>Screenshot</summary>![User-Interaction](/docs/testing-md/userstories/user-interaction.png)</details> |
  
 
 **Admin User Stories**
@@ -216,59 +217,59 @@ Performance results on mobile were on a lower side due to Heroku and Cloudinary 
 
 | Page                 | Status          | Size    | Screenshot                                                                     | Notes                                                  |
 | -------------------- | --------------- | ------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| Home                 | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/logged-out-home-desktop.png )        |                                                        |
-| Home                 | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/logged-in-home-desktop.png )         |                                                        |
-| Home                 | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/logged-out-home-mobile.png )         |                                                        |
-| Home                 | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/logged-in-home-mobile.png )          |                                                        |
-| Insights             | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-insights-desktop.png )       |                                                        |
-| Insights             | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-desktop.png )      |                                                        |
-| Insights             | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-insights-mobile.png )        |                                                        |
-| Insights             | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-mobile.png )       |                                                        |
-| Add Insight          | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-add-insight-mobile.png )    |                                                        |
-| Add Insight          | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-add-insight-desktop.png )   |                                                        |
-| Pending Approvals    | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-pending-mobile.png )        |                                                        |
-| Pending Approvals    | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-pending-desktop.png )       |                                                        |
-| Profile - private    | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-profile-mobile.png )        |                                                        |
-| Profile - private    | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-profile-desktop.png )       |                                                        |
-| Profile - public     | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-profile-public-mobile.png )  |                                                        |
-| Profile - public     | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-prof-public-desktop.png )    |                                                        |
-| Profile - public     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-public-mobile.png )    |                                                        |
-| Profile - public     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-public.png )           |                                                        |
-| Profile - Insights   | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-prof-insights-mobile.png )   |                                                        |
-| Profile - Insights   | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-prof-insights.png )          |                                                        |
-| Profile - Insights   | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-insights.png )         |                                                        |
-| Profile - Drafts     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-drafts.png )           |                                                        |
-| Profile - Drafts     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-drafts-mobile.png )    |                                                        |
-| Profile - Favourites | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-favs-desktop.png )     |                                                        |
-| Profile - Favourites | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-prof-favs-mobile.png )      |                                                        |
-| Profile - Update     | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/prof-update-desktop.png )            |                                                        |
-| Profile - Update     | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/prof-update-mobile.png )             |                                                        |
-| Change-Password      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/change-pass-desktop.png )            |                                                        |
-| Change-Password      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/change-pass-mobile.png )             | Accessibility score of 96 due to button contrast.      |
-| Delete-Account       | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/del-acc-desktop.png )                |                                                        |
-| Delete-Account       | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/del-acc-mobile.png )                 | Accessibility score of 95 due to button contrast.      |
-| Insights-Detail      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-dets-desktop.png ) |                                                        |
-| Insights-Detail      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-insights-dets-mobile.png )  |                                                        |
-| Insights-Detail      | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-insight-dets-desktop.png )   |                                                        |
-| Insights-Detail      | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-insight-dets-mobile.png )    |                                                        |
-| Edit-Comment         | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-edit-comment-desktop.png )  |                                                        |
-| Edit-Comment         | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-edit-comment-mobile.png )   |                                                        |
-| Contact-Form         | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-contact-mobile.png )         |                                                        |
-| Contact-Form         | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-contact-mobile.png )        |                                                        |
-| Contact-Form         | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-contact-desktop.png )        |                                                        |
-| Contact-Form         | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-contact-desktop.png )       |                                                        |
-| About                | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-about-desktop.png )          |                                                        |
-| About                | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-about-desktop.png )         |                                                        |
-| About                | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-about-mobile.png )           | Very poor scores returned so removed dev profile image |
-| About                | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-about-mobile.png )          |                                                        |
-| Search-Results       | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-search-desktop.png )         |                                                        |
-| Search-Results       | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-search-desktop.png )        |                                                        |
-| Search-Results       | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-search-mobile.png )          |                                                        |
-| Search-Results       | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-search-mobile.png )         |                                                        |
-| Category-filter      | Visitor         | Desktop | ![screenshot](/docs/testing.md/lighthouse/visitor-cat-filter-desktop.png )     |                                                        |
-| Category-filter      | Registered User | Desktop | ![screenshot](/docs/testing.md/lighthouse/reg-user-cat-filter-desktop.png )    |                                                        |
-| Category-filter      | Visitor         | Mobile  | ![screenshot](/docs/testing.md/lighthouse/visitor-category-mobile.png )        |                                                        |
-| Category-filter      | Registered User | Mobile  | ![screenshot](/docs/testing.md/lighthouse/reg-user-category-mobile.png )       |                                                        |
+| Home                 | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/logged-out-home-desktop.png )        |                                                        |
+| Home                 | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/logged-in-home-desktop.png )         |                                                        |
+| Home                 | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/logged-out-home-mobile.png )         |                                                        |
+| Home                 | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/logged-in-home-mobile.png )          |                                                        |
+| Insights             | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-insights-desktop.png )       |                                                        |
+| Insights             | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-insights-desktop.png )      |                                                        |
+| Insights             | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-insights-mobile.png )        |                                                        |
+| Insights             | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-insights-mobile.png )       |                                                        |
+| Add Insight          | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-add-insight-mobile.png )    |                                                        |
+| Add Insight          | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-add-insight-desktop.png )   |                                                        |
+| Pending Approvals    | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-pending-mobile.png )        |                                                        |
+| Pending Approvals    | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-pending-desktop.png )       |                                                        |
+| Profile - private    | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-profile-mobile.png )        |                                                        |
+| Profile - private    | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-profile-desktop.png )       |                                                        |
+| Profile - public     | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-profile-public-mobile.png )  |                                                        |
+| Profile - public     | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-prof-public-desktop.png )    |                                                        |
+| Profile - public     | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-public-mobile.png )    |                                                        |
+| Profile - public     | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-public.png )           |                                                        |
+| Profile - Insights   | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-prof-insights-mobile.png )   |                                                        |
+| Profile - Insights   | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-prof-insights.png )          |                                                        |
+| Profile - Insights   | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-insights.png )         |                                                        |
+| Profile - Drafts     | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-drafts.png )           |                                                        |
+| Profile - Drafts     | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-drafts-mobile.png )    |                                                        |
+| Profile - Favourites | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-favs-desktop.png )     |                                                        |
+| Profile - Favourites | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-prof-favs-mobile.png )      |                                                        |
+| Profile - Update     | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/prof-update-desktop.png )            |                                                        |
+| Profile - Update     | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/prof-update-mobile.png )             |                                                        |
+| Change-Password      | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/change-pass-desktop.png )            |                                                        |
+| Change-Password      | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/change-pass-mobile.png )             | Accessibility score of 96 due to button contrast.      |
+| Delete-Account       | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/del-acc-desktop.png )                |                                                        |
+| Delete-Account       | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/del-acc-mobile.png )                 | Accessibility score of 95 due to button contrast.      |
+| Insights-Detail      | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-insights-dets-desktop.png ) |                                                        |
+| Insights-Detail      | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-insights-dets-mobile.png )  |                                                        |
+| Insights-Detail      | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-insight-dets-desktop.png )   |                                                        |
+| Insights-Detail      | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-insight-dets-mobile.png )    |                                                        |
+| Edit-Comment         | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-edit-comment-desktop.png )  |                                                        |
+| Edit-Comment         | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-edit-comment-mobile.png )   |                                                        |
+| Contact-Form         | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-contact-mobile.png )         |                                                        |
+| Contact-Form         | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-contact-mobile.png )        |                                                        |
+| Contact-Form         | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-contact-desktop.png )        |                                                        |
+| Contact-Form         | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-contact-desktop.png )       |                                                        |
+| About                | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-about-desktop.png )          |                                                        |
+| About                | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-about-desktop.png )         |                                                        |
+| About                | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-about-mobile.png )           | Very poor scores returned so removed dev profile image |
+| About                | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-about-mobile.png )          |                                                        |
+| Search-Results       | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-search-desktop.png )         |                                                        |
+| Search-Results       | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-search-desktop.png )        |                                                        |
+| Search-Results       | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-search-mobile.png )          |                                                        |
+| Search-Results       | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-search-mobile.png )         |                                                        |
+| Category-filter      | Visitor         | Desktop | ![screenshot](/docs/testing-md/lighthouse/visitor-cat-filter-desktop.png )     |                                                        |
+| Category-filter      | Registered User | Desktop | ![screenshot](/docs/testing-md/lighthouse/reg-user-cat-filter-desktop.png )    |                                                        |
+| Category-filter      | Visitor         | Mobile  | ![screenshot](/docs/testing-md/lighthouse/visitor-category-mobile.png )        |                                                        |
+| Category-filter      | Registered User | Mobile  | ![screenshot](/docs/testing-md/lighthouse/reg-user-category-mobile.png )       |                                                        |
 </details><br/>
 
 [Back to top](#contents)
@@ -286,4 +287,4 @@ While building the application, the general principles of accessibility where ad
 - Testing the game to make sure it does not crash from user input
 - Using ARIA labels in the README
 
-![WAVE](/docs/testing.md/summary.png)
+![WAVE](/docs/testing-md/summary.png)
