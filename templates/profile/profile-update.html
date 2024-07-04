@@ -10,24 +10,37 @@
     <div class="row justify-content-center align-items-center">
       <div class="col-12 col-md-8 col-lg-6">
         <!-- Card to contain the profile update form -->
-         <h3 class="fw-bold mb-4 text-center">Profile Update</h3>
+        <h3 class="fw-bold mb-4 text-center">Profile Update</h3>
         <div class="card bg-clr-dom-light shadow-sm" style="border-radius: 1rem;">
-          <div class="card-body p-4 text-center">
+          <div class="card-body p-4">
             <!-- Profile update form -->
             {% load cloudinary %}
             <form class="text-dark" method="POST" enctype="multipart/form-data">
-              <!-- CSRF token for form security -->
-              {% csrf_token %}
-              <!-- Render the forms using Crispy Forms for better styling -->
-              {{ user_form | crispy }}
-              {{ form | crispy }}
-              {{ message }}
-              <button type="submit" class="btn btn-success mt-4">Update</button>
+              {{ user_form.first_name|as_crispy_field }}
+              {{ user_form.last_name|as_crispy_field }}
+              {{ user_form.email|as_crispy_field }}
+              {{ form.bio|as_crispy_field }}
+              {{ form.location|as_crispy_field }}
+              {% if form.profile_picture %}
+              <div for="id_profile_picture" class="mb-3">
+                <label for="id_profile_picture" class="form-label">
+                  Image
+                </label>
+                <div class="form-control d-flex h-auto">
+                  <label>Currently :</label>
+                  <a href="{{ form.instance.profile_picture.url }}">{{ form.instance.profile_picture}}</a>
+                </div>
+                <input type="file" name="profile_picture" class="form-control" id="id_profile_picture">
+                <!-- CSRF token for security -->
+                {% csrf_token %}
+                <!-- Display any messages, e.g., success or error messages -->
+                {{ message }}
+                {% endif %}
+                <div class="d-flex justify-content-between mt-4">
+                  <button type="submit" class="btn btn-success txt-btn">Update</button>
             </form>
-            <div class="mt-3">
-              <!-- Back button to return to the profile page -->
-              <a class="btn button-style" href="{% url 'profile' user.username %}">Cancel</a>
-            </div>
+            <!-- Back button to return to the profile page -->
+            <a class="btn button-style" href="{% url 'profile' user.username %}">Cancel</a>
           </div>
         </div>
       </div>
@@ -35,4 +48,3 @@
   </div>
 </section>
 {% endblock %}
-

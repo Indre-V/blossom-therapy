@@ -16,13 +16,10 @@ class ProfileForm(forms.ModelForm):
 
         model = Profile
         fields = [
-            "bio",
-            "profile_picture",
-            "location",
+            'bio',
+            'profile_picture',
+            'location'
         ]
-        widgets = {
-            "profile_picture": forms.FileInput(),
-        }
 
 
 class UserForm(forms.ModelForm):

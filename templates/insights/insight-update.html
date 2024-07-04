@@ -15,23 +15,37 @@
                     <!-- Form for editing insight -->
                     <form class="text-dark" method="post" enctype="multipart/form-data">
                         <!-- Render form fields using Crispy Forms for better styling -->
-                        {% crispy form %}
+                        {{ form.title|as_crispy_field }}
+                        {% if form.featured_image %}
+                        <div for="id_featured_image" class="mb-3">
+                            <label for="id_featured_image" class="form-label">
+                                Image
+                            </label>
+                            <div class="form-control d-flex h-auto">
+                                <label>Currently :</label>
+                                <a href="{{ form.instance.featured_image.url }}">{{ form.instance.featured_image}}</a>
+                            </div>
+                            <input type="file" name="featured_image" class="form-control" id="id_featured_image">
+                        </div>
+
+                        {% endif %}
+
+                        {{ form.content|as_crispy_field }}
+                        {{ form.category|as_crispy_field }}
+                        {{ form.status|as_crispy_field }}
+                        <!-- {{ form }} -->
                         <!-- CSRF token for security -->
                         {% csrf_token %}
                         <!-- Display any messages, e.g., success or error messages -->
                         {{ message }}
-                                  <!-- Buttons -->
-                        <div class="d-flex justify-content-center mt-4">
-                            <button type="submit" class="btn btn-success btn-sm txt-btn mt-4">Update</button>
-                        </div>
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-success txt-btn">Update</button>
                     </form>
-                    <div class="d-flex justify-content-center mt-3">
-                        <a class="btn button-style" href="{% url 'insight-details' post.slug %}">Cancel</a>
-                    </div>
-                </div> 
+                    <a class="btn button-style" href="{% url 'insight-details' post.slug %}">Cancel</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 {% endblock %}
-
