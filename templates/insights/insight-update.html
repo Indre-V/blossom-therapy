@@ -17,7 +17,7 @@
                         <!-- Render form fields using Crispy Forms for better styling -->
                         {{ form.title|as_crispy_field }}
                         {% if form.featured_image %}
-                        <div for="id_featured_image" class="mb-3">
+                        <div class="mb-3">
                             <label for="id_featured_image" class="form-label">
                                 Image
                             </label>
@@ -39,10 +39,11 @@
                         <!-- Display any messages, e.g., success or error messages -->
                         {{ message }}
                         <!-- Buttons -->
-                        <div class="d-flex justify-content-between mt-4">
-                            <button type="submit" class="btn btn-success txt-btn">Update</button>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button type="submit" class="btn btn-success txt-btn mt-4">Update</button>
+                            <a class="btn button-style mt-4" href="{% url 'insight-details' post.slug %}">Cancel</a>
+                        </div>
                     </form>
-                    <a class="btn button-style" href="{% url 'insight-details' post.slug %}">Cancel</a>
                 </div>
             </div>
         </div>
