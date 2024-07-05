@@ -7,6 +7,7 @@ from insights.models import Post, Category
 
 # pylint: disable=locally-disabled, no-member
 
+
 class TestHomeView(TestCase):
     """
     Test suite for the HomeView in the insights app.
@@ -26,6 +27,7 @@ class TestHomeView(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
 
+
 class InsightDetailsViewTestCase(TestCase):
     """
     Test case for testing InsightDetailsView behavior.
@@ -35,15 +37,20 @@ class InsightDetailsViewTestCase(TestCase):
         """
         Set up the necessary data for each test.
         """
-        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.user = User.objects.create_user(
+            username='testuser', password='12345'
+        )
         self.category = Category.objects.create(name='Test Category')
         self.post = Post.objects.create(
-            title='Test Post', content='Test content', author=self.user, category=self.category)
+            title='Test Post', content='Test content',
+            author=self.user, category=self.category
+        )
         self.url = reverse('insight-details', kwargs={'slug': self.post.slug})
 
     def test_post_request(self):
         """
-        Test the behavior of the insight details view when submitting a comment via POST request.
+        Test the behavior of the insight details
+        view when submitting a comment via POST request.
         """
         self.client.force_login(self.user)
         comment_data = {
@@ -76,8 +83,9 @@ class SearchViewTestCase(TestCase):
         """
         Test the GET request to the search view with a query string.
         """
-        response = self.client.get(self.url + '?q=test')  # Example with a search query
+        response = self.client.get(self.url + '?q=test')
         self.assertEqual(response.status_code, 200)
+
 
 class InsightDeleteViewTestCase(TestCase):
     """
@@ -88,7 +96,9 @@ class InsightDeleteViewTestCase(TestCase):
         """
         Set up the test environment by creating necessary objects and URLs.
         """
-        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.user = User.objects.create_user(
+            username='testuser', password='12345'
+        )
         self.client.force_login(self.user)
 
         self.category = Category.objects.create(name='Test Category')
@@ -116,13 +126,16 @@ class InsightDeleteViewTestCase(TestCase):
         """
         Test case to verify that an unauthorized user cannot delete the post.
         """
-        another_user = User.objects.create_user(username='anotheruser', password='12345')
+        another_user = User.objects.create_user(
+            username='anotheruser', password='12345'
+        )
         self.client.force_login(another_user)
 
         response = self.client.post(self.url)
 
         self.assertEqual(response.status_code, 403)
         self.assertTrue(Post.objects.filter(pk=self.post.pk).exists())
+
 
 class InsightUpdateViewTestCase(TestCase):
     """
@@ -132,7 +145,8 @@ class InsightUpdateViewTestCase(TestCase):
         """
         Set up the necessary data for the test case.
         """
-        self.user = User.objects.create_user(username='testuser', password='password123')
+        self.user = User.objects.create_user(
+            username='testuser', password='password123')
         self.client.login(username='testuser', password='password123')
 
         self.category = Category.objects.create(name='General')
@@ -143,7 +157,9 @@ class InsightUpdateViewTestCase(TestCase):
             author=self.user
         )
 
-        self.url = reverse('insight-update', kwargs={'slug': self.insight.slug})
+        self.url = reverse(
+            'insight-update', kwargs={'slug': self.insight.slug}
+        )
         self.new_title = 'Updated Insight'
 
     def test_update_insight_unauthorized(self):
@@ -164,6 +180,7 @@ class InsightUpdateViewTestCase(TestCase):
         updated_insight = Post.objects.get(pk=self.insight.pk)
         self.assertNotEqual(updated_insight.title, self.new_title)
 
+
 class InsightAddViewTestCase(TestCase):
     """
     Test case for InsightAddView class-based view.
@@ -173,7 +190,9 @@ class InsightAddViewTestCase(TestCase):
         """
         Set up the necessary data for the test case.
         """
-        self.user = User.objects.create_user(username='testuser', password='password123')
+        self.user = User.objects.create_user(
+            username='testuser', password='password123'
+        )
         self.client.login(username='testuser', password='password123')
 
         self.category = Category.objects.create(name='General')
@@ -184,7 +203,7 @@ class InsightAddViewTestCase(TestCase):
             'title': 'New Insight',
             'content': 'New insight content',
             'category': self.category.id,
-            'status': 1 
+            'status': 1
         }
 
     def test_insight_add_view(self):
@@ -193,10 +212,10 @@ class InsightAddViewTestCase(TestCase):
         """
         url = reverse('add-insight')
         data = {
-            'title': '',  
+            'title': '',
             'content': 'New insight content',
-            'category': 1,  
-            'status': 1,  
+            'category': 1,
+            'status': 1,
         }
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, 200)
@@ -213,8 +232,9 @@ class InsightAddViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-        self.assertFalse(Post.objects.filter(title=self.new_insight_data['title']).exists())
+        self.assertFalse(
+            Post.objects.filter(title=self.new_insight_data['title']).exists())
 
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), 'Try Again. Please check all fields.')
+        self.assertEqual(str(messages[0]), 'Try Again. Check all fields.')

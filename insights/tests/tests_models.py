@@ -39,8 +39,10 @@ class PostModelTest(TestCase):
         """
         author = User.objects.create(username='testuser')
         category = Category.objects.create(name='Test Category')
-        Post.objects.create(title='Test Post', slug='test-post',
-                            author=author, content='Test content', category=category)
+        Post.objects.create(
+            title='Test Post', slug='test-post',
+            author=author, content='Test content', category=category
+        )
 
     def test_str_representation(self):
         """
@@ -76,9 +78,14 @@ class CommentModelTest(TestCase):
         """
         author = User.objects.create(username='testuser')
         category = Category.objects.create(name='Test Category')
-        post = Post.objects.create(title='Test Post', slug='test-post',
-                                   author=author, content='Test content', category=category)
-        Comment.objects.create(post=post, author=author, content='Test comment', approved=False)
+        post = Post.objects.create(
+            title='Test Post', slug='test-post',
+            author=author, content='Test content', category=category
+        )
+        Comment.objects.create(
+            post=post, author=author,
+            content='Test comment', approved=False
+        )
 
     def test_approved_default_value(self):
         """

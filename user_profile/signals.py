@@ -8,6 +8,7 @@ from .models import Profile
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-argument
 
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     """
@@ -15,5 +16,6 @@ def create_user_profile(sender, instance, created, **kwargs):
     """
     if created and not kwargs.get('raw', False):
         Profile.objects.create(user=instance)
+
 
 models.signals.post_save.connect(create_user_profile, sender=User)

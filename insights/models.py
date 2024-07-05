@@ -7,6 +7,7 @@ from cloudinary.models import CloudinaryField
 
 # pylint: disable=locally-disabled, no-member
 
+
 class Category(models.Model):
     """
     Model representing a category for the posts.
@@ -44,15 +45,18 @@ class Post(models.Model):
 
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='posts')
     featured_image = CloudinaryField('image', default='placeholder_insights')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(User, related_name="track_likes", blank=True)
-    favourite = models.ManyToManyField(User, related_name="track_favs", blank=True)
+    likes = models.ManyToManyField(
+        User, related_name="track_likes", blank=True)
+    favourite = models.ManyToManyField(
+        User, related_name="track_favs", blank=True)
     comment_count = models.IntegerField(default=0)
 
     class Meta:
@@ -89,7 +93,8 @@ class Comment(models.Model):
     """
     Model representing a comment on a post.
     """
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
+                             related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

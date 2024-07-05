@@ -18,6 +18,7 @@ class Contact(models.Model):
 
         return f"{self.email} - {self.created_on}"
 
+
 class DevProfile(models.Model):
     """
     Developer profile details

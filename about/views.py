@@ -7,6 +7,7 @@ from .forms import ContactForm
 
 # pylint: disable=locally-disabled, no-member
 
+
 class ContactFormView(SuccessMessageMixin, FormView):
     """
     View to handle the contact form submission.
@@ -26,7 +27,7 @@ class ContactFormView(SuccessMessageMixin, FormView):
 
     def form_valid(self, form):
         """
-        Handle valid form submission, save the form, 
+        Handle valid form submission, save the form,
         and re-render the page with the updated context.
         """
         form.save()
@@ -34,7 +35,8 @@ class ContactFormView(SuccessMessageMixin, FormView):
 
     def form_invalid(self, form):
         """
-        Handle invalid form submission and re-render the page with the form and errors.
+        Handle invalid form submission
+        and re-render the page with the form and errors.
         """
         return self.render_to_response(self.get_context_data(form=form))
 

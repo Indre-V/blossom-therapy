@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 from insights.forms import InsightForm, CommentForm
 from insights.models import Category
 
-
 # pylint: disable=locally-disabled, no-member
+
+
 class InsightFormValidationTests(TestCase):
     """
     Unit tests for validating InsightForm.
@@ -16,8 +17,8 @@ class InsightFormValidationTests(TestCase):
         Set up the necessary data for the test case.
         """
 
-        self.user = User.objects.create_user(username='testuser', password='password123')
-
+        self.user = User.objects.create_user(
+            username='testuser', password='password123')
 
         self.category = Category.objects.create(name='General')
 
@@ -58,6 +59,7 @@ class InsightFormValidationTests(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn('category', form.errors)
 
+
 class CommentFormTests(TestCase):
     """
     Unit tests for validating CommentForm.
@@ -87,7 +89,6 @@ class CommentFormTests(TestCase):
 
         self.assertFalse(form.is_valid())
 
-
         self.assertIn('content', form.errors)
 
     def test_missing_content_comment_form(self):
@@ -98,8 +99,6 @@ class CommentFormTests(TestCase):
 
         form = CommentForm(data=form_data)
 
-
         self.assertFalse(form.is_valid())
-
 
         self.assertIn('content', form.errors)

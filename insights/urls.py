@@ -57,5 +57,4 @@ urlpatterns = [
         "approve/insights/<int:pk>/",
          views.ApprovePostView.as_view(),
          name='approve-insight'),
-
 ]

@@ -18,6 +18,7 @@ def custom_404(request, exception):
     '''
     return render(request, 'errors/404.html', status=404)
 
+
 def custom_403(request, exception):
     '''
     Render 403 page
@@ -27,11 +28,13 @@ def custom_403(request, exception):
     else:
         return render(request, 'errors/500.html', status=500)
 
+
 def custom_500(request):
     '''
     Render 500 page
     '''
     return render(request, 'errors/500.html', status=500)
+
 
 def custom_csrf_failure(request, reason=""):
     """

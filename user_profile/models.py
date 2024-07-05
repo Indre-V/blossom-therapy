@@ -10,11 +10,12 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=150, blank=True)
-    profile_picture = CloudinaryField('image', default='images/placeholder-profile.jpg')
+    profile_picture = CloudinaryField(
+        'image', default='images/placeholder-profile.jpg'
+    )
     location = models.CharField(max_length=255, blank=True)
     total_likes = models.IntegerField(default=0)
     total_favourites = models.IntegerField(default=0)
-
 
     def __str__(self):
         return str(self.user)

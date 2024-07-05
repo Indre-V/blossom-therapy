@@ -12,6 +12,7 @@ class ProfileInline(admin.StackedInline):
     exclude = ['total_likes', 'total_favourites']
     can_delete = False
 
+
 class UserAdmin(admin.ModelAdmin):
     """
     Custom configuration for admin to update

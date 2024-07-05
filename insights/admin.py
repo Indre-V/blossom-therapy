@@ -4,7 +4,6 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import Category, Comment, Post
 
 
-
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
     """
@@ -13,7 +12,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_display = ['title', 'created_on', 'status', 'author']
     search_fields = ['title', 'content', 'author']
     list_filter = ['created_on', 'category']
-    exclude= ['likes', 'favourite', 'comment_count']
+    exclude = ['likes', 'favourite', 'comment_count']
     summernote_fields = ('content',)
     actions = ['approve_posts']
 

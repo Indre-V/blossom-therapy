@@ -7,6 +7,7 @@ from .models import Comment, Post
 
 # pylint: disable=locally-disabled, no-member
 
+
 class InsightForm(forms.ModelForm):
     """
     Form for creating and updating a Post.
@@ -32,7 +33,8 @@ class InsightForm(forms.ModelForm):
 
     def clean_title(self):
         """
-        Custom validation to check if a post with the same title already exists.
+        Custom validation to check
+        if a post with the same title already exists.
         """
         title = self.cleaned_data.get('title')
         slug = slugify(title)
@@ -60,8 +62,8 @@ class CommentForm(forms.ModelForm):
     content = forms.CharField(
         max_length=500,
         widget=forms.Textarea(attrs={
-            'rows': 5, 
-            'cols': 30 
+            'rows': 5,
+            'cols': 30
         })
     )
 

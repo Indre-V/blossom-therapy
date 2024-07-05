@@ -20,6 +20,7 @@ from .forms import CommentForm, InsightForm
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-argument
 
+
 class HomeView(ListView):
     """
     A view class for displaying the home page.
@@ -60,7 +61,9 @@ class InsightAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.slug = slugify(form.instance.title)
 
         if form.instance.status == 0:
-            success_message = "Insight added successfully! Waiting for Admin approval."
+            success_message = (
+                "Insight added successfully! Waiting for Admin approval."
+            )
         elif form.instance.status == 2:
             success_message = "Insight added to drafts successfully."
         elif form.instance.status == 1:
@@ -87,7 +90,8 @@ class InsightDetailsView(View):
 
     def get(self, request, slug, *args, **kwargs):
         """
-        Handle GET requests to display the details of a specific post and its comments.
+        Handle GET requests to display the
+        details of a specific post and its comments.
         """
         try:
             post = get_object_or_404(Post, slug=slug)
@@ -150,7 +154,8 @@ class InsightDetailsView(View):
 
 class InsightsListView(ListView):
     """
-    Base view for displaying insights with support for category filtering and search functionality.
+    Base view for displaying insights with
+    support for category filtering and search functionality.
     """
     model = Post
     template_name = 'insights/insights-list.html'
@@ -184,7 +189,9 @@ class InsightsListView(ListView):
         query = self.request.GET.get('q')
 
         if category_name:
-            context['category'] = get_object_or_404(Category, name=category_name)
+            context['category'] = get_object_or_404(
+                Category, name=category_name
+            )
 
         context['categories'] = Category.objects.all()
         context['search_query'] = query
@@ -238,7 +245,8 @@ class CategoryFilterView(ListView):
         """
         category_name = self.kwargs.get('category_name')
         category = get_object_or_404(Category, name=category_name)
-        object_list = Post.objects.filter(status=1, category=category).order_by('-created_on')
+        object_list = Post.objects.filter(
+            status=1, category=category).order_by('-created_on')
         return object_list
 
     def get_context_data(self, **kwargs):
@@ -254,7 +262,8 @@ class CategoryFilterView(ListView):
 
 
 class InsightDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+        LoginRequiredMixin, UserPassesTestMixin,
+        SuccessMessageMixin, DeleteView):
     """
     Delete insights by author or superuser
     """
@@ -268,11 +277,15 @@ class InsightDeleteView(
         Ensure that only insight author or admin can delete the recodrd..
         """
         post = self.get_object()
-        return self.request.user == post.author or self.request.user.is_superuser
+        return (
+            self.request.user == post.author or
+            self.request.user.is_superuser
+        )
 
     def get_success_url(self):
         """
-        Redirect to the HTTP referrer if available, otherwise use the default success URL.
+        Redirect to the HTTP referrer if available,
+        otherwise use the default success URL.
         """
         referrer = self.request.META.get('HTTP_REFERER')
         if referrer:
@@ -286,7 +299,8 @@ class InsightDeleteView(
 
 
 class InsightUpdateView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+        LoginRequiredMixin, UserPassesTestMixin,
+        SuccessMessageMixin, UpdateView):
     """
     Edit insights by author or superuser
     """
@@ -310,10 +324,15 @@ class InsightUpdateView(
 
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author or self.request.user.is_superuser
+        return (
+            self.request.user == post.author or
+            self.request.user.is_superuser
+        )
 
     def get_success_url(self):
-        return reverse_lazy("insight-details", kwargs={"slug": self.object.slug})
+        return (
+            reverse_lazy("insight-details", kwargs={"slug": self.object.slug})
+        )
 
     def get_success_message(self, cleaned_data):
         return self.success_message % cleaned_data
@@ -378,7 +397,8 @@ class FavouriteInsightView(LoginRequiredMixin, ListView):
 
 
 class CommentDeleteView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+        LoginRequiredMixin, UserPassesTestMixin,
+        SuccessMessageMixin, DeleteView):
 
     """
     This view is used to allow logged in users to delete their own comments
@@ -392,7 +412,10 @@ class CommentDeleteView(
         Ensure that only the comment author or admin can delete the comment.
         """
         comment = self.get_object()
-        return self.request.user == comment.author or self.request.user.is_superuser
+        return (
+            self.request.user == comment.author or
+            self.request.user.is_superuser
+        )
 
     def get_success_url(self):
         """
@@ -403,10 +426,12 @@ class CommentDeleteView(
 
 
 class CommentEditView(
-        LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+        LoginRequiredMixin, UserPassesTestMixin,
+        SuccessMessageMixin, UpdateView):
 
     """
-    This view is used to allow logged in users and admin to update their own comments
+    This view is used to allow logged in users
+    and admin to update their own comments
     """
     model = Comment
     form_class = CommentForm
@@ -418,7 +443,10 @@ class CommentEditView(
         Ensure that only the comment author or admin can delete the comment.
         """
         comment = self.get_object()
-        return self.request.user == comment.author or self.request.user.is_superuser
+        return (
+            self.request.user == comment.author or
+            self.request.user.is_superuser
+        )
 
     def get_success_url(self):
         """
@@ -428,7 +456,9 @@ class CommentEditView(
         return reverse_lazy("insight-details", kwargs={"slug": post.slug})
 
 
-class PendingApprovalListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+class PendingApprovalListView(
+        LoginRequiredMixin, UserPassesTestMixin,
+        ListView):
     """
     A view for displaying a list of posts pending approval by admins.
     """
@@ -451,16 +481,17 @@ class ApprovePostView(LoginRequiredMixin, UserPassesTestMixin, View):
     def post(self, request, pk, *args, **kwargs):
         """
         Handles HTTP POST requests to approve a post with the specified pk.
-        If the post is pending (status=0), changes its status to approved (status=1).
+        If the post is pending (status=0),
+        changes its status to approved (status=1).
         Redirects to the 'pending-posts' URL after approval.
         """
         post = get_object_or_404(Post, pk=pk)
         if post.status == 0:
             post.status = 1
             post.save()
-            messages.success(request, f'Post "{post.title}" has been approved.')
+            messages.success(request, f'"{post.title}" is approved.')
         else:
-            messages.info(request, f'Post "{post.title}" is already approved.')
+            messages.info(request, f'"{post.title}" is already approved.')
 
         return redirect('pending-insights')
 

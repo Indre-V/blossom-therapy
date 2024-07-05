@@ -14,6 +14,7 @@ from .forms import UserForm, ProfileForm
 # pylint: disable=locally-disabled, no-member
 # pylint: disable=unused-variable
 
+
 class ProfilePageView(DetailView):
     """
     This view is used to display user profile page
@@ -116,7 +117,8 @@ class ProfileInsightsView(View):
         return render(request, 'profile/user-insights.html', context)
 
 
-class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class ProfileDeleteView(
+        LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """
     View for deleting an user profile
     """
@@ -124,7 +126,6 @@ class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = "profile/profile-delete.html"
     success_message = "Your profile has been successfully deleted."
     success_url = reverse_lazy("home")
-
 
     def delete(self, request, *args, **kwargs):
         """
@@ -135,7 +136,8 @@ class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class ProfileUpdateView(
+        LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """
     View for updating user profile information.
     """
@@ -148,14 +150,18 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         """
         Returns the profile of the current user.
         """
-        profile, created = Profile.objects.get_or_create(user=self.request.user)
+        profile, created = Profile.objects.get_or_create(
+            user=self.request.user
+        )
         return profile
 
     def get_success_url(self):
         """
         Returns the URL to redirect to after processing a valid form.
         """
-        return reverse_lazy("profile", kwargs={"username": self.request.user.username})
+        return reverse_lazy(
+            "profile", kwargs={"username": self.request.user.username}
+        )
 
     def get_context_data(self, **kwargs):
         """
@@ -165,7 +171,9 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         if self.request.method == 'GET':
             context["user_form"] = UserForm(instance=self.request.user)
         else:
-            context["user_form"] = UserForm(self.request.POST, instance=self.request.user)
+            context["user_form"] = UserForm(
+                self.request.POST, instance=self.request.user
+            )
         return context
 
     def form_valid(self, form):
