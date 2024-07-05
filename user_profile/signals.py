@@ -16,5 +16,4 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created and not kwargs.get('raw', False):
         Profile.objects.create(user=instance)
 
-
 models.signals.post_save.connect(create_user_profile, sender=User)

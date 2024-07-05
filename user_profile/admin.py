@@ -22,7 +22,7 @@ class UserAdmin(admin.ModelAdmin):
 
     list_display = ['username', 'date_joined', 'last_login', 'is_superuser']
     search_fields = ['username', 'first_name', 'last_name']
-  
+    exclude = ['groups', 'user_permissions', 'is_staff']
 
 
 admin.site.unregister(User)
