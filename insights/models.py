@@ -27,13 +27,14 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         """
-        Returns the absolute URL for the GameCategory instance
+        Returns the absolute URL for the Category instance
         """
         return reverse('insights')
 
+
 class Post(models.Model):
     """
-    Model representing a blog post.
+    Model representing an insight.
     """
     STATUS_CHOICES = (
         (0, 'Ready to Publish'),
@@ -91,7 +92,6 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
-    approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
