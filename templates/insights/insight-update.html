@@ -19,10 +19,9 @@
                         {% if form.featured_image %}
                         <div class="mb-3">
                             <label for="id_featured_image" class="form-label">
-                                Image
+                                Current Image:
                             </label>
                             <div class="form-control d-flex h-auto">
-                                <label>Currently :</label>
                                 <a href="{{ form.instance.featured_image.url }}">{{ form.instance.featured_image}}</a>
                             </div>
                             <input type="file" name="featured_image" class="form-control" id="id_featured_image">

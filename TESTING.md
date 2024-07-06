@@ -3,20 +3,25 @@
 
 Return back to the [README.md](README.md) file.
 
+![Main Image](/docs/readme-md/main-image.png)
 
-- [Testing](#testing)
-  * [Bugs Fixed](#bugs-fixed)
-  * [Responsiveness Tests](#responsiveness-tests)
-  * [Code Validation](#code-validation)
-    + [HTML](#html)
-    + [CSS](#css)
-    + [JavaScript](#javascript)
-    + [Python](#python)
-  * [User Story Testing](#user-story-testing)
-  * [Feature Testing](#feature-testing)
-  * [Accessibility Testing](#accessibility-testing)
-  * [Lighthouse Testing](#lighthouse-testing)
-  * [Browser Testing](#browser-testing)
+# Contents
+
+- [Responsiveness Tests](#responsiveness-tests)
+- [Code Validation](#code-validation)
+  * [HTML](#html)
+  * [CSS](#css)
+  * [JavaScript](#javascript)
+  * [Python](#python)
+  * [Python (Unit Testing)](#python--unit-testing-)
+- [Manual Testing](#manual-testing)
+- [Role-based Restrictions](#role-based-restrictions)
+- [Bugs Fixed](#bugs-fixed)
+- [Browser Compatibility](#browser-compatibility)
+- [User Story Testing](#user-story-testing)
+- [Lighthouse Testing](#lighthouse-testing)
+- [Accessibility Testing](#accessibility-testing)
+
 
 ## Responsiveness Tests
 
@@ -87,6 +92,9 @@ This is the process which was followed of validating an HTML file by direct inpu
 
 </details>
 
+
+[Back to top](#contents)
+
 ### CSS
 
 The [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) tool, provided by the W3C, enables to validate and verify the correctness of CSS code. It ensures that your web pages adhere to W3C standards, promoting interoperability and accessibility.
@@ -143,6 +151,8 @@ The python files have all been passed through [PEP8 CI Online](https://pep8ci.he
 
 </details><br/>
 
+[Back to top](#contents)
+
 ### Python (Unit Testing)
 
 Python's `unittest` framework offers a robust and flexible testing solution. 
@@ -152,6 +162,7 @@ The automated tests highlighted a redundant view and non existant html file. Alt
 
 ![Unittest](/docs/testing-md/automated-test-results.png)
 
+[Back to top](#contents)
 
 ## Manual Testing
 
@@ -328,6 +339,8 @@ In addition to using `unittest`, extensive manual testing was performed on the a
 
 [Back to top](#contents)
 
+
+
 ## Role-based Restrictions
 
 The user role based restrictions were tested to ensure that view and functionality reflects the scope of the project.
@@ -355,8 +368,20 @@ The user role based restrictions were tested to ensure that view and functionali
 | Cannot create, update, or delete any content. | ✅         |
 | Cannot manage comments, likes, or favorites.  | ✅         |
 
-## Bugs Fixed
+[Back to top](#contents)
 
+## Bugs
+
+| Bug                                                                                                       | Status | Fix Commit/Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Delete Insight Error](https://github.com/Indre-V/blossom-therapy/issues/55#issue-2386109346)             | ✅      | Git Commit [6c6a8f7](https://github.com/Indre-V/blossom-therapy/commit/c27ede0506f73afc7dd5f986f0073512447360a9)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Error Pages Display](https://github.com/Indre-V/blossom-therapy/issues/56#issue-2386680102)              | ✅      | Git Commit [6c746b8](https://github.com/Indre-V/blossom-therapy/commit/6c746b88b387f9860cd4509b6f1943bfb8447f6b)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Comment Max Length](https://github.com/Indre-V/blossom-therapy/issues/57#issue-2390474625)               | ✅      | Git Commit [9d12b29](https://github.com/Indre-V/blossom-therapy/commit/9d12b296074edcf18af73b76419038926c617d40)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Modal Title Display](https://github.com/Indre-V/blossom-therapy/issues/58#issue-2390550682)              | ✅      | Git Commit [52ed983](https://github.com/Indre-V/blossom-therapy/commit/52ed983b79e9a2f48d2274dc44c228f914496ee8)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Visual Fa Icon Display Issue](https://github.com/Indre-V/blossom-therapy/issues/59#issue-2390577201)     | ❌      | Requires further investigation into html template structure of component files not loading librariers correctly.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [Profile creation in Django Admin](https://github.com/Indre-V/blossom-therapy/issues/60#issue-2392645354) | ✅      | Git Commit [791e1b8](https://github.com/Indre-V/blossom-therapy/commit/791e1b8c8de985a264b9c75ac4a9bd26f39cb73c)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Django Admin Portal User set up](https://github.com/Indre-V/blossom-therapy/issues/61#issue-2392672850)  | ❌      | The issue lies with Django admin site (django.contrib.admin) not using Django allauth by default. Since Django admin provides a custom login view, it does not go through the normal Django allauth workflow. This means that passwords created via Django Admin Portal are not encrypted(hashed).  Based on my research, this would require amending Django admin form templates, possibly adding password hashers. I have engaged with Tutor Support regarding this issue and they could not provide me with solution either. All other users can Register and Log In. This issue \*\*only affects users that are created directly by the Administrator in Django Admin Portal\*\*, the fix is out of scope due to time constraints. It does not affect user management in Django Admin Portal. |
+| [Crispy Forms File Name](https://github.com/Indre-V/blossom-therapy/issues/62#issue-2393715489)           | ✅      | Git Commit [08d45cc](https://github.com/Indre-V/blossom-therapy/commit/08d45cc7bd941765fcd0a682c6d80fc0101c9389)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 ## Browser Compatibility
 
 The deployed project was tested on the most popular browsers for compatibility issues.
@@ -500,14 +525,16 @@ Performance results on mobile were on a lower side due to Heroku and Cloudinary 
 
 ## Accessibility Testing
 
-[WAVE](https://wave.webaim.org/) online tool was used to check terminal colour contrast.
+Although, accessibility scores were high on LIghouse, I have retested the page.
+[WAVE](https://wave.webaim.org/) online tool was used to check terminal colour contrast. All tests were passed. However, it should be noted that logo may return contrast error depending on browser and operating system. 
 
 While building the application, the general principles of accessibility where adhered to: 
 
 - Using clear instructions
-- Asking for user input before continuing
 - Validating inputs before moving on to the next step
-- Testing the game to make sure it does not crash from user input
-- Using ARIA labels in the README
+- Testing the page to make sure it does not affect performance from user input
+- Using ARIA labels
 
 ![WAVE](/docs/testing-md/summary.png)
+
+[Back to top](#contents)
