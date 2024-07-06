@@ -1,6 +1,12 @@
 # Blossom Therapy Insights
 
-This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. In addition to the rich content provided in the Insights section, the blog also features a Developer Profile tab. This tab showcases the profile of the developer behind Blossom Therapy Insights, allowing visitors to learn more about expertise, view portfolio, and connect with the developer. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
+
+![Main Image](/docs/readme-md/main-image.png)
+
+[Deployed Link](https://blossom-therapy-2570b72f9ee9.herokuapp.com/)
+
+
+This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. In addition to the rich content provided in the Insights section, the blog also features a Developer Profile. This  showcases the profile of the developer behind Blossom Therapy Insights, allowing visitors to learn more about expertise, view portfolio, and connect with the developer. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
 
 
 
@@ -52,22 +58,22 @@ The MoSCoW prioritization technique is used to determine the importance of vario
 
 ### GitHub Projects
 
-Using GitHub Projects, tasks are managed and prgress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Future Features/Uresolved). Issue labels include the user, prioritization and sprints.
+Using GitHub Projects, tasks are managed and prgress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Bugs). Issue labels include the user, prioritization and sprints.
 
-![Kanban Board](/docs/readme.md/kanban-board.png)
+![Kanban Board](/docs/readme-md/kanban-board.png)
 
 ### EPICS
 
 Epic is a large body of work that is broken down into user stories. Each Epic in this project represents a key aspect of the platform's development and ensures comprehensive coverage of the required functionalities.
 
-- EPIC 1: Design Planning
-- EPIC 2: Development Environment Setup
-- EPIC 3: User Account Management
-- EPIC 4: User Engagement
-- EPIC 5: Admin Content Management
-- EPIC 6: User Experience Optimization
-- EPIC 7: Developer Profile
-- EPIC 8: Quality Assurance and Documentation
+- [EPIC 1: Design Planning](https://github.com/Indre-V/blossom-therapy/issues/8#issue-2302827014)
+- [EPIC 2: Development Environment Setup](https://github.com/Indre-V/blossom-therapy/issues/13#issue-2303068814)
+- [EPIC 3: User Account Management](https://github.com/Indre-V/blossom-therapy/issues/16#issue-2303301420)
+- [EPIC 4: User Engagement](https://github.com/Indre-V/blossom-therapy/issues/21#issue-2304079687)
+- [EPIC 5: Admin Content Management](https://github.com/Indre-V/blossom-therapy/issues/26#issue-2304102146)
+- [EPIC 6: User Experience Optimization](https://github.com/Indre-V/blossom-therapy/issues/36#issue-2304282564)
+- [EPIC 7: Developer Profile](https://github.com/Indre-V/blossom-therapy/issues/49#issue-2307919845)
+- [EPIC 8: Quality Assurance and Documentation](https://github.com/Indre-V/blossom-therapy/issues/43#issue-2304295055)
 
 ### User Stories
 
@@ -184,7 +190,7 @@ With an emphasis on delivering a seamless user experience, the goal of this proj
 - Potential Employers and Recruiters
 - General Visitors
 - Families and Educators
-- Enthusiasts
+- Gardening Enthusiasts
 
 [Back to top](#contents)
 
@@ -193,7 +199,7 @@ With an emphasis on delivering a seamless user experience, the goal of this proj
 
 The wireframes for the platform provide a visual representation of the layout and structure of the application. They outline the placement of key elements such as navigation menus, user profiles, content areas, and interactive features. The wireframes ensure a cohesive and intuitive user interface, guiding the design and development process. After the extensive testing was conducted, naturally there are some deviations from wireframes in the live version of the platform.
 
- [Mobile Wireframes](/readme/docs/mobile-wireframes.pdf "Mobile Wireframes")
+[Mobile Wireframes](/docs/readme-md/mobile-wireframes.pdf "Mobile Wireframes")
 
 [Desktop Wireframes](/readme/docs/desktop-wireframes.pdf "Desktop Wireframes")
 
@@ -203,9 +209,12 @@ The wireframes for the platform provide a visual representation of the layout an
 
 ## Database Schema
 
-The database schema outlines the structure and relationships between key tables for the platform. The **User** table stores basic user information and authentication details. The **Profile** and **DeveloperProfile** tables extend user details with personal information, bios, and links. The **Category** table categorizes content, while the **Post** table manages user-generated content with fields for title, content, author, and metadata. The **InsightComment** table handles comments on posts, including author information and approval status. These tables are designed to ensure efficient data management and robust user interactions on the platform.
+The database schema outlines the structure and relationships between key tables for the platform. The **User** table stores basic user information and authentication details. The **Profile** and **DevProfile** tables extend user details with personal information, bios, and links. The **Category** table categorizes content, while the **Post** table manages user-generated content with fields for title, content, author, and metadata. The **Comment** table handles comments on posts, including author information. These tables are designed to ensure efficient data management and robust user interactions on the platform.
 
-![Database Schema](/readme/docs/database-schema.png)
+This schema was generated using [dbdiagram.io](https://dbdiagram.io/).
+
+
+![Database Schema](/docs/readme-md/database-schema.png)
 
 ## Design Choices
 
@@ -215,9 +224,9 @@ The database schema outlines the structure and relationships between key tables 
 
 ### Colour Scheme
 
-This color scheme aims to create a harmonious balance between the vibrant, nature-inspired elements of the gardening insights and the professional, reliable tone needed for the about section. By combining these carefully chosen colors, I aim to deliver a visually appealing and user-friendly experience that resonates with both gardeners and potential customers. 
+The color scheme aims to create a harmonious balance between the vibrant, nature-inspired elements of the gardening insights and the professional, reliable tone needed for the about section. By combining these carefully chosen colors, I aim to deliver a visually appealing and user-friendly experience that resonates with both gardeners and potential customers. 
 
-![Coolors Scheme](/readme/docs/color-scheme.png)
+![Coolors Scheme](/docs/readme-md/color-scheme.png)
 
 # Color Palette
 
@@ -231,14 +240,14 @@ This color scheme aims to create a harmonious balance between the vibrant, natur
 
 ### Images
 
-Combination of images sourced from [Leonardo](https://leonardo.ai/ "Leonardo AI"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Unsplash and Leonardo AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
+Combination of images sourced from [Leonardo](https://leonardo.ai/ "Leonardo AI"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Leonardo AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
 
 
 ### Responsiveness
 
 My website is responsive to different layouts depending on the size of the viewport have been included in the CSS media queries. This allows visitors to experience the website as I intended on device types and screen sizes. The breakpoints I am using are from Bootstrap.
 
-![Breakpoints](/readme/docs/media-queries.png)
+![Breakpoints](/docs/readme-md/media-queries.png)
 
 [Back to top](#contents)
 
@@ -254,8 +263,8 @@ My website is responsive to different layouts depending on the size of the viewp
 - Enforce strong password policies to enhance user account security.
 
 ### Form Validation
-If incorrect or empty data is added to a form, the form won't submit, and a warning will appear to the user informing them which field raised the error.
 
+If incorrect or empty data is added to a form, the form won't submit, and a warning will appear to the user informing them which field raised the error.
 
 ### Database Security
 
@@ -266,19 +275,20 @@ If incorrect or empty data is added to a form, the form won't submit, and a warn
 
 ### Header
 
-![Visitor Large Screen](/readme/docs/header-visitor-ml-screen.png)
+![Visitor Large Screen](/docs/readme-md/features/header-visitor-ml-screen.png)
 
 The header of the Blossom Therapy Insights page is designed to be visually appealing and user-friendly, featuring a prominent logo, a navigation menu, user authentication links, and a search bar. It uses a cohesive color scheme with primary, secondary, and background colors, and ensures accessibility with good color contrast and ARIA labels. The responsive design adapts well to both desktop and mobile devices, maintaining functionality and ease of navigation across all screen sizes. The use of 'Merriweather' font and consistent font sizes enhances readability, contributing to a seamless user experience. Once the user is logged in more options become available. For generic authorised users, 'Add Insight' option appears. Superusers have an extra option to approve pending posts.
 
 <details><summary><b>Header - User View</b></summary>
-![User Large Screen](/readme/docs/header-user-ml-screen.png)
-![Admin Large Screen](/readme/docs/header-admin-ml-screen.png)
+
+![User Large Screen](/docs/readme-md/features/header-user-ml-screen.png)
+![Admin Large Screen](/docs/readme-md/features/header-admin-ml-screen.png)
 
 </details><br/>
 
 ### Footer
 
-![Footer](/readme/docs/footer-ml-screen.png)
+![Footer](/docs/readme-md/features/footer-ml-screen.png)
 
 The footer maintains consistency with the overall site design, featuring the same font and color scheme, and is fully responsive to adapt to various screen sizes. This attention to detail helps reinforce the site's branding and enhances the user experience by providing clear and accessible navigation options at the bottom of the page. Media links are included. Also, users can contact site owner by clicking on the :envelope: icon is they wish to do so. 
 
@@ -288,21 +298,21 @@ This contact form is designed to facilitate user communication with developers i
 
 <details><summary><b>Contact Form</b></summary>
 
-![Contact Modal](/readme/docs/contact-modal.png)
-![Contact List](/readme/docs/contact-list.png)
+![Contact Modal](/docs/readme-md/features/contact-modal.png)
+![Contact List](/docs/readme-md/features/contact-list.png)
 
 </details><br/>
 
 
 **About Section:**
 
-Showcases detailed information about website developer in a visually appealing format. Profile card includes a profile picture, name, location, languages spoken, skills, and a brief bio. Links to the developer’s GitHub, LinkedIn, and resume are also provided, along with a button to contact the developer via email. Additional cards highlight the developer’s coding philosophy, design enthusiasm, and educational background. This comprehensive and user-friendly layout allows for easy navigation and access to important information about the developer involved in the project.
-The data is managed via the Django Admin Portal. 
+Showcases detailed information about website developer in a visually appealing format. Profile card includes name, location, languages spoken, skills, and a brief bio. Links to the developer’s GitHub, LinkedIn, and resume are also provided, along with a button to contact the developer via email. Additional cards highlight the developer’s coding philosophy, design enthusiasm, and educational background. This comprehensive and user-friendly layout allows for easy navigation and access to important information about the developer involved in the project.
+The data is managed via the Django Admin Portal. It could be upscaled to add multiple profiles. 
 
 
 <details><summary><b>About Section</b></summary>
 
-![About Section](/readme/docs/about-page-view.png)
+![About Section](/docs/readme-md/features/about-page-view.png)
 
 </details><br/>
 
@@ -313,7 +323,7 @@ The landing page is designed to captivate visitors with its vibrant and welcomin
 
 <details><summary><b>Landing View Large Screen</b></summary>
 
-![Landing View Large Screen](/readme/docs/landing-view-ml-screen.png)
+![Landing View Large Screen](/docs/readme-md/features/landing-view-ml-screen.png)
 
 </details><br/>
 
@@ -327,7 +337,7 @@ The Sign Up page features a clean and intuitive form where users can create an a
 
 <details><summary><b>Register View</b></summary>
 
-![Register](/readme/docs/register-small-screen.png)
+![Register](/docs/readme-md/features/register-large-screen.png)
 
 </details><br/>
 
@@ -339,7 +349,7 @@ The Log In page offers a straightforward and secure way for existing users to ac
 
 <details><summary><b>Log In view</b></summary>
 
-![Log In](/readme/docs/login-small-screen.png)
+![Log In](/docs/readme-md/features/login-small-screen.png)
 
 </details><br/>
 
@@ -351,7 +361,7 @@ The Log Out page provides users with confirmation of a successful logout from th
 
 <details><summary><b>Log Out View View</b></summary>
 
-![Log Out View](/readme/docs/logout-small-screen.png)
+![Log Out View](/docs/readme-md/features/logout-small-screen.png)
 
 </details><br/>
 
@@ -361,11 +371,10 @@ The Log Out page provides users with confirmation of a successful logout from th
 
 The Profile Page on Blossom Therapy Insights serves as a personalized view for users to manage and showcase their gardening insights and track engagement. 
 
-![Personal Profile View](/readme/docs/personal-view-sm-screen.png)
+![Personal Profile View](/docs/readme-md/features/personal-view-sm-screen.png)
+
 
 **Profile Image**
-
-![Profile Image](/readme/docs/profile-image.png)
 
 The view prominently displays the user’s profile picture. If no picture is uploaded, a placeholder image is shown instead, ensuring a visually consistent layout.
 
@@ -373,48 +382,44 @@ The view prominently displays the user’s profile picture. If no picture is upl
 
 User full name, location and bio displayed publicly to all visitors of the page. They can be updated at anytime. 
 
-![Profile Details](/readme/docs/profile-details.png)
 
 **Navigation and Interaction:**
-
-![Navigation](/readme/docs/navigation.png)
 
 Users can easily navigate to their insights, drafts, and favorite posts using intuitive buttons displayed on the left column. These buttons provide direct access to specific sections of the user’s profile based on their interactions within the platform. Users can remove favourites from the list. Edit, publish or delete the insights. 
 
 <details><summary><b>User Content Summary View</b></summary>
 
-![Profile Insights](/readme/docs/profile-insights-sm-screen.png)
-![My Drafts](/readme/docs/my-drafts-ml-screen.png)
-![My Favourites](/readme/docs/my-favourites-ml-screen.png)
+![Profile Insights](/docs/readme-md/features/profile-insights-xl-screen.png)
+![My Drafts](/docs/readme-md/features/my-drafts-xl-screen.png)
+![My Favourites](/docs/readme-md/features/my-favourites-xl-screen.png)
 
 </details><br/>
 
 
 **Insights Statistics:**
 
-![Insights Statistics](/readme/docs/insights-statistics.png)
+![Insights Statistics](/docs/readme-md/features/insights-statistics.png)
 
 Users can view insightful statistics related to their posts, including total likes and favorites received. These metrics provide feedback on the impact and popularity of their contributions within the community.
 
 **Interactive Actions:**
 
-![Interactive Actions](/readme/docs/interactive-actions.png)
-
 For authenticated users who own the profile, actionable buttons are provided at the bottom for updating the profile, changing passwords, and deleting the account. These actions are centrally located for ease of access and management.
 
 <details><summary><b>Actions Summary View</b></summary>
 
-![Update View](/readme/docs/update-profile-sm-screen.png)
-![Change Password View](/readme/docs/change-password-ml-screen.png)
-![Delete Account](/readme/docs/delete-account-ml-screen.png)
+![Update View](/docs/readme-md/features/update-profile-sm-screen.png)
+![Change Password View](/docs/readme-md/features/change-password-ml-screen.png)
+![Delete Account](/docs/readme-md/features/delete-account-ml-screen.png)
 
 </details><br/>
 
 **Public Profile View:**
 
-![Public Profile View](/readme/docs/public-profile-view.png)
+![Public Profile View](/docs/readme-md/features/public-profile-view.png)
 
 Visitors can click on the insight author's username and access their public profile. View excludes actions, favourites and drafts to protect the author's privacy.
+
 
 ### Add Insight
 
@@ -422,7 +427,7 @@ The "Add Insight" page features a user-friendly form, allowing users to easily s
 
 <details><summary><b>Add Insight Form</b></summary>
 
-![Update View](/readme/docs/add-insight-sm-screen.png)
+![Update View](/docs/readme-md/features/add-insight-sm-screen.png)
 
 </details><br/>
 
@@ -432,7 +437,7 @@ The "Edit Insight" page allows users to modify existing insights. The page displ
 
 <details><summary><b>Edit Insight Form</b></summary>
 
-![Edit View](/readme/docs/edit-insight-sm-screen.png)
+![Edit View](/docs/readme-md/features/edit-insight-sm-screen.png)
 
 </details><br/>
 
@@ -442,7 +447,7 @@ Trash can icon that triggers the delete modal when clicked by the user on the In
 
 <details><summary><b>Delete Insight Modal</b></summary>
 
-![Delete Modal](/readme/docs/delete-insight-sm-screen.png)
+![Delete Modal](/docs/readme-md/features/delete-insight-sm-screen.png)
 
 </details><br/>
 
@@ -452,21 +457,21 @@ This option is only available to superusers. They are instructed on how to manag
 
 <details><summary><b>Delete Insight Modal</b></summary>
 
-![Pending Approvals](/readme/docs/pending-approvals-sm-screen.png)
+![Pending Approvals](/docs/readme-md/features/pending-approvals-sm-screen.png)
 
 </details><br/>
 
 ### Insight Card
 
-![Insight Card](/readme/docs/insight-card-sm-screen.png)
+![Insight Card](/docs/readme-md/features/insight-card-sm-screen.png)
 
 Insight card layout for each post, features the post's title, featured image, category, author details, publication date, interactive elements based on the user status. It begins with the post's featured image, which links to the detailed view of the post. The card also includes the post's title, category with a link to related posts, and details about the author, including their profile picture and username with a link to their public profile page. For authorized users (author or superuser), edit and delete buttons are provided.
 For published posts it includes like and favorite buttons with counts, and the number of comments. If the posts is pending approval or a draft it displays the status.
 
 <details><summary><b> Insight Status Display</b></summary>
 
-![Status Draft Display](/readme/docs/status-draft-sm-screen.png)
-![Status Pending Display](/readme/docs/status-pending-sm-screen.png)
+![Status Draft Display](/docs/readme-md/features/status-draft-sm-screen.png)
+![Status Pending Display](/docs/readme-md/features/status-pending-sm-screen.png)
 
 </details><br/>
 
@@ -474,13 +479,12 @@ For published posts it includes like and favorite buttons with counts, and the n
 
  It features a sidebar for easy navigation through different categories, enhancing the user’s ability to filter content. The page dynamically adjusts its heading to display search results or the selected category. In the event that no insights match the user's search or category selection, a prompt encourages users to add new insights. Additionally, the inclusion of a pagination component ensures smooth navigation through multiple pages of insights, making the browsing experience seamless and efficient. Category list is managed by the superuser in Django Admin Portal.
 
- <details><summary><b> Insight Status Display</b></summary>
+ <details><summary><b> Insights Display</b></summary>
 
-![Sidebar](/readme/docs/sidebar.png)
-![Insights List View](/readme/docs/Insights-list-view-sm-screen.png)
-![Search Results](/readme/docs/search-results-sm-screen.png)
-![Category Search](/readme/docs/category-search-sm-screen.png)
-![No Records](/readme/docs/no-records-sm-screen.png)
+![Insights List View](/docs/readme-md/features/insights-list-view-sm-screen.png)
+![Search Results](/docs/readme-md/features/search-results-xl-screen.png)
+![Category Search](/docs/readme-md/features/category-search-xl-screen.png)
+![No Records](/docs/readme-md/features/no-records-xl-screen.png)
 
 </details><br/>
 
@@ -492,13 +496,13 @@ Additionally, depending on the post status, a comment section with an interactiv
 
 <details><summary><b> Insight Details Display</b></summary>
 
-![Insight Details Display](/readme/docs/insight-details-sm-screen.png)
+![Insight Details Display](/docs/readme-md/features/insight-details-xl-screen.png)
 
 </details><br/>
 
 ### User Interactions
 
-![Interactions Display](/readme/docs/interactions-snippet.png)
+![Interactions Display](/docs/readme-md/features/interactions-snippet.png)
 
 **Insight Like and Unlike:**
 
@@ -507,9 +511,8 @@ After the like or unlike action, the user is redirected back to the page they ca
 
 <details><summary><b>Like Functionality</b></summary>
 
-![Like Message](/readme/docs/like-message.png)
-![Liked Insight View](/readme/docs/liked-insight.png)
-![Unliked Message](/readme/docs/unlike-message.png)
+![Liked Insight View](/docs/readme-md/features/liked-insight.png)
+![Unliked Message](/docs/readme-md/features/unlike-message.png)
 
 </details><br/>
 
@@ -519,9 +522,8 @@ Application allows users to add or remove insights from their favourites. If the
 
 <details><summary><b>Favourite Functionality</b></summary>
 
-![Like Message](/readme/docs/like-message.png)
-![Liked Insight View](/readme/docs/liked-insight.png)
-![Unliked Message](/readme/docs/unlike-message.png)
+![Faved Insight View](/docs/readme-md/features/faved-insight.png)
+![UnFaved Message](/docs/readme-md/features/unfav-message.png)
 
 </details><br/>
 
@@ -531,12 +533,12 @@ Authenticated users can add comments to insights. Comments are displayed in the 
 
 <details><summary><b>Comments View</b></summary>
 
-![Comment Form](/readme/docs/comment-form.png)
-![Comment Edit](/readme/docs/comment-edit.png)
-![Comment Delete](/readme/docs/comment-delete.png)
-![Comment Add Success Message](/readme/docs/comment-add.png)
-![Comment Add Edit Message](/readme/docs/comment-add.png)
-![Comment Add Success Message](/readme/docs/comment-add.png)
+![Comment Form](/docs/readme-md/features/comment-form.png)
+![Comment Edit](/docs/readme-md/features/comment-edit.png)
+![Comment Delete](/docs/readme-md/features/comment-delete.png)
+![Comment Add Success Message](/docs/readme-md/features/comment-add-message.png)
+![Comment Add Edit Message](/docs/readme-md/features/comment-edit-message.png)
+![Comment Posted](/docs/readme-md/features/comment-posted.png)
 
 </details><br/>
 
@@ -550,10 +552,10 @@ Authenticated users can add comments to insights. Comments are displayed in the 
 
 <details><summary><b>Error View</b></summary>
 
-![Error 400](/readme/docs/error-400.png)
-![Error 403](/readme/docs/error-403.png)
-![Error 404](/readme/docs/error-404.png)
-![Error 500](/readme/docs/error-500.png)
+![Error 400](/docs/readme-md/features/error400.png)
+![Error 403](/docs/readme-md/features/error403.png)
+![Error 404](/docs/readme-md/features/error404.png)
+![Error 500](/docs/readme-md/features/error500.png)
 </details><br/>
 
 [Back to top](#contents)
