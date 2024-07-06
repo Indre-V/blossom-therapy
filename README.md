@@ -1,6 +1,5 @@
 # Blossom Therapy Insights
 
-
 ![Main Image](/docs/readme-md/main-image.png)
 
 [Deployed Link](https://blossom-therapy-2570b72f9ee9.herokuapp.com/)
@@ -9,39 +8,59 @@
 This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. In addition to the rich content provided in the Insights section, the blog also features a Developer Profile. This  showcases the profile of the developer behind Blossom Therapy Insights, allowing visitors to learn more about expertise, view portfolio, and connect with the developer. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
 
 
-
+-[Table of Contents](#contents)
 - [Agile Methodology](#agile-methodology)
-  * [Overview](#overview)
-  * [MoSCoW Prioritization](#moscow-prioritization)
-  * [GitHub Projects](#github-projects)
-  * [EPICS](#epics)
-  * [User Stories](#user-stories)
-    + [Developer Stories](#developer-stories)
-    + [Visitor Stories](#visitor-stories)
-    + [Registered User Stories](#registered-user-stories)
-  * [Website Goals and Objectives](#website-goals-and-objectives)
-  * [Target Audience](#target-audience)
-  * [Wireframes](#wireframes)
-  * [Database Schema](#database-schema)
-  * [Design Choices](#design-choices)
-    + [Typography](#typography)
-    + [Colour Scheme](#colour-scheme)
-    + [Images](#images)
-    + [Responsiveness](#responsiveness)
+   * [Overview](#overview)
+   * [MoSCoW Prioritization](#moscow-prioritization)
+   * [GitHub Projects](#github-projects)
+   * [EPICS](#epics)
+   * [User Stories](#user-stories)
+   * [Developer Stories](#developer-stories)
+   * [Visitor Stories](#visitor-stories)
+   * [Registered User Stories](#registered-user-stories)
+   * [Admin User Stories](#admin-user-stories)
+- [Website Goals and Objectives](#website-goals-and-objectives)
+- [Target Audience](#target-audience)
+- [Wireframes](#wireframes)
+- [Database Schema](#database-schema)
+- [Design Choices](#design-choices)
+   * [Typography](#typography)
+   * [Colour Scheme](#colour-scheme)
+   * [Images](#images)
+   * [Responsiveness](#responsiveness)
+- [Security Measures and Protective Design](#security-measures-and-protective-design)
+   * [User Authentication](#user-authentication)
+   * [Password Management](#password-management)
+   * [Form Validation](#form-validation)
+   * [Database Security](#database-security)
 - [Features](#features)
+   * [Header](#header)
+   * [Footer](#footer)
+   * [Landing Page](#landing-page)
+   * [User Account Pages](#user-account-pages)
+   * [Profile Page](#profile-page)
+   * [Add Insight](#add-insight)
+   * [Edit Insight](#edit-insight)
+   * [Delete Insight](#delete-insight)
+   * [Pending Approvals](#pending-approvals)
+   * [Insight Card](#insight-card)
+   * [Browse Insights](#browse-insights)
+   * [Insight Details](#insight-details)
+   * [User Interactions](#user-interactions)
+   * [Custom Error Pages](#custom-error-pages)
 - [Deployment](#deployment)
-  * [To deploy the project to Heroku](#to-deploy-the-project-to-heroku)
-  * [To fork the project](#to-fork-the-project)
-  * [To clone the project](#to-clone-the-project)
+   * [To deploy the project to Heroku](#to-deploy-the-project-to-heroku)
+   * [To fork the project](#to-fork-the-project)
+   * [To clone the project](#to-clone-the-project)
+- [Testing](#testing)
+- [Future Features](#future-features)
 - [Technology](#technology)
-  * [Languages used](#languages-used)
-  * [Python Libraries](#python-libraries)
-  * [Frameworks](#frameworks)
-  * [Libraries](#libraries)
-  * [Programs](#programs)
-  * [Frameworks](#frameworks-1)
+   * [Languages](#languages)
+   * [Python Libraries](#python-libraries)
+   * [Frameworks](#frameworks)
+   * [Programs](#programs)
 - [Credits](#credits)
-  * [Disclaimer](#disclaimer)
+- [Disclaimer](#disclaimer)
 
 
 
@@ -201,7 +220,7 @@ The wireframes for the platform provide a visual representation of the layout an
 
 [Mobile Wireframes](/docs/readme-md/mobile-wireframes.pdf "Mobile Wireframes")
 
-[Desktop Wireframes](/readme/docs/desktop-wireframes.pdf "Desktop Wireframes")
+[Desktop Wireframes](/docs/readme-md/desktop-wireframes.pdf "Desktop Wireframes")
 
 
 
@@ -216,6 +235,8 @@ This schema was generated using [dbdiagram.io](https://dbdiagram.io/).
 
 ![Database Schema](/docs/readme-md/database-schema.png)
 
+[Back to top](#contents)
+
 ## Design Choices
 
 ### Typography
@@ -228,7 +249,7 @@ The color scheme aims to create a harmonious balance between the vibrant, nature
 
 ![Coolors Scheme](/docs/readme-md/color-scheme.png)
 
-# Color Palette
+
 
 | Color             | Hex Code   | Usage                                                                                                                                         |
 |-------------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -238,10 +259,13 @@ The color scheme aims to create a harmonious balance between the vibrant, nature
 | Light Orange      | #EDD0B3    | Applied to the footer background and as a hover effect for buttons. This color adds warmth and highlights important interactive elements, drawing user attention effectively.          |
 | Powder Blue       | #B0D3E6    | Used for button backgrounds and various highlights. This color is calming and soft, ensuring that buttons are noticeable but not overwhelming. It complements the other colors well, adding to the overall aesthetic.         |
 
+[Back to top](#contents)
+
 ### Images
 
 Combination of images sourced from [Leonardo](https://leonardo.ai/ "Leonardo AI"), and those taken by the developer contributes to a visually compelling and cohesive website design that effectively communicates the message and values of the gardening blog and developer section. All images sourced from Leonardo AI are available under free licenses, allowing for their use in commercial projects without attribution. This ensures compliance with copyright laws and provides assurance regarding the legal usage of the images on the website.
 
+[Back to top](#contents)
 
 ### Responsiveness
 
@@ -270,6 +294,8 @@ If incorrect or empty data is added to a form, the form won't submit, and a warn
 
 - The database URL and secret key are stored in the `env.py` file to prevent unwanted connections to the database. This setup was implemented before the first push to GitHub.
 - Cross-Site Request Forgery (CSRF) tokens are used on all forms throughout the site to enhance security.
+
+[Back to top](#contents)
 
 ## Features
 
@@ -371,8 +397,11 @@ The Log Out page provides users with confirmation of a successful logout from th
 
 The Profile Page on Blossom Therapy Insights serves as a personalized view for users to manage and showcase their gardening insights and track engagement. 
 
+<details><summary><b>Profile View</b></summary>
+
 ![Personal Profile View](/docs/readme-md/features/personal-view-sm-screen.png)
 
+</details><br/>
 
 **Profile Image**
 
@@ -398,13 +427,14 @@ Users can easily navigate to their insights, drafts, and favorite posts using in
 
 **Insights Statistics:**
 
-![Insights Statistics](/docs/readme-md/features/insights-statistics.png)
-
 Users can view insightful statistics related to their posts, including total likes and favorites received. These metrics provide feedback on the impact and popularity of their contributions within the community.
 
 **Interactive Actions:**
 
+![Profile Actions](/docs/readme-md/features/profile-actions.png)
+
 For authenticated users who own the profile, actionable buttons are provided at the bottom for updating the profile, changing passwords, and deleting the account. These actions are centrally located for ease of access and management.
+
 
 <details><summary><b>Actions Summary View</b></summary>
 
@@ -416,10 +446,15 @@ For authenticated users who own the profile, actionable buttons are provided at 
 
 **Public Profile View:**
 
-![Public Profile View](/docs/readme-md/features/public-profile-view.png)
+
 
 Visitors can click on the insight author's username and access their public profile. View excludes actions, favourites and drafts to protect the author's privacy.
 
+<details><summary><b>Public Profile View</b></summary>
+
+![Public Profile View](/docs/readme-md/features/public-profile-view.png)
+
+</details><br/>
 
 ### Add Insight
 
