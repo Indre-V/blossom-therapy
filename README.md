@@ -8,7 +8,7 @@
 This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. In addition to the rich content provided in the Insights section, the blog also features a Developer Profile. This  showcases the profile of the developer behind Blossom Therapy Insights, allowing visitors to learn more about expertise, view portfolio, and connect with the developer. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
 
 
--[Table of Contents](#contents)
+- [Contents](#contents)
 - [Agile Methodology](#agile-methodology)
    * [Overview](#overview)
    * [MoSCoW Prioritization](#moscow-prioritization)
@@ -595,6 +595,42 @@ Authenticated users can add comments to insights. Comments are displayed in the 
 
 [Back to top](#contents)
 
+## Django Admin Portal 
+
+Django Admin Portal allows superuser to manage content and users of the website. The admin view is customized to reflect the scope of this project. 
+
+![Django Admin Portal](/docs/readme-md/features/admin-view.png)
+
+[Back to top](#contents)
+
+
+## Future Features
+
+Blossom Therapy Insights aims to continually evolve and enhance user experience. Here are some potential future features:
+
+#### Enhanced User Profiles
+- **Profile Customization:** Allow users to personalize their profiles with themes, background images, and custom layouts.
+- **Achievements and Badges:** Introduce a gamification system where users earn badges for contributions, such as submitting insights, receiving likes, and engaging with the community.
+
+#### Advanced Insights Management
+- **Insight Draft Sharing:** Enable users to share drafts with other users for feedback before publishing.
+- **Insight Scheduling:** Allow users to schedule the publication of their insights for a future date and time.
+
+#### Community Interaction
+- **Private Messaging:** Implement a private messaging system for users to communicate directly with one another.
+- **Community Events:** Create features for hosting and managing virtual events, webinars, and workshops within the platform.
+
+#### Content Discovery
+- **Advanced Search Filters:** Improve search functionality with filters for categories, tags, popularity, and date ranges.
+- **Recommendations:** Develop a recommendation engine that suggests insights based on user interests and past interactions.
+
+#### Accessibility and Inclusivity
+- **Multi-language Support:** Offer the platform in multiple languages to cater to a global audience.
+- **Accessibility Enhancements:** Further improve accessibility features, such as screen reader compatibility, keyboard navigation, and customizable font sizes.
+
+These future features aim to make Blossom Therapy Insights a more robust, interactive, and user-friendly platform, fostering a vibrant community of gardening enthusiasts.
+
+
 ## Deployment
 
 ### To deploy the project to Heroku
@@ -671,7 +707,6 @@ _Any changes required to the website, they can be made, committed and pushed to 
 Blossom-Therapy website underwent an extensive testing process to ensure its functionality, accessibility, and performance. This involved validating the code, assessing accessibility, conducting performance tests, performing cross-device testing, verifying browser compatibility, evaluating user stories, and incorporating user feedback to improve the overall user experience
 Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
-## Future Features
 
 ## Technology
 
@@ -700,7 +735,7 @@ Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 - [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/): Used for overall development and tweaking, including testing responsiveness, debugging, and performance profiling.
 - [Cloudinary](https://cloudinary.com/): Image hosting service used to upload and manage images, providing features such as image optimization, transformation, and delivery.
 - [Coolors](https://coolors.co/): Used to create a color palette, offering tools for generating, exploring, and customizing color schemes for web design.
-- [Database Schema](https://dbdatabase.io/): dbdatabase.io is a database management tool used for creating and managing databases, providing features such as schema design, data modeling, and SQL querying.
+- [Database Schema](https://dbdiagram.io/): database management tool used for creating and managing databases, providing features such as schema design, data modeling, and SQL querying.
 - [Favicon](https://favicon.io/): Used to create the favicon, providing a simple tool for generating favicons for web applications.
 - [Font Awesome](https://fontawesome.com/): Used for icons in the information bar, providing a wide range of high-quality, customizable icons for web development.
 - [GitHub](https://github.com/): Used for version control and as an agile tool, facilitating collaborative development, code review, and project management.
@@ -718,15 +753,33 @@ Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
 [Back to top](#contents)
 
-
 ## Credits
 
 - Feedback, advice and support:
 
   - [Simen Daehlin](https://github.com/Eventyret "Simen Daehlin")
 
-- Code inspiration and learning content:
+- Insights content and viuals:
 
-* YouTube Channels for platform functionality: 
+  - [Perplexity](https://www.perplexity.ai/)
+  - [Leonardo.AI](https://leonardo.ai/)
+  - [Coolors](https://coolors.co/)
+
+- Learning content:
+
+  - [CodePen](https://codepen.io/pen/ "CodePen")
+  - [Django Testing Tutorial](https://www.youtube.com/watch?v=qwypH3YvMKc&list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
+  - [Django Documentation](https://docs.djangoproject.com/en/4.2/)
+  - [Dev Community](https://dev.to/lindaojo/how-to-improve-lighthouse-score-accessibility-514e)
+  - [Boostrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
+- Debugging Issues:
+
+  - [StackOverflow](https://stackoverflow.com/ "StackOverflow")
+  - [Project Portfolio-4 channel on Slack](https://slack.com/intl/en-ie/ "Slack")
+  - [Django Forum](https://forum.djangoproject.com/)
+
 
 ## Disclaimer
+
+_Blossom-Therapy-Insights provides free information only. It is not intented for monetary profit. Every effort has been made to properly acknowledge and reference any images and information used in this project. Although the agreement for free usage allows photographs to be obtained by free search._
