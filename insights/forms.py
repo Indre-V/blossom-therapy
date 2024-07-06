@@ -38,7 +38,8 @@ class InsightForm(forms.ModelForm):
         """
         title = self.cleaned_data.get('title')
         slug = slugify(title)
-        if Post.objects.filter(slug=slug).exists():
+
+        if Post.objects.filter(slug=slug).exclude(pk=self.instance.pk).exists():
             raise ValidationError('A post with this title already exists.')
         return title
 
