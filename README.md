@@ -5,7 +5,7 @@
 [Deployed Link](https://blossom-therapy-2570b72f9ee9.herokuapp.com/)
 
 
-This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
+Blossom-Therapy-Insights is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. It offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
 
 # Contents
 
@@ -283,6 +283,7 @@ My website is responsive to different layouts depending on the size of the viewp
 ## Security Measures and Protective Design
 
 ### User Authentication
+
 - Django's `LoginRequiredMixin` is used to ensure that any requests to access secure pages by non-authenticated users are redirected to the login page.
 - Django's `UserPassesTestMixin` is used to limit access based on certain permissions, ensuring users can only edit/delete content they authored. If the user doesn't pass the test, they are shown an HTTP 403 Forbidden error.
 
@@ -325,7 +326,8 @@ The footer maintains consistency with the overall site design, featuring the sam
 
 **Contact Form:**
 
-This contact form is designed to facilitate user communication with developers in a streamlined and secure manner. All Contact submitted via the form can be viewed in Django Admin Portal.
+This contact form is designed to facilitate user communication with developers in a streamlined and secure manner. All contacts submitted via the form can be viewed in Django Admin Portal.
+Incorrect field validation is built in. Upon successful submission, message is displayed to the user.  
 
 <details><summary><b>Contact Form</b></summary>
 
@@ -451,8 +453,6 @@ For authenticated users who own the profile, actionable buttons are provided at 
 
 **Public Profile View:**
 
-
-
 Visitors can click on the insight author's username and access their public profile. View excludes actions, favourites and drafts to protect the author's privacy.
 
 <details><summary><b>Public Profile View</b></summary>
@@ -496,7 +496,7 @@ Trash can icon that triggers the delete modal when clicked by the user on the In
 
 This option is only available to superusers. They are instructed on how to manage pending insights, including approval, viewing content, deletion, editing, and changing status to publish or saving to drafts. If there are pending records, they are displayed in a table format showing details author, title (linked to the insight details), creation date, and an action column with a button to approve each post. If no posts are pending, message informs that there are no pending posts.
 
-<details><summary><b>Delete Insight Modal</b></summary>
+<details><summary><b>Pending Approvals</b></summary>
 
 ![Pending Approvals](/docs/readme-md/features/pending-approvals-sm-screen.png)
 
@@ -541,12 +541,11 @@ Additionally, depending on the post status, a comment section with an interactiv
 
 </details><br/>
 
+[Back to top](#contents)
+
 ### User Interactions
 
 ![Interactions Display](/docs/readme-md/features/interactions-snippet.png)
-
-
-[Back to top](#contents)
 
 **Insight Like and Unlike:**
 
@@ -715,7 +714,7 @@ _Any changes required to the website, they can be made, committed and pushed to 
 
 ## Testing
 
-Blossom-Therapy website underwent an extensive testing process to ensure its functionality, accessibility, and performance. This involved validating the code, assessing accessibility, conducting performance tests, performing cross-device testing, verifying browser compatibility, evaluating user stories, and incorporating user feedback to improve the overall user experience
+Blossom-Therapy-Insights website underwent an extensive testing process to ensure its functionality, accessibility, and performance. This involved validating the code, assessing accessibility, conducting performance tests, performing cross-device testing, verifying browser compatibility, evaluating user stories, and incorporating user feedback to improve the overall user experience
 Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
 
