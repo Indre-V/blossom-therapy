@@ -5,7 +5,7 @@
 [Deployed Link](https://blossom-therapy-2570b72f9ee9.herokuapp.com/)
 
 
-This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. In addition to the rich content provided in the Insights section, the blog also features a Developer Profile. This  showcases the profile of the developer behind Blossom Therapy Insights, allowing visitors to learn more about expertise, view portfolio, and connect with the developer. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
+This website is aimed as a comprehensive gardening blog designed for both novice and experienced gardeners. Blossom Therapy Insights offers a wealth of information through its post section, called Insights, where users can find expert advice, detailed guides, and inspiring stories about all things gardening. With a focus on delivering high-quality content and fostering a community of garden enthusiasts, Blossom Therapy Insights is your go-to resource for cultivating a thriving garden. 
 
 # Contents
 
@@ -62,8 +62,8 @@ This website is aimed as a comprehensive gardening blog designed for both novice
 - [Testing](#testing)
 - [Technology](#technology)
   * [Languages](#languages)
-  * [Python Libraries](#python-libraries)
   * [Frameworks](#frameworks)
+  * [Python Libraries](#python-libraries)
   * [Programs](#programs)
 - [Credits](#credits)
 - [Disclaimer](#disclaimer)
@@ -82,7 +82,7 @@ The MoSCoW prioritization technique is used to determine the importance of vario
 
 ### GitHub Projects
 
-Using GitHub Projects, tasks are managed and prgress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Bugs). Issue labels include the user, prioritization and sprints.
+Using GitHub Projects, tasks are managed and progress tracked through project boards. Each board will represent an EPIC, with columns for tasks, their statuses (To Do, In Progress, On Hold, Done, Bugs). Issue labels include the user, prioritization and sprints.
 
 ![Kanban Board](/docs/readme-md/kanban-board.png)
 
@@ -246,7 +246,7 @@ This schema was generated using [dbdiagram.io](https://dbdiagram.io/).
 
 ### Typography
 
- [Merriweather](https://fonts.google.com/specimen/Merriweather?query=merri) was chosen as the primary font to enhance the reading experience and align with the blog's nature-themed aesthetic. Its design features make it highly legible on both screens and printed materials, which is crucial for ensuring that readers can comfortably engage with the content, whether they are viewing detailed plant care guides or inspirational gardening stories.This font's traditional yet modern feel complements the natural, earthy tones of our color palette, creating a cohesive and inviting atmosphere that reflects the beauty and tranquility of gardening. By using Merriweather, I aim to deliver content that is not only visually appealing but also easy to read, thereby enhancing the overall user experience.
+ [Merriweather](https://fonts.google.com/specimen/Merriweather?query=merri) was chosen as the primary font to enhance the reading experience and align with the blog's nature-themed aesthetic. Its design features make it highly legible on both screens and printed materials, which is crucial for ensuring that readers can comfortably engage with the content, whether they are viewing detailed plant care guides or inspirational gardening stories. This font's traditional yet modern feel complements the natural, earthy tones of our color palette, creating a cohesive and inviting atmosphere that reflects the beauty and tranquility of gardening. By using Merriweather, I aim to deliver content that is not only visually appealing but also easy to read, thereby enhancing the overall user experience.
 
 ### Colour Scheme
 
@@ -321,7 +321,7 @@ The header of the Blossom Therapy Insights page is designed to be visually appea
 
 ![Footer](/docs/readme-md/features/footer-ml-screen.png)
 
-The footer maintains consistency with the overall site design, featuring the same font and color scheme, and is fully responsive to adapt to various screen sizes. This attention to detail helps reinforce the site's branding and enhances the user experience by providing clear and accessible navigation options at the bottom of the page. Media links are included. Also, users can contact site owner by clicking on the :envelope: icon is they wish to do so. 
+The footer maintains consistency with the overall site design, featuring the same font and color scheme, and is fully responsive to adapt to various screen sizes. This attention to detail helps reinforce the site's branding and enhances the user experience by providing clear and accessible navigation options at the bottom of the page. Media links are included. Also, users can contact site owner by clicking on the :envelope: icon is they wish to do so. Instead of generic links, the footer includes 'About Section' link with detailed profile of the developeer of this project.
 
 **Contact Form:**
 
@@ -360,7 +360,7 @@ The landing page is designed to captivate visitors with its vibrant and welcomin
 
 ### User Account Pages
 
-THe user account pages ensure a smooth and secure process for managing user access, enhancing the overall user experience on Blossom Therapy Insights.
+The user account pages ensure a smooth and secure process for managing user access, enhancing the overall user experience on Blossom Therapy Insights.
 
 **Sign Up Page:**
 
@@ -463,17 +463,18 @@ Visitors can click on the insight author's username and access their public prof
 
 ### Add Insight
 
-The "Add Insight" page features a user-friendly form, allowing users to easily submit new insights to the platform. The page includes a clear title, informative instructions, and a form styled with Crispy Forms for enhanced usability. Users can enter their post details, attach images, and submit their insights, with all submissions by generic users pending admin approval. Additionally, there is an option to save insights as drafts in the user profile section. The design prioritizes simplicity and functionality. Superusers have also an option to 'Publish' the Insight instantly. 
+The "Add Insight" page features a user-friendly form, allowing users to easily submit new insights to the platform. The page includes a clear title, informative instructions, and a form styled with Crispy Forms for enhanced usability. Users can enter their post details, attach images, and submit their insights, with all submissions by generic users pending admin approval. Additionally, there is an option to save insights as drafts in the user profile section. The design prioritizes simplicity and functionality. Superusers have also an option to 'Publish' the Insight instantly. The Superuser form has a note the to advice that their insights can be published without approval. 
 
 <details><summary><b>Add Insight Form</b></summary>
 
-![Update View](/docs/readme-md/features/add-insight-sm-screen.png)
+![Add View](/docs/readme-md/features/add-insight-sm-screen.png)
+![Superuser Add View](/docs/readme-md/features/superuser-form.png)
 
 </details><br/>
 
 ### Edit Insight
 
-The "Edit Insight" page allows users to modify existing insights. The page displayes the same fields and overall look as *Add Insight*.  Users can update insight details directly within the form, with a submit button for applying changes securely. Additionally, a cancel button is provided to return users to the detailed view of the insight, ensuring straightforward navigation and editing capabilities.
+The "Edit Insight" page allows users to modify existing insights. The page displays the same fields and overall look as *Add Insight*.  Users can update insight details directly within the form, with a submit button for applying changes securely. Additionally, a cancel button is provided to return users to the detailed view of the insight, ensuring straightforward navigation and editing capabilities.
 
 <details><summary><b>Edit Insight Form</b></summary>
 
@@ -729,14 +730,18 @@ Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 - [JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript "JS")
 
 
-### Python Libraries
-
-- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Authentication library used to create user accounts, providing features such as registration, login, and social authentication.
-- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Used to manage Django forms, making form rendering in templates simpler and more elegant.
 
 ### Frameworks
 
 - [Django](https://www.djangoproject.com/): Django is the main Python framework used in the development of this project. It provides a robust and scalable architecture for building web applications.
+
+### Python Libraries
+
+- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): Authentication library used to create user accounts, providing features such as registration, login, and social authentication.
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/): Used to manage Django forms, making form rendering in templates simpler and more elegant.
+- [WhiteNoise](https://pypi.org/project/whitenoise/): Designed to serve static files for Django applications.
+- [Humanize](https://pypi.org/project/humanize/): Used for turning a number into a fuzzy human-readable duration ("3 minutes ago")
+- [Django-Summernote](https://pypi.org/project/django-summernote/): A library that integrates the Summernote WYSIWYG editor into Django forms, allowing for rich-text editing.
 
 ### Programs
 
@@ -754,11 +759,11 @@ Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 - [Jshint](https://jshint.com/): Used to validate JavaScript code, helping identify potential errors and maintain code quality.
 - [PEP8 Online](http://pep8online.com/): PEP8 Online is used to validate all Python code against the PEP 8 style guide, promoting code readability and consistency.
 - [PostgreSQL](https://dbs.ci-dbs.net/): CI designed the database tool for this project. It is a powerful relational database management system.
-- [Summernote](https://summernote.org/): WYSIWYG editor used to allow users to edit their posts, providing a rich text editing experience.
 - [Tables Generator](https://www.tablesgenerator.com/markdown_tables): Used to convert Excel testing tables to Markdown format, simplifying the process of creating and formatting tables for documentation purposes.
 - [TOC Generator](https://ecotrust-canada.github.io/markdown-toc/): Used to generate table of contents for Markdown files, providing a convenient way to organize and navigate large documents.
 - [W3C](https://www.w3.org/): Used for HTML & CSS validation, ensuring that the project's code complies with web standards and is error-free.
 - [WAVE](https://webaim.org/resources/contrastchecker/): Used for accessibility testing, providing tools to check for accessibility issues such as color contrast and semantic structure.
+
  
 
 [Back to top](#contents)
@@ -769,19 +774,19 @@ Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
   - [Simen Daehlin](https://github.com/Eventyret "Simen Daehlin")
 
-- Insights content and viuals:
+- Insights content and visuals:
 
   - [Perplexity](https://www.perplexity.ai/)
   - [Leonardo.AI](https://leonardo.ai/)
-  - [Coolors](https://coolors.co/)
 
 - Learning content:
 
-  - [CodePen](https://codepen.io/pen/ "CodePen")
-  - [Django Testing Tutorial](https://www.youtube.com/watch?v=qwypH3YvMKc&list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
+  - [CodePen](https://codepen.io/pen/)
+  - [Automated Testing Tutorial](https://www.youtube.com/watch?v=qwypH3YvMKc&list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
   - [Django Documentation](https://docs.djangoproject.com/en/4.2/)
   - [Dev Community](https://dev.to/lindaojo/how-to-improve-lighthouse-score-accessibility-514e)
   - [Boostrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+  - [Dennis Ivy - Python Django 7 Hour Course](https://www.youtube.com/watch?v=PtQiiknWUcI)
 
 - Debugging Issues:
 
@@ -792,4 +797,6 @@ Testing summary and results can be found in [TESTING.md](TESTING.md) file.
 
 ## Disclaimer
 
-_Blossom-Therapy-Insights provides free information only. It is not intented for monetary profit. Every effort has been made to properly acknowledge and reference any images and information used in this project. Although the agreement for free usage allows photographs to be obtained by free search._
+_Blossom-Therapy-Insights provides free information only. It is not built for monetary profit. Every effort has been made to properly acknowledge and reference any images and information used in this project. Although the agreement for free usage allows photographs to be obtained by free search._
+
+[Back to top](#contents)
